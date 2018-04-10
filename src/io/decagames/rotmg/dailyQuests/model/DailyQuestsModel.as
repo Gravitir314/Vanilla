@@ -20,6 +20,7 @@ package io.decagames.rotmg.dailyQuests.model
         public var currentQuest:DailyQuest;
         public var isPopupOpened:Boolean;
         public var categoriesWeight:Array = [1, 0, 2, 3, 4];
+        public var selectedItem:int = -1;
         [Inject]
         public var hud:HUDModel;
 

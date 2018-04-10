@@ -982,7 +982,6 @@
       <ShadowSize>100</ShadowSize>
       <MaxHitPoints>14000</MaxHitPoints>
       <Defense>20</Defense>
-      <NoMiniMap/>
       <Projectile id="0">
          <ObjectId>Assassin Slash</ObjectId>
          <Damage>125</Damage>
@@ -1419,7 +1418,6 @@
       <ShadowSize>0</ShadowSize>
       <MaxHitPoints>14000</MaxHitPoints>
       <Defense>30</Defense>
-      <NoMiniMap/>
       <Projectile id="0">
          <ObjectId>Demon Fire Blast</ObjectId>
          <Damage>90</Damage>
