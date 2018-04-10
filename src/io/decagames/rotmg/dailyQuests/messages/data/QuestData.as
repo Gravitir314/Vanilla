@@ -18,6 +18,7 @@ package io.decagames.rotmg.dailyQuests.messages.data
         public var requirements:Vector.<int> = new Vector.<int>();
         public var rewards:Vector.<int> = new Vector.<int>();
         public var completed:Boolean;
+        public var itemOfChoice:Boolean;
         public var category:int;
 
 
@@ -42,6 +43,7 @@ package io.decagames.rotmg.dailyQuests.messages.data
                 _local_3++;
             };
             this.completed = _arg_1.readBoolean();
+            this.itemOfChoice = _arg_1.readBoolean();
         }
 
 

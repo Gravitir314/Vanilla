@@ -124,6 +124,8 @@ package com.company.assembleegameclient.mapeditor
                 _local_2[RegionLibrary.idToType_["Hallway 1"]] = RegionLibrary.xmlLibrary_[RegionLibrary.idToType_["Hallway 1"]];
                 _local_2[RegionLibrary.idToType_["Hallway 2"]] = RegionLibrary.xmlLibrary_[RegionLibrary.idToType_["Hallway 2"]];
                 _local_2[RegionLibrary.idToType_["Hallway 3"]] = RegionLibrary.xmlLibrary_[RegionLibrary.idToType_["Hallway 3"]];
+                _local_2[RegionLibrary.idToType_["Quest Monster Region"]] = RegionLibrary.xmlLibrary_[RegionLibrary.idToType_["Quest Monster Region"]];
+                _local_2[RegionLibrary.idToType_["Quest Monster Region 2"]] = RegionLibrary.xmlLibrary_[RegionLibrary.idToType_["Quest Monster Region 2"]];
             };
             GROUPS[GROUP_LABELS[0]] = _local_1;
             GROUPS[GROUP_LABELS[1]] = _local_3;

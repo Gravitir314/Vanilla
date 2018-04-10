@@ -23,10 +23,10 @@ package kabam.rotmg.friends.view
     import flash.display.IGraphicsData;
     import com.company.util.GraphicsUtil;
     import flash.events.Event;
-    import kabam.rotmg.friends.model.FriendVO;
+    import io.decagames.rotmg.friends.model.FriendVO;
     import flash.events.MouseEvent;
     import flash.events.FocusEvent;
-    import kabam.rotmg.friends.model.FriendConstant;
+    import io.decagames.rotmg.friends.config.FriendsActions;
     import kabam.rotmg.text.model.TextKey;
     import flash.text.TextFieldAutoSize;
     import kabam.rotmg.text.view.stringBuilder.LineBuilder;
@@ -169,7 +169,7 @@ package kabam.rotmg.friends.view
         private function createFriendTab():void
         {
             var _local_1:Sprite = new Sprite();
-            _local_1.name = FriendConstant.FRIEND_TAB;
+            _local_1.name = FriendsActions.FRIEND_TAB;
             this._nameInput = new TextInputField(TextKey.FRIEND_ADD_TITLE, false);
             this._nameInput.x = 3;
             this._nameInput.y = 0;
@@ -200,7 +200,7 @@ package kabam.rotmg.friends.view
             _local_1.addChild(this._friendsContainer);
             var _local_2:BaseSimpleText = new BaseSimpleText(18, 0xFFFFFF, false, 100, 26);
             _local_2.setAlignment(TextFormatAlign.CENTER);
-            _local_2.text = FriendConstant.FRIEND_TAB;
+            _local_2.text = FriendsActions.FRIEND_TAB;
             this._tabView.addTab(_local_2, _local_1);
         }
 
@@ -208,7 +208,7 @@ package kabam.rotmg.friends.view
         {
             var _local_1:Sprite;
             _local_1 = new Sprite();
-            _local_1.name = FriendConstant.INVITE_TAB;
+            _local_1.name = FriendsActions.INVITE_TAB;
             this._invitationsContainer = new FriendListContainer(TEXT_WIDTH, (TEXT_HEIGHT - 30));
             this._invitationsContainer.x = 3;
             _local_1.addChild(this._invitationsContainer);
@@ -218,7 +218,7 @@ package kabam.rotmg.friends.view
             this._inviteDefaultText.y = 200;
             _local_1.addChild(this._inviteDefaultText);
             var _local_2:BaseSimpleText = new BaseSimpleText(18, 0xFFFFFF, false, 100, 26);
-            _local_2.text = FriendConstant.INVITE_TAB;
+            _local_2.text = FriendsActions.INVITE_TAB;
             _local_2.setAlignment(TextFormatAlign.CENTER);
             this._tabView.addTab(_local_2, _local_1);
         }
@@ -249,17 +249,17 @@ package kabam.rotmg.friends.view
         {
             this._nameInput.clearText();
             this._nameInput.clearError();
-            this.actionSignal.dispatch(FriendConstant.SEARCH, this._nameInput.text());
+            this.actionSignal.dispatch(FriendsActions.SEARCH, this._nameInput.text());
         }
 
         private function onAddFriendClicked(_arg_1:MouseEvent):void
         {
-            this.actionSignal.dispatch(FriendConstant.INVITE, this._nameInput.text());
+            this.actionSignal.dispatch(FriendsActions.INVITE, this._nameInput.text());
         }
 
         private function onSearchFriendClicked(_arg_1:MouseEvent):void
         {
-            this.actionSignal.dispatch(FriendConstant.SEARCH, this._nameInput.text());
+            this.actionSignal.dispatch(FriendsActions.SEARCH, this._nameInput.text());
         }
 
         private function onListItemAction(_arg_1:String, _arg_2:String):void

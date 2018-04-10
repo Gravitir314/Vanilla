@@ -21,6 +21,13 @@ package io.decagames.rotmg.characterMetrics.tracker
 
         public function setBinaryStringData(_arg_1:int, _arg_2:String):void
         {
+            var _local_3:RegExp = /-/g;
+            var _local_4:RegExp = /_/g;
+            var _local_5:int = (4 - (_arg_2.length % 4));
+            while (_local_5--) {
+                _arg_2 = (_arg_2 + "=");
+            };
+            _arg_2 = _arg_2.replace(_local_3, "+").replace(_local_4, "/");
             this.setBinaryData(_arg_1, Base64.decodeToByteArray(_arg_2));
         }
 

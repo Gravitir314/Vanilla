@@ -282,9 +282,10 @@ package kabam.rotmg.messaging.impl
         {
         }
 
-        public function questRedeem(_arg_1:String, _arg_2:Vector.<SlotObjectData>):void
+        public function questRedeem(_arg_1:String, _arg_2:Vector.<SlotObjectData>, _arg_3:int=-1):void
         {
         }
+
 
         public function keyInfoRequest(_arg_1:int):void
         {

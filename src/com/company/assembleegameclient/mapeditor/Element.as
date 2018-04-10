@@ -46,6 +46,7 @@ package com.company.assembleegameclient.mapeditor
         {
             removeEventListener(MouseEvent.MOUSE_OVER, this.onMouseOver);
             removeEventListener(MouseEvent.ROLL_OUT, this.onRollOut);
+            this.removeTooltip();
         }
 
         private function onMouseOver(_arg_1:Event):void

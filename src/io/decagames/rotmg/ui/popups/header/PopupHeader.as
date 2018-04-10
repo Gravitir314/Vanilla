@@ -67,9 +67,13 @@ package io.decagames.rotmg.ui.popups.header
                     (_arg_3(this._titleLabel));
                 };
                 this._titleLabel.text = _arg_1;
-                this._titleLabel.x = (this.titleBackgroundBitmap.x + ((this.titleBackgroundBitmap.width - this._titleLabel.textWidth) / 2));
-                this._titleLabel.y = (this.titleBackgroundBitmap.y + ((this.titleBackgroundBitmap.height - this._titleLabel.height) / 2));
                 addChild(this._titleLabel);
+                this._titleLabel.x = (this.titleBackgroundBitmap.x + ((this.titleBackgroundBitmap.width - this._titleLabel.textWidth) / 2));
+                if (this.headerType == TYPE_FULL){
+                    this._titleLabel.y = ((this.titleBackgroundBitmap.height - (this._titleLabel.height / 2)) - 3);
+                } else {
+                    this._titleLabel.y = (this.titleBackgroundBitmap.y + ((this.titleBackgroundBitmap.height - this._titleLabel.height) / 2));
+                };
             };
         }
 

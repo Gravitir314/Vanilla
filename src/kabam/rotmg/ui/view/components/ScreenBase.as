@@ -10,10 +10,11 @@ package kabam.rotmg.ui.view.components
 
     public class ScreenBase extends Sprite 
     {
+        internal static var TitleScreenBackground:Class = ScreenBase_TitleScreenBackground;
 
         public function ScreenBase()
         {
-            addChild(new MapBackground());
+            addChild(new TitleScreenBackground());
             addChild(new DarkLayer());
             addChild(new SoundIcon());
         }

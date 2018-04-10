@@ -10,9 +10,7 @@ package kabam.rotmg.game.view.components
     import com.company.assembleegameclient.ui.icons.IconButtonFactory;
     import com.company.assembleegameclient.objects.ImageFactory;
     import __AS3__.vec.Vector;
-    import com.company.assembleegameclient.ui.icons.IconButton;
     import flash.events.MouseEvent;
-    import kabam.rotmg.text.model.TextKey;
     import flash.display.GraphicsSolidFill;
     import flash.display.GraphicsPath;
     import flash.display.IGraphicsData;
@@ -38,7 +36,6 @@ package kabam.rotmg.game.view.components
         public var tabs:Vector.<TabView> = new Vector.<TabView>();
         private var contents:Vector.<Sprite> = new Vector.<Sprite>();
         public var currentTabIndex:int;
-        public var friendsBtn:IconButton;
 
         public function TabStripView(_arg_1:Number=186, _arg_2:Number=153)
         {
@@ -49,15 +46,6 @@ package kabam.rotmg.game.view.components
             this.drawBackground();
             addChild(this.containerSprite);
             this.containerSprite.y = TabConstants.TAB_TOP_OFFSET;
-        }
-
-        public function initFriendList(_arg_1:ImageFactory, _arg_2:IconButtonFactory, _arg_3:Function):void
-        {
-            this.friendsBtn = _arg_2.create(_arg_1.getImageFromSet("lofiInterfaceBig", 13), "", TextKey.OPTIONS_FRIEND, "");
-            this.friendsBtn.x = 160;
-            this.friendsBtn.y = 6;
-            this.friendsBtn.addEventListener(MouseEvent.CLICK, _arg_3);
-            addChild(this.friendsBtn);
         }
 
         private function onTabClicked(_arg_1:MouseEvent):void

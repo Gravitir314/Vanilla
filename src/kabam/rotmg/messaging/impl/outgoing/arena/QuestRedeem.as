@@ -15,6 +15,7 @@ package kabam.rotmg.messaging.impl.outgoing.arena
 
         public var questID:String;
         public var slots:Vector.<SlotObjectData>;
+        public var item:int;
 
         public function QuestRedeem(_arg_1:uint, _arg_2:Function)
         {
@@ -25,6 +26,7 @@ package kabam.rotmg.messaging.impl.outgoing.arena
         {
             var _local_2:SlotObjectData;
             _arg_1.writeUTF(this.questID);
+            _arg_1.writeInt(this.item);
             _arg_1.writeShort(this.slots.length);
             for each (_local_2 in this.slots)
             {

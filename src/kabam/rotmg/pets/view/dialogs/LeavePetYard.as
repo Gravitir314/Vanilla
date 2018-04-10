@@ -11,7 +11,7 @@ package kabam.rotmg.pets.view.dialogs
     import kabam.rotmg.text.model.TextKey;
     import com.company.assembleegameclient.ui.dialogs.Dialog;
     import flash.events.Event;
-    import com.company.googleanalytics.GA;
+    import kabam.rotmg.core.service.GoogleAnalytics;
     import com.company.assembleegameclient.parameters.Parameters;
 
     public class LeavePetYard extends PetDialog 
@@ -37,7 +37,10 @@ package kabam.rotmg.pets.view.dialogs
         private function onExitToNexus(_arg_1:Event):void
         {
             this.gameSprite.gsc_.escape();
-            GA.global().trackEvent("enterPortal", "Nexus Button");
+            var _local_2:GoogleAnalytics = StaticInjectorContext.getInjector().getInstance(GoogleAnalytics);
+            if (_local_2){
+                _local_2.trackEvent("enterPortal", "Nexus Button");
+            };
             Parameters.data_.needsRandomRealm = false;
             Parameters.save();
             this.closeDialogSignal.dispatch();

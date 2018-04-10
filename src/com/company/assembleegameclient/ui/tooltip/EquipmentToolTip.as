@@ -71,6 +71,7 @@ package com.company.assembleegameclient.ui.tooltip
         private var powerText:TextFieldDisplayConcrete;
         private var keyInfoResponse:KeyInfoResponseSignal;
         private var originalObjectType:int;
+        private var sameActivateEffect:Boolean;
 
         public function EquipmentToolTip(_arg_1:int, _arg_2:Player, _arg_3:int, _arg_4:String)
         {
@@ -139,6 +140,7 @@ package com.company.assembleegameclient.ui.tooltip
             this.handleWisMod();
             this.buildCategorySpecificText();
             this.addUniqueEffectsToList();
+            this.sameActivateEffect = false;
             this.addActivateTagsToEffectsList();
             this.addNumProjectiles();
             this.addProjectileTagsToEffectsList();
@@ -663,18 +665,13 @@ package com.company.assembleegameclient.ui.tooltip
                             this.effects.push(new Effect(TextKey.STASIS_GROUP, {"stasis":new AppendingLineBuilder().pushParams(TextKey.SEC_COUNT, {"duration":activateXML.@duration}, TooltipHelper.getOpenTag(TooltipHelper.NO_DIFF_COLOR), TooltipHelper.getCloseTag())}));
                             break;
                         case ActivationType.DECOY:
-                            this.effects.push(new Effect(TextKey.DECOY, {"data":new AppendingLineBuilder().pushParams(TextKey.SEC_COUNT, {"duration":activateXML.@duration}, TooltipHelper.getOpenTag(TooltipHelper.NO_DIFF_COLOR), TooltipHelper.getCloseTag())}));
+                            this.getDecoy(activateXML, compareXML);
                             break;
                         case ActivationType.LIGHTNING:
                             this.getLightning(activateXML, compareXML);
                             break;
                         case ActivationType.POISON_GRENADE:
-                            this.effects.push(new Effect(TextKey.POISON_GRENADE, {"data":""}));
-                            this.effects.push(new Effect(TextKey.POISON_GRENADE_DATA, {
-                                "damage":activateXML.@totalDamage,
-                                "duration":activateXML.@duration,
-                                "radius":activateXML.@radius
-                            }).setColor(TooltipHelper.NO_DIFF_COLOR));
+                            this.getPoison(activateXML, compareXML);
                             break;
                         case ActivationType.REMOVE_NEG_COND:
                             this.effects.push(new Effect(TextKey.REMOVES_NEGATIVE, {}).setColor(TooltipHelper.NO_DIFF_COLOR));
@@ -791,9 +788,7 @@ package com.company.assembleegameclient.ui.tooltip
             this.effects.push(new Effect(_local_4, {"numShots":TooltipHelper.compare(_local_3.a, _local_3.b)}));
         }
 
-        private function getSkull(_arg_1:XML, _arg_2:XML=null):void
-        {
-            var _local_18:Number;
+        private function getSkull(_arg_1:XML, _arg_2:XML=null):void {
             var _local_3:int = ((this.player != null) ? this.player.wisdom_ : 10);
             var _local_4:int = this.GetIntArgument(_arg_1, "wisPerRad", 10);
             var _local_5:Number = this.GetFloatArgument(_arg_1, "incrRad", 0.5);
@@ -812,51 +807,40 @@ package com.company.assembleegameclient.ui.tooltip
             var _local_16:String = this.colorUntiered("Skull: ");
             _local_16 = (_local_16 + (("{damage}" + this.colorWisBonus(_local_9)) + " damage\n"));
             _local_16 = (_local_16 + "within {radius} squares\n");
-            if (_local_14.a)
-            {
+            if (_local_14.a) {
                 _local_16 = (_local_16 + "Steals {heal} HP");
-            };
-            if (((_local_14.a) && (_local_15.a)))
-            {
+            }
+            ;
+            if (((_local_14.a) && (_local_15.a))) {
                 _local_16 = (_local_16 + " and ignores {ignoreDef} defense");
             }
-            else
-            {
-                if (_local_15.a)
-                {
+            else {
+                if (_local_15.a) {
                     _local_16 = (_local_16 + "Ignores {ignoreDef} defense");
-                };
-            };
-            if (_local_14.a)
-            {
+                }
+                ;
+            }
+            ;
+            if (_local_14.a) {
                 _local_16 = (_local_16 + (("\nHeals allies within {healRange}" + this.colorWisBonus(_local_10)) + " squares"));
-            };
+            }
+            ;
             this.effects.push(new Effect(_local_16, {
-                "damage":TooltipHelper.compare(_local_11.a, _local_11.b),
-                "radius":TooltipHelper.compare(_local_12.a, _local_12.b),
-                "heal":TooltipHelper.compare(_local_14.a, _local_14.b),
-                "ignoreDef":TooltipHelper.compare(_local_15.a, _local_15.b),
-                "healRange":TooltipHelper.compare(MathUtil.round(_local_13.a, 2), MathUtil.round(_local_13.b, 2))
+                "damage": TooltipHelper.compare(_local_11.a, _local_11.b),
+                "radius": TooltipHelper.compare(_local_12.a, _local_12.b),
+                "heal": TooltipHelper.compare(_local_14.a, _local_14.b),
+                "ignoreDef": TooltipHelper.compare(_local_15.a, _local_15.b),
+                "healRange": TooltipHelper.compare(MathUtil.round(_local_13.a, 2), MathUtil.round(_local_13.b, 2))
             }));
-            var _local_17:String = _arg_1.@condEffect;
-            if (_local_17)
-            {
-                _local_18 = this.GetFloatArgument(_arg_1, "condDuration", 2.5);
-                this.effects.push(new Effect("{condition} for {duration} ", {
-                    "condition":_local_17,
-                    "duration":TooltipHelper.getPlural(_local_18, "second")
-                }));
-            };
+            this.AddConditionToEffects(_arg_1, _arg_2, "Nothing", 2.5);
         }
 
         private function getTrap(_arg_1:XML, _arg_2:XML=null):void
         {
-            var _local_12:ComPair;
-            var _local_13:String;
             var _local_3:ComPair = new ComPair(_arg_1, _arg_2, "totalDamage");
             var _local_4:ComPair = new ComPair(_arg_1, _arg_2, "radius");
             var _local_5:ComPair = new ComPair(_arg_1, _arg_2, "duration", 20);
-            var _local_6:ComPair = new ComPair(_arg_1, _arg_2, "tilArmed", 1);
+            var _local_6:ComPair = new ComPair(_arg_1, _arg_2, "throwTime", 1);
             var _local_7:ComPair = new ComPair(_arg_1, _arg_2, "sensitivity", 0.5);
             var _local_8:Number = MathUtil.round((_local_4.a * _local_7.a), 2);
             var _local_9:Number = MathUtil.round((_local_4.b * _local_7.b), 2);
@@ -866,25 +850,9 @@ package com.company.assembleegameclient.ui.tooltip
                 "damage":TooltipHelper.compare(_local_3.a, _local_3.b),
                 "radius":TooltipHelper.compare(_local_4.a, _local_4.b)
             }));
-            var _local_11:String = ((_arg_1.hasOwnProperty("@condEffect")) ? _arg_1.@condEffect : "Slowed");
-            if (_local_11 != "Nothing")
-            {
-                _local_12 = new ComPair(_arg_1, _arg_2, "condDuration", 5);
-                if (_arg_2)
-                {
-                    _local_13 = ((_arg_2.hasOwnProperty("@condEffect")) ? _arg_2.@condEffect : "Slowed");
-                    if (_local_13 == "Nothing")
-                    {
-                        _local_12.b = 0;
-                    };
-                };
-                this.effects.push(new Effect("Inflicts {condition} for {duration} ", {
-                    "condition":_local_11,
-                    "duration":TooltipHelper.compareAndGetPlural(_local_12.a, _local_12.b, "second")
-                }));
-            };
-            this.effects.push(new Effect("{tilArmed} to arm for {duration} ", {
-                "tilArmed":TooltipHelper.compareAndGetPlural(_local_6.a, _local_6.b, "second", false),
+            this.AddConditionToEffects(_arg_1, _arg_2, "Slowed", 5);
+            this.effects.push(new Effect("{throwTime} to arm for {duration} ", {
+                "throwTime":TooltipHelper.compareAndGetPlural(_local_6.a, _local_6.b, "second", false),
                 "duration":TooltipHelper.compareAndGetPlural(_local_5.a, _local_5.b, "second")
             }));
             this.effects.push(new Effect("Triggers within {triggerRadius} squares", {"triggerRadius":TooltipHelper.compare(_local_8, _local_9)}));
@@ -892,8 +860,7 @@ package com.company.assembleegameclient.ui.tooltip
 
         private function getLightning(_arg_1:XML, _arg_2:XML=null):void
         {
-            var _local_16:String;
-            var _local_17:Number;
+            var _local_15:String;
             var _local_3:int = ((this.player != null) ? this.player.wisdom_ : 10);
             var _local_4:ComPair = new ComPair(_arg_1, _arg_2, "decrDamage", 0);
             var _local_5:int = this.GetIntArgument(_arg_1, "wisPerTarget", 10);
@@ -916,25 +883,92 @@ package com.company.assembleegameclient.ui.tooltip
                 {
                     _local_14 = true;
                 };
-                _local_16 = "reduced";
+                _local_15 = "reduced";
                 if (_local_14)
                 {
-                    _local_16 = TooltipHelper.wrapInFontTag("increased", ("#" + TooltipHelper.NO_DIFF_COLOR.toString(16)));
+                    _local_15 = TooltipHelper.wrapInFontTag("increased", ("#" + TooltipHelper.NO_DIFF_COLOR.toString(16)));
                 };
-                _local_13 = (_local_13 + ((", " + _local_16) + " by \n{decrDamage} for each subsequent target"));
+                _local_13 = (_local_13 + ((", " + _local_15) + " by \n{decrDamage} for each subsequent target"));
             };
             this.effects.push(new Effect(_local_13, {
                 "targets":TooltipHelper.compare(_local_11.a, _local_11.b),
                 "damage":TooltipHelper.compare(_local_12.a, _local_12.b),
                 "decrDamage":TooltipHelper.compare(_local_4.a, _local_4.b, false, "", _local_14)
             }));
-            var _local_15:String = _arg_1.@condEffect;
-            if (_local_15)
-            {
-                _local_17 = this.GetFloatArgument(_arg_1, "condDuration", 5);
-                this.effects.push(new Effect("{condition} for {duration} ", {
-                    "condition":_local_15,
-                    "duration":TooltipHelper.getPlural(_local_17, "second")
+            this.AddConditionToEffects(_arg_1, _arg_2, "Nothing", 5);
+        }
+
+        private function getDecoy(_arg_1:XML, _arg_2:XML=null):void{
+            var _local_3:ComPair = new ComPair(_arg_1, _arg_2, "duration");
+            var _local_4:ComPair = new ComPair(_arg_1, _arg_2, "angleOffset", 0);
+            var _local_5:ComPair = new ComPair(_arg_1, _arg_2, "speed", 1);
+            var _local_6:ComPair = new ComPair(_arg_1, _arg_2, "distance", 8);
+            var _local_7:Number = MathUtil.round((_local_6.a / (_local_5.a * 5)), 2);
+            var _local_8:Number = MathUtil.round((_local_6.b / (_local_5.b * 5)), 2);
+            var _local_9:ComPair = new ComPair(_arg_1, _arg_2, "numShots", 0);
+            var _local_10:String = this.colorUntiered("Decoy: ");
+            _local_10 = (_local_10 + "{duration}");
+            if (_local_4.a){
+                _local_10 = (_local_10 + " at {angleOffset}");
+            };
+            _local_10 = (_local_10 + "\n");
+            if (_local_5.a == 0){
+                _local_10 = (_local_10 + "Decoy does not move");
+            } else {
+                _local_10 = (_local_10 + "{distance} in {travelTime}");
+            };
+            if (_local_9.a){
+                _local_10 = (_local_10 + "\nShots: {numShots}");
+            };
+            this.effects.push(new Effect(_local_10, {
+                "duration":TooltipHelper.compareAndGetPlural(_local_3.a, _local_3.b, "second"),
+                "angleOffset":TooltipHelper.compareAndGetPlural(_local_4.a, _local_4.b, "degree"),
+                "distance":TooltipHelper.compareAndGetPlural(_local_6.a, _local_6.b, "square"),
+                "travelTime":TooltipHelper.compareAndGetPlural(_local_7, _local_8, "second"),
+                "numShots":TooltipHelper.compare(_local_9.a, _local_9.b)
+            }));
+        }
+
+        private function getPoison(_arg_1:XML, _arg_2:XML=null):void{
+            var _local_3:ComPair = new ComPair(_arg_1, _arg_2, "totalDamage");
+            var _local_4:ComPair = new ComPair(_arg_1, _arg_2, "radius");
+            var _local_5:ComPair = new ComPair(_arg_1, _arg_2, "duration");
+            var _local_6:ComPair = new ComPair(_arg_1, _arg_2, "throwTime", 1);
+            var _local_7:ComPair = new ComPair(_arg_1, _arg_2, "impactDamage", 0);
+            var _local_8:Number = (_local_3.a - _local_7.a);
+            var _local_9:Number = (_local_3.b - _local_7.b);
+            var _local_10:String = this.colorUntiered("Poison: ");
+            _local_10 = (_local_10 + "{totalDamage} damage");
+            if (_local_7.a){
+                _local_10 = (_local_10 + " ({impactDamage} on impact)");
+            };
+            _local_10 = (_local_10 + " within {radius}");
+            _local_10 = (_local_10 + " over {duration}");
+            this.effects.push(new Effect(_local_10, {
+                "totalDamage":TooltipHelper.compare(_local_3.a, _local_3.b, true, "", false, (!(this.sameActivateEffect))),
+                "radius":TooltipHelper.compareAndGetPlural(_local_4.a, _local_4.b, "square", true, (!(this.sameActivateEffect))),
+                "impactDamage":TooltipHelper.compare(_local_7.a, _local_7.b, true, "", false, (!(this.sameActivateEffect))),
+                "duration":TooltipHelper.compareAndGetPlural(_local_5.a, _local_5.b, "second", false, (!(this.sameActivateEffect)))
+            }));
+            this.AddConditionToEffects(_arg_1, _arg_2, "Nothing", 5);
+            this.sameActivateEffect = true;
+        }
+
+        private function AddConditionToEffects(_arg_1:XML, _arg_2:XML, _arg_3:String="Nothing", _arg_4:Number=5):void{
+            var _local_6:ComPair;
+            var _local_7:String;
+            var _local_5:String = ((_arg_1.hasOwnProperty("@condEffect")) ? _arg_1.@condEffect : _arg_3);
+            if (_local_5 != "Nothing"){
+                _local_6 = new ComPair(_arg_1, _arg_2, "condDuration", _arg_4);
+                if (_arg_2){
+                    _local_7 = ((_arg_2.hasOwnProperty("@condEffect")) ? _arg_2.@condEffect : _arg_3);
+                    if (_local_7 == "Nothing"){
+                        _local_6.b = 0;
+                    };
+                };
+                this.effects.push(new Effect("Inflicts {condition} for {duration} ", {
+                    "condition":_local_5,
+                    "duration":TooltipHelper.compareAndGetPlural(_local_6.a, _local_6.b, "second")
                 }));
             };
         }
@@ -1355,7 +1389,7 @@ package com.company.assembleegameclient.ui.tooltip
             {
                 return;
             };
-            var _local_1:Number = (this.player.wisdom_ + this.player.wisdomBoost_);
+            var _local_1:Number = this.player.wisdom_;
             if (_local_1 < 30)
             {
                 return;
@@ -1417,7 +1451,7 @@ package com.company.assembleegameclient.ui.tooltip
             var _local_6:int;
             var _local_7:Number;
             var _local_3:* = "-1";
-            var _local_4:Number = (this.player.wisdom_ + this.player.wisdomBoost_);
+            var _local_4:Number = this.player.wisdom_;
             if (_local_4 < 30)
             {
                 _local_3 = _arg_1;

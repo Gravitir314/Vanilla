@@ -7,6 +7,7 @@ package io.decagames.rotmg.ui.tabs
 {
     import flash.display.Sprite;
     import __AS3__.vec.Vector;
+    import org.osflash.signals.Signal;
     import flash.events.Event;
     import flash.geom.Point;
     import io.decagames.rotmg.ui.defaults.DefaultLabelFormat;
@@ -23,26 +24,33 @@ package io.decagames.rotmg.ui.tabs
         private var background:TabContentBackground;
         private var currentContent:UITab;
         private var defaultSelectedIndex:int;
+        private var borderlessMode:Boolean;
+        public var buttonsRenderedSignal:Signal = new Signal();
 
-        public function UITabs(_arg_1:int)
+        public function UITabs(_arg_1:int, _arg_2:Boolean=false){
         {
             this.tabsWidth = _arg_1;
+            this.borderlessMode = _arg_2;
             this.addEventListener(Event.ADDED_TO_STAGE, this.onAddedHandler);
             this.content = new Vector.<UITab>(0);
             this.buttons = new Vector.<TabButton>(0);
-            this.background = new TabContentBackground();
-            this.background.addMargin(0, 3);
-            this.background.width = _arg_1;
-            this.background.height = 405;
-            this.background.x = 0;
-            this.background.y = 41;
-            addChild(this.background);
+            if (!_arg_2){
+                this.background = new TabContentBackground();
+                this.background.addMargin(0, 3);
+                this.background.width = _arg_1;
+                this.background.height = 405;
+                this.background.x = 0;
+                this.background.y = 41;
+                addChild(this.background);
+            } else {
+                this.tabsButtonMargin = 3;
+            };
         }
 
         public function addTab(_arg_1:UITab, _arg_2:Boolean=false):void
         {
             this.content.push(_arg_1);
-            _arg_1.y = 56;
+            _arg_1.y = ((this.borderlessMode) ? 34 : 56);
             if (_arg_2)
             {
                 this.defaultSelectedIndex = (this.content.length - 1);
@@ -90,8 +98,11 @@ package io.decagames.rotmg.ui.tabs
                 this.buttons.push(_local_6);
                 _local_1++;
             };
-            this.background.addDecor((_local_4.x - 4), ((_local_4.x + _local_4.width) - 12), this.defaultSelectedIndex, this.buttons.length);
+            if (this.background){
+                this.background.addDecor((_local_4.x - 4), ((_local_4.x + _local_4.width) - 12), this.defaultSelectedIndex, this.buttons.length);
+            };
             this.onButtonSelected(_local_4);
+            this.buttonsRenderedSignal.dispatch();
         }
 
         private function onButtonSelected(_arg_1:TabButton):void
@@ -116,24 +127,39 @@ package io.decagames.rotmg.ui.tabs
                     _local_4 = this.buttons.indexOf(_local_2);
                     if (Math.abs((_local_4 - _local_3)) <= 1)
                     {
-                        if (_local_4 > _local_3)
-                        {
-                            _local_2.changeBitmap("tab_button_right_idle", new Point(0, TabButton.SELECTED_MARGIN));
+                        if (this.borderlessMode) {
+                            _local_2.changeBitmap("tab_button_borderless_idle", new Point(0, ((this.borderlessMode) ? 0 : TabButton.SELECTED_MARGIN)));
+                            _local_2.bitmap.alpha = 0;
                         }
                         else
                         {
-                            _local_2.changeBitmap("tab_button_left_idle", new Point(0, TabButton.SELECTED_MARGIN));
+                            if (_local_4 > _local_3){
+                                _local_2.changeBitmap("tab_button_right_idle", new Point(0, ((this.borderlessMode) ? 0 : TabButton.SELECTED_MARGIN)));
+                            } else {
+                                _local_2.changeBitmap("tab_button_left_idle", new Point(0, ((this.borderlessMode) ? 0 : TabButton.SELECTED_MARGIN)));
+                            };
                         };
                     };
-                };
+                }
+                else
+                {
+                    _local_2.bitmap.alpha = 1;
+                }
             };
             if (this.currentContent)
             {
-                removeChild(this.currentContent);
-            };
+                this.currentContent.alpha = 0;
+                this.currentContent.mouseChildren = false;
+                this.currentContent.mouseEnabled = false;
+            }
             this.currentContent = this.content[_local_3];
-            this.background.addDecor((_arg_1.x - 5), ((_arg_1.x + _arg_1.width) - 12), _local_3, this.buttons.length);
+            if (this.background){
+                this.background.addDecor((_arg_1.x - 5), ((_arg_1.x + _arg_1.width) - 12), _local_3, this.buttons.length);
+            }
             addChild(this.currentContent);
+            this.currentContent.alpha = 1;
+            this.currentContent.mouseChildren = true;
+            this.currentContent.mouseEnabled = true;
         }
 
         public function getTabButtonByLabel(_arg_1:String):TabButton
@@ -151,7 +177,7 @@ package io.decagames.rotmg.ui.tabs
 
         private function createTabButton(_arg_1:String, _arg_2:String):TabButton
         {
-            var _local_3:TabButton = new TabButton(_arg_2);
+            var _local_3:TabButton = new TabButton(((this.borderlessMode) ? TabButton.BORDERLESS : _arg_2));
             _local_3.setLabel(_arg_1, DefaultLabelFormat.defaultInactiveTab);
             return (_local_3);
         }
@@ -166,7 +192,9 @@ package io.decagames.rotmg.ui.tabs
         {
             var _local_1:TabButton;
             var _local_2:UITab;
-            this.background.dispose();
+            if (this.background){
+                this.background.dispose();
+            }
             for each (_local_1 in this.buttons)
             {
                 _local_1.dispose();

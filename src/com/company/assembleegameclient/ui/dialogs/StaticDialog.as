@@ -25,7 +25,8 @@ package com.company.assembleegameclient.ui.dialogs
     import flash.text.TextFieldAutoSize;
     import flash.filters.DropShadowFilter;
     import flash.events.MouseEvent;
-    import com.company.googleanalytics.GA;
+    import kabam.rotmg.core.service.GoogleAnalytics;
+    import kabam.rotmg.core.StaticInjectorContext;
     import flash.display.Graphics;
     import flash.events.Event;
     import __AS3__.vec.*;
@@ -178,9 +179,13 @@ package com.company.assembleegameclient.ui.dialogs
 
         private function tryAnalytics():void
         {
+            var _local_1:GoogleAnalytics;
             try
             {
-                GA.global().trackPageview(this.analyticsPageName_);
+                _local_1 = StaticInjectorContext.getInjector().getInstance(GoogleAnalytics);
+                if (_local_1){
+                    _local_1.trackPageView(this.analyticsPageName_);
+                }
             }
             catch(error:Error)
             {

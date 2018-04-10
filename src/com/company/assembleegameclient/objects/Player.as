@@ -435,13 +435,18 @@ package com.company.assembleegameclient.objects
 
         public function handleExpUp(_arg_1:int):void
         {
-            if (((level_ == 20) && (!(Parameters.data_.forceEXP))))
+            if (((level_ == 20) && (!(this.bForceExp()))))
             {
                 return;
-            };
+            }
             var _local_2:CharacterStatusText = new CharacterStatusText(this, 0xFF00, 1000);
             _local_2.setStringBuilder(new LineBuilder().setParams("+{exp} EXP", {"exp":_arg_1}));
             map_.mapOverlay_.addStatusText(_local_2);
+        }
+
+        private function bForceExp():Boolean
+        {
+            return ((Parameters.data_.forceEXP) && ((Parameters.data_.forceEXP == 1) || ((Parameters.data_.forceEXP == 2) && (map_.player_ == this))));
         }
 
         public function updateFame(_arg_1:int):void

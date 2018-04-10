@@ -8,7 +8,7 @@ package kabam.rotmg.friends.view
     import flash.display.Bitmap;
     import kabam.rotmg.text.view.TextFieldDisplayConcrete;
     import com.company.assembleegameclient.ui.icons.IconButton;
-    import kabam.rotmg.friends.model.FriendVO;
+    import io.decagames.rotmg.friends.model.FriendVO;
     import com.company.assembleegameclient.ui.icons.IconButtonFactory;
     import kabam.rotmg.core.StaticInjectorContext;
     import com.company.util.AssetLibrary;
@@ -18,7 +18,7 @@ package kabam.rotmg.friends.view
     import flash.events.MouseEvent;
     import flash.events.Event;
     import kabam.rotmg.text.view.stringBuilder.StaticStringBuilder;
-    import kabam.rotmg.friends.model.FriendConstant;
+    import io.decagames.rotmg.friends.config.FriendsActions;
 
     public class InvitationListItem extends FListItem 
     {
@@ -107,17 +107,17 @@ package kabam.rotmg.friends.view
 
         private function onAcceptClicked(_arg_1:MouseEvent):void
         {
-            actionSignal.dispatch(FriendConstant.ACCEPT, this._senderName);
+            actionSignal.dispatch(FriendsActions.ACCEPT, this._senderName);
         }
 
         private function onRejectClicked(_arg_1:MouseEvent):void
         {
-            actionSignal.dispatch(FriendConstant.REJECT, this._senderName);
+            actionSignal.dispatch(FriendsActions.REJECT, this._senderName);
         }
 
         private function onBlockClicked(_arg_1:MouseEvent):void
         {
-            actionSignal.dispatch(FriendConstant.BLOCK, this._senderName);
+            actionSignal.dispatch(FriendsActions.BLOCK, this._senderName);
         }
 
 

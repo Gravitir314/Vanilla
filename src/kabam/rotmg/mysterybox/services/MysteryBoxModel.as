@@ -15,7 +15,7 @@ package kabam.rotmg.mysterybox.services
         private var models:Object;
         private var initialized:Boolean = false;
         private var _isNew:Boolean = false;
-        private var maxSlots:int = 6;
+        private var maxSlots:int = 12;
 
 
         public function getBoxesOrderByWeight():Object

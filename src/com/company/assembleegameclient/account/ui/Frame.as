@@ -8,6 +8,7 @@ package com.company.assembleegameclient.account.ui
     import flash.display.Sprite;
     import kabam.rotmg.text.view.TextFieldDisplayConcrete;
     import com.company.assembleegameclient.ui.DeprecatedClickableText;
+import kabam.rotmg.core.service.GoogleAnalytics;
     import __AS3__.vec.Vector;
     import flash.display.GraphicsSolidFill;
     import flash.display.GraphicsStroke;
@@ -17,13 +18,13 @@ package com.company.assembleegameclient.account.ui
     import flash.display.GraphicsPath;
     import flash.display.IGraphicsData;
     import com.company.util.GraphicsUtil;
+    import kabam.rotmg.core.StaticInjectorContext;
     import kabam.rotmg.text.view.stringBuilder.LineBuilder;
     import flash.filters.DropShadowFilter;
     import flash.events.Event;
     import flash.text.TextFieldAutoSize;
     import kabam.rotmg.account.web.view.LabeledField;
     import flash.display.DisplayObject;
-    import com.company.googleanalytics.GA;
     import __AS3__.vec.*;
 
     public class Frame extends Sprite 
@@ -37,6 +38,7 @@ package com.company.assembleegameclient.account.ui
         public var analyticsPageName_:String;
         public var w_:int = 288;
         public var h_:int = 100;
+        private var googleAnalytics:GoogleAnalytics;
 
         public var textInputFields_:Vector.<TextInputField> = new Vector.<TextInputField>();
         public var navigationLinks_:Vector.<DeprecatedClickableText> = new Vector.<DeprecatedClickableText>();
@@ -51,6 +53,7 @@ package com.company.assembleegameclient.account.ui
         public function Frame(_arg_1:String, _arg_2:String, _arg_3:String, _arg_4:String="", _arg_5:int=288)
         {
             this.w_ = _arg_5;
+            this.googleAnalytics = StaticInjectorContext.getInjector().getInstance(GoogleAnalytics);
             this.titleText_ = new TextFieldDisplayConcrete().setSize(13).setColor(0xB3B3B3);
             this.titleText_.setStringBuilder(new LineBuilder().setParams(_arg_1));
             this.titleText_.filters = [new DropShadowFilter(0, 0, 0)];
@@ -211,7 +214,9 @@ package com.company.assembleegameclient.account.ui
             {
                 stage.focus = this.textInputFields_[0].inputText_;
             };
-            ((this.analyticsPageName_) && (GA.global().trackPageview(this.analyticsPageName_)));
+            if (((this.analyticsPageName_) && (this.googleAnalytics))){
+                this.googleAnalytics.trackPageView(this.analyticsPageName_);
+            }
         }
 
         protected function draw():void

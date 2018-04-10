@@ -79,7 +79,7 @@ package io.decagames.rotmg.shop.packages.contentPopup
                 _local_12 = new SlotBox(SlotBox.VAULT_SLOT, _arg_3, true, "", false);
                 this.contentGrids.addGridElement(_local_12);
             };
-            this.contentGrids.y = 20;
+            this.contentGrids.y = (this.view.infoLabel.textHeight + 8);
             this.contentGrids.x = 10;
             this.view.addChild(this.contentGrids);
         }

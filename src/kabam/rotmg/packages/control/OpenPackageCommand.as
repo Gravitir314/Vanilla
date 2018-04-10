@@ -25,13 +25,11 @@ package kabam.rotmg.packages.control
         public var alreadyBoughtPackage:AlreadyBoughtPackageSignal;
         [Inject]
         public var showPopupSignal:ShowPopupSignal;
-        [Inject]
-        public var model:PackageModel;
 
 
         override public function execute():void
         {
-            var _local_1:PackageInfo = this.model.getPackageById(this.packageId);
+            var _local_1:PackageInfo = this.packageModel.getPackageById(this.packageId);
             if (((_local_1) && (!(_local_1.popupImage == ""))))
             {
                 this.showPopupSignal.dispatch(new StartupPackage(_local_1));

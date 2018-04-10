@@ -10,6 +10,7 @@ package com.company.assembleegameclient.ui.panels
     import com.company.assembleegameclient.objects.Portal;
     import kabam.rotmg.text.view.TextFieldDisplayConcrete;
     import com.company.assembleegameclient.ui.DeprecatedTextButton;
+    import kabam.rotmg.core.service.GoogleAnalytics;
     import flash.text.TextFormatAlign;
     import flash.filters.DropShadowFilter;
     import kabam.rotmg.text.model.TextKey;
@@ -21,7 +22,6 @@ package com.company.assembleegameclient.ui.panels
     import flash.events.KeyboardEvent;
     import com.company.assembleegameclient.parameters.Parameters;
     import com.company.assembleegameclient.objects.ObjectLibrary;
-    import com.company.googleanalytics.GA;
     import com.company.assembleegameclient.tutorial.doneAction;
     import com.company.assembleegameclient.tutorial.Tutorial;
     import com.company.assembleegameclient.objects.PortalNameParser;
@@ -39,6 +39,7 @@ package com.company.assembleegameclient.ui.panels
         private var nameText_:TextFieldDisplayConcrete;
         private var enterButton_:DeprecatedTextButton;
         private var fullText_:TextFieldDisplayConcrete;
+        public var googleAnalytics:GoogleAnalytics;
 
         public function PortalPanel(_arg_1:GameSprite, _arg_2:Portal)
         {
@@ -97,14 +98,9 @@ package com.company.assembleegameclient.ui.panels
         private function enterPortal():void
         {
             var _local_1:String = ObjectLibrary.typeToDisplayId_[this.owner_.objectType_];
-            if (_local_1 == "Nexus Portal")
-            {
-                GA.global().trackEvent("enterPortal", _local_1);
+            if (((this.googleAnalytics) && (!(_local_1 == "Nexus Portal")))){
+                this.googleAnalytics.trackEvent("enterPortal", _local_1);
             }
-            else
-            {
-                GA.global().trackEvent("enterPortal", this.owner_.getName());
-            };
             doneAction(gs_, Tutorial.ENTER_PORTAL_ACTION);
             gs_.gsc_.usePortal(this.owner_.objectId_);
             this.exitGameSignal.dispatch();

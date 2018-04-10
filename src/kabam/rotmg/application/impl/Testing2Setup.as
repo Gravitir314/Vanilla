@@ -44,6 +44,10 @@ package kabam.rotmg.application.impl
             return (true);
         }
 
+        public function isServerLocal():Boolean{
+            return (false);
+        }
+
         public function isGameLoopMonitored():Boolean
         {
             return (true);
@@ -67,6 +71,10 @@ package kabam.rotmg.application.impl
         public function isDebug():Boolean
         {
             return (false);
+        }
+
+        public function getServerDomain():String{
+            return (this.SERVER);
         }
 
 

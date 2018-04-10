@@ -26,12 +26,6 @@ package io.decagames.rotmg.utils.colors
             return (_arg_1);
         }
 
-        public static function clear(_arg_1:BitmapData):BitmapData
-        {
-            _arg_1.applyFilter(_arg_1, new Rectangle(0, 0, _arg_1.width, _arg_1.height), new Point(0, 0), new ColorMatrixFilter());
-            return (_arg_1);
-        }
-
         public static function greyScaleToDisplayObject(_arg_1:DisplayObject, _arg_2:Boolean):void
         {
             var _local_3:Number = 0.2225;

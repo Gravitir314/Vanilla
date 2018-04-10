@@ -55,8 +55,8 @@ package
     import kabam.rotmg.external.ExternalConfig;
     import kabam.rotmg.mysterybox.MysteryBoxConfig;
     import kabam.rotmg.fortune.FortuneConfig;
-    import kabam.rotmg.friends.FriendConfig;
     import io.decagames.rotmg.dailyQuests.config.DailyQuestsConfig;
+    import io.decagames.rotmg.friends.config.FriendsConfig;
     import robotlegs.bender.framework.api.LogLevel;
     import flash.system.Capabilities;
 
@@ -88,13 +88,13 @@ package
 
         private function setup():void
         {
+            STAGE = stage;
             this.hackParameters();
             this.createContext();
             new AssetLoader().load();
             stage.scaleMode = StageScaleMode.EXACT_FIT;
             this.context.injector.getInstance(StartupSignal).dispatch();
             this.configureForAirIfDesktopPlayer();
-            STAGE = stage;
             UIUtils.toggleQuality(Parameters.data_.uiQuality);
         }
 
@@ -109,7 +109,7 @@ package
             this.context.injector.map(LoaderInfo).toValue(root.stage.root.loaderInfo);
             var _local_1:StageProxy = new StageProxy(this);
             this.context.injector.map(StageProxy).toValue(_local_1);
-            this.context.extend(MVCSBundle).extend(SignalCommandMapExtension).configure(BuildConfig).configure(StartupConfig).configure(NetConfig).configure(AssetsConfig).configure(DialogsConfig).configure(EnvironmentConfig).configure(ApplicationConfig).configure(LanguageConfig).configure(TextConfig).configure(AppEngineConfig).configure(AccountConfig).configure(ErrorConfig).configure(CoreConfig).configure(ApplicationSpecificConfig).configure(DeathConfig).configure(CharactersConfig).configure(ServersConfig).configure(GameConfig).configure(UIConfig).configure(MiniMapConfig).configure(LegendsConfig).configure(NewsConfig).configure(FameConfig).configure(TooltipsConfig).configure(PromotionsConfig).configure(ProTipConfig).configure(MapLoadingConfig).configure(ClassesConfig).configure(PackageConfig).configure(PetsConfig).configure(DailyLoginConfig).configure(Stage3DConfig).configure(ArenaConfig).configure(ExternalConfig).configure(MysteryBoxConfig).configure(FortuneConfig).configure(FriendConfig).configure(DailyQuestsConfig).configure(this);
+            this.context.extend(MVCSBundle).extend(SignalCommandMapExtension).configure(BuildConfig).configure(StartupConfig).configure(NetConfig).configure(AssetsConfig).configure(DialogsConfig).configure(EnvironmentConfig).configure(ApplicationConfig).configure(LanguageConfig).configure(TextConfig).configure(AppEngineConfig).configure(AccountConfig).configure(ErrorConfig).configure(CoreConfig).configure(ApplicationSpecificConfig).configure(DeathConfig).configure(CharactersConfig).configure(ServersConfig).configure(GameConfig).configure(UIConfig).configure(MiniMapConfig).configure(LegendsConfig).configure(NewsConfig).configure(FameConfig).configure(TooltipsConfig).configure(PromotionsConfig).configure(ProTipConfig).configure(MapLoadingConfig).configure(ClassesConfig).configure(PackageConfig).configure(PetsConfig).configure(DailyLoginConfig).configure(Stage3DConfig).configure(ArenaConfig).configure(ExternalConfig).configure(MysteryBoxConfig).configure(FortuneConfig).configure(DailyQuestsConfig).configure(FriendsConfig).configure(this);
             this.context.logLevel = LogLevel.DEBUG;
         }
 

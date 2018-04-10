@@ -35,6 +35,7 @@ package io.decagames.rotmg.dailyQuests.command
                 _local_2.rewards = _local_1.rewards;
                 _local_2.completed = _local_1.completed;
                 _local_2.category = _local_1.category;
+                _local_2.itemOfChoice = _local_1.itemOfChoice;
                 this.model.addQuest(_local_2);
             };
         }

@@ -20,6 +20,7 @@ package io.decagames.rotmg.ui.tabs
         public static const LEFT:String = "left";
         public static const RIGHT:String = "right";
         public static const CENTER:String = "center";
+        public static const BORDERLESS:String = "borderless";
 
         private var _selected:Boolean;
         private var selectedBitmap:String;
@@ -44,12 +45,17 @@ package io.decagames.rotmg.ui.tabs
                     this.defaultBitmap = "tab_button_center_idle";
                     this.selectedBitmap = "tab_button_center_open";
                     break;
+                case BORDERLESS:
+                    this.defaultBitmap = "tab_button_borderless_idle";
+                    this.selectedBitmap = "tab_button_borderless";
+                    break;
             };
             this.defaultBitmap = this.defaultBitmap;
             this.selectedBitmap = this.selectedBitmap;
             var _local_2:SliceScalingBitmap = TextureParser.instance.getSliceScalingBitmap("UI", this.defaultBitmap);
             super(_local_2);
-            _local_2.addMargin(0, SELECTED_MARGIN);
+            bitmap.name = "TabButton";
+            _local_2.addMargin(0, ((this.buttonType == BORDERLESS) ? 0 : SELECTED_MARGIN));
             _interactionEffects = false;
         }
 
@@ -98,13 +104,15 @@ package io.decagames.rotmg.ui.tabs
             {
                 setLabelMargin(0, 0);
                 DefaultLabelFormat.defaultInactiveTab(this.label);
-                changeBitmap(this.defaultBitmap, new Point(0, SELECTED_MARGIN));
+                changeBitmap(this.defaultBitmap, new Point(0, ((this.buttonType == BORDERLESS) ? 0 : SELECTED_MARGIN)));
+                bitmap.alpha = 0;
             }
             else
             {
-                setLabelMargin(0, 2);
+                setLabelMargin(0, ((this.buttonType == BORDERLESS) ? 0 : 2));
                 DefaultLabelFormat.defaultActiveTab(this.label);
-                changeBitmap(this.selectedBitmap, new Point(0, SELECTED_MARGIN));
+                changeBitmap(this.selectedBitmap, new Point(0, ((this.buttonType == BORDERLESS) ? 0 : SELECTED_MARGIN)));
+                bitmap.alpha = 1;
             };
             this.updateIndicatorPosition();
         }

@@ -151,6 +151,18 @@ package com.company.assembleegameclient.ui.options
             return (new <StringBuilder>[new StaticStringBuilder("High"), new StaticStringBuilder("Low")]);
         }
 
+        private static function makeHpBarLabels():Vector.<StringBuilder>{
+            return (new <StringBuilder>[new StaticStringBuilder("Off"), new StaticStringBuilder("All"), new StaticStringBuilder("Enemy"), new StaticStringBuilder("Self & En."), new StaticStringBuilder("Self"), new StaticStringBuilder("Ally")]);
+        }
+
+        private static function makeForceExpLabels():Vector.<StringBuilder>{
+            return (new <StringBuilder>[new StaticStringBuilder("Off"), new StaticStringBuilder("On"), new StaticStringBuilder("Self")]);
+        }
+
+        private static function makeBarTextLabels():Vector.<StringBuilder>{
+            return (new <StringBuilder>[new StaticStringBuilder("Off"), new StaticStringBuilder("All"), new StaticStringBuilder("Fame"), new StaticStringBuilder("HP/MP")]);
+        }
+
         private static function makeStarSelectLabels():Vector.<StringBuilder>
         {
             return (new <StringBuilder>[new StaticStringBuilder("Off"), new StaticStringBuilder("1"), new StaticStringBuilder("2"), new StaticStringBuilder("3"), new StaticStringBuilder("5"), new StaticStringBuilder("10")]);
@@ -524,8 +536,9 @@ package com.company.assembleegameclient.ui.options
             this.addOptionAndPosition(new ChoiceOption("noAllyNotifications", makeOnOffLabels(), [true, false], "Disable Ally Notifications", "Disable text notifications above allies.", null));
             this.addOptionAndPosition(new ChoiceOption("noEnemyDamage", makeOnOffLabels(), [true, false], "Disable Enemy Damage Text", "Disable damage from other players above enemies.", null));
             this.addOptionAndPosition(new ChoiceOption("noAllyDamage", makeOnOffLabels(), [true, false], "Disable Ally Damage Text", "Disable damage above allies.", null));
-            this.addOptionAndPosition(new ChoiceOption("forceEXP", makeOnOffLabels(), [true, false], "Always Show EXP", "Show EXP notifications even when level 20.", null));
+            this.addOptionAndPosition(new ChoiceOption("forceEXP", makeForceExpLabels(), [0, 1, 2], "Always Show EXP", "Show EXP notifications even when level 20.", null));
             this.addOptionAndPosition(new ChoiceOption("showFameGain", makeOnOffLabels(), [true, false], "Show Fame Gain", "Shows notifications for each fame gained.", null));
+            this.addOptionAndPosition(new ChoiceOption("curseIndication", makeOnOffLabels(), [true, false], "Curse Indication", "Makes enemies inflicted by Curse glow red.", null));
         }
 
         private function addGraphicsOptions():void
@@ -556,10 +569,12 @@ package com.company.assembleegameclient.ui.options
             {
                 this.addOptionAndPosition(new ChoiceOption("fullscreenMode", makeOnOffLabels(), [true, false], TextKey.OPTIONS_FULLSCREEN_MODE, TextKey.OPTIONS_FULLSCREEN_MODE_DESC, this.onFullscreenChange));
             };
-            this.addOptionAndPosition(new ChoiceOption("toggleBarText", makeOnOffLabels(), [true, false], TextKey.OPTIONS_TOGGLE_BARTEXT, TextKey.OPTIONS_TOGGLE_BARTEXT_DESC, onBarTextToggle));
+            this.addOptionAndPosition(new ChoiceOption("toggleBarText", makeBarTextLabels(), [0, 1, 2, 3], "Toggle Fame and HP/MP Text", "Always show text value for Fame, remaining HP/MP, or both", onBarTextToggle));
             this.addOptionAndPosition(new ChoiceOption("particleEffect", makeHighLowLabels(), [true, false], TextKey.OPTIONS_TOGGLE_PARTICLE_EFFECT, TextKey.OPTIONS_TOGGLE_PARTICLE_EFFECT_DESC, null));
             this.addOptionAndPosition(new ChoiceOption("uiQuality", makeHighLowLabels(), [true, false], TextKey.OPTIONS_TOGGLE_UI_QUALITY, TextKey.OPTIONS_TOGGLE_UI_QUALITY_DESC, onUIQualityToggle));
-            this.addOptionAndPosition(new ChoiceOption("HPBar", makeOnOffLabels(), [true, false], TextKey.OPTIONS_HPBAR, TextKey.OPTIONS_HPBAR_DESC, null));
+            this.addOptionAndPosition(new ChoiceOption("HPBar", makeHpBarLabels(), [0, 1, 2, 3, 4, 5], TextKey.OPTIONS_HPBAR, TextKey.OPTIONS_HPBAR_DESC, null));
+            this.addOptionAndPosition(new KeyMapper("toggleProjectiles", "Toggle Ally Projectiles", "This key will toggle rendering of friendly projectiles"));
+            this.addOptionAndPosition(new KeyMapper("toggleMasterParticles", "Toggle Particles", "This key will toggle rendering of nonessential particles (Particles Master option)"));
         }
 
         private function onShowQuestPortraitsChange():void

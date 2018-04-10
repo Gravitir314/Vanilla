@@ -15,7 +15,7 @@ package io.decagames.rotmg.fame
     {
 
         [Inject]
-        public var view:FameStatsLine;
+        public var view:StatsLine;
         [Inject]
         public var showTooltipSignal:ShowTooltipSignal;
         [Inject]

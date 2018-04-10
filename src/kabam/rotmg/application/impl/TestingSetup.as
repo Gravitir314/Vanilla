@@ -14,7 +14,7 @@ package kabam.rotmg.application.impl
         private const SERVER:String = "rotmgtesting.appspot.com";
         private const UNENCRYPTED:String = ("http://" + SERVER);
         private const ENCRYPTED:String = ("https://" + SERVER);
-        private const ANALYTICS:String = "UA-11236645-6";
+        private const ANALYTICS:String = "UA-101960510-4";
         private const BUILD_LABEL:String = "<font color='#FF0000'>TESTING</font> #{VERSION}";
 
 
@@ -44,6 +44,10 @@ package kabam.rotmg.application.impl
             return (true);
         }
 
+        public function isServerLocal():Boolean{
+            return (false);
+        }
+
         public function isGameLoopMonitored():Boolean
         {
             return (true);
@@ -67,6 +71,10 @@ package kabam.rotmg.application.impl
         public function isDebug():Boolean
         {
             return (false);
+        }
+
+        public function getServerDomain():String{
+            return (this.SERVER);
         }
 
 

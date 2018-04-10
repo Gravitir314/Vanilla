@@ -6,17 +6,17 @@
 package kabam.rotmg.friends.view
 {
     import robotlegs.bender.bundles.mvcs.Mediator;
-    import kabam.rotmg.friends.model.FriendModel;
+    import io.decagames.rotmg.friends.model.FriendModel;
     import kabam.rotmg.dialogs.control.OpenDialogSignal;
     import kabam.rotmg.dialogs.control.CloseDialogsSignal;
-    import kabam.rotmg.friends.controller.FriendActionSignal;
+    import io.decagames.rotmg.friends.signals.FriendActionSignal;
     import kabam.rotmg.chat.control.ShowChatInputSignal;
     import kabam.rotmg.ui.signals.EnterGameSignal;
     import kabam.rotmg.core.model.PlayerModel;
     import kabam.rotmg.game.signals.PlayGameSignal;
     import com.company.assembleegameclient.ui.dialogs.ErrorDialog;
-    import kabam.rotmg.friends.model.FriendConstant;
-    import kabam.rotmg.friends.model.FriendRequestVO;
+    import io.decagames.rotmg.friends.config.FriendsActions;
+    import io.decagames.rotmg.friends.model.FriendRequestVO;
     import kabam.rotmg.text.model.TextKey;
     import com.company.assembleegameclient.parameters.Parameters;
     import com.company.assembleegameclient.appengine.SavedCharacter;
@@ -80,10 +80,10 @@ package kabam.rotmg.friends.view
         {
             switch (_arg_1)
             {
-                case FriendConstant.FRIEND_TAB:
+                case FriendsActions.FRIEND_TAB:
                     this.view.updateFriendTab(this.model.getAllFriends(), this.model.getCurrentServerName());
                     return;
-                case FriendConstant.INVITE_TAB:
+                case FriendsActions.INVITE_TAB:
                     this.view.updateInvitationTab(this.model.getAllInvitations());
                     return;
             };
@@ -96,7 +96,7 @@ package kabam.rotmg.friends.view
             var _local_3:FriendRequestVO = new FriendRequestVO(_arg_1, _arg_2);
             switch (_arg_1)
             {
-                case FriendConstant.SEARCH:
+                case FriendsActions.SEARCH:
                     if (((!(_arg_2 == null)) && (!(_arg_2 == ""))))
                     {
                         this.view.updateFriendTab(this.model.getFilterFriends(_arg_2), this.model.getCurrentServerName());
@@ -109,7 +109,7 @@ package kabam.rotmg.friends.view
                         };
                     };
                     return;
-                case FriendConstant.INVITE:
+                case FriendsActions.INVITE:
                     if (this.model.ifReachMax())
                     {
                         this.view.updateInput(TextKey.FRIEND_REACH_CAPACITY);
@@ -117,28 +117,28 @@ package kabam.rotmg.friends.view
                     };
                     _local_3.callback = this.inviteFriendCallback;
                     break;
-                case FriendConstant.REMOVE:
+                case FriendsActions.REMOVE:
                     _local_3.callback = this.removeFriendCallback;
                     _local_4 = TextKey.FRIEND_REMOVE_TITLE;
                     _local_5 = TextKey.FRIEND_REMOVE_TEXT;
                     this.openDialog.dispatch(new FriendUpdateConfirmDialog(_local_4, _local_5, TextKey.FRAME_CANCEL, TextKey.FRIEND_REMOVE_BUTTON, _local_3, {"name":_local_3.target}));
                     return;
-                case FriendConstant.ACCEPT:
+                case FriendsActions.ACCEPT:
                     _local_3.callback = this.acceptInvitationCallback;
                     break;
-                case FriendConstant.REJECT:
+                case FriendsActions.REJECT:
                     _local_3.callback = this.rejectInvitationCallback;
                     break;
-                case FriendConstant.BLOCK:
+                case FriendsActions.BLOCK:
                     _local_3.callback = this.blockInvitationCallback;
                     _local_4 = TextKey.FRIEND_BLOCK_TITLE;
                     _local_5 = TextKey.FRIEND_BLOCK_TEXT;
                     this.openDialog.dispatch(new FriendUpdateConfirmDialog(_local_4, _local_5, TextKey.FRAME_CANCEL, TextKey.FRIEND_BLOCK_BUTTON, _local_3, {"name":_local_3.target}));
                     return;
-                case FriendConstant.WHISPER:
+                case FriendsActions.WHISPER:
                     this.whisperCallback(_arg_2);
                     return;
-                case FriendConstant.JUMP:
+                case FriendsActions.JUMP:
                     this.jumpCallback(_arg_2);
                     return;
             };

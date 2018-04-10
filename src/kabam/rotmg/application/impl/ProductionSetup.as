@@ -14,7 +14,7 @@ package kabam.rotmg.application.impl
         private const SERVER:String = "realmofthemadgodhrd.appspot.com";
         private const UNENCRYPTED:String = ("http://" + SERVER);
         private const ENCRYPTED:String = ("https://" + SERVER);
-        private const ANALYTICS:String = "UA-11236645-4";
+        private const ANALYTICS:String = "UA-101960510-3";
         private const BUILD_LABEL:String = "RotMG #{VERSION}.{MINOR}";
 
 
@@ -48,6 +48,10 @@ package kabam.rotmg.application.impl
             return (false);
         }
 
+        public function isServerLocal():Boolean{
+            return (false);
+        }
+
         public function useProductionDialogs():Boolean
         {
             return (true);
@@ -66,6 +70,10 @@ package kabam.rotmg.application.impl
         public function isDebug():Boolean
         {
             return (false);
+        }
+
+        public function getServerDomain():String{
+            return (this.SERVER);
         }
 
 

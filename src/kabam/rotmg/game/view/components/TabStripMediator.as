@@ -16,9 +16,6 @@ package kabam.rotmg.game.view.components
     import com.company.assembleegameclient.ui.icons.IconButtonFactory;
     import kabam.rotmg.ui.view.StatsDockedSignal;
     import kabam.rotmg.pets.data.PetsModel;
-    import kabam.rotmg.dialogs.control.OpenDialogSignal;
-    import flash.events.MouseEvent;
-    import kabam.rotmg.friends.view.FriendListView;
     import kabam.rotmg.pets.view.components.PetsTabContentView;
     import com.company.assembleegameclient.objects.Player;
 
@@ -51,8 +48,6 @@ package kabam.rotmg.game.view.components
         public var statsTabHotKeyInput:StatsTabHotKeyInputSignal;
         [Inject]
         public var petModel:PetsModel;
-        [Inject]
-        public var openDialog:OpenDialogSignal;
         private var doShowStats:Boolean = true;
 
 
@@ -66,7 +61,6 @@ package kabam.rotmg.game.view.components
             this.statsDocked.add(this.onStatsDocked);
             this.statsTabHotKeyInput.add(this.onTabHotkey);
             this.notifyActivePetUpdated.add(this.onNotifyActivePetUpdated);
-            this.view.initFriendList(this.imageFactory, this.iconButtonFactory, this.onFriendsBtnClicked);
         }
 
         private function onStatsUndocked(_arg_1:StatsView):void
@@ -95,12 +89,6 @@ package kabam.rotmg.game.view.components
         {
             this.view.tabSelected.remove(this.onTabSelected);
             this.updateBackpack.remove(this.onUpdateBackPack);
-            this.view.friendsBtn.removeEventListener(MouseEvent.CLICK, this.onFriendsBtnClicked);
-        }
-
-        private function onFriendsBtnClicked(_arg_1:MouseEvent):void
-        {
-            this.openDialog.dispatch(new FriendListView());
         }
 
         private function addTabs(_arg_1:Player):void

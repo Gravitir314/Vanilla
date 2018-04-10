@@ -8,10 +8,10 @@ package kabam.rotmg.friends.view
     import com.company.assembleegameclient.ui.dialogs.Dialog;
     import com.company.assembleegameclient.ui.dialogs.DialogCloser;
     import com.company.assembleegameclient.ui.dialogs.CloseDialogComponent;
-    import kabam.rotmg.friends.model.FriendRequestVO;
+    import io.decagames.rotmg.friends.model.FriendRequestVO;
     import kabam.rotmg.core.StaticInjectorContext;
     import org.swiftsuspenders.Injector;
-    import kabam.rotmg.friends.controller.FriendActionSignal;
+    import io.decagames.rotmg.friends.signals.FriendActionSignal;
     import flash.events.Event;
     import org.osflash.signals.Signal;
 

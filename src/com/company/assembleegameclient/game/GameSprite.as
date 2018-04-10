@@ -32,6 +32,7 @@ package com.company.assembleegameclient.game
     import flash.display.DisplayObject;
     import flash.display.Sprite;
     import com.company.assembleegameclient.ui.menu.PlayerMenu;
+    import kabam.rotmg.core.service.GoogleAnalytics;
     import com.company.assembleegameclient.map.Map;
     import kabam.rotmg.messaging.impl.GameServerConnectionConcrete;
     import flash.events.MouseEvent;
@@ -68,7 +69,6 @@ package com.company.assembleegameclient.game
     import com.company.util.CachingColorTransformer;
     import com.company.assembleegameclient.util.TextureRedrawer;
     import com.company.assembleegameclient.objects.Projectile;
-    import com.company.googleanalytics.GA;
 
     public class GameSprite extends AGameSprite 
     {
@@ -109,6 +109,7 @@ package com.company.assembleegameclient.game
         private var currentPackage:DisplayObject = new Sprite();
         private var packageY:Number;
         public var chatPlayerMenu:PlayerMenu;
+        private var googleAnalytics:GoogleAnalytics;
 
         public function GameSprite(_arg_1:Server, _arg_2:int, _arg_3:Boolean, _arg_4:int, _arg_5:int, _arg_6:ByteArray, _arg_7:PlayerModel, _arg_8:String, _arg_9:Boolean)
         {
@@ -223,6 +224,7 @@ package com.company.assembleegameclient.game
                 this.showWaveCounter();
             };
             _local_1 = StaticInjectorContext.getInjector().getInstance(Account);
+            this.googleAnalytics = StaticInjectorContext.getInjector().getInstance(GoogleAnalytics);
             if (map.name_ == Map.NEXUS)
             {
                 this.addToQueueSignal.dispatch(PopupNamesConfig.DAILY_LOGIN_POPUP, this.openDailyCalendarPopupSignal, -1, null);
@@ -564,7 +566,7 @@ package com.company.assembleegameclient.game
             if (this.frameTimeSum_ > 300000)
             {
                 _local_7 = int(Math.round(((1000 * this.frameTimeCount_) / this.frameTimeSum_)));
-                GA.global().trackEvent("performance", "frameRate", map.name_, _local_7);
+                this.googleAnalytics.trackEvent("performance", "frameRate", map.name_, _local_7);
                 this.frameTimeCount_ = 0;
                 this.frameTimeSum_ = 0;
             };

@@ -15,7 +15,8 @@ package com.company.assembleegameclient.screens
     import kabam.rotmg.text.view.TextFieldDisplayConcrete;
     import com.company.assembleegameclient.objects.ObjectLibrary;
     import com.company.assembleegameclient.appengine.SavedCharactersList;
-    import com.company.googleanalytics.GA;
+    import kabam.rotmg.core.StaticInjectorContext;
+    import kabam.rotmg.core.service.GoogleAnalytics;
     import kabam.rotmg.core.model.PlayerModel;
     import flash.events.Event;
 
@@ -45,11 +46,11 @@ package com.company.assembleegameclient.screens
         public function initialize(_arg_1:PlayerModel):void
         {
             var _local_2:int;
-            var _local_3:XML;
-            var _local_4:int;
-            var _local_5:String;
-            var _local_6:Boolean;
-            var _local_7:CharacterBox;
+            var _local_4:XML;
+            var _local_5:int;
+            var _local_6:String;
+            var _local_7:Boolean;
+            var _local_8:CharacterBox;
             if (this.isInitialized)
             {
                 return;
@@ -65,25 +66,23 @@ package com.company.assembleegameclient.screens
             _local_2 = 0;
             while (_local_2 < ObjectLibrary.playerChars_.length)
             {
-                _local_3 = ObjectLibrary.playerChars_[_local_2];
-                _local_4 = int(_local_3.@type);
-                _local_5 = _local_3.@id;
-                if (!_arg_1.isClassAvailability(_local_5, SavedCharactersList.UNAVAILABLE))
-                {
-                    _local_6 = _arg_1.isClassAvailability(_local_5, SavedCharactersList.UNRESTRICTED);
-                    _local_7 = new CharacterBox(_local_3, _arg_1.getCharStats()[_local_4], _arg_1, _local_6);
-                    _local_7.x = (((50 + (140 * int((_local_2 % 5)))) + 70) - (_local_7.width / 2));
-                    _local_7.y = (88 + (140 * int((_local_2 / 5))));
-                    this.boxes_[_local_4] = _local_7;
-                    _local_7.addEventListener(MouseEvent.ROLL_OVER, this.onCharBoxOver);
-                    _local_7.addEventListener(MouseEvent.ROLL_OUT, this.onCharBoxOut);
-                    _local_7.characterSelectClicked_.add(this.onCharBoxClick);
-                    _local_7.buyButtonClicked_.add(this.onBuyClicked);
-                    if (((_local_4 == 784) && (!(_local_7.available_))))
-                    {
-                        _local_7.setSale(75);
+                _local_4 = ObjectLibrary.playerChars_[_local_2];
+                _local_5 = int(_local_4.@type);
+                _local_6 = _local_4.@id;
+                if (!_arg_1.isClassAvailability(_local_6, SavedCharactersList.UNAVAILABLE)){
+                    _local_7 = _arg_1.isClassAvailability(_local_6, SavedCharactersList.UNRESTRICTED);
+                    _local_8 = new CharacterBox(_local_4, _arg_1.getCharStats()[_local_5], _arg_1, _local_7);
+                    _local_8.x = (((50 + (140 * int((_local_2 % 5)))) + 70) - (_local_8.width / 2));
+                    _local_8.y = (88 + (140 * int((_local_2 / 5))));
+                    this.boxes_[_local_5] = _local_8;
+                    _local_8.addEventListener(MouseEvent.ROLL_OVER, this.onCharBoxOver);
+                    _local_8.addEventListener(MouseEvent.ROLL_OUT, this.onCharBoxOut);
+                    _local_8.characterSelectClicked_.add(this.onCharBoxClick);
+                    _local_8.buyButtonClicked_.add(this.onBuyClicked);
+                    if (((_local_5 == 784) && (!(_local_8.available_)))){
+                        _local_8.setSale(75);
                     };
-                    addChild(_local_7);
+                    addChild(_local_8);
                 };
                 _local_2++;
             };
@@ -91,7 +90,10 @@ package com.company.assembleegameclient.screens
             this.backButton_.y = 550;
             this.creditDisplay_.x = stage.stageWidth;
             this.creditDisplay_.y = 20;
-            GA.global().trackPageview("/newCharScreen");
+            var _local_3:GoogleAnalytics = StaticInjectorContext.getInjector().getInstance(GoogleAnalytics);
+            if (_local_3){
+                _local_3.trackPageView("/newCharScreen");
+            }
         }
 
         private function onBackClick(_arg_1:Event):void
@@ -123,7 +125,10 @@ package com.company.assembleegameclient.screens
             };
             var _local_3:int = _local_2.objectType();
             var _local_4:String = ObjectLibrary.typeToDisplayId_[_local_3];
-            GA.global().trackEvent("character", "create", _local_4);
+            var _local_5:GoogleAnalytics = StaticInjectorContext.getInjector().getInstance(GoogleAnalytics);
+            if (_local_5){
+                _local_5.trackEvent("character", "create", _local_4);
+            }
             this.selected.dispatch(_local_3);
         }
 

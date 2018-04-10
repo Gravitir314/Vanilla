@@ -11,15 +11,14 @@ package kabam.rotmg.ui.view
     import com.company.assembleegameclient.objects.ImageFactory;
     import flash.display.Bitmap;
     import com.company.assembleegameclient.ui.icons.IconButton;
-    import kabam.rotmg.text.view.TextFieldDisplayConcrete;
+    import io.decagames.rotmg.ui.labels.UILabel;
     import org.osflash.signals.natives.NativeSignal;
     import flash.events.MouseEvent;
     import com.company.assembleegameclient.ui.BoostPanelButton;
     import com.company.assembleegameclient.ui.ExperienceBoostTimerPopup;
     import kabam.rotmg.text.model.TextKey;
-    import flash.filters.DropShadowFilter;
     import com.company.assembleegameclient.objects.Player;
-    import kabam.rotmg.text.view.stringBuilder.StaticStringBuilder;
+    import io.decagames.rotmg.ui.defaults.DefaultLabelFormat;
 
     public class CharacterDetailsView extends Sprite 
     {
@@ -36,15 +35,23 @@ package kabam.rotmg.ui.view
         public var imageFactory:ImageFactory;
         private var portrait_:Bitmap = new Bitmap(null);
         private var button:IconButton;
-        private var nameText_:TextFieldDisplayConcrete = new TextFieldDisplayConcrete().setSize(20).setColor(0xB3B3B3);
+        private var nameText_:UILabel;
         private var nexusClicked:NativeSignal = new NativeSignal(button, MouseEvent.CLICK);
         private var optionsClicked:NativeSignal = new NativeSignal(button, MouseEvent.CLICK);
         private var boostPanelButton:BoostPanelButton;
         private var expTimer:ExperienceBoostTimerPopup;
+        public var friendsBtn:IconButton;
+        private var indicator:Sprite;
 
 
         public function init(_arg_1:String, _arg_2:String):void
         {
+            this.indicator = new Sprite();
+            this.indicator.graphics.beginFill(823807);
+            this.indicator.graphics.drawCircle(0, 0, 4);
+            this.indicator.graphics.endFill();
+            this.indicator.x = 13;
+            this.indicator.y = -5;
             this.createPortrait();
             this.createNameText(_arg_1);
             this.createButton(_arg_2);
@@ -68,8 +75,31 @@ package kabam.rotmg.ui.view
                 };
             };
             this.button.x = 172;
-            this.button.y = 10;
+            this.button.y = 12;
             addChild(this.button);
+        }
+
+        public function addInvitationIndicator():void{
+            if (this.friendsBtn){
+                this.friendsBtn.addChild(this.indicator);
+            };
+        }
+
+        public function clearInvitationIndicator():void{
+            if (((this.indicator) && (this.indicator.parent))){
+                this.indicator.parent.removeChild(this.indicator);
+            };
+        }
+
+        public function initFriendList(_arg_1:ImageFactory, _arg_2:IconButtonFactory, _arg_3:Function, _arg_4:Boolean):void{
+            this.friendsBtn = _arg_2.create(_arg_1.getImageFromSet("lofiInterfaceBig", 13), "", TextKey.OPTIONS_FRIEND, "", 6);
+            this.friendsBtn.x = 146;
+            this.friendsBtn.y = 12;
+            this.friendsBtn.addEventListener(MouseEvent.CLICK, _arg_3);
+            addChild(this.friendsBtn);
+            if (_arg_4){
+                this.addInvitationIndicator();
+            };
         }
 
         private function createPortrait():void
@@ -81,10 +111,9 @@ package kabam.rotmg.ui.view
 
         private function createNameText(_arg_1:String):void
         {
-            this.nameText_.setBold(true);
-            this.nameText_.x = 36;
-            this.nameText_.y = 3;
-            this.nameText_.filters = [new DropShadowFilter(0, 0, 0)];
+            this.nameText_ = new UILabel();
+            this.nameText_.x = 35;
+            this.nameText_.y = 6;
             this.setName(_arg_1);
             addChild(this.nameText_);
         }
@@ -139,7 +168,8 @@ package kabam.rotmg.ui.view
 
         public function setName(_arg_1:String):void
         {
-            this.nameText_.setStringBuilder(new StaticStringBuilder(_arg_1));
+            this.nameText_.text = _arg_1;
+            DefaultLabelFormat.characterViewNameLabel(this.nameText_);
         }
 
 

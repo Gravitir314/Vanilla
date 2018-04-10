@@ -36,6 +36,10 @@ package kabam.rotmg.application.impl
             return (this.ANALYTICS);
         }
 
+        public function isServerLocal():Boolean{
+            return (false);
+        }
+
         public function getBuildLabel():String
         {
             var _local_1:String = ((Parameters.BUILD_VERSION + ".") + Parameters.MINOR_VERSION);
@@ -75,6 +79,10 @@ package kabam.rotmg.application.impl
         public function isDebug():Boolean
         {
             return (false);
+        }
+
+        public function getServerDomain():String{
+            return (this.SERVER);
         }
 
 

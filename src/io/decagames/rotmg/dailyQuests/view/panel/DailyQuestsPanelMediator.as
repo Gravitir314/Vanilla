@@ -7,7 +7,7 @@ package io.decagames.rotmg.dailyQuests.view.panel
 {
     import robotlegs.bender.bundles.mvcs.Mediator;
     import io.decagames.rotmg.dailyQuests.model.DailyQuestsModel;
-    import kabam.rotmg.dialogs.control.OpenDialogNoModalSignal;
+    import io.decagames.rotmg.ui.popups.signals.ShowPopupSignal;
     import flash.events.MouseEvent;
     import flash.events.KeyboardEvent;
     import io.decagames.rotmg.dailyQuests.view.DailyQuestWindow;
@@ -22,7 +22,7 @@ package io.decagames.rotmg.dailyQuests.view.panel
         [Inject]
         public var questModel:DailyQuestsModel;
         [Inject]
-        public var openNoModalDialog:OpenDialogNoModalSignal;
+        public var openDialogSignal:ShowPopupSignal;
 
 
         override public function initialize():void
@@ -44,8 +44,8 @@ package io.decagames.rotmg.dailyQuests.view.panel
         {
             if (!this.questModel.isPopupOpened)
             {
-                this.openNoModalDialog.dispatch(new DailyQuestWindow());
-            };
+                this.openDialogSignal.dispatch(new DailyQuestWindow());
+            }
         }
 
         private function onKeyDown(_arg_1:KeyboardEvent):void

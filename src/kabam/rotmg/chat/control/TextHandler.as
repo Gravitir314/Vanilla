@@ -13,7 +13,7 @@ package kabam.rotmg.chat.control
     import kabam.rotmg.chat.model.TellModel;
     import kabam.rotmg.dialogs.control.OpenDialogSignal;
     import kabam.rotmg.ui.model.HUDModel;
-    import kabam.rotmg.friends.model.FriendModel;
+    import io.decagames.rotmg.friends.model.FriendModel;
     import com.company.assembleegameclient.parameters.Parameters;
     import kabam.rotmg.chat.model.ChatMessage;
     import com.company.assembleegameclient.objects.TextureDataConcrete;

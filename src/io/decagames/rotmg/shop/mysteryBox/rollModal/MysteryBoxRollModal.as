@@ -45,7 +45,7 @@ package io.decagames.rotmg.shop.mysteryBox.rollModal
         private var maxResultWidth:int;
         private var maxResultRows:int = 3;
         private var resultElementWidth:int;
-        private var resultGridMargin:* = 10;
+        private var resultGridMargin:int = 10;
         private var spinnerTopMargin:int = 165;
         private var buyButtonBackground:SliceScalingBitmap;
         private var maxResultHeight:int = 135;
@@ -283,7 +283,7 @@ package io.decagames.rotmg.shop.mysteryBox.rollModal
             var _local_4:String;
             var _local_5:UIItemContainer;
             var _local_6:int;
-            this.rollGrid.clearGird();
+            this.rollGrid.clearGrid();
             var _local_2:Vector.<UIItemContainer> = new Vector.<UIItemContainer>();
             for each (_local_3 in _arg_1)
             {

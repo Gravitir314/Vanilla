@@ -65,6 +65,8 @@ package kabam.rotmg.servers.model
                         _local_3 = _local_6;
                         _local_4 = _local_8;
                         _local_5 = _local_7;
+                        Parameters.data_.bestServer = _local_3.name;
+                        Parameters.save();
                     };
                 };
             };

@@ -10,6 +10,8 @@ package io.decagames.rotmg.ui.popups
     import io.decagames.rotmg.ui.popups.signals.ClosePopupSignal;
     import io.decagames.rotmg.ui.popups.signals.CloseCurrentPopupSignal;
     import io.decagames.rotmg.ui.popups.signals.CloseAllPopupsSignal;
+    import io.decagames.rotmg.ui.popups.signals.RemoveLockFade;
+    import io.decagames.rotmg.ui.popups.signals.ShowLockFade;
     import __AS3__.vec.Vector;
     import __AS3__.vec.*;
 
@@ -26,6 +28,10 @@ package io.decagames.rotmg.ui.popups
         public var closeCurrentPopupSignal:CloseCurrentPopupSignal;
         [Inject]
         public var closeAllPopupsSignal:CloseAllPopupsSignal;
+        [Inject]
+        public var removeLockFade:RemoveLockFade;
+        [Inject]
+        public var showLockFade:ShowLockFade;
         private var popups:Vector.<BasePopup>;
 
         public function PopupMediator()
@@ -39,12 +45,22 @@ package io.decagames.rotmg.ui.popups
             this.closePopupSignal.add(this.closePopupHandler);
             this.closeCurrentPopupSignal.add(this.closeCurrentPopupHandler);
             this.closeAllPopupsSignal.add(this.closeAllPopupsHandler);
+            this.removeLockFade.add(this.onRemoveLock);
+            this.showLockFade.add(this.onShowLock);
         }
 
         private function closeCurrentPopupHandler():void
         {
             var _local_1:BasePopup = this.popups.pop();
             this.view.removeChild(_local_1);
+        }
+
+        private function onShowLock():void{
+            this.view.showFade();
+        }
+
+        private function onRemoveLock():void{
+            this.view.removeFade();
         }
 
         private function closeAllPopupsHandler():void
@@ -98,7 +114,9 @@ package io.decagames.rotmg.ui.popups
         {
             this.showPopupSignal.remove(this.showPopupHandler);
             this.closePopupSignal.remove(this.closePopupHandler);
-            this.closeCurrentPopupSignal.add(this.closeCurrentPopupHandler);
+            this.closeCurrentPopupSignal.remove(this.closeCurrentPopupHandler);
+            this.removeLockFade.remove(this.onRemoveLock);
+            this.showLockFade.remove(this.onShowLock);
         }
 
 

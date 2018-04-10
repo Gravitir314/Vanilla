@@ -48,6 +48,10 @@ package kabam.rotmg.account.kabam
             this.password = _arg_2;
         }
 
+        public function getUserNaid():String{
+            return ("");
+        }
+
         public function getRequestPrefix():String
         {
             return ("/credits");

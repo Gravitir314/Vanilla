@@ -55,8 +55,7 @@ package kabam.rotmg.appengine.impl
             var _local_3:TrackingData = new TrackingData();
             _local_3.category = "AppEngineResponseTime";
             _local_3.action = this.target;
-            _local_3.value = (this.time - getTimer());
-            this.track.dispatch(_local_3);
+            _local_3.value = (getTimer() - this.time);
         }
 
         public function requestInProgress():Boolean

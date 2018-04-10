@@ -18,11 +18,12 @@ package com.company.assembleegameclient.parameters
     public class Parameters 
     {
 
-        public static const BUILD_VERSION:String = "X22.0";
+        public static const BUILD_VERSION:String = "X24.0";
         public static const MINOR_VERSION:String = "0";
         public static const ENABLE_ENCRYPTION:Boolean = true;
         public static const PORT:int = 2050;
         public static const ALLOW_SCREENSHOT_MODE:Boolean = false;
+        public static const USE_NEW_FRIENDS_UI:Boolean = true;
         public static const FELLOW_GUILD_COLOR:uint = 10944349;
         public static const NAME_CHOSEN_COLOR:uint = 0xFCDF00;
         public static var root:DisplayObject;
@@ -38,6 +39,7 @@ package com.company.assembleegameclient.parameters
         public static const GUILD_CREATION_PRICE:int = 1000;
         public static var data_:Object = null;
         public static var GPURenderError:Boolean = false;
+        public static var sessionStarted:* = false;
         public static var blendType_:int = 1;
         public static var projColorType_:int = 0;
         public static var drawProj_:Boolean = true;
@@ -56,7 +58,6 @@ package com.company.assembleegameclient.parameters
         public static const RANDOM2:String = "72c5583cafb6818995cbd74b80";
         public static const RSA_PUBLIC_KEY:String = ((((("-----BEGIN PUBLIC KEY-----\n" + "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDCKFctVrhfF3m2Kes0FBL/JFeO") + "cmNg9eJz8k/hQy1kadD+XFUpluRqa//Uxp2s9W2qE0EoUCu59ugcf/p7lGuL99Uo") + "SGmQEynkBvZct+/M40L0E0rZ4BVgzLOJmIbXMp0J4PnPcb6VLZvxazGcmSfjauC7") + "F3yWYqUbZd/HCBtawwIDAQAB\n") + "-----END PUBLIC KEY-----");
         private static var savedOptions_:SharedObject = null;
-        public static var toggleHPBar_:Boolean = false;
         public static const skinTypes16:Vector.<int> = new <int>[1027, 0x0404, 1029, 1030, 10973, 19494, 19531];
         public static const itemTypes16:Vector.<int> = new <int>[5473, 5474, 5475, 5476, 10939, 19494, 19531];
         private static var keyNames_:Dictionary = new Dictionary();
@@ -71,7 +72,7 @@ package com.company.assembleegameclient.parameters
             }
             catch(error:Error)
             {
-                data_ = new Object();
+                data_ = {};
             };
             setDefaults();
             save();
@@ -178,12 +179,15 @@ package com.company.assembleegameclient.parameters
             setDefaultKey("switchTabs", KeyCodes.B);
             setDefaultKey("particleEffect", KeyCodes.P);
             setDefaultKey("toggleHPBar", KeyCodes.H);
+            setDefaultKey("toggleProjectiles", KeyCodes.N);
+            setDefaultKey("toggleMasterParticles", KeyCodes.M);
             setDefault("playerObjectType", 782);
             setDefault("playMusic", true);
             setDefault("playSFX", true);
             setDefault("playPewPew", true);
             setDefault("centerOnPlayer", true);
             setDefault("preferredServer", null);
+            setDefault("bestServer", null);
             setDefault("needsTutorial", true);
             setDefault("needsRandomRealm", true);
             setDefault("cameraAngle", ((7 * Math.PI) / 4));
@@ -233,7 +237,7 @@ package com.company.assembleegameclient.parameters
             setDefault("chatWhisper", true);
             setDefault("chatGuild", true);
             setDefault("chatTrade", true);
-            setDefault("toggleBarText", false);
+            setDefault("toggleBarText", 0);
             setDefault("toggleToMaxText", false);
             setDefault("particleEffect", true);
             if (((data_.hasOwnProperty("playMusic")) && (data_.playMusic == true)))
@@ -256,14 +260,15 @@ package com.company.assembleegameclient.parameters
             setDefault("tradeWithFriends", false);
             setDefault("chatFriend", false);
             setDefault("friendStarRequirement", 0);
-            setDefault("HPBar", true);
+            setDefault("HPBar", 1);
             setDefault("newMiniMapColors", false);
             setDefault("noParticlesMaster", false);
             setDefault("noAllyNotifications", false);
             setDefault("noAllyDamage", false);
             setDefault("noEnemyDamage", false);
-            setDefault("forceEXP", false);
+            setDefault("forceEXP", 0);
             setDefault("showFameGain", false);
+            setDefault("curseIndication", false);
             if (!data_.hasOwnProperty("needsSurvey"))
             {
                 data_.needsSurvey = data_.needsTutorial;

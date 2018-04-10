@@ -8,6 +8,7 @@ package kabam.rotmg.game.view
     import robotlegs.bender.bundles.mvcs.Mediator;
     import com.company.assembleegameclient.ui.panels.PortalPanel;
     import kabam.rotmg.game.signals.ExitGameSignal;
+    import kabam.rotmg.core.service.GoogleAnalytics;
 
     public class PortalPanelMediator extends Mediator 
     {
@@ -16,10 +17,13 @@ package kabam.rotmg.game.view
         public var view:PortalPanel;
         [Inject]
         public var exitGameSignal:ExitGameSignal;
+        [Inject]
+        public var googleAnalytics:GoogleAnalytics;
 
 
         override public function initialize():void
         {
+            this.view.googleAnalytics = this.googleAnalytics;
             this.view.exitGameSignal.add(this.onExitGame);
         }
 

@@ -8,7 +8,7 @@ package kabam.rotmg.friends.view
     import flash.display.Bitmap;
     import kabam.rotmg.text.view.TextFieldDisplayConcrete;
     import com.company.assembleegameclient.ui.icons.IconButton;
-    import kabam.rotmg.friends.model.FriendVO;
+    import io.decagames.rotmg.friends.model.FriendVO;
     import kabam.rotmg.text.view.stringBuilder.StaticStringBuilder;
     import kabam.rotmg.core.StaticInjectorContext;
     import com.company.assembleegameclient.ui.icons.IconButtonFactory;
@@ -16,7 +16,7 @@ package kabam.rotmg.friends.view
     import kabam.rotmg.text.model.TextKey;
     import flash.events.MouseEvent;
     import flash.events.Event;
-    import kabam.rotmg.friends.model.FriendConstant;
+    import io.decagames.rotmg.friends.config.FriendsActions;
 
     public class FriendListItem extends FListItem 
     {
@@ -127,17 +127,17 @@ package kabam.rotmg.friends.view
 
         private function onRemoveClicked(_arg_1:MouseEvent):void
         {
-            actionSignal.dispatch(FriendConstant.REMOVE, this._senderName);
+            actionSignal.dispatch(FriendsActions.REMOVE, this._senderName);
         }
 
         private function onWhisperClicked(_arg_1:MouseEvent):void
         {
-            actionSignal.dispatch(FriendConstant.WHISPER, this._senderName);
+            actionSignal.dispatch(FriendsActions.WHISPER, this._senderName);
         }
 
         private function onJumpClicked(_arg_1:MouseEvent):void
         {
-            actionSignal.dispatch(FriendConstant.JUMP, this._serverName);
+            actionSignal.dispatch(FriendsActions.JUMP, this._serverName);
         }
 
 

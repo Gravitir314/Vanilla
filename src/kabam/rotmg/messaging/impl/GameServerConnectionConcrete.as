@@ -35,7 +35,7 @@ package kabam.rotmg.messaging.impl
     import kabam.rotmg.game.model.GameModel;
     import kabam.rotmg.pets.controller.UpdateActivePet;
     import kabam.rotmg.pets.data.PetsModel;
-    import kabam.rotmg.friends.model.FriendModel;
+    import io.decagames.rotmg.friends.model.FriendModel;
     import io.decagames.rotmg.characterMetrics.tracker.CharactersMetricsTracker;
     import kabam.rotmg.core.StaticInjectorContext;
     import kabam.rotmg.maploading.signals.ChangeMapSignal;
@@ -221,6 +221,7 @@ package kabam.rotmg.messaging.impl
     import kabam.rotmg.ui.view.TitleView;
     import kabam.rotmg.maploading.signals.HideMapLoadingSignal;
     import kabam.rotmg.messaging.impl.data.SlotObjectData;
+    import kabam.rotmg.core.service.GoogleAnalytics;
     import flash.events.TimerEvent;
     import com.company.assembleegameclient.ui.dialogs.Dialog;
     import flash.events.Event;
@@ -314,6 +315,7 @@ package kabam.rotmg.messaging.impl
             key_ = _arg_7;
             mapJSON_ = _arg_8;
             isFromArena_ = _arg_9;
+            this.friendModel.loadData();
             this.friendModel.setCurrentServer(server_);
             this.getPetUpdater();
             instance = this;
@@ -589,8 +591,8 @@ package kabam.rotmg.messaging.impl
             var _local_2:ICipher;
             if (Parameters.ENABLE_ENCRYPTION)
             {
-                _local_1 = Crypto.getCipher("rc4", MoreStringUtil.hexStringToByteArray("311f80691451c71d09a13a2a6e"));
-                _local_2 = Crypto.getCipher("rc4", MoreStringUtil.hexStringToByteArray("72c5583cafb6818995cdd74b80"));
+                _local_1 = Crypto.getCipher("rc4", MoreStringUtil.hexStringToByteArray("6a39570cc9de4ec71d64821894c79332b197f92ba85ed281a023".substring(0, 26)));
+                _local_2 = Crypto.getCipher("rc4", MoreStringUtil.hexStringToByteArray("6a39570cc9de4ec71d64821894c79332b197f92ba85ed281a023".substring(26)));
                 serverConnection.setOutgoingCipher(_local_1);
                 serverConnection.setIncomingCipher(_local_2);
             };
@@ -973,7 +975,7 @@ package kabam.rotmg.messaging.impl
             };
         }
 
-        private function buyConfirmation(_arg_1:SellableObject, _arg_2:Boolean, _arg_3:int, _arg_4:int):*
+        private function buyConfirmation(_arg_1:SellableObject, _arg_2:Boolean, _arg_3:int, _arg_4:int):void
         {
             outstandingBuy_ = new OutstandingBuy(_arg_1.soldObjectInternalName(), _arg_1.price_, _arg_1.currency_, _arg_2);
             var _local_5:Buy = (this.messages.require(BUY) as Buy);
@@ -1155,8 +1157,8 @@ package kabam.rotmg.messaging.impl
             var _local_4:GameObject = _local_2.goDict_[_arg_1.targetId_];
             if (_local_4 != null)
             {
-                _local_6 = ((_arg_1.objectId_ == this.player.objectId_) ? true : false);
-                _local_4.damage(_local_6, _arg_1.damageAmount_, _arg_1.effects_, _arg_1.kill_, _local_3);
+                _local_6 = (_arg_1.objectId_ == this.player.objectId_);
+                _local_4.damage(_local_6, _arg_1.damageAmount_, _arg_1.effects_, _arg_1.kill_, _local_3, _arg_1.armorPierce_);
             };
         }
 
@@ -1826,7 +1828,13 @@ package kabam.rotmg.messaging.impl
                         _local_4.magicPotionCount_ = _local_8;
                         break;
                     case StatData.TEXTURE_STAT:
-                        (((!(_local_4.skinId == _local_8)) && (_local_8 >= 0)) && (this.setPlayerSkinTemplate(_local_4, _local_8)));
+                        if (_local_4 != null){
+                            (((!(_local_4.skinId == _local_8)) && (_local_8 >= 0)) && (this.setPlayerSkinTemplate(_local_4, _local_8)));
+                        } else {
+                            if (((_arg_1.objectType_ == 1813) && (_local_8 > 0))){
+                                _arg_1.setTexture(_local_8);
+                            };
+                        };
                         break;
                     case StatData.HASBACKPACK_STAT:
                         (_arg_1 as Player).hasBackpack_ = Boolean(_local_8);
@@ -2013,7 +2021,6 @@ package kabam.rotmg.messaging.impl
         {
             var _local_2:XML = XML(_arg_1);
             GroundLibrary.parseFromXML(_local_2);
-            ObjectLibrary.parseFromXML(_local_2);
             ObjectLibrary.parseFromXML(_local_2);
         }
 
@@ -2286,12 +2293,12 @@ package kabam.rotmg.messaging.impl
             this.questRedeemComplete.dispatch(_arg_1);
         }
 
-        override public function questRedeem(_arg_1:String, _arg_2:Vector.<SlotObjectData>):void
-        {
-            var _local_3:QuestRedeem = (this.messages.require(QUEST_REDEEM) as QuestRedeem);
-            _local_3.questID = _arg_1;
-            _local_3.slots = _arg_2;
-            serverConnection.sendMessage(_local_3);
+        override public function questRedeem(_arg_1:String, _arg_2:Vector.<SlotObjectData>, _arg_3:int=-1):void{
+            var _local_4:QuestRedeem = (this.messages.require(QUEST_REDEEM) as QuestRedeem);
+            _local_4.questID = _arg_1;
+            _local_4.item = _arg_3;
+            _local_4.slots = _arg_2;
+            serverConnection.sendMessage(_local_4);
         }
 
         override public function keyInfoRequest(_arg_1:int):void
@@ -2313,9 +2320,12 @@ package kabam.rotmg.messaging.impl
 
         private function onClosed():void
         {
-            var _local_1:HideMapLoadingSignal;
+            var _local_1:GoogleAnalytics;
+            var _local_2:HideMapLoadingSignal;
             if (this.playerId_ != -1)
             {
+                _local_1 = StaticInjectorContext.getInjector().getInstance(GoogleAnalytics);
+                _local_1.trackEvent("error", "disconnect", gs_.map.name_);
                 gs_.closed.dispatch();
             }
             else
@@ -2326,8 +2336,8 @@ package kabam.rotmg.messaging.impl
                     {
                         if (this.delayBeforeReconnect == 6)
                         {
-                            _local_1 = StaticInjectorContext.getInjector().getInstance(HideMapLoadingSignal);
-                            _local_1.dispatch();
+                            _local_2 = StaticInjectorContext.getInjector().getInstance(HideMapLoadingSignal);
+                            _local_2.dispatch();
                         };
                         this.retry(this.delayBeforeReconnect++);
                         this.addTextLine.dispatch(ChatMessage.make(Parameters.ERROR_CHAT_NAME, "Connection failed!  Retrying..."));

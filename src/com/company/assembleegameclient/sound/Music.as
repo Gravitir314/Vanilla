@@ -12,7 +12,7 @@ package com.company.assembleegameclient.sound
     import kabam.rotmg.application.api.ApplicationSetup;
     import com.company.assembleegameclient.parameters.Parameters;
     import flash.net.URLRequest;
-    import com.company.googleanalytics.GA;
+    import kabam.rotmg.core.service.GoogleAnalytics;
 
     public class Music 
     {
@@ -36,7 +36,10 @@ package com.company.assembleegameclient.sound
 
         public static function setPlayMusic(_arg_1:Boolean):void
         {
-            GA.global().trackEvent("sound", ((_arg_1) ? "musicOn" : "musicOff"));
+            var _local_2:GoogleAnalytics = StaticInjectorContext.getInjector().getInstance(GoogleAnalytics);
+            if (_local_2){
+                _local_2.trackEvent("sound", ((_arg_1) ? "musicOn" : "musicOff"));
+            }
             Parameters.data_.playMusic = _arg_1;
             Parameters.save();
             musicVolumeTransform.volume = ((Parameters.data_.playMusic) ? volume : 0);

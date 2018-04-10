@@ -11,7 +11,6 @@ package kabam.rotmg.ui.view
     import kabam.rotmg.ui.model.EnvironmentData;
     import org.osflash.signals.Signal;
     import com.company.assembleegameclient.screens.TitleMenuOption;
-    import kabam.rotmg.ui.view.components.MapBackground;
     import kabam.rotmg.ui.view.components.DarkLayer;
     import com.company.assembleegameclient.screens.AccountScreen;
     import com.company.assembleegameclient.ui.SoundIcon;
@@ -30,6 +29,7 @@ package kabam.rotmg.ui.view
     {
 
         internal static var TitleScreenGraphic:Class = TitleView_TitleScreenGraphic;
+        internal static var TitleScreenBackground:Class = TitleView_TitleScreenBackground;
         public static const MIDDLE_OF_BOTTOM_BAND:Number = 589.45;
         public static var queueEmailConfirmation:Boolean = false;
         public static var queuePasswordPrompt:Boolean = false;
@@ -58,7 +58,7 @@ package kabam.rotmg.ui.view
             this.menuOptionsBar = this.makeMenuOptionsBar();
             this.optionalButtonsAdded = new Signal();
             super();
-            addChild(new MapBackground());
+            addChild(new TitleScreenBackground());
             addChild(new DarkLayer());
             addChild(new TitleScreenGraphic());
             addChild(this.menuOptionsBar);

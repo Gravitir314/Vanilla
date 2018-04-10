@@ -11,6 +11,11 @@ package io.decagames.rotmg.dailyQuests.view.info
     import kabam.rotmg.ui.model.HUDModel;
     import io.decagames.rotmg.dailyQuests.signal.QuestRedeemCompleteSignal;
     import io.decagames.rotmg.dailyQuests.signal.LockQuestScreenSignal;
+    import io.decagames.rotmg.dailyQuests.signal.SelectedItemSlotsSignal;
+    import kabam.rotmg.core.signals.ShowTooltipSignal;
+    import kabam.rotmg.core.signals.HideTooltipsSignal;
+    import com.company.assembleegameclient.ui.tooltip.TextToolTip;
+    import kabam.rotmg.tooltips.HoverTooltipDelegate;
     import io.decagames.rotmg.dailyQuests.model.DailyQuest;
     import flash.events.MouseEvent;
     import kabam.rotmg.messaging.impl.data.SlotObjectData;
@@ -35,6 +40,14 @@ package io.decagames.rotmg.dailyQuests.view.info
         public var redeemCompleteSignal:QuestRedeemCompleteSignal;
         [Inject]
         public var lockScreen:LockQuestScreenSignal;
+        [Inject]
+        public var selectedItemSlotsSignal:SelectedItemSlotsSignal;
+        [Inject]
+        public var showTooltipSignal:ShowTooltipSignal;
+        [Inject]
+        public var hideTooltipsSignal:HideTooltipsSignal;
+        private var tooltip:TextToolTip;
+        private var hoverTooltipDelegate:HoverTooltipDelegate = new HoverTooltipDelegate();
 
 
         override public function initialize():void
@@ -45,26 +58,46 @@ package io.decagames.rotmg.dailyQuests.view.info
             {
                 this.showQuestInfo(_local_1.id);
             };
+            this.tooltip = new TextToolTip(0x363636, 0x9B9B9B, "", "You must select a reward first!", 190, null);
+            this.hoverTooltipDelegate.setHideToolTipsSignal(this.hideTooltipsSignal);
+            this.hoverTooltipDelegate.setShowToolTipSignal(this.showTooltipSignal);
+            this.hoverTooltipDelegate.tooltip = this.tooltip;
             this.view.completeButton.addEventListener(MouseEvent.CLICK, this.onCompleteButtonClickHandler);
+            this.selectedItemSlotsSignal.add(this.itemSelectedHandler);
         }
+
+        private function itemSelectedHandler(_arg_1:int):void{
+            this.view.completeButton.disabled = ((this.model.currentQuest.completed) ? true : ((this.model.selectedItem == -1) ? true : (!(DailyQuestInfo.hasAllItems(this.model.currentQuest.requirements, this.model.playerItemsFromInventory)))));
+            if (this.model.selectedItem == -1){
+                this.hoverTooltipDelegate.setDisplayObject(this.view.completeButton);
+            } else {
+                this.hoverTooltipDelegate.removeDisplayObject();
+            };
+        }
+
 
         override public function destroy():void
         {
             this.view.completeButton.removeEventListener(MouseEvent.CLICK, this.onCompleteButtonClickHandler);
             this.showInfoSignal.remove(this.showQuestInfo);
+            this.selectedItemSlotsSignal.remove(this.itemSelectedHandler);
         }
 
         private function showQuestInfo(_arg_1:String):void
         {
+            this.model.selectedItem = -1;
             this.view.clear();
             this.model.currentQuest = this.model.getQuestById(_arg_1);
             this.view.show(this.model.currentQuest, this.model.playerItemsFromInventory);
+            if (((!(this.view.completeButton.completed)) && (this.model.currentQuest.itemOfChoice))){
+                this.view.completeButton.disabled = true;
+                this.hoverTooltipDelegate.setDisplayObject(this.view.completeButton);
+            };
         }
 
         private function tileToSlot(_arg_1:InventoryTile):SlotObjectData
         {
-            var _local_2:SlotObjectData;
-            _local_2 = new SlotObjectData();
+            var _local_2:SlotObjectData = new SlotObjectData();
             _local_2.objectId_ = _arg_1.ownerGrid.owner.objectId_;
             _local_2.objectType_ = _arg_1.getItemId();
             _local_2.slotId_ = _arg_1.tileId;
@@ -80,7 +113,7 @@ package io.decagames.rotmg.dailyQuests.view.info
             var _local_6:Vector.<InventoryTile>;
             var _local_7:int;
             var _local_8:InventoryTile;
-            if (((this.view.completeButton.enabled) && (!(this.view.completeButton.completed))))
+            if (((!(this.view.completeButton.disabled)) && (!(this.view.completeButton.completed)))){
             {
                 _local_2 = new Vector.<SlotObjectData>();
                 _local_3 = this.hud.gameSprite.hudView.tabStrip.getTabView(BackpackTabContent);
@@ -108,7 +141,10 @@ package io.decagames.rotmg.dailyQuests.view.info
                     };
                 };
                 this.lockScreen.dispatch();
-                this.hud.gameSprite.gsc_.questRedeem(this.model.currentQuest.id, _local_2);
+                this.hud.gameSprite.gsc_.questRedeem(this.model.currentQuest.id, _local_2, this.model.selectedItem);
+                this.model.currentQuest.completed = true;
+                this.view.completeButton.completed = true;
+                this.view.completeButton.disabled = true;
             };
         }
 

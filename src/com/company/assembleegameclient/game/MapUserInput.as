@@ -35,10 +35,13 @@ package com.company.assembleegameclient.game
     import kabam.rotmg.chat.model.ChatMessage;
     import com.company.assembleegameclient.objects.GameObject;
     import io.decagames.rotmg.ui.popups.signals.CloseAllPopupsSignal;
+    import io.decagames.rotmg.ui.popups.signals.ShowPopupSignal;
+    import io.decagames.rotmg.friends.model.FriendModel;
     import com.company.assembleegameclient.map.Square;
     import kabam.rotmg.ui.UIUtils;
     import com.company.util.KeyCodes;
     import kabam.rotmg.game.model.UseBuyPotionVO;
+    import io.decagames.rotmg.friends.FriendsPopupView;
     import kabam.rotmg.friends.view.FriendListView;
     import com.company.assembleegameclient.ui.options.Options;
     import flash.system.Capabilities;
@@ -335,7 +338,10 @@ package com.company.assembleegameclient.game
             var _local_8:Number;
             var _local_9:Number;
             var _local_10:Boolean;
-            var _local_11:Square;
+            var _local_11:ShowPopupSignal;
+            var _local_12:FriendModel;
+            var _local_13:OpenDialogSignal;
+            var _local_14:Square;
             var _local_2:Stage = this.gs_.stage;
             this.currentString = (this.currentString + String.fromCharCode(_arg_1.keyCode).toLowerCase());
             if (this.currentString == UIUtils.EXPERIMENTAL_MENU_PASSWORD.slice(0, this.currentString.length))
@@ -437,7 +443,13 @@ package com.company.assembleegameclient.game
                     this.gs_.map.player_.isShooting = (this.autofire_ = (!(this.autofire_)));
                     break;
                 case Parameters.data_.toggleHPBar:
-                    Parameters.data_.HPBar = (!(Parameters.data_.HPBar));
+                    Parameters.data_.HPBar = ((Parameters.data_.HPBar != 0) ? 0 : 1);
+                    break;
+                case Parameters.data_.toggleProjectiles:
+                    Parameters.data_.disableAllyParticles = (!(Parameters.data_.disableAllyParticles));
+                    break;
+                case Parameters.data_.toggleMasterParticles:
+                    Parameters.data_.noParticlesMaster = (!(Parameters.data_.noParticlesMaster));
                     break;
                 case Parameters.data_.useInvSlot1:
                     this.useItem(4);
@@ -500,7 +512,14 @@ package com.company.assembleegameclient.game
                     Parameters.data_.friendListDisplayFlag = (!(Parameters.data_.friendListDisplayFlag));
                     if (Parameters.data_.friendListDisplayFlag)
                     {
-                        this.openDialogSignal.dispatch(new FriendListView());
+                        if (Parameters.USE_NEW_FRIENDS_UI){
+                            _local_11 = StaticInjectorContext.getInjector().getInstance(ShowPopupSignal);
+                            _local_12 = StaticInjectorContext.getInjector().getInstance(FriendModel);
+                            _local_11.dispatch(new FriendsPopupView(_local_12.hasInvitations));
+                        } else {
+                            _local_13 = StaticInjectorContext.getInjector().getInstance(OpenDialogSignal);
+                            _local_13.dispatch(new FriendListView());
+                        }
                     }
                     else
                     {
@@ -563,13 +582,12 @@ package com.company.assembleegameclient.game
                         this.addTextLine.dispatch(ChatMessage.make(Parameters.ERROR_CHAT_NAME, ("Projectile Color Type: " + Parameters.projColorType_)));
                         break;
                     case KeyCodes.F7:
-                        for each (_local_11 in this.gs_.map.squares_)
+                        for each (_local_14 in this.gs_.map.squares_)
                         {
-                            if (_local_11 != null)
-                            {
-                                _local_11.faces_.length = 0;
+                            if (_local_14 != null){
+                                _local_14.faces_.length = 0;
                             };
-                        };
+                        }
                         Parameters.blendType_ = ((Parameters.blendType_ + 1) % 2);
                         this.addTextLine.dispatch(ChatMessage.make(Parameters.CLIENT_CHAT_NAME, ("Blend type: " + Parameters.blendType_)));
                         break;

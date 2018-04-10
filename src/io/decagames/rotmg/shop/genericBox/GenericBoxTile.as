@@ -100,15 +100,48 @@ package io.decagames.rotmg.shop.genericBox
             {
                 addChild(this._infoButton);
             };
-            if (_arg_1.isNew())
-            {
-                this.addTag(new ShopBoxTag(ShopBoxTag.BLUE_TAG, "NEW"));
-            };
+            this.createBoxTags();
+            this.createEndTime();
+            this.updateTimeEndString();
+        }
+
+        private function createEndTime():void{
             this._endTimeLabel = new UILabel();
             this._endTimeLabel.y = 28;
             addChild(this._endTimeLabel);
-            DefaultLabelFormat.mysteryBoxEndsIn(this._endTimeLabel);
-            this.updateTimeEndString();
+            if (this._isPopup){
+                DefaultLabelFormat.popupEndsIn(this._endTimeLabel);
+            } else {
+                DefaultLabelFormat.mysteryBoxEndsIn(this._endTimeLabel);
+            };
+        }
+
+        private function createBoxTags():void{
+            var _local_2:String;
+            if (this._boxInfo.isNew()){
+                this.addTag(new ShopBoxTag(ShopBoxTag.BLUE_TAG, "NEW", this._isPopup));
+            };
+            var _local_1:Array = this._boxInfo.tags.split(",");
+            for each (_local_2 in _local_1) {
+                switch (_local_2){
+                    case "best_seller":
+                        this.addTag(new ShopBoxTag(ShopBoxTag.GREEN_TAG, "BEST", this._isPopup));
+                        break;
+                    case "hot":
+                        this.addTag(new ShopBoxTag(ShopBoxTag.ORANGE_TAG, "HOT", this._isPopup));
+                        break;
+                };
+            };
+            if (this._boxInfo.isOnSale()){
+                this.addTag(new ShopBoxTag(ShopBoxTag.RED_TAG, (this.calculateBoxPromotionPercent(this._boxInfo) + "% OFF"), this._isPopup));
+            };
+            if (this._boxInfo.unitsLeft != -1){
+                this.addTag(new ShopBoxTag(ShopBoxTag.PURPLE_TAG, (this._boxInfo.unitsLeft + " LEFT!"), this._isPopup));
+            };
+        }
+
+        private function calculateBoxPromotionPercent(_arg_1:GenericBoxInfo):int{
+            return (((_arg_1.priceAmount - _arg_1.saleAmount) / _arg_1.priceAmount) * 100);
         }
 
         protected function createBoxBackground():void
@@ -196,7 +229,7 @@ package io.decagames.rotmg.shop.genericBox
         public function addTag(_arg_1:ShopBoxTag):void
         {
             addChild(_arg_1);
-            _arg_1.y = (33 + (this.tags.length * 20));
+            _arg_1.y = (33 + (this.tags.length * _arg_1.height));
             _arg_1.x = -5;
             this.tags.push(_arg_1);
         }

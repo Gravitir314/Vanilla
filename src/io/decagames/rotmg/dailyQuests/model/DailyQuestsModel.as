@@ -6,6 +6,7 @@
 package io.decagames.rotmg.dailyQuests.model
 {
     import __AS3__.vec.Vector;
+    import io.decagames.rotmg.dailyQuests.view.slot.DailyQuestItemSlot;
     import kabam.rotmg.ui.model.HUDModel;
     import kabam.rotmg.constants.GeneralConstants;
     import io.decagames.rotmg.dailyQuests.view.info.DailyQuestInfo;
@@ -15,12 +16,33 @@ package io.decagames.rotmg.dailyQuests.model
     {
 
         private var _questsList:Vector.<DailyQuest> = new Vector.<DailyQuest>();
+        private var slots:Vector.<DailyQuestItemSlot> = new Vector.<DailyQuestItemSlot>();
         public var currentQuest:DailyQuest;
         public var isPopupOpened:Boolean;
         public var categoriesWeight:Array = [1, 0, 2, 3, 4];
         [Inject]
         public var hud:HUDModel;
 
+
+        public function registerSelectableSlot(_arg_1:DailyQuestItemSlot):void{
+            this.slots.push(_arg_1);
+        }
+
+        public function unregisterSelectableSlot(_arg_1:DailyQuestItemSlot):void{
+            var _local_2:int = this.slots.indexOf(_arg_1);
+            if (_local_2 != -1){
+                this.slots.splice(_local_2, 1);
+            }
+        }
+
+        public function unselectAllSlots(_arg_1:int):void{
+            var _local_2:DailyQuestItemSlot;
+            for each (_local_2 in this.slots) {
+                if (_local_2.itemID != _arg_1){
+                    _local_2.selected = false;
+                }
+            }
+        }
 
         public function clear():void
         {

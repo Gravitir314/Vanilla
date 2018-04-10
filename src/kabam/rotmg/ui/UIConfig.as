@@ -24,6 +24,8 @@ package kabam.rotmg.ui
     import io.decagames.rotmg.ui.popups.signals.ClosePopupSignal;
     import io.decagames.rotmg.ui.popups.signals.CloseCurrentPopupSignal;
     import io.decagames.rotmg.ui.popups.signals.CloseAllPopupsSignal;
+    import io.decagames.rotmg.ui.popups.signals.ShowLockFade;
+    import io.decagames.rotmg.ui.popups.signals.RemoveLockFade;
     import io.decagames.rotmg.characterMetrics.tracker.CharactersMetricsTracker;
     import io.decagames.rotmg.fame.data.FameTracker;
     import kabam.rotmg.ui.signals.ShowLoadingUISignal;
@@ -127,8 +129,10 @@ package kabam.rotmg.ui
     import io.decagames.rotmg.ui.scroll.UIScrollbarMediator;
     import io.decagames.rotmg.shop.mysteryBox.contentPopup.UIItemContainer;
     import io.decagames.rotmg.shop.mysteryBox.contentPopup.UIItemContainerMediator;
-    import io.decagames.rotmg.fame.FameStatsLine;
+    import io.decagames.rotmg.fame.StatsLine;
     import io.decagames.rotmg.fame.FameStatsLineMediator;
+    import io.decagames.rotmg.ui.tabs.UITab;
+    import io.decagames.rotmg.ui.tabs.UITabMediator;
     import io.decagames.rotmg.ui.popups.PopupView;
     import io.decagames.rotmg.ui.popups.PopupMediator;
     import io.decagames.rotmg.ui.popups.modal.ModalPopup;
@@ -137,6 +141,8 @@ package kabam.rotmg.ui
     import io.decagames.rotmg.ui.popups.modal.buttons.BuyGoldButtonMediator;
     import io.decagames.rotmg.ui.popups.modal.buttons.ClosePopupButton;
     import io.decagames.rotmg.ui.popups.modal.buttons.CancelButtonMediator;
+    import io.decagames.rotmg.ui.popups.modal.ConfirmationModal;
+    import io.decagames.rotmg.ui.popups.modal.ConfirmationModalMediator;
     import io.decagames.rotmg.shop.mysteryBox.rollModal.MysteryBoxRollModal;
     import io.decagames.rotmg.shop.mysteryBox.rollModal.MysteryBoxRollModalMediator;
     import io.decagames.rotmg.shop.packages.startupPackage.StartupPackage;
@@ -195,6 +201,8 @@ package kabam.rotmg.ui
             this.injector.map(ClosePopupSignal).asSingleton();
             this.injector.map(CloseCurrentPopupSignal).asSingleton();
             this.injector.map(CloseAllPopupsSignal).asSingleton();
+            this.injector.map(ShowLockFade).asSingleton();
+            this.injector.map(RemoveLockFade).asSingleton();
             this.injector.map(CharactersMetricsTracker).asSingleton();
             this.injector.map(FameTracker).asSingleton();
             this.injector.map(CharactersMetricsTracker).asSingleton();
@@ -250,11 +258,13 @@ package kabam.rotmg.ui
             this.mediatorMap.map(SlotBox).toMediator(SlotBoxMediator);
             this.mediatorMap.map(UIScrollbar).toMediator(UIScrollbarMediator);
             this.mediatorMap.map(UIItemContainer).toMediator(UIItemContainerMediator);
-            this.mediatorMap.map(FameStatsLine).toMediator(FameStatsLineMediator);
+            this.mediatorMap.map(StatsLine).toMediator(FameStatsLineMediator);
+            this.mediatorMap.map(UITab).toMediator(UITabMediator);
             this.mediatorMap.map(PopupView).toMediator(PopupMediator);
             this.mediatorMap.map(ModalPopup).toMediator(ModalPopupMediator);
             this.mediatorMap.map(BuyGoldButton).toMediator(BuyGoldButtonMediator);
             this.mediatorMap.map(ClosePopupButton).toMediator(CancelButtonMediator);
+            this.mediatorMap.map(ConfirmationModal).toMediator(ConfirmationModalMediator);
             this.mediatorMap.map(MysteryBoxRollModal).toMediator(MysteryBoxRollModalMediator);
             this.mediatorMap.map(StartupPackage).toMediator(StartupPackageMediator);
             TextureParser.instance;
