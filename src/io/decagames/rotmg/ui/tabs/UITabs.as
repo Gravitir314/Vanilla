@@ -27,7 +27,7 @@ package io.decagames.rotmg.ui.tabs
         private var borderlessMode:Boolean;
         public var buttonsRenderedSignal:Signal = new Signal();
 
-        public function UITabs(_arg_1:int, _arg_2:Boolean=false){
+        public function UITabs(_arg_1:int, _arg_2:Boolean=false)
         {
             this.tabsWidth = _arg_1;
             this.borderlessMode = _arg_2;

@@ -104,8 +104,7 @@ package io.decagames.rotmg.dailyQuests.view.info
             return (_local_2);
         }
 
-        private function onCompleteButtonClickHandler(_arg_1:MouseEvent):void
-        {
+        private function onCompleteButtonClickHandler(_arg_1:MouseEvent):void {
             var _local_2:Vector.<SlotObjectData>;
             var _local_3:BackpackTabContent;
             var _local_4:InventoryTabContent;
@@ -113,39 +112,41 @@ package io.decagames.rotmg.dailyQuests.view.info
             var _local_6:Vector.<InventoryTile>;
             var _local_7:int;
             var _local_8:InventoryTile;
-            if (((!(this.view.completeButton.disabled)) && (!(this.view.completeButton.completed)))){
-            {
-                _local_2 = new Vector.<SlotObjectData>();
-                _local_3 = this.hud.gameSprite.hudView.tabStrip.getTabView(BackpackTabContent);
-                _local_4 = this.hud.gameSprite.hudView.tabStrip.getTabView(InventoryTabContent);
-                _local_5 = this.model.currentQuest.requirements.concat();
-                _local_6 = new Vector.<InventoryTile>();
-                if (_local_3)
+            if (((!(this.view.completeButton.disabled)) && (!(this.view.completeButton.completed)))) {
                 {
-                    _local_6 = _local_6.concat(_local_3.backpack.tiles);
-                };
-                if (_local_4)
-                {
-                    _local_6 = _local_6.concat(_local_4.storage.tiles);
-                };
-                for each (_local_7 in _local_5)
-                {
-                    for each (_local_8 in _local_6)
-                    {
-                        if (_local_8.getItemId() == _local_7)
-                        {
-                            _local_6.splice(_local_6.indexOf(_local_8), 1);
-                            _local_2.push(this.tileToSlot(_local_8));
-                            break;
-                        };
-                    };
-                };
-                this.lockScreen.dispatch();
-                this.hud.gameSprite.gsc_.questRedeem(this.model.currentQuest.id, _local_2, this.model.selectedItem);
-                this.model.currentQuest.completed = true;
-                this.view.completeButton.completed = true;
-                this.view.completeButton.disabled = true;
-            };
+                    _local_2 = new Vector.<SlotObjectData>();
+                    _local_3 = this.hud.gameSprite.hudView.tabStrip.getTabView(BackpackTabContent);
+                    _local_4 = this.hud.gameSprite.hudView.tabStrip.getTabView(InventoryTabContent);
+                    _local_5 = this.model.currentQuest.requirements.concat();
+                    _local_6 = new Vector.<InventoryTile>();
+                    if (_local_3) {
+                        _local_6 = _local_6.concat(_local_3.backpack.tiles);
+                    }
+                    ;
+                    if (_local_4) {
+                        _local_6 = _local_6.concat(_local_4.storage.tiles);
+                    }
+                    ;
+                    for each (_local_7 in _local_5) {
+                        for each (_local_8 in _local_6) {
+                            if (_local_8.getItemId() == _local_7) {
+                                _local_6.splice(_local_6.indexOf(_local_8), 1);
+                                _local_2.push(this.tileToSlot(_local_8));
+                                break;
+                            }
+                            ;
+                        }
+                        ;
+                    }
+                    ;
+                    this.lockScreen.dispatch();
+                    this.hud.gameSprite.gsc_.questRedeem(this.model.currentQuest.id, _local_2, this.model.selectedItem);
+                    this.model.currentQuest.completed = true;
+                    this.view.completeButton.completed = true;
+                    this.view.completeButton.disabled = true;
+                }
+                ;
+            }
         }
 
 
