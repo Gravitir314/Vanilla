@@ -5,7 +5,9 @@
 
 package com.company.assembleegameclient.game
 {
-    import net.hires.debug.Stats;
+import io.decagames.rotmg.ui.popups.signals.ClosePopupByClassSignal;
+
+import net.hires.debug.Stats;
     import kabam.rotmg.game.signals.GiftStatusUpdateSignal;
     import kabam.rotmg.game.signals.AddTextLineSignal;
     import kabam.rotmg.game.signals.SetTextBoxVisibilitySignal;
@@ -78,6 +80,7 @@ package com.company.assembleegameclient.game
         private var potionInventoryModel:PotionInventoryModel;
         private var openDialogSignal:OpenDialogSignal;
         private var closeDialogSignal:CloseDialogsSignal;
+        private var closePopupByClassSignal:ClosePopupByClassSignal;
         private var tabStripModel:TabStripModel;
         private var layers:Layers;
         private var exitGame:ExitGameSignal;
@@ -103,6 +106,7 @@ package com.company.assembleegameclient.game
             this.exitGame = _local_2.getInstance(ExitGameSignal);
             this.openDialogSignal = _local_2.getInstance(OpenDialogSignal);
             this.closeDialogSignal = _local_2.getInstance(CloseDialogsSignal);
+            this.closePopupByClassSignal = _local_2.getInstance(ClosePopupByClassSignal);
             var _local_3:ApplicationSetup = _local_2.getInstance(ApplicationSetup);
             this.areFKeysAvailable = _local_3.areDeveloperHotkeysEnabled();
             this.gs_.map.signalRenderSwitch.add(this.onRenderSwitch);
@@ -331,10 +335,10 @@ package com.company.assembleegameclient.game
 
         private function onKeyDown(_arg_1:KeyboardEvent):void
         {
-            var _local_4:AddTextLineSignal;
-            var _local_5:ChatMessage;
-            var _local_6:GameObject;
-            var _local_7:CloseAllPopupsSignal;
+            var _local_4:CloseAllPopupsSignal;
+            var _local_5:AddTextLineSignal;
+            var _local_6:ChatMessage;
+            var _local_7:GameObject;
             var _local_8:Number;
             var _local_9:Number;
             var _local_10:Boolean;
@@ -348,13 +352,13 @@ package com.company.assembleegameclient.game
             {
                 if (this.currentString.length == UIUtils.EXPERIMENTAL_MENU_PASSWORD.length)
                 {
-                    _local_4 = StaticInjectorContext.getInjector().getInstance(AddTextLineSignal);
-                    _local_5 = new ChatMessage();
-                    _local_5.name = Parameters.SERVER_CHAT_NAME;
+                    _local_5 = StaticInjectorContext.getInjector().getInstance(AddTextLineSignal);
+                    _local_6 = new ChatMessage();
+                    _local_6.name = Parameters.SERVER_CHAT_NAME;
                     this.currentString = "";
                     UIUtils.SHOW_EXPERIMENTAL_MENU = (!(UIUtils.SHOW_EXPERIMENTAL_MENU));
-                    _local_5.text = ((UIUtils.SHOW_EXPERIMENTAL_MENU) ? "Experimental menu activated" : "Experimental menu deactivated");
-                    _local_4.dispatch(_local_5);
+                    _local_6.text = ((UIUtils.SHOW_EXPERIMENTAL_MENU) ? "Experimental menu activated" : "Experimental menu deactivated");
+                    _local_5.dispatch(_local_6);
                 };
             }
             else
@@ -418,8 +422,8 @@ package com.company.assembleegameclient.game
                     Parameters.save();
                     break;
                 case Parameters.data_.useSpecial:
-                    _local_6 = this.gs_.map.player_;
-                    if (_local_6 == null) break;
+                    _local_7 = this.gs_.map.player_;
+                    if (_local_7 == null) break;
                     if (!this.specialKeyDown_)
                     {
                         if (_local_3.isUnstable())
@@ -501,8 +505,8 @@ package com.company.assembleegameclient.game
                     break;
                 case Parameters.data_.escapeToNexus:
                 case Parameters.data_.escapeToNexus2:
-                    _local_7 = StaticInjectorContext.getInjector().getInstance(CloseAllPopupsSignal);
-                    _local_7.dispatch();
+                    _local_4 = StaticInjectorContext.getInjector().getInstance(CloseAllPopupsSignal);
+                    _local_4.dispatch();
                     this.exitGame.dispatch();
                     this.gs_.gsc_.escape();
                     Parameters.data_.needsRandomRealm = false;
@@ -524,11 +528,12 @@ package com.company.assembleegameclient.game
                     else
                     {
                         this.closeDialogSignal.dispatch();
+                        this.closePopupByClassSignal.dispatch(FriendsPopupView);
                     };
                     break;
                 case Parameters.data_.options:
-                    _local_7 = StaticInjectorContext.getInjector().getInstance(CloseAllPopupsSignal);
-                    _local_7.dispatch();
+                    _local_4 = StaticInjectorContext.getInjector().getInstance(CloseAllPopupsSignal);
+                    _local_4.dispatch();
                     this.clearInput();
                     this.layers.overlay.addChild(new Options(this.gs_));
                     break;
@@ -545,13 +550,13 @@ package com.company.assembleegameclient.game
                     };
                     break;
                 case Parameters.data_.switchTabs:
-                    _local_7 = StaticInjectorContext.getInjector().getInstance(CloseAllPopupsSignal);
-                    _local_7.dispatch();
+                    _local_4 = StaticInjectorContext.getInjector().getInstance(CloseAllPopupsSignal);
+                    _local_4.dispatch();
                     this.statsTabHotKeyInputSignal.dispatch();
                     break;
                 case Parameters.data_.interact:
-                    _local_7 = StaticInjectorContext.getInjector().getInstance(CloseAllPopupsSignal);
-                    _local_7.dispatch();
+                    _local_4 = StaticInjectorContext.getInjector().getInstance(CloseAllPopupsSignal);
+                    _local_4.dispatch();
                     break;
                 case Parameters.data_.testOne:
                     break;

@@ -56,18 +56,18 @@ package kabam.rotmg.dailyLogin.view
             this.centerModal();
         }
 
-        private function addClaimButton():*
+        private function addClaimButton():void
         {
             this.claimButton = new DeprecatedTextButtonStatic(16, "Go & Claim");
             this.claimButton.textChanged.addOnce(this.alignClaimButton);
             addChild(this.claimButton);
         }
 
-        public function showLegend(_arg_1:Boolean):*
+        public function showLegend(_arg_1:Boolean):void
         {
             var _local_2:Sprite;
             var _local_6:Bitmap;
-            var _local_7:Bitmap;
+            var _local_8:Bitmap;
             _local_2 = new Sprite();
             _local_2.y = (this.modalRectangle.height - 55);
             var _local_3:TextFieldDisplayConcrete = new TextFieldDisplayConcrete().setSize(16).setColor(0xFFFFFF).setTextWidth(this.modalRectangle.width).setHorizontalAlign(TextFormatAlign.LEFT);
@@ -85,12 +85,12 @@ package kabam.rotmg.dailyLogin.view
             _local_6.x = (-(Math.round((_local_6.width / 2))) + 10);
             _local_6.y = (-(Math.round((_local_6.height / 2))) + 9);
             _local_2.addChild(_local_6);
-            _local_5 = AssetLibrary.getImageFromSet("lofiInterfaceBig", 11);
-            _local_5 = TextureRedrawer.redraw(_local_5, 20, true, 0);
-            _local_7 = new Bitmap(_local_5);
-            _local_7.x = (-(Math.round((_local_7.width / 2))) + 10);
-            _local_7.y = (-(Math.round((_local_7.height / 2))) + 30);
-            _local_2.addChild(_local_7);
+            var _local_7:BitmapData = AssetLibrary.getImageFromSet("lofiInterfaceBig", 11);
+            _local_7 = TextureRedrawer.redraw(_local_7, 20, true, 0);
+            _local_8 = new Bitmap(_local_7);
+            _local_8.x = (-(Math.round((_local_8.width / 2))) + 10);
+            _local_8.y = (-(Math.round((_local_8.height / 2))) + 30);
+            _local_2.addChild(_local_8);
             _local_2.addChild(_local_3);
             _local_2.addChild(_local_4);
             if (!_arg_1)
@@ -114,7 +114,7 @@ package kabam.rotmg.dailyLogin.view
             };
         }
 
-        private function createModalBox():*
+        private function createModalBox():void
         {
             var _local_1:DisplayObject = new MysteryBoxSelectModal.backgroundImageEmbed();
             _local_1.width = this.modalRectangle.width + 1;

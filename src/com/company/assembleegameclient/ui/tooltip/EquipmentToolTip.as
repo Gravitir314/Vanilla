@@ -313,12 +313,12 @@ package com.company.assembleegameclient.ui.tooltip
             return (activateTags.length() >= 1);
         }
 
-        private function removeTitle():*
+        private function removeTitle():void
         {
             removeChild(this.titleText);
         }
 
-        private function removeDesc():*
+        private function removeDesc():void
         {
             removeChild(this.descText);
         }

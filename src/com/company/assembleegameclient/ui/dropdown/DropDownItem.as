@@ -21,7 +21,7 @@ package com.company.assembleegameclient.ui.dropdown
         {
             this.w_ = _arg_2;
             this.h_ = _arg_3;
-            this.nameText_ = new BaseSimpleText(16, 0xB3B3B3, false, 0, 0);
+            this.nameText_ = new BaseSimpleText(13, 0xB3B3B3, false, 0, 0);
             this.nameText_.setBold(true);
             this.nameText_.text = _arg_1;
             this.nameText_.updateMetrics();

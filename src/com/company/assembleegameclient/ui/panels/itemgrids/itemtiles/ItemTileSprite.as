@@ -56,6 +56,7 @@ package com.company.assembleegameclient.ui.panels.itemgrids.itemtiles
             var _local_2:BitmapData;
             var _local_3:XML;
             var _local_4:BitmapData;
+            var _local_5:BitmapData;
             var _local_1:int = this.itemId;
             if (_local_1 != ItemConstants.NO_ITEM)
             {
@@ -75,9 +76,9 @@ package com.company.assembleegameclient.ui.panels.itemgrids.itemtiles
                 if ((((_local_3) && (_local_3.hasOwnProperty("Quantity"))) && (this.bitmapFactory)))
                 {
                     _local_2 = _local_2.clone();
-                    _local_4 = this.bitmapFactory.make(new StaticStringBuilder(String(_local_3.Quantity)), 12, 0xFFFFFF, false, IDENTITY_MATRIX, false);
-                    _local_4.applyFilter(_local_4, _local_4.rect, PointUtil.ORIGIN, PotionSlotView.READABILITY_SHADOW_2);
-                    _local_2.draw(_local_4, DOSE_MATRIX);
+                    _local_5 = this.bitmapFactory.make(new StaticStringBuilder(String(_local_3.Quantity)), 12, 0xFFFFFF, false, IDENTITY_MATRIX, false);
+                    _local_5.applyFilter(_local_5, _local_5.rect, PointUtil.ORIGIN, PotionSlotView.READABILITY_SHADOW_2);
+                    _local_2.draw(_local_5, DOSE_MATRIX);
                 };
                 this.itemBitmap.bitmapData = _local_2;
                 this.itemBitmap.x = (-(_local_2.width) / 2);

@@ -220,6 +220,7 @@ package com.company.assembleegameclient.objects
         override public function getIcon():BitmapData
         {
             var _local_3:BaseSimpleText;
+            var _local_4:BaseSimpleText;
             var _local_1:BitmapData = ObjectLibrary.getRedrawnTextureFromType(this.merchandiseType_, 80, true);
             var _local_2:XML = ObjectLibrary.xmlLibrary_[this.merchandiseType_];
             if (_local_2.hasOwnProperty("Doses"))
@@ -233,10 +234,10 @@ package com.company.assembleegameclient.objects
             if (_local_2.hasOwnProperty("Quantity"))
             {
                 _local_1 = _local_1.clone();
-                _local_3 = new BaseSimpleText(12, 0xFFFFFF, false, 0, 0);
-                _local_3.text = String(_local_2.Quantity);
-                _local_3.updateMetrics();
-                _local_1.draw(_local_3, DOSE_MATRIX);
+                _local_4 = new BaseSimpleText(12, 0xFFFFFF, false, 0, 0);
+                _local_4.text = String(_local_2.Quantity);
+                _local_4.updateMetrics();
+                _local_1.draw(_local_4, DOSE_MATRIX);
             };
             return (_local_1);
         }

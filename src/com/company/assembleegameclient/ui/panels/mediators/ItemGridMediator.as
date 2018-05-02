@@ -5,7 +5,11 @@
 
 package com.company.assembleegameclient.ui.panels.mediators
 {
-    import robotlegs.bender.bundles.mvcs.Mediator;
+import com.company.assembleegameclient.sound.SoundEffectLibrary;
+
+import flash.utils.getTimer;
+
+import robotlegs.bender.bundles.mvcs.Mediator;
     import com.company.assembleegameclient.ui.panels.itemgrids.ItemGrid;
     import kabam.rotmg.core.model.MapModel;
     import kabam.rotmg.core.model.PlayerModel;
@@ -95,6 +99,10 @@ package com.company.assembleegameclient.ui.panels.mediators
             var _local_7:FoodFeedFuseSlot;
             var _local_8:int;
             var _local_2:InteractiveItemTile = _arg_1.tile;
+            if (this.swapTooSoon()){
+                _local_2.resetItemPosition();
+                return;
+            };
             var _local_3:* = DisplayHierarchy.getParentWithTypeArray(_local_2.getDropTarget(), TabStripView, InteractiveItemTile, FoodFeedFuseSlot, Map);
             if (((_local_2.getItemId() == PotionInventoryModel.HEALTH_POTION_ID) || ((_local_2.getItemId() == PotionInventoryModel.MAGIC_POTION_ID) && (!(Boolean((_local_3 as FoodFeedFuseSlot)))))))
             {
@@ -300,6 +308,9 @@ package com.company.assembleegameclient.ui.panels.mediators
         {
             var _local_2:InteractiveItemTile;
             var _local_3:int;
+            if (this.swapTooSoon()){
+                return;
+            };
             if (Parameters.data_.inventorySwap)
             {
                 _local_2 = _arg_1.tile;
@@ -318,6 +329,9 @@ package com.company.assembleegameclient.ui.panels.mediators
 
         private function onDoubleClick(_arg_1:ItemTileEvent):void
         {
+            if (this.swapTooSoon()){
+                return;
+            };
             var _local_2:InteractiveItemTile = _arg_1.tile;
             if (this.isPetFormStone(_local_2))
             {
@@ -411,6 +425,16 @@ package com.company.assembleegameclient.ui.panels.mediators
             {
                 GameServerConnection.instance.useItem_new(_local_2, _arg_1.tileId);
             };
+        }
+
+        private function swapTooSoon():Boolean{
+            var _local_1:int = getTimer();
+            if ((this.view.curPlayer.lastSwap_ + 600) > _local_1){
+                SoundEffectLibrary.play("error");
+                return (true);
+            };
+            this.view.curPlayer.lastSwap_ = _local_1;
+            return (false);
         }
 
     }

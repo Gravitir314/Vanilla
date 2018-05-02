@@ -38,9 +38,8 @@ package kabam.rotmg.dailyLogin.view
         private var state_:String = "idle";
         private var tabNameTxt:TextFieldDisplayConcrete;
         private var background:Sprite;
-        private var tabName:*;
-        private var hintText:*;
-        private var hintTextField:*;
+        private var tabName:String;
+        private var hintText:String;
         private var tooltip:DailyCalendarInfoIcon;
 
         public function CalendarTabButton(_arg_1:String, _arg_2:String, _arg_3:String, _arg_4:String, _arg_5:int)

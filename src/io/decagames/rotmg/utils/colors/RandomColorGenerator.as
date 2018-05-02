@@ -87,7 +87,7 @@ package io.decagames.rotmg.utils.colors
             return ([Math.floor((_local_10 * 0xFF)), Math.floor((_local_11 * 0xFF)), Math.floor((_local_12 * 0xFF))]);
         }
 
-        private function pickSaturation(_arg_1:int, _arg_2:*):int
+        private function pickSaturation(_arg_1:int, _arg_2:String):int
         {
             var _local_3:Array = this.getSaturationRange(_arg_1);
             var _local_4:int = _local_3[0];
@@ -126,12 +126,12 @@ package io.decagames.rotmg.utils.colors
             return (null);
         }
 
-        internal function getSaturationRange(_arg_1:int):Array
+        private function getSaturationRange(_arg_1:int):Array
         {
             return (this.getColorInfo(_arg_1).saturationRange);
         }
 
-        internal function pickBrightness(_arg_1:int, _arg_2:int, _arg_3:String):int
+        private function pickBrightness(_arg_1:int, _arg_2:int, _arg_3:String):int
         {
             var _local_4:int = this.getMinimumBrightness(_arg_1, _arg_2);
             var _local_5:int = 100;
@@ -151,7 +151,7 @@ package io.decagames.rotmg.utils.colors
             return (this.randomWithin([_local_4, _local_5]));
         }
 
-        internal function getMinimumBrightness(_arg_1:int, _arg_2:int):int
+        private function getMinimumBrightness(_arg_1:int, _arg_2:int):int
         {
             var _local_5:int;
             var _local_6:int;
@@ -180,9 +180,9 @@ package io.decagames.rotmg.utils.colors
 
         private function randomWithin(_arg_1:Array):int
         {
-            var _local_2:*;
-            var _local_3:*;
-            var _local_4:*;
+            var _local_2:Number;
+            var _local_3:Number;
+            var _local_4:Number;
             if (this.seed == -1)
             {
                 return (Math.floor((_arg_1[0] + (Math.random() * ((_arg_1[1] + 1) - _arg_1[0])))));
@@ -194,7 +194,7 @@ package io.decagames.rotmg.utils.colors
             return (Math.floor((_local_3 + (_local_4 * (_local_2 - _local_3)))));
         }
 
-        internal function pickHue(_arg_1:int=-1):int
+        private function pickHue(_arg_1:int=-1):int
         {
             var _local_2:Array = this.getHueRange(_arg_1);
             var _local_3:int = this.randomWithin(_local_2);
@@ -205,7 +205,7 @@ package io.decagames.rotmg.utils.colors
             return (_local_3);
         }
 
-        internal function getHueRange(_arg_1:int):Array
+        private function getHueRange(_arg_1:int):Array
         {
             if (((_arg_1 < 360) && (_arg_1 > 0)))
             {
@@ -214,7 +214,7 @@ package io.decagames.rotmg.utils.colors
             return ([0, 360]);
         }
 
-        private function defineColor(_arg_1:String, _arg_2:Array, _arg_3:Array):*
+        private function defineColor(_arg_1:String, _arg_2:Array, _arg_3:Array):void
         {
             var _local_4:int = _arg_3[0][0];
             var _local_5:int = _arg_3[(_arg_3.length - 1)][0];
@@ -228,7 +228,7 @@ package io.decagames.rotmg.utils.colors
             };
         }
 
-        private function loadColorBounds():*
+        private function loadColorBounds():void
         {
             this.defineColor("monochrome", null, [[0, 0], [100, 0]]);
             this.defineColor("red", [-26, 18], [[20, 100], [30, 92], [40, 89], [50, 85], [60, 78], [70, 70], [80, 60], [90, 55], [100, 50]]);

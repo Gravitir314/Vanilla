@@ -126,7 +126,7 @@ package kabam.rotmg.mysterybox.components
             };
         }
 
-        public function updateContent():*
+        public function updateContent():void
         {
             var _local_1:MysteryBoxSelectEntry;
             for each (_local_1 in this.selectEntries)

@@ -32,7 +32,7 @@ package kabam.rotmg.account.securityQuestions.view
             };
         }
 
-        public function updateAnswers(_arg_1:Array):*
+        public function updateAnswers(_arg_1:Array):void
         {
             var _local_3:TextInputField;
             var _local_2:int = 1;
@@ -126,7 +126,7 @@ package kabam.rotmg.account.securityQuestions.view
             titleText_.setStringBuilder(new LineBuilder().setParams(TextKey.SECURITY_QUESTIONS_SAVING_IN_PROGRESS));
         }
 
-        public function setError(_arg_1:String):*
+        public function setError(_arg_1:String):void
         {
             titleText_.setStringBuilder(new LineBuilder().setParams(_arg_1, {"min":this.minQuestionLength}));
             titleText_.setColor(16549442);

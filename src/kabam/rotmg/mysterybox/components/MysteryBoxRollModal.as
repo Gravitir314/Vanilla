@@ -148,7 +148,7 @@ package kabam.rotmg.mysterybox.components
         }
 
 
-        private function configureRollByQuantity(_arg_1:*):*
+        private function configureRollByQuantity(_arg_1:int):void
         {
             var _local_2:int;
             var _local_3:int;
@@ -330,7 +330,7 @@ package kabam.rotmg.mysterybox.components
             this.prepareNextRoll();
         }
 
-        private function prepareNextRoll():*
+        private function prepareNextRoll():void
         {
             this.titleText = this.getText(this.mbi.title, TEXT_MARGIN, 6, true).setSize(18);
             this.titleText.setColor(0xFFDE00);
@@ -688,8 +688,8 @@ package kabam.rotmg.mysterybox.components
 
         private function doEaseInAnimation(_arg_1:DisplayObject, _arg_2:Object=null, _arg_3:Object=null):void
         {
-            var _local_4:GTween = new GTween(_arg_1, (0.5 * 1), _arg_2, {"ease":Sine.easeOut});
-            _local_4.nextTween = new GTween(_arg_1, (0.5 * 1), _arg_3, {"ease":Sine.easeIn});
+            var _local_4:GTween = new GTween(_arg_1, 0.5, _arg_2, {"ease":Sine.easeOut});
+            _local_4.nextTween = new GTween(_arg_1, 0.5, _arg_3, {"ease":Sine.easeIn});
             _local_4.nextTween.paused = true;
         }
 

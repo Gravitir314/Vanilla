@@ -90,12 +90,21 @@ package com.company.assembleegameclient.objects
         {
             var _local_3:int = (_arg_1.indexOf("_") + 1);
             var _local_4:int = _arg_1.indexOf("CXML");
+            if (((_arg_1.indexOf("_ObjectsCXML") == -1) && (_arg_1.indexOf("_StaticObjectsCXML") == -1))){
+                if (_arg_1.indexOf("Objects") != -1){
+                    _local_4 = _arg_1.indexOf("ObjectsCXML");
+                } else {
+                    if (_arg_1.indexOf("Object") != -1){
+                        _local_4 = _arg_1.indexOf("ObjectCXML");
+                    };
+                };
+            };
             currentDungeon = _arg_1.substr(_local_3, (_local_4 - _local_3));
             dungeonsXMLLibrary_[currentDungeon] = new Dictionary(true);
             parseFromXML(_arg_2, parseDungeonCallbak);
         }
 
-        private static function parseDungeonCallbak(_arg_1:int, _arg_2:XML):*
+        private static function parseDungeonCallbak(_arg_1:int, _arg_2:XML):void
         {
             if (((!(currentDungeon == "")) && (!(dungeonsXMLLibrary_[currentDungeon] == null))))
             {

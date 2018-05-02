@@ -62,7 +62,7 @@ package kabam.rotmg.news.services
             };
         }
 
-        private function parseNews(_arg_1:String):*
+        private function parseNews(_arg_1:String):void
         {
             var _local_3:Object;
             var _local_4:Object;

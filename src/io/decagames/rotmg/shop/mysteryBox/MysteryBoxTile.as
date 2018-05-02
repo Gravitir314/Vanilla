@@ -18,7 +18,6 @@ package io.decagames.rotmg.shop.mysteryBox
         private var maxResultHeight:int = 75;
         private var maxResultWidth:int;
         private var resultElementWidth:int;
-        private var resultGridMargin:* = 0;
         private var gridConfig:Point;
 
         public function MysteryBoxTile(_arg_1:MysteryBoxInfo)

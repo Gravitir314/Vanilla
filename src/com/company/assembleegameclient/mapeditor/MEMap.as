@@ -111,8 +111,8 @@ package com.company.assembleegameclient.mapeditor
             var _local_6:int;
             var _local_7:int;
             var _local_8:String;
-            var _local_2:* = this.tileDict_;
-            var _local_3:* = NUM_SQUARES;
+            var _local_2:Dictionary = this.tileDict_;
+            var _local_3:int = NUM_SQUARES;
             NUM_SQUARES = _arg_1;
             this.setZoom(minZoom());
             this.tileDict_ = new Dictionary();

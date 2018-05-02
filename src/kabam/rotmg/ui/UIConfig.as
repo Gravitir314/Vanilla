@@ -5,7 +5,9 @@
 
 package kabam.rotmg.ui
 {
-    import robotlegs.bender.framework.api.IConfig;
+import io.decagames.rotmg.ui.popups.signals.ClosePopupByClassSignal;
+
+import robotlegs.bender.framework.api.IConfig;
     import org.swiftsuspenders.Injector;
     import robotlegs.bender.extensions.mediatorMap.api.IMediatorMap;
     import robotlegs.bender.extensions.signalCommandMap.api.ISignalCommandMap;
@@ -200,6 +202,7 @@ package kabam.rotmg.ui
             this.injector.map(ShowPopupSignal).asSingleton();
             this.injector.map(ClosePopupSignal).asSingleton();
             this.injector.map(CloseCurrentPopupSignal).asSingleton();
+            this.injector.map(ClosePopupByClassSignal).asSingleton();
             this.injector.map(CloseAllPopupsSignal).asSingleton();
             this.injector.map(ShowLockFade).asSingleton();
             this.injector.map(RemoveLockFade).asSingleton();

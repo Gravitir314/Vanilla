@@ -28,7 +28,7 @@ package kabam.rotmg.account.core.view
             this.update.add(this.updateLogin);
         }
 
-        private function updateDisplayName():*
+        private function updateDisplayName():void
         {
             var _local_1:WebAccount;
             if ((this.account is WebAccount))

@@ -89,6 +89,7 @@ package com.company.assembleegameclient.ui
         {
             var _local_4:Bitmap;
             var _local_5:BitmapData;
+            var _local_6:BitmapData;
             SpriteUtil.safeRemoveChild(this, backgroundImage_);
             var _local_1:BitmapData = ObjectLibrary.getRedrawnTextureFromType(this.item_, 80, true);
             var _local_2:XML = ObjectLibrary.xmlLibrary_[this.item_];
@@ -101,8 +102,8 @@ package com.company.assembleegameclient.ui
             if (((_local_2.hasOwnProperty("Quantity")) && (this.bitmapFactory)))
             {
                 _local_1 = _local_1.clone();
-                _local_5 = this.bitmapFactory.make(new StaticStringBuilder(String(_local_2.Quantity)), 12, 0xFFFFFF, false, IDENTITY_MATRIX, false);
-                _local_1.draw(_local_5, DOSE_MATRIX);
+                _local_6 = this.bitmapFactory.make(new StaticStringBuilder(String(_local_2.Quantity)), 12, 0xFFFFFF, false, IDENTITY_MATRIX, false);
+                _local_1.draw(_local_6, DOSE_MATRIX);
             };
             var _local_3:Point = offsets(this.item_, type_, false);
             _local_4 = new Bitmap(_local_1);

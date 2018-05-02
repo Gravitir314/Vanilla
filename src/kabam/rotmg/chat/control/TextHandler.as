@@ -6,7 +6,8 @@
 package kabam.rotmg.chat.control
 {
     import kabam.rotmg.account.core.Account;
-    import kabam.rotmg.game.model.GameModel;
+import kabam.rotmg.application.api.ApplicationSetup;
+import kabam.rotmg.game.model.GameModel;
     import kabam.rotmg.game.signals.AddTextLineSignal;
     import kabam.rotmg.game.signals.AddSpeechBalloonSignal;
     import kabam.rotmg.language.model.StringMap;
@@ -56,6 +57,8 @@ package kabam.rotmg.chat.control
         public var hudModel:HUDModel;
         [Inject]
         public var friendModel:FriendModel;
+        [Inject]
+        public var setup:ApplicationSetup;
 
 
         public function execute(_arg_1:Text):void
@@ -123,13 +126,15 @@ package kabam.rotmg.chat.control
             if (((_local_2) && (TextureDataConcrete.remoteTexturesUsed == true)))
             {
                 TextureDataConcrete.remoteTexturesUsed = false;
-                _local_4 = _arg_1.name_;
-                _local_5 = _arg_1.text_;
-                _arg_1.name_ = "";
-                _arg_1.text_ = "Remote Textures used in this build";
-                this.addTextAsTextLine(_arg_1);
-                _arg_1.name_ = _local_4;
-                _arg_1.text_ = _local_5;
+                if (this.setup.isServerLocal()){
+                    _local_4 = _arg_1.name_;
+                    _local_5 = _arg_1.text_;
+                    _arg_1.name_ = "";
+                    _arg_1.text_ = "Remote Textures used in this build";
+                    this.addTextAsTextLine(_arg_1);
+                    _arg_1.name_ = _local_4;
+                    _arg_1.text_ = _local_5;
+                };
             };
             if (_local_2)
             {

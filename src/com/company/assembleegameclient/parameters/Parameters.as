@@ -18,7 +18,7 @@ package com.company.assembleegameclient.parameters
     public class Parameters 
     {
 
-        public static const BUILD_VERSION:String = "X24.0";
+        public static const BUILD_VERSION:String = "X25.1";
         public static const MINOR_VERSION:String = "0";
         public static const ENABLE_ENCRYPTION:Boolean = true;
         public static const PORT:int = 2050;
@@ -39,7 +39,7 @@ package com.company.assembleegameclient.parameters
         public static const GUILD_CREATION_PRICE:int = 1000;
         public static var data_:Object = null;
         public static var GPURenderError:Boolean = false;
-        public static var sessionStarted:* = false;
+        public static var sessionStarted:Boolean = false;
         public static var blendType_:int = 1;
         public static var projColorType_:int = 0;
         public static var drawProj_:Boolean = true;
@@ -190,8 +190,8 @@ package com.company.assembleegameclient.parameters
             setDefault("bestServer", null);
             setDefault("needsTutorial", true);
             setDefault("needsRandomRealm", true);
-            setDefault("cameraAngle", ((7 * Math.PI) / 4));
-            setDefault("defaultCameraAngle", ((7 * Math.PI) / 4));
+            setDefault("cameraAngle", 0);
+            setDefault("defaultCameraAngle", 0);
             setDefault("showQuestPortraits", true);
             setDefault("fullscreenMode", false);
             setDefault("showProtips", true);
@@ -232,7 +232,7 @@ package com.company.assembleegameclient.parameters
             };
             setDefault("forceChatQuality", false);
             setDefault("hidePlayerChat", false);
-            setDefault("chatStarRequirement", 1);
+            setDefault("chatStarRequirement", 2);
             setDefault("chatAll", true);
             setDefault("chatWhisper", true);
             setDefault("chatGuild", true);

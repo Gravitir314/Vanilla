@@ -61,7 +61,7 @@ package kabam.rotmg.dailyLogin.controller
             this.view.closeButton.clicked.add(this.onCloseButtonClicked);
         }
 
-        public function onCloseButtonClicked():*
+        public function onCloseButtonClicked():void
         {
             this.view.closeButton.clicked.remove(this.onCloseButtonClicked);
             this.flushStartupQueue.dispatch();

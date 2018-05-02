@@ -32,7 +32,7 @@ package io.decagames.rotmg.fame{
         protected var lineHeight:int;
         private var _tooltipText:String;
         private var _lineType:int;
-        private var isLocked:*;
+        private var isLocked:Boolean;
         protected var fameValue:UILabel = new UILabel();
         protected var label:UILabel;
         protected var lock:Bitmap;

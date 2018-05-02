@@ -151,7 +151,7 @@ package kabam.rotmg.account.web.view
             this.loginButton.setTextKey(TextKey.LOG_OUT);
             if (((_local_1.getEnvironment() == BuildEnvironment.TESTING) || (_local_1.getEnvironment() == BuildEnvironment.LOCALHOST)))
             {
-                this.addAndAlignHorizontally(this.accountText, this.makeDividerText(), this.resetButton, this.makeDividerText(), this.loginButton);
+                this.addAndAlignHorizontally(this.accountText, this.makeDividerText(), this.loginButton);
             }
             else
             {

@@ -59,7 +59,7 @@ package kabam.rotmg.friends.view
             this.view.tabSignal.removeAll();
         }
 
-        private function initView(_arg_1:Boolean=false):*
+        private function initView(_arg_1:Boolean=false):void
         {
             if (_arg_1)
             {

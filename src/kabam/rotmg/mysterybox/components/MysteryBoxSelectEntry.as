@@ -137,7 +137,7 @@ package kabam.rotmg.mysterybox.components
             addEventListener(Event.ENTER_FRAME, this.onEnterFrame);
         }
 
-        private function updateTextPosition():*
+        private function updateTextPosition():void
         {
             this.title.y = Math.round(((this.redbar.height - (this.title.getTextHeight() + ((this.title.textField.numLines == 1) ? 8 : 10))) / 2));
             if ((((this.mbi.isNew()) || (this.mbi.isOnSale())) && (this.title.textField.numLines == 2)))
@@ -146,7 +146,7 @@ package kabam.rotmg.mysterybox.components
             };
         }
 
-        public function updateContent():*
+        public function updateContent():void
         {
             if (this.left)
             {
@@ -154,7 +154,7 @@ package kabam.rotmg.mysterybox.components
             };
         }
 
-        private function addUnitsLeftText():*
+        private function addUnitsLeftText():void
         {
             var _local_1:uint;
             var _local_2:int;
@@ -181,7 +181,7 @@ package kabam.rotmg.mysterybox.components
             };
         }
 
-        private function markAsSold():*
+        private function markAsSold():void
         {
             this.buyButton.setPrice(0, Currency.INVALID);
             this.buyButton.setText(LineBuilder.getLocalizedStringFromKey("MysteryBoxError.soldOutButton"));
@@ -209,7 +209,7 @@ package kabam.rotmg.mysterybox.components
             this.removeInfoImageChild();
         }
 
-        private function onClick(_arg_1:MouseEvent):*
+        private function onClick(_arg_1:MouseEvent):void
         {
             switch (_arg_1.currentTarget)
             {
@@ -401,6 +401,7 @@ package kabam.rotmg.mysterybox.components
             var _local_4:Dialog;
             var _local_5:MysteryBoxRollModal;
             var _local_6:Boolean;
+            var _local_7:OpenDialogSignal;
             if (((!(this.mbi.unitsLeft == -1)) && (this._quantity > this.mbi.unitsLeft)))
             {
                 _local_2 = StaticInjectorContext.getInjector().getInstance(OpenDialogSignal);
@@ -427,8 +428,8 @@ package kabam.rotmg.mysterybox.components
                 if (_local_6)
                 {
                     _local_5.parentSelectModal = MysteryBoxSelectModal(parent.parent);
-                    _local_2 = StaticInjectorContext.getInjector().getInstance(OpenDialogSignal);
-                    _local_2.dispatch(_local_5);
+                    _local_7 = StaticInjectorContext.getInjector().getInstance(OpenDialogSignal);
+                    _local_7.dispatch(_local_5);
                 };
             };
         }

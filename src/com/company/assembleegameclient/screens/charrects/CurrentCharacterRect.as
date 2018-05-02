@@ -7,7 +7,10 @@ package com.company.assembleegameclient.screens.charrects
 {
     import com.company.assembleegameclient.ui.tooltip.MyPlayerToolTip;
     import com.company.assembleegameclient.ui.tooltip.TextToolTip;
-    import org.osflash.signals.Signal;
+
+import kabam.rotmg.pets.data.PetVO;
+
+import org.osflash.signals.Signal;
     import flash.display.Sprite;
     import com.company.assembleegameclient.appengine.CharacterStats;
     import com.company.assembleegameclient.appengine.SavedCharacter;
@@ -112,7 +115,7 @@ package com.company.assembleegameclient.screens.charrects
 
         private function makePetIcon():void
         {
-            var _local_1:* = this.char.getPetVO();
+            var _local_1:PetVO = this.char.getPetVO();
             if (_local_1)
             {
                 this.petIcon = _local_1.getSkin();

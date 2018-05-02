@@ -1222,7 +1222,7 @@ package com.company.assembleegameclient.objects
             var _local_4:int = 5;
             this.hpbarBackPath_.data.length = 0;
             var _local_5:* = 1.2;
-            this.hpbarBackPath_.data.push(((posS_[0] - _local_3) - _local_5), (((posS_[1] + _arg_2) - 0) - _local_5), ((posS_[0] + _local_3) + _local_5), (((posS_[1] + _arg_2) - 0) - _local_5), ((posS_[0] + _local_3) + _local_5), (((posS_[1] + _arg_2) + _local_4) + _local_5), ((posS_[0] - _local_3) - _local_5), (((posS_[1] + _arg_2) + _local_4) + _local_5));
+            (this.hpbarBackPath_.data as Vector.<Number>).push(((posS_[0] - _local_3) - _local_5), ((posS_[1] + _arg_2) - _local_5), ((posS_[0] + _local_3) + _local_5), ((posS_[1] + _arg_2) - _local_5), ((posS_[0] + _local_3) + _local_5), (((posS_[1] + _arg_2) + _local_4) + _local_5), ((posS_[0] - _local_3) - _local_5), (((posS_[1] + _arg_2) + _local_4) + _local_5));
             _arg_1.push(this.hpbarBackFill_);
             _arg_1.push(this.hpbarBackPath_);
             _arg_1.push(GraphicsUtil.END_FILL);
@@ -1231,7 +1231,7 @@ package com.company.assembleegameclient.objects
                 _local_6 = (this.hp_ / this.maxHP_);
                 _local_7 = ((_local_6 * 2) * _local_3);
                 this.hpbarPath_.data.length = 0;
-                this.hpbarPath_.data.push((posS_[0] - _local_3), (posS_[1] + _arg_2), ((posS_[0] - _local_3) + _local_7), (posS_[1] + _arg_2), ((posS_[0] - _local_3) + _local_7), ((posS_[1] + _arg_2) + _local_4), (posS_[0] - _local_3), ((posS_[1] + _arg_2) + _local_4));
+                (this.hpbarPath_.data as Vector.<Number>).push((posS_[0] - _local_3), (posS_[1] + _arg_2), ((posS_[0] - _local_3) + _local_7), (posS_[1] + _arg_2), ((posS_[0] - _local_3) + _local_7), ((posS_[1] + _arg_2) + _local_4), (posS_[0] - _local_3), ((posS_[1] + _arg_2) + _local_4));
                 this.hpbarFill_.color = ((_local_6 < 0.5) ? ((_local_6 < 0.2) ? 14684176 : 16744464) : 0x10FF00);
                 _arg_1.push(this.hpbarFill_);
                 _arg_1.push(this.hpbarPath_);
@@ -1428,7 +1428,7 @@ package com.company.assembleegameclient.objects
                 _local_12 = ((_local_5 - ((_local_9.width * _local_7) / 2)) + (_local_8 * _local_9.width));
                 _local_13 = (_local_6 - (_local_9.height / 2));
                 _local_11.data.length = 0;
-                _local_11.data.push(_local_12, _local_13, (_local_12 + _local_9.width), _local_13, (_local_12 + _local_9.width), (_local_13 + _local_9.height), _local_12, (_local_13 + _local_9.height));
+                (_local_11.data as Vector.<Number>).push(_local_12, _local_13, (_local_12 + _local_9.width), _local_13, (_local_12 + _local_9.width), (_local_13 + _local_9.height), _local_12, (_local_13 + _local_9.height));
                 _local_14 = _local_10.matrix;
                 _local_14.identity();
                 _local_14.translate(_local_12, _local_13);
@@ -1452,7 +1452,7 @@ package com.company.assembleegameclient.objects
             this.shadowGradientFill_.matrix.createGradientBox((_local_5 * 2), (_local_6 * 2), 0, (posS_[0] - _local_5), (posS_[1] - _local_6));
             _arg_1.push(this.shadowGradientFill_);
             this.shadowPath_.data.length = 0;
-            this.shadowPath_.data.push((posS_[0] - _local_5), (posS_[1] - _local_6), (posS_[0] + _local_5), (posS_[1] - _local_6), (posS_[0] + _local_5), (posS_[1] + _local_6), (posS_[0] - _local_5), (posS_[1] + _local_6));
+            (this.shadowPath_.data as Vector.<Number>).push((posS_[0] - _local_5), (posS_[1] - _local_6), (posS_[0] + _local_5), (posS_[1] - _local_6), (posS_[0] + _local_5), (posS_[1] + _local_6), (posS_[0] - _local_5), (posS_[1] + _local_6));
             _arg_1.push(this.shadowPath_);
             _arg_1.push(GraphicsUtil.END_FILL);
         }

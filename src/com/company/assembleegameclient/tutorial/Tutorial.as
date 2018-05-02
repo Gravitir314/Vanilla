@@ -52,6 +52,7 @@ package com.company.assembleegameclient.tutorial
         private var tutorialMessage_:TutorialMessage = null;
         private var tracker:GoogleAnalytics;
         private var trackingStep:int = -1;
+        private var lastTrackingStepTimestamp:uint;
 
         public function Tutorial(_arg_1:GameSprite)
         {
@@ -59,6 +60,7 @@ package com.company.assembleegameclient.tutorial
             var _local_3:Graphics;
             super();
             this.gs_ = _arg_1;
+            this.lastTrackingStepTimestamp = getTimer();
             for each (_local_2 in EmbeddedData.tutorialXML.Step)
             {
                 this.steps_.push(new Step(_local_2));
@@ -146,7 +148,10 @@ package com.company.assembleegameclient.tutorial
                     {
                         _local_4.satisfiedSince_ = getTimer();
                         if (this.trackingStep != _local_3){
-                            this.tracker.trackEvent("tutorial", "step", _local_3.toString(), _local_4.satisfiedSince_);
+                            if (!_local_4.trackingSent){
+                                this.tracker.trackEvent("tutorial", "step", _local_3.toString(), (_local_4.satisfiedSince_ - this.lastTrackingStepTimestamp));
+                                this.lastTrackingStepTimestamp = getTimer();
+                            };
                             this.trackingStep = _local_3;
                         };
                     };

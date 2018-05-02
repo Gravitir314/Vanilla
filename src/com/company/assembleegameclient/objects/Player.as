@@ -85,6 +85,7 @@ package com.company.assembleegameclient.objects
         public var creditsWereChanged:Signal = new Signal();
         public var fameWasChanged:Signal = new Signal();
         private var famePortrait_:BitmapData = null;
+        public var lastSwap_:int = -1;
         public var accountId_:String = "";
         public var credits_:int = 0;
         public var tokens_:int = 0;
@@ -191,7 +192,7 @@ package com.company.assembleegameclient.objects
             _local_5.wisdom_ = (_local_5.wisdomBoost_ + int(_arg_2.MpRegen));
             _local_5.tex1Id_ = int(_arg_2.Tex1);
             _local_5.tex2Id_ = int(_arg_2.Tex2);
-            _local_5.hasBackpack_ = int(_arg_2.HasBackpack);
+            _local_5.hasBackpack_ = (_arg_2.HasBackpack == "1");
             return (_local_5);
         }
 
@@ -898,7 +899,7 @@ package com.company.assembleegameclient.objects
             var _local_5:int = 5;
             var _local_6:Vector.<Number> = (this.breathBackPath_.data as Vector.<Number>);
             _local_6.length = 0;
-            var _local_7:* = 1.2;
+            var _local_7:Number = 1.2;
             _local_6.push(((posS_[0] - _local_3) - _local_7), (((posS_[1] + _local_4) - 0) - 0), ((posS_[0] + _local_3) + _local_7), (((posS_[1] + _local_4) - 0) - 0), ((posS_[0] + _local_3) + _local_7), (((posS_[1] + _local_4) + _local_5) + _local_7), ((posS_[0] - _local_3) - _local_7), (((posS_[1] + _local_4) + _local_5) + _local_7));
             _arg_1.push(this.breathBackFill_);
             _arg_1.push(this.breathBackPath_);
@@ -1137,84 +1138,80 @@ package com.company.assembleegameclient.objects
 
         public function useAltWeapon(_arg_1:Number, _arg_2:Number, _arg_3:int):Boolean
         {
-            var _local_7:XML;
-            var _local_8:int;
-            var _local_9:Number;
-            var _local_10:int;
-            var _local_11:int;
-            if (((map_ == null) || (isPaused())))
-            {
+            var _local_7:Point;
+            var _local_11:XML;
+            var _local_13:int;
+            var _local_14:String;
+            var _local_15:Number;
+            var _local_16:int;
+            if (((map_ == null) || (isPaused()))){
                 return (false);
             };
             var _local_4:int = equipment_[1];
-            if (_local_4 == -1)
-            {
+            if (_local_4 == -1){
                 return (false);
             };
             var _local_5:XML = ObjectLibrary.xmlLibrary_[_local_4];
-            if (((_local_5 == null) || (!(_local_5.hasOwnProperty("Usable")))))
-            {
+            if (((_local_5 == null) || (!(_local_5.hasOwnProperty("Usable"))))){
                 return (false);
             };
-            if (isSilenced())
-            {
+            if (isSilenced()){
                 SoundEffectLibrary.play("error");
                 return (false);
             };
-            var _local_6:Point = map_.pSTopW(_arg_1, _arg_2);
-            if (_local_6 == null)
-            {
-                SoundEffectLibrary.play("error");
-                return (false);
-            };
-            for each (_local_7 in _local_5.Activate)
-            {
-                if (_local_7.toString() == ActivationType.TELEPORT)
-                {
-                    if (!this.isValidPosition(_local_6.x, _local_6.y))
-                    {
-                        SoundEffectLibrary.play("error");
-                        return (false);
-                    };
+            var _local_6:Number = (Parameters.data_.cameraAngle + Math.atan2(_arg_2, _arg_1));
+            var _local_8:Boolean;
+            var _local_9:Boolean;
+            var _local_10:Boolean;
+            for each (_local_11 in _local_5.Activate) {
+                _local_14 = _local_11.toString();
+                if (_local_14 == ActivationType.TELEPORT){
+                    _local_8 = true;
+                    _local_10 = true;
+                };
+                if (((((((_local_14 == ActivationType.BULLET_NOVA) || (_local_14 == ActivationType.POISON_GRENADE)) || (_local_14 == ActivationType.VAMPIRE_BLAST)) || (_local_14 == ActivationType.TRAP)) || (_local_14 == ActivationType.STASIS_BLAST)) || (_local_14 == ActivationType.OBJECT_TOSS))){
+                    _local_8 = true;
+                };
+                if (_local_14 == ActivationType.SHOOT){
+                    _local_9 = true;
                 };
             };
-            _local_8 = getTimer();
-            if (_arg_3 == UseType.START_USE)
-            {
-                if (_local_8 < this.nextAltAttack_)
-                {
+            if (_local_8){
+                _local_7 = map_.pSTopW(_arg_1, _arg_2);
+                if (((_local_7 == null) || ((_local_10) && (!(this.isValidPosition(_local_7.x, _local_7.y)))))){
                     SoundEffectLibrary.play("error");
                     return (false);
                 };
-                _local_10 = int(_local_5.MpCost);
-                if (_local_10 > this.mp_)
-                {
+            } else {
+                _local_15 = (Math.sqrt(((_arg_1 * _arg_1) + (_arg_2 * _arg_2))) / 50);
+                _local_7 = new Point((x_ + (_local_15 * Math.cos(_local_6))), (y_ + (_local_15 * Math.sin(_local_6))));
+            };
+            var _local_12:int = getTimer();
+            if (_arg_3 == UseType.START_USE){
+                if (_local_12 < this.nextAltAttack_){
+                    SoundEffectLibrary.play("error");
+                    return (false);
+                };
+                _local_13 = int(_local_5.MpCost);
+                if (_local_13 > this.mp_){
                     SoundEffectLibrary.play("no_mana");
                     return (false);
                 };
-                _local_11 = 500;
-                if (_local_5.hasOwnProperty("Cooldown"))
-                {
-                    _local_11 = (Number(_local_5.Cooldown) * 1000);
+                _local_16 = 500;
+                if (_local_5.hasOwnProperty("Cooldown")){
+                    _local_16 = (Number(_local_5.Cooldown) * 1000);
                 };
-                this.nextAltAttack_ = (_local_8 + _local_11);
-                map_.gs_.gsc_.useItem(_local_8, objectId_, 1, _local_4, _local_6.x, _local_6.y, _arg_3);
-                if (_local_5.Activate == ActivationType.SHOOT)
-                {
-                    _local_9 = Math.atan2(_arg_2, _arg_1);
-                    this.doShoot(_local_8, _local_4, _local_5, (Parameters.data_.cameraAngle + _local_9), false);
+                this.nextAltAttack_ = (_local_12 + _local_16);
+                map_.gs_.gsc_.useItem(_local_12, objectId_, 1, _local_4, _local_7.x, _local_7.y, _arg_3);
+                if (_local_9){
+                    this.doShoot(_local_12, _local_4, _local_5, _local_6, false);
                 };
-            }
-            else
-            {
-                if (_local_5.hasOwnProperty("MultiPhase"))
-                {
-                    map_.gs_.gsc_.useItem(_local_8, objectId_, 1, _local_4, _local_6.x, _local_6.y, _arg_3);
-                    _local_10 = int(_local_5.MpEndCost);
-                    if (_local_10 <= this.mp_)
-                    {
-                        _local_9 = Math.atan2(_arg_2, _arg_1);
-                        this.doShoot(_local_8, _local_4, _local_5, (Parameters.data_.cameraAngle + _local_9), false);
+            } else {
+                if (_local_5.hasOwnProperty("MultiPhase")){
+                    map_.gs_.gsc_.useItem(_local_12, objectId_, 1, _local_4, _local_7.x, _local_7.y, _arg_3);
+                    _local_13 = int(_local_5.MpEndCost);
+                    if (_local_13 <= this.mp_){
+                        this.doShoot(_local_12, _local_4, _local_5, _local_6, false);
                     };
                 };
             };

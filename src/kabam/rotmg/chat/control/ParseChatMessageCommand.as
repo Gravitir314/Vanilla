@@ -51,7 +51,7 @@ package kabam.rotmg.chat.control
             var _local_3:uint;
             var _local_4:GameObject;
             var _local_5:String;
-            var _local_6:*;
+            var _local_6:String;
             switch (this.data)
             {
                 case "/resetDailyQuests":

@@ -308,7 +308,7 @@ package com.company.assembleegameclient.game
 
         private function setDisplayPosY(_arg_1:Number):void
         {
-            var _local_2:* = (UIUtils.NOTIFICATION_SPACE * _arg_1);
+            var _local_2:Number = (UIUtils.NOTIFICATION_SPACE * _arg_1);
             if (_arg_1 != 0)
             {
                 this.displaysPosY = (4 + _local_2);
@@ -371,9 +371,6 @@ package com.company.assembleegameclient.game
             {
                 _local_2.debug("NEWS UPDATE -- making button - ok");
                 _local_4 = new NewsModalButton();
-                if (_arg_1)
-                {
-                };
                 if (this.newsModalButton != null)
                 {
                     removeChild(this.newsModalButton);

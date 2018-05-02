@@ -82,7 +82,8 @@ package kabam.rotmg.packages.services
 
         public function canPurchasePackage(_arg_1:int):Boolean
         {
-            return (this.models[_arg_1]);
+            var _local_2:PackageInfo = this.models[_arg_1];
+            return (!(_local_2 == null));
         }
 
         public function getPriorityPackage():PackageInfo

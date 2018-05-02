@@ -26,13 +26,13 @@ package com.company.assembleegameclient.mapeditor
 
         public static var cancel:Signal;
 
-        internal var mapName:TextInputField;
-        internal var descr:TextInputField;
-        internal var tags:TagsInputField;
-        internal var mapjm:String;
-        internal var mapInfo:Object;
-        internal var account:Account;
-        internal var checkbox:CheckBoxField;
+        private var mapName:TextInputField;
+        private var descr:TextInputField;
+        private var tags:TagsInputField;
+        private var mapjm:String;
+        private var mapInfo:Object;
+        private var account:Account;
+        private var checkbox:CheckBoxField;
 
         public function SubmitMapForm(_arg_1:String, _arg_2:Object, _arg_3:Account)
         {

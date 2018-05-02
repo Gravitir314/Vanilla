@@ -5,15 +5,15 @@
 
 package io.decagames.rotmg.ui.popups
 {
-    import robotlegs.bender.bundles.mvcs.Mediator;
+import io.decagames.rotmg.ui.popups.signals.ClosePopupByClassSignal;
+
+import robotlegs.bender.bundles.mvcs.Mediator;
     import io.decagames.rotmg.ui.popups.signals.ShowPopupSignal;
     import io.decagames.rotmg.ui.popups.signals.ClosePopupSignal;
     import io.decagames.rotmg.ui.popups.signals.CloseCurrentPopupSignal;
     import io.decagames.rotmg.ui.popups.signals.CloseAllPopupsSignal;
     import io.decagames.rotmg.ui.popups.signals.RemoveLockFade;
     import io.decagames.rotmg.ui.popups.signals.ShowLockFade;
-    import __AS3__.vec.Vector;
-    import __AS3__.vec.*;
 
     public class PopupMediator extends Mediator 
     {
@@ -26,6 +26,8 @@ package io.decagames.rotmg.ui.popups
         public var closePopupSignal:ClosePopupSignal;
         [Inject]
         public var closeCurrentPopupSignal:CloseCurrentPopupSignal;
+        [Inject]
+        public var closePopupByClassSignal:ClosePopupByClassSignal;
         [Inject]
         public var closeAllPopupsSignal:CloseAllPopupsSignal;
         [Inject]
@@ -43,6 +45,7 @@ package io.decagames.rotmg.ui.popups
         {
             this.showPopupSignal.add(this.showPopupHandler);
             this.closePopupSignal.add(this.closePopupHandler);
+            this.closePopupByClassSignal.add(this.closeByClassHandler);
             this.closeCurrentPopupSignal.add(this.closeCurrentPopupHandler);
             this.closeAllPopupsSignal.add(this.closeAllPopupsHandler);
             this.removeLockFade.add(this.onRemoveLock);
@@ -103,6 +106,17 @@ package io.decagames.rotmg.ui.popups
             };
         }
 
+        private function closeByClassHandler(_arg_1:Class):void{
+            var _local_2:int = (this.popups.length - 1);
+            while (_local_2 >= 0) {
+                if ((this.popups[_local_2] is _arg_1)){
+                    this.view.removeChild(this.popups[_local_2]);
+                    this.popups.splice(_local_2, 1);
+                };
+                _local_2--;
+            };
+        }
+
         private function drawPopupBackground(_arg_1:BasePopup):void
         {
             _arg_1.graphics.beginFill(_arg_1.popupFadeColor, _arg_1.popupFadeAlpha);
@@ -114,6 +128,7 @@ package io.decagames.rotmg.ui.popups
         {
             this.showPopupSignal.remove(this.showPopupHandler);
             this.closePopupSignal.remove(this.closePopupHandler);
+            this.closePopupByClassSignal.remove(this.closeByClassHandler);
             this.closeCurrentPopupSignal.remove(this.closeCurrentPopupHandler);
             this.removeLockFade.remove(this.onRemoveLock);
             this.showLockFade.remove(this.onShowLock);

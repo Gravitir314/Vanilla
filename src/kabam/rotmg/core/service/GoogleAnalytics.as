@@ -25,9 +25,8 @@ public class GoogleAnalytics {
         this.logger.debug(((((((("Track event - category: " + _arg_1) + ", action:") + _arg_2) + ", label: ") + _arg_3) + ", value:") + _arg_4));
     }
 
-    public function trackPageView(_arg_1:String):void{
-        this.tracker.trackPageView(_arg_1);
-        this.logger.debug(("Track page - url: " + _arg_1));
+    public function trackPageView(_arg_1:String):void
+    {
     }
 
 

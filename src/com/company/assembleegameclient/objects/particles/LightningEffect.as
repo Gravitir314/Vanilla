@@ -19,7 +19,7 @@ package com.company.assembleegameclient.objects.particles
         public var particleSize_:int;
         public var lifetimeMultiplier_:Number;
 
-        public function LightningEffect(_arg_1:GameObject, _arg_2:WorldPosData, _arg_3:int, _arg_4:int, _arg_5:*=1)
+        public function LightningEffect(_arg_1:GameObject, _arg_2:WorldPosData, _arg_3:int, _arg_4:int, _arg_5:Number=1)
         {
             this.start_ = new Point(_arg_1.x_, _arg_1.y_);
             this.end_ = new Point(_arg_2.x_, _arg_2.y_);

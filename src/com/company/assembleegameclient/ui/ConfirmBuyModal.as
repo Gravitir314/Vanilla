@@ -66,7 +66,7 @@ package com.company.assembleegameclient.ui
             addChild(_local_6.getLocalizedTextObject(TextKey.BUY_CONFIRMATION_TITLE, TEXT_MARGIN, 5));
             addChild(_local_6.getLocalizedTextObject(TextKey.BUY_CONFIRMATION_DESC, TEXT_MARGIN, 40));
             addChild(_local_6.getLocalizedTextObject(_local_5, TEXT_MARGIN, 90));
-            var _local_7:* = _local_6.getLocalizedTextObject(TextKey.BUY_CONFIRMATION_AMOUNT, TEXT_MARGIN, 140);
+            var _local_7:TextFieldDisplayConcrete = _local_6.getLocalizedTextObject(TextKey.BUY_CONFIRMATION_AMOUNT, TEXT_MARGIN, 140);
             addChild(_local_7);
             this.quantityInputText = _local_6.getLiteralTextObject("1", TEXT_MARGIN, 160);
             if (this.owner_.getSellableType() != -1)
@@ -100,7 +100,7 @@ package com.company.assembleegameclient.ui
         }
 
 
-        private function refreshNavDisable():*
+        private function refreshNavDisable():void
         {
             this.leftNavSprite.alpha = ((this.quantity_ == 1) ? 0.5 : 1);
             this.rightNavSprite.alpha = ((this.quantity_ == this.availableInventoryNumber) ? 0.5 : 1);
@@ -160,12 +160,12 @@ package com.company.assembleegameclient.ui
 
         private function makeNavigator(_arg_1:String):Sprite
         {
-            var _local_2:* = UIAssetsHelper.createLeftNevigatorIcon(_arg_1);
+            var _local_2:Sprite = UIAssetsHelper.createLeftNevigatorIcon(_arg_1);
             _local_2.addEventListener(MouseEvent.CLICK, this.onClick);
             return (_local_2);
         }
 
-        private function onClick(_arg_1:MouseEvent):*
+        private function onClick(_arg_1:MouseEvent):void
         {
             switch (_arg_1.currentTarget)
             {

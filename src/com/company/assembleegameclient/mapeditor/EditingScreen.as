@@ -280,7 +280,7 @@ public class EditingScreen extends Sprite {
                 this.allObjChooser_.reloadObjects(this.filter.searchStr);
                 return;
             case this.allGameObjChooser_:
-                this.allGameObjChooser_.reloadObjects(this.filter.searchStr, AllObjectChooser.GROUP_NAME_MAP_OBJECTS);
+                this.allGameObjChooser_.reloadObjects(this.filter.searchStr, AllObjectChooser.GROUP_NAME_GAME_OBJECTS);
                 return;
             case this.regionChooser_:
                 return;

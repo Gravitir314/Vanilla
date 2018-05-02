@@ -964,7 +964,7 @@ package kabam.rotmg.messaging.impl
             };
             if (sObj.soldObjectName() == TextKey.VAULT_CHEST)
             {
-                this.openDialog.dispatch(new PurchaseConfirmationDialog(function ():*
+                this.openDialog.dispatch(new PurchaseConfirmationDialog(function ():void
                 {
                     buyConfirmation(sObj, converted, sellableObjectId, quantity);
                 }));

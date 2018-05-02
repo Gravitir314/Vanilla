@@ -56,8 +56,8 @@ package kabam.rotmg.friends.view
         private var _currentServerName:String;
 
         public var closeDialogSignal:Signal = new Signal();
-        public var actionSignal:* = new Signal(String, String);
-        public var tabSignal:* = new Signal(String);
+        public var actionSignal:Signal = new Signal(String, String);
+        public var tabSignal:Signal = new Signal(String);
         private const closeButton:DialogCloseButton = PetsViewAssetFactory.returnCloseButton(TEXT_WIDTH);
         private var backgroundFill_:GraphicsSolidFill = new GraphicsSolidFill(0x333333, 1);
         private var outlineFill_:GraphicsSolidFill = new GraphicsSolidFill(0xFFFFFF, 1);

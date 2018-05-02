@@ -92,7 +92,7 @@ package kabam.rotmg.util.components
             };
         }
 
-        public function setStringBuilder(_arg_1:StringBuilder):*
+        public function setStringBuilder(_arg_1:StringBuilder):void
         {
             this.text.setStringBuilder(_arg_1);
             this.updateUI();

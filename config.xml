@@ -427,7 +427,7 @@
    <link-report>filename</link-report>
    -->
    <!-- load-config: load a file containing configuration options-->
-   <load-config>C:\Users\Gravitir\.IntelliJIdea2017.3\system\compile-server\webmain_2ff168c1\_temp_\IntelliJ_IDEA\idea-EDB31A79-AA047AE.xml</load-config>
+   <load-config>C:\Users\Gravitir\.IntelliJIdea2017.3\system\compile-server\vanilla_2ff168c1\_temp_\IntelliJ_IDEA\idea-B2AF7AC7-AA047AE.xml</load-config>
    <!-- load-externs: an XML file containing <def>, <pre>, and <ext> symbols to omit from linking when building a SWF-->
    <!-- load-externs usage:
    <load-externs>filename</load-externs>

@@ -37,7 +37,7 @@ package io.decagames.rotmg.friends.model{
         private var _currentServer:Server;
         public var errorStr:String;
         public var dataSignal:Signal = new Signal(Boolean);
-        public var noInvitationSignal:* = new Signal();
+        public var noInvitationSignal:Signal = new Signal();
 
         public function FriendModel(){
             this._friendTotal = 0;
@@ -207,7 +207,7 @@ package io.decagames.rotmg.friends.model{
 
         public function getAllInvitations():Vector.<FriendVO>{
             var _local_2:FriendVO;
-            var _local_1:* = new Vector.<FriendVO>();
+            var _local_1:Vector.<FriendVO> = new Vector.<FriendVO>();
             for each (_local_2 in this._invitations) {
                 _local_1.push(_local_2);
             };
@@ -256,7 +256,8 @@ package io.decagames.rotmg.friends.model{
             return (false);
         }
 
-        private function removeFromList(_arg_1:Vector.<FriendVO>, _arg_2:String):*{
+        private function removeFromList(_arg_1:Vector.<FriendVO>, _arg_2:String):void
+        {
             var _local_3:FriendVO;
             var _local_4:int;
             while (_local_4 < _arg_1.length) {

@@ -101,7 +101,7 @@ package io.decagames.rotmg.ui.buttons
         {
             super.disabled = _arg_1;
             var _local_2:Function = this.stateFactories[ButtonStates.DISABLED];
-            if (_local_2)
+            if (_local_2 != null)
             {
                 (_local_2(this._label));
             };
@@ -123,7 +123,7 @@ package io.decagames.rotmg.ui.buttons
         {
             if (_arg_3 == ButtonStates.IDLE)
             {
-                if (_arg_2)
+                if (_arg_2 != null)
                 {
                     (_arg_2(this._label));
                 };

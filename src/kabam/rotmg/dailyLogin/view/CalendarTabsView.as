@@ -71,7 +71,7 @@ package kabam.rotmg.dailyLogin.view
             this.calendar.x = CalendarSettings.DAILY_LOGIN_TABS_PADDING;
         }
 
-        public function drawTabs():*
+        public function drawTabs():void
         {
             this.drawBorder();
         }

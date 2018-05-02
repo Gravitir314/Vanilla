@@ -12,7 +12,7 @@ package io.decagames.rotmg.fame{
 
     public class DungeonLine extends StatsLine {
 
-        private var dungeonTextureName:*;
+        private var dungeonTextureName:String;
         private var dungeonBitmap:Bitmap;
 
         public function DungeonLine(_arg_1:String, _arg_2:String, _arg_3:String){

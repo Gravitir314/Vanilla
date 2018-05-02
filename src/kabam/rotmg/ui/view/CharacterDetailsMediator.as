@@ -73,6 +73,7 @@ package kabam.rotmg.ui.view
 
         private function onFriendsBtnClicked(_arg_1:MouseEvent):void{
             if (Parameters.USE_NEW_FRIENDS_UI){
+                Parameters.data_.friendListDisplayFlag = true;
                 this.showPopupSignal.dispatch(new FriendsPopupView(this.friendsModel.hasInvitations));
             } else {
                 this.openDialog.dispatch(new FriendListView());

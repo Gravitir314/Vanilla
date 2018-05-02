@@ -105,7 +105,7 @@ package kabam.rotmg.news.view
         }
 
 
-        public function onCloseButtonClicked():*
+        public function onCloseButtonClicked():void
         {
             var _local_1:FlushPopupStartupQueueSignal = StaticInjectorContext.getInjector().getInstance(FlushPopupStartupQueueSignal);
             closeButton.clicked.remove(this.onCloseButtonClicked);
@@ -115,13 +115,13 @@ package kabam.rotmg.news.view
             };
         }
 
-        private function onAdded(_arg_1:Event):*
+        private function onAdded(_arg_1:Event):void
         {
             this.newsModel.markAsRead();
             this.refreshNewsButton();
         }
 
-        private function updateIndicator():*
+        private function updateIndicator():void
         {
             this.fontModel.apply(this.pageIndicator, 24, 0xFFFFFF, true);
             this.pageIndicator.text = ((this.currentPageNumber + " / ") + this.newsModel.numberOfNews);

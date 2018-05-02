@@ -440,7 +440,7 @@ package com.company.assembleegameclient.objects
             };
         }
 
-        private function getDirectionAngle(_arg_1:*):Number
+        private function getDirectionAngle(_arg_1:Number):Number
         {
             var _local_2:int = (_arg_1 - this.startTime_);
             var _local_3:Point = new Point();

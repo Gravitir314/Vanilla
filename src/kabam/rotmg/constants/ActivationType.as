@@ -40,6 +40,7 @@ package kabam.rotmg.constants
         public static const SMALL_DIG:String = "Small_Dig";
         public static const FILL:String = "Fill";
         public static const GENERIC_ACTIVATE:String = "GenericActivate";
+        public static const OBJECT_TOSS:String = "ObjectToss";
 
 
     }

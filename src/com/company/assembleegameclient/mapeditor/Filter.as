@@ -26,7 +26,7 @@ package com.company.assembleegameclient.mapeditor
         private var _filterTypeDropdown:DropDown;
         private var _minInput:TextInputField;
         private var _maxInput:TextInputField;
-        private var _dungeonDropDown:*;
+        private var _dungeonDropDown:DropDown;
         private var _searchPrompt:BaseSimpleText;
         private var _minPrompt:BaseSimpleText;
         private var _maxPrompt:BaseSimpleText;
@@ -49,7 +49,7 @@ package com.company.assembleegameclient.mapeditor
             this._filterTypeDropdown.y = this.curY;
             this._filterTypeDropdown.addEventListener(Event.CHANGE, this.onFilterTypeChange);
             addChild(this._filterTypeDropdown);
-            this._dungeonDropDown = new DropDown(GroupDivider.getDungeonsLabel(), Chooser.WIDTH, 26);
+            this._dungeonDropDown = new DropDown(GroupDivider.getDungeonsLabel(), 130, 22);
             this._dungeonDropDown.y = this.curY;
             this._dungeonDropDown.addEventListener(Event.CHANGE, this.onFilterTypeChange);
             addChild(this._dungeonDropDown);

@@ -67,7 +67,7 @@ package com.company.assembleegameclient.sound
             var trans:SoundTransform;
             var channel:SoundChannel;
             var sound:Sound = load(name);
-            var volume:* = (Parameters.data_.SFXVolume * volumeMultiplier);
+            var volume:Number = (Parameters.data_.SFXVolume * volumeMultiplier);
             try
             {
                 actualVolume = ((((Parameters.data_.playSFX) && (isFX)) || ((!(isFX)) && (Parameters.data_.playPewPew))) ? volume : 0);

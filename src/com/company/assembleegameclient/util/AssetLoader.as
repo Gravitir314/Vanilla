@@ -45,8 +45,7 @@ package com.company.assembleegameclient.util
             SFX.load();
         }
 
-        private function addImages():void
-        {
+        private function addImages():void{
             AssetLibrary.addImageSet("lofiChar8x8", new EmbeddedAssets.lofiCharEmbed_().bitmapData, 8, 8);
             AssetLibrary.addImageSet("lofiChar16x8", new EmbeddedAssets.lofiCharEmbed_().bitmapData, 16, 8);
             AssetLibrary.addImageSet("lofiChar16x16", new EmbeddedAssets.lofiCharEmbed_().bitmapData, 16, 16);
@@ -119,8 +118,7 @@ package com.company.assembleegameclient.util
             AssetLibrary.addImageSet("magicWoodsObjects16x16", new EmbeddedAssets.magicWoodsObjects16x16Embed_().bitmapData, 16, 16);
         }
 
-        private function addAnimatedCharacters():void
-        {
+        private function addAnimatedCharacters():void{
             AnimatedChars.add("chars8x8rBeach", new EmbeddedAssets.chars8x8rBeachEmbed_().bitmapData, null, 8, 8, 56, 8, AnimatedChar.RIGHT);
             AnimatedChars.add("chars8x8dBeach", new EmbeddedAssets.chars8x8dBeachEmbed_().bitmapData, null, 8, 8, 56, 8, AnimatedChar.DOWN);
             AnimatedChars.add("chars8x8rLow1", new EmbeddedAssets.chars8x8rLow1Embed_().bitmapData, null, 8, 8, 56, 8, AnimatedChar.RIGHT);
@@ -227,11 +225,11 @@ package com.company.assembleegameclient.util
                 ObjectLibrary.parseFromXML(XML(EmbeddedData.objectFiles[_local_1]));
                 _local_1++;
             };
-            while (_local_1 < EmbeddedData.objectFiles.length)
-            {
-                ObjectLibrary.parseDungeonXML(getQualifiedClassName(EmbeddedData.objectFiles[_local_1]), XML(EmbeddedData.objectFiles[_local_1]));
-                _local_1++;
-            };
+            var _local_2:int;
+            while (_local_2 < EmbeddedData.objectFiles.length) {
+                ObjectLibrary.parseDungeonXML(getQualifiedClassName(EmbeddedData.objectFiles[_local_2]), XML(EmbeddedData.objectFiles[_local_2]));
+                _local_2++;
+            }
             currentXmlIsTesting = false;
         }
 

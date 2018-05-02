@@ -23,7 +23,7 @@ package kabam.rotmg.chat.view
 
         private var input:TextField;
         private var enteredText:Boolean;
-        private var lastInput:String;
+        private var lastInput:String = "";
 
         public function ChatInput()
         {

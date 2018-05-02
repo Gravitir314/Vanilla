@@ -40,9 +40,9 @@ package kabam.rotmg.news.model
             this.sortNews();
         }
 
-        private function sortNews():*
+        private function sortNews():void
         {
-            this.inGameNews.sort(function (_arg_1:InGameNews, _arg_2:InGameNews):*
+            this.inGameNews.sort(function (_arg_1:InGameNews, _arg_2:InGameNews):int
             {
                 if (_arg_1.weight > _arg_2.weight)
                 {

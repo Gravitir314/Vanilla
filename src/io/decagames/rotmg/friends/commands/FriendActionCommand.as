@@ -43,7 +43,8 @@ package io.decagames.rotmg.friends.commands{
         }
 
         private function onComplete(_arg_1:Boolean, _arg_2:*):void{
-            if (this.vo.callback){
+            if (this.vo.callback != null)
+            {
                 this.vo.callback(_arg_1, _arg_2, this.vo.target);
             } else {
                 if (!_arg_1){
