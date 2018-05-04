@@ -5,10 +5,11 @@
 
 package kabam.rotmg.pets.data
 {
-    import org.osflash.signals.Signal;
-    import com.company.assembleegameclient.objects.ObjectLibrary;
+import com.company.assembleegameclient.objects.ObjectLibrary;
 
-    public class AbilityVO 
+import org.osflash.signals.Signal;
+
+public class AbilityVO
     {
 
         public const updated:Signal = new Signal(AbilityVO);

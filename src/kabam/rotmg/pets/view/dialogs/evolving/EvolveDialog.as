@@ -5,13 +5,15 @@
 
 package kabam.rotmg.pets.view.dialogs.evolving
 {
-    import kabam.rotmg.pets.view.dialogs.PetDialog;
-    import com.company.assembleegameclient.ui.dialogs.DialogCloser;
-    import com.company.assembleegameclient.ui.dialogs.CloseDialogComponent;
-    import com.company.assembleegameclient.ui.dialogs.Dialog;
-    import org.osflash.signals.Signal;
+import com.company.assembleegameclient.ui.dialogs.CloseDialogComponent;
+import com.company.assembleegameclient.ui.dialogs.Dialog;
+import com.company.assembleegameclient.ui.dialogs.DialogCloser;
 
-    public class EvolveDialog extends PetDialog implements DialogCloser 
+import kabam.rotmg.pets.view.dialogs.PetDialog;
+
+import org.osflash.signals.Signal;
+
+public class EvolveDialog extends PetDialog implements DialogCloser 
     {
 
         private static const VERTICAL_SPACE:int = 6;

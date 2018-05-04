@@ -5,9 +5,9 @@
 
 package kabam.rotmg.pets.view.components
 {
-    import robotlegs.bender.bundles.mvcs.Mediator;
+import robotlegs.bender.bundles.mvcs.Mediator;
 
-    public class PetTooltipMediator extends Mediator 
+public class PetTooltipMediator extends Mediator
     {
 
         [Inject]

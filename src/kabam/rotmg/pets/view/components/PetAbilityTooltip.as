@@ -5,15 +5,17 @@
 
 package kabam.rotmg.pets.view.components
 {
-    import com.company.assembleegameclient.ui.tooltip.ToolTip;
-    import flash.display.Sprite;
-    import kabam.rotmg.text.view.TextFieldDisplayConcrete;
-    import kabam.rotmg.pets.util.PetsViewAssetFactory;
-    import kabam.rotmg.pets.data.AbilityVO;
-    import kabam.rotmg.text.view.stringBuilder.LineBuilder;
-    import kabam.rotmg.pets.util.PetsConstants;
+import com.company.assembleegameclient.ui.tooltip.ToolTip;
 
-    public class PetAbilityTooltip extends ToolTip 
+import flash.display.Sprite;
+
+import kabam.rotmg.pets.data.AbilityVO;
+import kabam.rotmg.pets.util.PetsConstants;
+import kabam.rotmg.pets.util.PetsViewAssetFactory;
+import kabam.rotmg.text.view.TextFieldDisplayConcrete;
+import kabam.rotmg.text.view.stringBuilder.LineBuilder;
+
+public class PetAbilityTooltip extends ToolTip
     {
 
         private const abilityContent:Sprite = new Sprite();

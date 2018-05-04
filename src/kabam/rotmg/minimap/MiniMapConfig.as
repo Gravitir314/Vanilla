@@ -5,18 +5,20 @@
 
 package kabam.rotmg.minimap
 {
-    import robotlegs.bender.framework.api.IConfig;
-    import robotlegs.bender.framework.api.IContext;
-    import org.swiftsuspenders.Injector;
-    import robotlegs.bender.extensions.mediatorMap.api.IMediatorMap;
-    import kabam.rotmg.minimap.control.MiniMapZoomSignal;
-    import kabam.rotmg.minimap.control.SetMiniMapMapSignal;
-    import kabam.rotmg.minimap.control.UpdateGameObjectTileSignal;
-    import kabam.rotmg.minimap.control.UpdateGroundTileSignal;
-    import kabam.rotmg.minimap.view.MiniMap;
-    import kabam.rotmg.minimap.view.MiniMapMediator;
+import kabam.rotmg.minimap.control.MiniMapZoomSignal;
+import kabam.rotmg.minimap.control.SetMiniMapMapSignal;
+import kabam.rotmg.minimap.control.UpdateGameObjectTileSignal;
+import kabam.rotmg.minimap.control.UpdateGroundTileSignal;
+import kabam.rotmg.minimap.view.MiniMap;
+import kabam.rotmg.minimap.view.MiniMapMediator;
 
-    public class MiniMapConfig implements IConfig 
+import org.swiftsuspenders.Injector;
+
+import robotlegs.bender.extensions.mediatorMap.api.IMediatorMap;
+import robotlegs.bender.framework.api.IConfig;
+import robotlegs.bender.framework.api.IContext;
+
+public class MiniMapConfig implements IConfig
     {
 
         [Inject]

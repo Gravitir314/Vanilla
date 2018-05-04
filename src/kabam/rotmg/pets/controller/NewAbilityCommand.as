@@ -5,12 +5,13 @@
 
 package kabam.rotmg.pets.controller
 {
-    import com.company.assembleegameclient.editor.Command;
-    import kabam.rotmg.dialogs.control.OpenDialogSignal;
-    import kabam.rotmg.pets.data.PetAbilityDisplayIDGetter;
-    import kabam.rotmg.pets.view.dialogs.NewAbility;
+import com.company.assembleegameclient.editor.Command;
 
-    public class NewAbilityCommand extends Command 
+import kabam.rotmg.dialogs.control.OpenDialogSignal;
+import kabam.rotmg.pets.data.PetAbilityDisplayIDGetter;
+import kabam.rotmg.pets.view.dialogs.NewAbility;
+
+public class NewAbilityCommand extends Command
     {
 
         [Inject]

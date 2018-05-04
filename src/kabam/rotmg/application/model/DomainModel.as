@@ -5,10 +5,10 @@
 
 package kabam.rotmg.application.model
 {
-    import flash.system.Security;
-    import flash.net.LocalConnection;
+import flash.net.LocalConnection;
+import flash.system.Security;
 
-    public class DomainModel 
+public class DomainModel 
     {
 
         private const LOCALHOST:String = "localhost";
@@ -29,7 +29,7 @@ package kabam.rotmg.application.model
             for each (_local_1 in this.WHITELIST)
             {
                 Security.allowDomain(_local_1);
-            };
+            }
         }
 
         public function isLocalDomainValid():Boolean
@@ -51,7 +51,7 @@ package kabam.rotmg.application.model
             for each (_local_3 in this.WHITELIST)
             {
                 _local_2 = ((_local_2) || (_local_1 == _local_3));
-            };
+            }
             return (_local_2);
         }
 

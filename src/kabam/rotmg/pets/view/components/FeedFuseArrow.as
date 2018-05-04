@@ -5,17 +5,16 @@
 
 package kabam.rotmg.pets.view.components
 {
-    import flash.display.Sprite;
-    import flash.display.GraphicsSolidFill;
-    import flash.display.GraphicsPath;
-    import flash.display.GraphicsPathWinding;
-    import __AS3__.vec.Vector;
-    import flash.display.IGraphicsData;
-    import com.company.util.GraphicsUtil;
-    import flash.geom.ColorTransform;
-    import __AS3__.vec.*;
+import com.company.util.GraphicsUtil;
 
-    public class FeedFuseArrow extends Sprite 
+import flash.display.GraphicsPath;
+import flash.display.GraphicsPathWinding;
+import flash.display.GraphicsSolidFill;
+import flash.display.IGraphicsData;
+import flash.display.Sprite;
+import flash.geom.ColorTransform;
+
+public class FeedFuseArrow extends Sprite
     {
 
         private var designFill_:GraphicsSolidFill = new GraphicsSolidFill(0xFFFFFF, 1);

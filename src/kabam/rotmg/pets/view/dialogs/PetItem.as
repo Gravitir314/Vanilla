@@ -5,11 +5,12 @@
 
 package kabam.rotmg.pets.view.dialogs
 {
-    import flash.display.Sprite;
-    import kabam.rotmg.pets.view.components.PetIcon;
-    import kabam.rotmg.pets.data.PetVO;
+import flash.display.Sprite;
 
-    public class PetItem extends Sprite implements Disableable 
+import kabam.rotmg.pets.data.PetVO;
+import kabam.rotmg.pets.view.components.PetIcon;
+
+public class PetItem extends Sprite implements Disableable 
     {
 
         public static const TOP_LEFT:String = "topLeft";
@@ -53,7 +54,7 @@ package kabam.rotmg.pets.view.dialogs
             if (this.backgroundGraphic)
             {
                 removeChild(this.backgroundGraphic);
-            };
+            }
             this.backgroundGraphic = PetItemBackground(this.itemBackgroundFactory.create(this.size, this.getCuts()));
             addChildAt(this.backgroundGraphic, 0);
         }
@@ -64,7 +65,7 @@ package kabam.rotmg.pets.view.dialogs
             if (this.background != REGULAR)
             {
                 _local_1[CUT_STATES.indexOf(this.background)] = 1;
-            };
+            }
             return (_local_1);
         }
 

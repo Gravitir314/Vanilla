@@ -5,12 +5,12 @@
 
 package kabam.rotmg.messaging.impl.outgoing.arena
 {
-    import kabam.rotmg.messaging.impl.outgoing.OutgoingMessage;
-    import __AS3__.vec.Vector;
-    import kabam.rotmg.messaging.impl.data.SlotObjectData;
-    import flash.utils.IDataOutput;
+import flash.utils.IDataOutput;
 
-    public class QuestRedeem extends OutgoingMessage 
+import kabam.rotmg.messaging.impl.data.SlotObjectData;
+import kabam.rotmg.messaging.impl.outgoing.OutgoingMessage;
+
+public class QuestRedeem extends OutgoingMessage 
     {
 
         public var questID:String;
@@ -31,7 +31,7 @@ package kabam.rotmg.messaging.impl.outgoing.arena
             for each (_local_2 in this.slots)
             {
                 _local_2.writeToOutput(_arg_1);
-            };
+            }
         }
 
 

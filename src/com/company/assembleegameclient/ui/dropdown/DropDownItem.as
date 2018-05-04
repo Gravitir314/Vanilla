@@ -5,12 +5,13 @@
 
 package com.company.assembleegameclient.ui.dropdown
 {
-    import flash.display.Sprite;
-    import com.company.ui.BaseSimpleText;
-    import flash.filters.DropShadowFilter;
-    import flash.events.MouseEvent;
+import com.company.ui.BaseSimpleText;
 
-    public class DropDownItem extends Sprite 
+import flash.display.Sprite;
+import flash.events.MouseEvent;
+import flash.filters.DropShadowFilter;
+
+public class DropDownItem extends Sprite 
     {
 
         public var w_:int;

@@ -5,10 +5,11 @@
 
 package kabam.rotmg.constants
 {
-    import flash.display.BitmapData;
-    import com.company.util.AssetLibrary;
+import com.company.util.AssetLibrary;
 
-    public class ItemConstants 
+import flash.display.BitmapData;
+
+public class ItemConstants 
     {
 
         public static const NO_ITEM:int = -1;
@@ -99,7 +100,7 @@ package kabam.rotmg.constants
                     return ("EquipmentType.Shuriken");
                 case EGG_TYPE:
                     return ("EquipmentType.Any");
-            };
+            }
             return ("EquipmentType.InvalidType");
         }
 
@@ -182,7 +183,7 @@ package kabam.rotmg.constants
                 case SHURIKEN_TYPE:
                     _local_2 = AssetLibrary.getImageFromSet("lofiObj3", 555);
                     break;
-            };
+            }
             return (_local_2);
         }
 

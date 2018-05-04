@@ -5,10 +5,11 @@
 
 package kabam.rotmg.pets.controller
 {
-    import com.company.assembleegameclient.editor.Command;
-    import kabam.rotmg.pets.data.PetsModel;
+import com.company.assembleegameclient.editor.Command;
 
-    public class DeletePetCommand extends Command 
+import kabam.rotmg.pets.data.PetsModel;
+
+public class DeletePetCommand extends Command
     {
 
         [Inject]

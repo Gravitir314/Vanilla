@@ -5,27 +5,30 @@
 
 package kabam.rotmg.core.commands
 {
-    import kabam.rotmg.account.core.Account;
-    import kabam.rotmg.dialogs.control.OpenDialogSignal;
-    import kabam.rotmg.core.model.PlayerModel;
-    import kabam.rotmg.core.signals.UpdateNewCharacterScreenSignal;
-    import kabam.rotmg.core.signals.BuyCharacterPendingSignal;
-    import kabam.lib.tasks.TaskMonitor;
-    import kabam.rotmg.core.service.PurchaseCharacterClassTask;
-    import kabam.rotmg.core.service.PurchaseCharacterErrorTask;
-    import kabam.rotmg.account.core.services.GetCharListTask;
-    import io.decagames.rotmg.characterMetrics.tracker.CharactersMetricsTracker;
-    import flash.utils.ByteArray;
-    import kabam.rotmg.account.core.view.RegisterPromptDialog;
-    import kabam.lib.tasks.TaskSequence;
-    import kabam.lib.tasks.BranchingTask;
-    import kabam.lib.tasks.DispatchSignalTask;
-    import kabam.lib.tasks.Task;
-    import kabam.rotmg.ui.view.NotEnoughGoldDialog;
-    import kabam.rotmg.text.model.TextKey;
-    import com.company.assembleegameclient.objects.ObjectLibrary;
+import com.company.assembleegameclient.objects.ObjectLibrary;
 
-    public class PurchaseCharacterCommand 
+import flash.utils.ByteArray;
+
+import io.decagames.rotmg.characterMetrics.tracker.CharactersMetricsTracker;
+
+import kabam.lib.tasks.BranchingTask;
+import kabam.lib.tasks.DispatchSignalTask;
+import kabam.lib.tasks.Task;
+import kabam.lib.tasks.TaskMonitor;
+import kabam.lib.tasks.TaskSequence;
+import kabam.rotmg.account.core.Account;
+import kabam.rotmg.account.core.services.GetCharListTask;
+import kabam.rotmg.account.core.view.RegisterPromptDialog;
+import kabam.rotmg.core.model.PlayerModel;
+import kabam.rotmg.core.service.PurchaseCharacterClassTask;
+import kabam.rotmg.core.service.PurchaseCharacterErrorTask;
+import kabam.rotmg.core.signals.BuyCharacterPendingSignal;
+import kabam.rotmg.core.signals.UpdateNewCharacterScreenSignal;
+import kabam.rotmg.dialogs.control.OpenDialogSignal;
+import kabam.rotmg.text.model.TextKey;
+import kabam.rotmg.ui.view.NotEnoughGoldDialog;
+
+public class PurchaseCharacterCommand
     {
 
         [Inject]
@@ -69,8 +72,8 @@ package kabam.rotmg.core.commands
                 else
                 {
                     this.showNotEnoughGoldDialog();
-                };
-            };
+                }
+            }
             this.tmp.setBinaryData(0, new ByteArray());
         }
 

@@ -5,12 +5,14 @@
 
 package com.company.assembleegameclient.objects.particles
 {
-    import flash.geom.Point;
-    import com.company.assembleegameclient.objects.GameObject;
-    import kabam.rotmg.messaging.impl.data.WorldPosData;
-    import com.company.assembleegameclient.util.RandomUtil;
+import com.company.assembleegameclient.objects.GameObject;
+import com.company.assembleegameclient.util.RandomUtil;
 
-    public class LightningEffect extends ParticleEffect 
+import flash.geom.Point;
+
+import kabam.rotmg.messaging.impl.data.WorldPosData;
+
+public class LightningEffect extends ParticleEffect
     {
 
         public var start_:Point;
@@ -45,7 +47,7 @@ package com.company.assembleegameclient.objects.particles
                 _local_8 = Math.min(_local_5, (_local_4 - _local_5));
                 map_.addObj(_local_7, (_local_6.x + RandomUtil.plusMinus(((_local_3 / 200) * _local_8))), (_local_6.y + RandomUtil.plusMinus(((_local_3 / 200) * _local_8))));
                 _local_5++;
-            };
+            }
             return (false);
         }
 
@@ -67,7 +69,7 @@ package com.company.assembleegameclient.objects.particles
                 _local_8 = Math.min(_local_5, (_local_4 - _local_5));
                 map_.addObj(_local_7, (_local_6.x + RandomUtil.plusMinus(((_local_3 / 200) * _local_8))), (_local_6.y + RandomUtil.plusMinus(((_local_3 / 200) * _local_8))));
                 _local_5++;
-            };
+            }
             return (false);
         }
 

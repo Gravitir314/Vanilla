@@ -5,21 +5,24 @@
 
 package kabam.rotmg.pets.view.components
 {
-    import flash.display.Sprite;
-    import flash.filters.ColorMatrixFilter;
-    import com.company.util.MoreColorUtil;
-    import org.osflash.signals.Signal;
-    import org.osflash.signals.IOnceSignal;
-    import kabam.rotmg.util.components.LegacyBuyButton;
-    import com.company.assembleegameclient.util.Currency;
-    import kabam.rotmg.text.view.TextFieldDisplayConcrete;
-    import kabam.rotmg.text.view.stringBuilder.LineBuilder;
-    import kabam.rotmg.text.model.TextKey;
-    import flash.events.MouseEvent;
-    import flash.events.Event;
-    import flash.filters.DropShadowFilter;
+import com.company.assembleegameclient.util.Currency;
+import com.company.util.MoreColorUtil;
 
-    public class FameOrGoldBuyButtons extends Sprite 
+import flash.display.Sprite;
+import flash.events.Event;
+import flash.events.MouseEvent;
+import flash.filters.ColorMatrixFilter;
+import flash.filters.DropShadowFilter;
+
+import kabam.rotmg.text.model.TextKey;
+import kabam.rotmg.text.view.TextFieldDisplayConcrete;
+import kabam.rotmg.text.view.stringBuilder.LineBuilder;
+import kabam.rotmg.util.components.LegacyBuyButton;
+
+import org.osflash.signals.IOnceSignal;
+import org.osflash.signals.Signal;
+
+public class FameOrGoldBuyButtons extends Sprite
     {
 
         private static const grayfilter:ColorMatrixFilter = new ColorMatrixFilter(MoreColorUtil.greyscaleFilterMatrix);
@@ -56,7 +59,7 @@ package kabam.rotmg.pets.view.components
                 this.disabled = _arg_1;
                 this.goldButton.setEnabled((!(this.disabled)));
                 this.fameButton.setEnabled((!(this.disabled)));
-            };
+            }
         }
 
         public function isDisabled():Boolean
@@ -93,7 +96,7 @@ package kabam.rotmg.pets.view.components
             if (contains(this.goldButton))
             {
                 this.goldButton.x = (this.prefix.width + this.spacing);
-            };
+            }
             if (contains(this.fameButton))
             {
                 if (contains(this.goldButton))
@@ -106,8 +109,8 @@ package kabam.rotmg.pets.view.components
                 else
                 {
                     this.fameButton.x = (this.prefix.width + this.spacing);
-                };
-            };
+                }
+            }
             this.positioned.dispatch();
         }
 
@@ -138,7 +141,7 @@ package kabam.rotmg.pets.view.components
             {
                 this.fameButtonClicked.dispatch(this.fameButton.price);
                 this.clicked.dispatch();
-            };
+            }
             this.setDisabled(true);
         }
 
@@ -148,7 +151,7 @@ package kabam.rotmg.pets.view.components
             {
                 this.goldButtonClicked.dispatch(this.goldButton.price);
                 this.clicked.dispatch();
-            };
+            }
             this.setDisabled(true);
         }
 

@@ -5,12 +5,13 @@
 
 package kabam.rotmg.pets.view.components
 {
-    import robotlegs.bender.bundles.mvcs.Mediator;
-    import kabam.rotmg.pets.data.PetsModel;
-    import kabam.rotmg.pets.data.PetSlotsState;
-    import kabam.rotmg.pets.data.FusionCalculator;
+import kabam.rotmg.pets.data.FusionCalculator;
+import kabam.rotmg.pets.data.PetSlotsState;
+import kabam.rotmg.pets.data.PetsModel;
 
-    public class FusionStrengthMediator extends Mediator 
+import robotlegs.bender.bundles.mvcs.Mediator;
+
+public class FusionStrengthMediator extends Mediator
     {
 
         [Inject]
@@ -26,7 +27,7 @@ package kabam.rotmg.pets.view.components
             if (!this.petSlotsState.leftSlotPetVO)
             {
                 this.petSlotsState.leftSlotPetVO = this.petsModel.getActivePet();
-            };
+            }
             if (this.petSlotsState.isAcceptableFuseState())
             {
                 this.view.setFusionStrength(FusionCalculator.getStrengthPercentage(this.petSlotsState.leftSlotPetVO, this.petSlotsState.rightSlotPetVO));
@@ -34,7 +35,7 @@ package kabam.rotmg.pets.view.components
             else
             {
                 this.view.reset();
-            };
+            }
         }
 
 

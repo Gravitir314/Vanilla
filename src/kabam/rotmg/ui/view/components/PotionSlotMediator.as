@@ -5,25 +5,28 @@
 
 package kabam.rotmg.ui.view.components
 {
-    import robotlegs.bender.bundles.mvcs.Mediator;
-    import kabam.rotmg.ui.model.HUDModel;
-    import kabam.rotmg.ui.signals.UpdateHUDSignal;
-    import kabam.rotmg.game.model.PotionInventoryModel;
-    import kabam.rotmg.game.signals.UseBuyPotionSignal;
-    import kabam.rotmg.pets.data.PetSlotsState;
-    import kabam.rotmg.ui.model.PotionModel;
-    import com.company.assembleegameclient.objects.Player;
-    import com.company.assembleegameclient.ui.panels.itemgrids.itemtiles.InteractiveItemTile;
-    import com.company.assembleegameclient.util.DisplayHierarchy;
-    import com.company.assembleegameclient.map.Map;
-    import kabam.rotmg.pets.view.components.slot.FoodFeedFuseSlot;
-    import com.company.assembleegameclient.parameters.Parameters;
-    import kabam.rotmg.messaging.impl.GameServerConnection;
-    import kabam.rotmg.constants.ItemConstants;
-    import flash.display.DisplayObject;
-    import kabam.rotmg.game.model.UseBuyPotionVO;
+import com.company.assembleegameclient.map.Map;
+import com.company.assembleegameclient.objects.Player;
+import com.company.assembleegameclient.parameters.Parameters;
+import com.company.assembleegameclient.ui.panels.itemgrids.itemtiles.InteractiveItemTile;
+import com.company.assembleegameclient.util.DisplayHierarchy;
 
-    public class PotionSlotMediator extends Mediator 
+import flash.display.DisplayObject;
+
+import kabam.rotmg.constants.ItemConstants;
+import kabam.rotmg.game.model.PotionInventoryModel;
+import kabam.rotmg.game.model.UseBuyPotionVO;
+import kabam.rotmg.game.signals.UseBuyPotionSignal;
+import kabam.rotmg.messaging.impl.GameServerConnection;
+import kabam.rotmg.pets.data.PetSlotsState;
+import kabam.rotmg.pets.view.components.slot.FoodFeedFuseSlot;
+import kabam.rotmg.ui.model.HUDModel;
+import kabam.rotmg.ui.model.PotionModel;
+import kabam.rotmg.ui.signals.UpdateHUDSignal;
+
+import robotlegs.bender.bundles.mvcs.Mediator;
+
+public class PotionSlotMediator extends Mediator 
     {
 
         [Inject]
@@ -72,7 +75,7 @@ package kabam.rotmg.ui.view.components
                 _local_2 = this.potionInventoryModel.getPotionModel(this.view.objectType);
                 _local_3 = _arg_1.getPotionCount(_local_2.objectId);
                 this.view.setData(_local_3, _local_2.currentCost(_local_3), _local_2.available);
-            };
+            }
         }
 
         private function onDrop(_arg_1:DisplayObject):void
@@ -92,9 +95,9 @@ package kabam.rotmg.ui.view.components
                     if (((_local_4.getItemId() == ItemConstants.NO_ITEM) && (!(_local_4.ownerGrid.owner == _local_2))))
                     {
                         GameServerConnection.instance.invSwapPotion(_local_2, _local_2, PotionInventoryModel.getPotionSlot(this.view.objectType), this.view.objectType, _local_4.ownerGrid.owner, _local_4.tileId, ItemConstants.NO_ITEM);
-                    };
-                };
-            };
+                    }
+                }
+            }
         }
 
         private function onBuyUse():void
@@ -105,7 +108,7 @@ package kabam.rotmg.ui.view.components
             {
                 _local_2 = new UseBuyPotionVO(_local_1.objectId, UseBuyPotionVO.SHIFTCLICK);
                 this.useBuyPotionSignal.dispatch(_local_2);
-            };
+            }
         }
 
 

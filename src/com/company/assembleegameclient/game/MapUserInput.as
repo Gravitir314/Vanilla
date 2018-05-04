@@ -5,54 +5,58 @@
 
 package com.company.assembleegameclient.game
 {
+import com.company.assembleegameclient.map.Square;
+import com.company.assembleegameclient.objects.GameObject;
+import com.company.assembleegameclient.objects.ObjectLibrary;
+import com.company.assembleegameclient.objects.Player;
+import com.company.assembleegameclient.parameters.Parameters;
+import com.company.assembleegameclient.tutorial.Tutorial;
+import com.company.assembleegameclient.tutorial.doneAction;
+import com.company.assembleegameclient.ui.options.Options;
+import com.company.assembleegameclient.util.TextureRedrawer;
+import com.company.util.KeyCodes;
+
+import flash.display.Stage;
+import flash.display.StageDisplayState;
+import flash.events.Event;
+import flash.events.KeyboardEvent;
+import flash.events.MouseEvent;
+import flash.system.Capabilities;
+
+import io.decagames.rotmg.friends.FriendsPopupView;
+import io.decagames.rotmg.friends.model.FriendModel;
+import io.decagames.rotmg.ui.popups.signals.CloseAllPopupsSignal;
 import io.decagames.rotmg.ui.popups.signals.ClosePopupByClassSignal;
+import io.decagames.rotmg.ui.popups.signals.ShowPopupSignal;
+
+import kabam.rotmg.application.api.ApplicationSetup;
+import kabam.rotmg.chat.model.ChatMessage;
+import kabam.rotmg.constants.GeneralConstants;
+import kabam.rotmg.constants.UseType;
+import kabam.rotmg.core.StaticInjectorContext;
+import kabam.rotmg.core.view.Layers;
+import kabam.rotmg.dialogs.control.CloseDialogsSignal;
+import kabam.rotmg.dialogs.control.OpenDialogSignal;
+import kabam.rotmg.friends.view.FriendListView;
+import kabam.rotmg.game.model.PotionInventoryModel;
+import kabam.rotmg.game.model.UseBuyPotionVO;
+import kabam.rotmg.game.signals.AddTextLineSignal;
+import kabam.rotmg.game.signals.ExitGameSignal;
+import kabam.rotmg.game.signals.GiftStatusUpdateSignal;
+import kabam.rotmg.game.signals.SetTextBoxVisibilitySignal;
+import kabam.rotmg.game.signals.UseBuyPotionSignal;
+import kabam.rotmg.game.view.components.StatsTabHotKeyInputSignal;
+import kabam.rotmg.messaging.impl.GameServerConnection;
+import kabam.rotmg.minimap.control.MiniMapZoomSignal;
+import kabam.rotmg.pets.controller.reskin.ReskinPetFlowStartSignal;
+import kabam.rotmg.ui.UIUtils;
+import kabam.rotmg.ui.model.TabStripModel;
 
 import net.hires.debug.Stats;
-    import kabam.rotmg.game.signals.GiftStatusUpdateSignal;
-    import kabam.rotmg.game.signals.AddTextLineSignal;
-    import kabam.rotmg.game.signals.SetTextBoxVisibilitySignal;
-    import kabam.rotmg.game.view.components.StatsTabHotKeyInputSignal;
-    import kabam.rotmg.minimap.control.MiniMapZoomSignal;
-    import kabam.rotmg.game.signals.UseBuyPotionSignal;
-    import kabam.rotmg.game.model.PotionInventoryModel;
-    import kabam.rotmg.dialogs.control.OpenDialogSignal;
-    import kabam.rotmg.dialogs.control.CloseDialogsSignal;
-    import kabam.rotmg.ui.model.TabStripModel;
-    import kabam.rotmg.core.view.Layers;
-    import kabam.rotmg.game.signals.ExitGameSignal;
-    import kabam.rotmg.pets.controller.reskin.ReskinPetFlowStartSignal;
-    import flash.events.Event;
-    import kabam.rotmg.core.StaticInjectorContext;
-    import org.swiftsuspenders.Injector;
-    import kabam.rotmg.application.api.ApplicationSetup;
-    import flash.events.MouseEvent;
-    import flash.display.Stage;
-    import flash.events.KeyboardEvent;
-    import com.company.assembleegameclient.parameters.Parameters;
-    import com.company.assembleegameclient.objects.Player;
-    import com.company.assembleegameclient.objects.ObjectLibrary;
-    import kabam.rotmg.constants.UseType;
-    import com.company.assembleegameclient.tutorial.doneAction;
-    import com.company.assembleegameclient.tutorial.Tutorial;
-    import kabam.rotmg.chat.model.ChatMessage;
-    import com.company.assembleegameclient.objects.GameObject;
-    import io.decagames.rotmg.ui.popups.signals.CloseAllPopupsSignal;
-    import io.decagames.rotmg.ui.popups.signals.ShowPopupSignal;
-    import io.decagames.rotmg.friends.model.FriendModel;
-    import com.company.assembleegameclient.map.Square;
-    import kabam.rotmg.ui.UIUtils;
-    import com.company.util.KeyCodes;
-    import kabam.rotmg.game.model.UseBuyPotionVO;
-    import io.decagames.rotmg.friends.FriendsPopupView;
-    import kabam.rotmg.friends.view.FriendListView;
-    import com.company.assembleegameclient.ui.options.Options;
-    import flash.system.Capabilities;
-    import flash.display.StageDisplayState;
-    import com.company.assembleegameclient.util.TextureRedrawer;
-    import kabam.rotmg.constants.GeneralConstants;
-    import kabam.rotmg.messaging.impl.GameServerConnection;
 
-    public class MapUserInput 
+import org.swiftsuspenders.Injector;
+
+public class MapUserInput
     {
 
         private static var stats_:Stats = new Stats();
@@ -127,7 +131,7 @@ import net.hires.debug.Stats;
                 this.gs_.map.removeEventListener(MouseEvent.MOUSE_UP, this.onMouseUp);
                 this.gs_.stage.addEventListener(MouseEvent.MOUSE_DOWN, this.onMouseDown);
                 this.gs_.stage.addEventListener(MouseEvent.MOUSE_UP, this.onMouseUp);
-            };
+            }
         }
 
         public function clearInput():void
@@ -149,7 +153,7 @@ import net.hires.debug.Stats;
             {
                 this.enablePlayerInput_ = _arg_1;
                 this.clearInput();
-            };
+            }
         }
 
         private function onAddedToStage(_arg_1:Event):void
@@ -169,7 +173,7 @@ import net.hires.debug.Stats;
             {
                 this.gs_.map.addEventListener(MouseEvent.MOUSE_DOWN, this.onMouseDown);
                 this.gs_.map.addEventListener(MouseEvent.MOUSE_UP, this.onMouseUp);
-            };
+            }
             _local_2.addEventListener(Event.ENTER_FRAME, this.onEnterFrame);
             _local_2.addEventListener(MouseEvent.RIGHT_CLICK, this.disableRightClick);
         }
@@ -195,7 +199,7 @@ import net.hires.debug.Stats;
             {
                 this.gs_.map.removeEventListener(MouseEvent.MOUSE_DOWN, this.onMouseDown);
                 this.gs_.map.removeEventListener(MouseEvent.MOUSE_UP, this.onMouseUp);
-            };
+            }
             _local_2.removeEventListener(Event.ENTER_FRAME, this.onEnterFrame);
             _local_2.removeEventListener(MouseEvent.RIGHT_CLICK, this.disableRightClick);
         }
@@ -220,23 +224,23 @@ import net.hires.debug.Stats;
             if (_local_2 == null)
             {
                 return;
-            };
+            }
             if (!this.enablePlayerInput_)
             {
                 return;
-            };
+            }
             if (_arg_1.shiftKey)
             {
                 _local_4 = _local_2.equipment_[1];
                 if (_local_4 == -1)
                 {
                     return;
-                };
+                }
                 _local_5 = ObjectLibrary.xmlLibrary_[_local_4];
                 if (((_local_5 == null) || (_local_5.hasOwnProperty("EndMpCost"))))
                 {
                     return;
-                };
+                }
                 if (_local_2.isUnstable())
                 {
                     _local_6 = ((Math.random() * 600) - 300);
@@ -246,20 +250,20 @@ import net.hires.debug.Stats;
                 {
                     _local_6 = this.gs_.map.mouseX;
                     _local_7 = this.gs_.map.mouseY;
-                };
+                }
                 if (Parameters.isGpuRender())
                 {
                     if ((((_arg_1.currentTarget == _arg_1.target) || (_arg_1.target == this.gs_.map)) || (_arg_1.target == this.gs_)))
                     {
                         _local_2.useAltWeapon(_local_6, _local_7, UseType.START_USE);
-                    };
+                    }
                 }
                 else
                 {
                     _local_2.useAltWeapon(_local_6, _local_7, UseType.START_USE);
-                };
+                }
                 return;
-            };
+            }
             if (Parameters.isGpuRender())
             {
                 if (((((_arg_1.currentTarget == _arg_1.target) || (_arg_1.target == this.gs_.map)) || (_arg_1.target == this.gs_)) || (_arg_1.currentTarget == this.gs_.chatBox_.list)))
@@ -269,12 +273,12 @@ import net.hires.debug.Stats;
                 else
                 {
                     return;
-                };
+                }
             }
             else
             {
                 _local_3 = Math.atan2(this.gs_.map.mouseY, this.gs_.map.mouseX);
-            };
+            }
             doneAction(this.gs_, Tutorial.ATTACK_ACTION);
             if (_local_2.isUnstable())
             {
@@ -283,7 +287,7 @@ import net.hires.debug.Stats;
             else
             {
                 _local_2.attemptAttackAngle(_local_3);
-            };
+            }
             this.mouseDown_ = true;
         }
 
@@ -294,7 +298,7 @@ import net.hires.debug.Stats;
             if (_local_2 == null)
             {
                 return;
-            };
+            }
             _local_2.isShooting = false;
         }
 
@@ -307,7 +311,7 @@ import net.hires.debug.Stats;
             else
             {
                 this.miniMapZoom.dispatch(MiniMapZoomSignal.OUT);
-            };
+            }
         }
 
         private function onEnterFrame(_arg_1:Event):void
@@ -328,9 +332,9 @@ import net.hires.debug.Stats;
                     {
                         _local_3 = Math.atan2(this.gs_.map.mouseY, this.gs_.map.mouseX);
                         _local_2.attemptAttackAngle(_local_3);
-                    };
-                };
-            };
+                    }
+                }
+            }
         }
 
         private function onKeyDown(_arg_1:KeyboardEvent):void
@@ -359,12 +363,12 @@ import net.hires.debug.Stats;
                     UIUtils.SHOW_EXPERIMENTAL_MENU = (!(UIUtils.SHOW_EXPERIMENTAL_MENU));
                     _local_6.text = ((UIUtils.SHOW_EXPERIMENTAL_MENU) ? "Experimental menu activated" : "Experimental menu deactivated");
                     _local_5.dispatch(_local_6);
-                };
+                }
             }
             else
             {
                 this.currentString = "";
-            };
+            }
             switch (_arg_1.keyCode)
             {
                 case KeyCodes.F1:
@@ -386,8 +390,8 @@ import net.hires.debug.Stats;
                     if (_local_2.focus != null)
                     {
                         return;
-                    };
-            };
+                    }
+            }
             var _local_3:Player = this.gs_.map.player_;
             switch (_arg_1.keyCode)
             {
@@ -435,13 +439,13 @@ import net.hires.debug.Stats;
                         {
                             _local_8 = this.gs_.map.mouseX;
                             _local_9 = this.gs_.map.mouseY;
-                        };
+                        }
                         _local_10 = _local_3.useAltWeapon(_local_8, _local_9, UseType.START_USE);
                         if (_local_10)
                         {
                             this.specialKeyDown_ = true;
-                        };
-                    };
+                        }
+                    }
                     break;
                 case Parameters.data_.autofireToggle:
                     this.gs_.map.player_.isShooting = (this.autofire_ = (!(this.autofire_)));
@@ -483,7 +487,7 @@ import net.hires.debug.Stats;
                     if (this.potionInventoryModel.getPotionModel(PotionInventoryModel.HEALTH_POTION_ID).available)
                     {
                         this.useBuyPotionSignal.dispatch(new UseBuyPotionVO(PotionInventoryModel.HEALTH_POTION_ID, UseBuyPotionVO.CONTEXTBUY));
-                    };
+                    }
                     break;
                 case Parameters.data_.GPURenderToggle:
                     Parameters.data_.GPURender = (!(Parameters.data_.GPURender));
@@ -492,7 +496,7 @@ import net.hires.debug.Stats;
                     if (this.potionInventoryModel.getPotionModel(PotionInventoryModel.MAGIC_POTION_ID).available)
                     {
                         this.useBuyPotionSignal.dispatch(new UseBuyPotionVO(PotionInventoryModel.MAGIC_POTION_ID, UseBuyPotionVO.CONTEXTBUY));
-                    };
+                    }
                     break;
                 case Parameters.data_.miniMapZoomOut:
                     this.miniMapZoom.dispatch(MiniMapZoomSignal.OUT);
@@ -529,7 +533,7 @@ import net.hires.debug.Stats;
                     {
                         this.closeDialogSignal.dispatch();
                         this.closePopupByClassSignal.dispatch(FriendsPopupView);
-                    };
+                    }
                     break;
                 case Parameters.data_.options:
                     _local_4 = StaticInjectorContext.getInjector().getInstance(CloseAllPopupsSignal);
@@ -547,7 +551,7 @@ import net.hires.debug.Stats;
                         Parameters.data_.fullscreenMode = (!(Parameters.data_.fullscreenMode));
                         Parameters.save();
                         _local_2.displayState = ((Parameters.data_.fullscreenMode) ? "fullScreenInteractive" : StageDisplayState.NORMAL);
-                    };
+                    }
                     break;
                 case Parameters.data_.switchTabs:
                     _local_4 = StaticInjectorContext.getInjector().getInstance(CloseAllPopupsSignal);
@@ -560,7 +564,7 @@ import net.hires.debug.Stats;
                     break;
                 case Parameters.data_.testOne:
                     break;
-            };
+            }
             if (Parameters.ALLOW_SCREENSHOT_MODE)
             {
                 switch (_arg_1.keyCode)
@@ -575,8 +579,8 @@ import net.hires.debug.Stats;
                         this.gs_.map.mapOverlay_.visible = (!(this.gs_.map.mapOverlay_.visible));
                         this.gs_.map.partyOverlay_.visible = (!(this.gs_.map.partyOverlay_.visible));
                         break;
-                };
-            };
+                }
+            }
             if (this.areFKeysAvailable)
             {
                 switch (_arg_1.keyCode)
@@ -591,7 +595,7 @@ import net.hires.debug.Stats;
                         {
                             if (_local_14 != null){
                                 _local_14.faces_.length = 0;
-                            };
+                            }
                         }
                         Parameters.blendType_ = ((Parameters.blendType_ + 1) % 2);
                         this.addTextLine.dispatch(ChatMessage.make(Parameters.CLIENT_CHAT_NAME, ("Blend type: " + Parameters.blendType_)));
@@ -605,8 +609,8 @@ import net.hires.debug.Stats;
                     case KeyCodes.F9:
                         Parameters.drawProj_ = (!(Parameters.drawProj_));
                         break;
-                };
-            };
+                }
+            }
             this.setPlayerMovement();
         }
 
@@ -647,11 +651,11 @@ import net.hires.debug.Stats;
                         {
                             _local_2 = this.gs_.map.mouseX;
                             _local_3 = this.gs_.map.mouseY;
-                        };
+                        }
                         this.gs_.map.player_.useAltWeapon(this.gs_.map.mouseX, this.gs_.map.mouseY, UseType.END_USE);
-                    };
+                    }
                     break;
-            };
+            }
             this.setPlayerMovement();
         }
 
@@ -667,8 +671,8 @@ import net.hires.debug.Stats;
                 else
                 {
                     _local_1.setRelativeMovement(0, 0, 0);
-                };
-            };
+                }
+            }
         }
 
         private function useItem(_arg_1:int):void
@@ -676,7 +680,7 @@ import net.hires.debug.Stats;
             if (this.tabStripModel.currentSelection == TabStripModel.BACKPACK)
             {
                 _arg_1 = (_arg_1 + GeneralConstants.NUM_INVENTORY_SLOTS);
-            };
+            }
             GameServerConnection.instance.useItem_new(this.gs_.map.player_, _arg_1);
         }
 
@@ -694,7 +698,7 @@ import net.hires.debug.Stats;
                 this.gs_.gsc_.enableJitterWatcher();
                 this.gs_.gsc_.jitterWatcher_.y = stats_.height;
                 this.gs_.addChild(this.gs_.gsc_.jitterWatcher_);
-            };
+            }
         }
 
         private function toggleScreenShotMode():void
@@ -709,7 +713,7 @@ import net.hires.debug.Stats;
             {
                 this.gs_.hudView.visible = true;
                 this.setTextBoxVisibility.dispatch(true);
-            };
+            }
         }
 
 

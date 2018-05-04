@@ -5,16 +5,19 @@
 
 package kabam.rotmg.pets.view.petPanel
 {
-    import kabam.rotmg.pets.view.dialogs.PetDialog;
-    import com.company.assembleegameclient.ui.dialogs.DialogCloser;
-    import com.company.assembleegameclient.ui.dialogs.CloseDialogComponent;
-    import kabam.rotmg.pets.data.PetVO;
-    import kabam.rotmg.text.model.TextKey;
-    import com.company.assembleegameclient.ui.dialogs.Dialog;
-    import flash.events.Event;
-    import org.osflash.signals.Signal;
+import com.company.assembleegameclient.ui.dialogs.CloseDialogComponent;
+import com.company.assembleegameclient.ui.dialogs.Dialog;
+import com.company.assembleegameclient.ui.dialogs.DialogCloser;
 
-    public class ConfirmReleaseDialog extends PetDialog implements DialogCloser 
+import flash.events.Event;
+
+import kabam.rotmg.pets.data.PetVO;
+import kabam.rotmg.pets.view.dialogs.PetDialog;
+import kabam.rotmg.text.model.TextKey;
+
+import org.osflash.signals.Signal;
+
+public class ConfirmReleaseDialog extends PetDialog implements DialogCloser 
     {
 
         private const closeDialogComponent:CloseDialogComponent = new CloseDialogComponent();

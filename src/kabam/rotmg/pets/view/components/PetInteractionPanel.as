@@ -5,15 +5,17 @@
 
 package kabam.rotmg.pets.view.components
 {
-    import com.company.assembleegameclient.ui.panels.Panel;
-    import kabam.rotmg.text.view.TextFieldDisplayConcrete;
-    import kabam.rotmg.pets.util.PetsViewAssetFactory;
-    import flash.display.Bitmap;
-    import com.company.assembleegameclient.ui.DeprecatedTextButton;
-    import kabam.rotmg.text.view.stringBuilder.LineBuilder;
-    import com.company.assembleegameclient.game.GameSprite;
+import com.company.assembleegameclient.game.GameSprite;
+import com.company.assembleegameclient.ui.DeprecatedTextButton;
+import com.company.assembleegameclient.ui.panels.Panel;
 
-    public class PetInteractionPanel extends Panel 
+import flash.display.Bitmap;
+
+import kabam.rotmg.pets.util.PetsViewAssetFactory;
+import kabam.rotmg.text.view.TextFieldDisplayConcrete;
+import kabam.rotmg.text.view.stringBuilder.LineBuilder;
+
+public class PetInteractionPanel extends Panel
     {
 
         private const titleText:TextFieldDisplayConcrete = PetsViewAssetFactory.returnTextfield(0xFFFFFF, 16, true);

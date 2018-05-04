@@ -5,14 +5,14 @@
 
 package kabam.rotmg.pets.view.dialogs
 {
-    import org.osflash.signals.Signal;
-    import __AS3__.vec.Vector;
-    import kabam.rotmg.pets.data.PetVO;
-    import flash.display.DisplayObject;
-    import flash.events.MouseEvent;
-    import __AS3__.vec.*;
+import flash.display.DisplayObject;
+import flash.events.MouseEvent;
 
-    public class PetPicker extends GridList implements ClearsPetSlots 
+import kabam.rotmg.pets.data.PetVO;
+
+import org.osflash.signals.Signal;
+
+public class PetPicker extends GridList implements ClearsPetSlots
     {
 
         [Inject]
@@ -46,7 +46,7 @@ package kabam.rotmg.pets.view.dialogs
             for each (_local_1 in this.petItems)
             {
                 this.items.push(_local_1);
-            };
+            }
         }
 
         private function makePetItems(_arg_1:Vector.<PetVO>):void
@@ -56,7 +56,7 @@ package kabam.rotmg.pets.view.dialogs
             for each (_local_2 in _arg_1)
             {
                 this.addPet(_local_2);
-            };
+            }
             this.petItems.sort(sortByFirstAbilityPoints);
         }
 
@@ -73,7 +73,7 @@ package kabam.rotmg.pets.view.dialogs
             if (_arg_1)
             {
                 PetItem(_arg_1).setBackground(_arg_2);
-            };
+            }
         }
 
         public function setPetSize(_arg_1:int):void
@@ -101,9 +101,9 @@ package kabam.rotmg.pets.view.dialogs
                 if (!this.isFusible(_arg_1, _local_3))
                 {
                     this.petItems[_local_2].disable();
-                };
+                }
                 _local_2++;
-            };
+            }
         }
 
         public function filterUsedPetVO(_arg_1:PetVO):void
@@ -116,9 +116,9 @@ package kabam.rotmg.pets.view.dialogs
                 if (_local_3.getID() == _arg_1.getID())
                 {
                     this.petItems[_local_2].disable();
-                };
+                }
                 _local_2++;
-            };
+            }
         }
 
         private function isFusible(_arg_1:PetVO, _arg_2:PetVO):Boolean
@@ -135,7 +135,7 @@ package kabam.rotmg.pets.view.dialogs
                 if (pet.isEnabled())
                 {
                     petPicked.dispatch(petVO);
-                };
+                }
             };
             pet = this.petIconFactory.create(petVO, this.petSize);
             this.petItems.push(pet);

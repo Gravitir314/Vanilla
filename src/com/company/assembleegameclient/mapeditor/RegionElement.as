@@ -5,11 +5,12 @@
 
 package com.company.assembleegameclient.mapeditor
 {
-    import flash.display.Shape;
-    import com.company.assembleegameclient.map.RegionLibrary;
-    import com.company.assembleegameclient.ui.tooltip.ToolTip;
+import com.company.assembleegameclient.map.RegionLibrary;
+import com.company.assembleegameclient.ui.tooltip.ToolTip;
 
-    public class RegionElement extends Element 
+import flash.display.Shape;
+
+public class RegionElement extends Element
     {
 
         public var regionXML_:XML;

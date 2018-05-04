@@ -5,18 +5,20 @@
 
 package kabam.rotmg.pets.view.components
 {
-    import flash.display.Sprite;
-    import kabam.rotmg.pets.view.dialogs.CaretakerQueryDialog;
-    import kabam.rotmg.util.graphics.GraphicsHelper;
-    import kabam.rotmg.util.graphics.BevelRect;
-    import flash.display.Shape;
-    import kabam.rotmg.text.view.TextFieldDisplayConcrete;
-    import org.osflash.signals.Signal;
-    import kabam.rotmg.text.view.stringBuilder.LineBuilder;
-    import flash.text.TextFieldAutoSize;
-    import flash.events.MouseEvent;
+import flash.display.Shape;
+import flash.display.Sprite;
+import flash.events.MouseEvent;
+import flash.text.TextFieldAutoSize;
 
-    public class CaretakerQueryDialogCategoryItem extends Sprite 
+import kabam.rotmg.pets.view.dialogs.CaretakerQueryDialog;
+import kabam.rotmg.text.view.TextFieldDisplayConcrete;
+import kabam.rotmg.text.view.stringBuilder.LineBuilder;
+import kabam.rotmg.util.graphics.BevelRect;
+import kabam.rotmg.util.graphics.GraphicsHelper;
+
+import org.osflash.signals.Signal;
+
+public class CaretakerQueryDialogCategoryItem extends Sprite
     {
 
         private static const WIDTH:int = (CaretakerQueryDialog.WIDTH - 40);

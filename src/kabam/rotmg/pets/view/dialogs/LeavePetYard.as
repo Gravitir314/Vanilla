@@ -5,16 +5,18 @@
 
 package kabam.rotmg.pets.view.dialogs
 {
-    import com.company.assembleegameclient.game.GameSprite;
-    import kabam.rotmg.dialogs.control.CloseDialogsSignal;
-    import kabam.rotmg.core.StaticInjectorContext;
-    import kabam.rotmg.text.model.TextKey;
-    import com.company.assembleegameclient.ui.dialogs.Dialog;
-    import flash.events.Event;
-    import kabam.rotmg.core.service.GoogleAnalytics;
-    import com.company.assembleegameclient.parameters.Parameters;
+import com.company.assembleegameclient.game.GameSprite;
+import com.company.assembleegameclient.parameters.Parameters;
+import com.company.assembleegameclient.ui.dialogs.Dialog;
 
-    public class LeavePetYard extends PetDialog 
+import flash.events.Event;
+
+import kabam.rotmg.core.StaticInjectorContext;
+import kabam.rotmg.core.service.GoogleAnalytics;
+import kabam.rotmg.dialogs.control.CloseDialogsSignal;
+import kabam.rotmg.text.model.TextKey;
+
+public class LeavePetYard extends PetDialog 
     {
 
         private var gameSprite:GameSprite;
@@ -40,7 +42,7 @@ package kabam.rotmg.pets.view.dialogs
             var _local_2:GoogleAnalytics = StaticInjectorContext.getInjector().getInstance(GoogleAnalytics);
             if (_local_2){
                 _local_2.trackEvent("enterPortal", "Nexus Button");
-            };
+            }
             Parameters.data_.needsRandomRealm = false;
             Parameters.save();
             this.closeDialogSignal.dispatch();

@@ -5,39 +5,39 @@
 
 package com.company.assembleegameclient.ui.dialogs
 {
-    import flash.display.Sprite;
-    import kabam.rotmg.text.view.TextFieldDisplayConcrete;
-    import com.company.assembleegameclient.util.StageProxy;
-    import com.company.assembleegameclient.ui.DeprecatedTextButton;
-    import flash.display.Shape;
-    import flash.display.GraphicsSolidFill;
-    import flash.display.GraphicsStroke;
-    import flash.display.LineScaleMode;
-    import flash.display.CapsStyle;
-    import flash.display.JointStyle;
-    import flash.display.GraphicsPath;
-    import __AS3__.vec.Vector;
-    import flash.display.IGraphicsData;
-    import com.company.util.GraphicsUtil;
-    import kabam.rotmg.ui.view.SignalWaiter;
-    import kabam.rotmg.core.StaticInjectorContext;
-    import kabam.rotmg.build.api.BuildData;
-    import kabam.rotmg.build.api.BuildEnvironment;
-    import flash.text.TextFieldAutoSize;
-    import kabam.rotmg.text.view.stringBuilder.LineBuilder;
-    import flash.filters.DropShadowFilter;
-    import com.company.assembleegameclient.parameters.Parameters;
-    import kabam.rotmg.application.api.ApplicationSetup;
-    import kabam.rotmg.text.view.stringBuilder.StaticStringBuilder;
-    import kabam.rotmg.text.model.TextKey;
-    import flash.events.MouseEvent;
-    import flash.display.Graphics;
-    import kabam.rotmg.appengine.api.AppEngineClient;
-    import kabam.rotmg.account.core.Account;
-    import kabam.rotmg.dialogs.control.CloseDialogsSignal;
-    import __AS3__.vec.*;
+import com.company.assembleegameclient.parameters.Parameters;
+import com.company.assembleegameclient.ui.DeprecatedTextButton;
+import com.company.assembleegameclient.util.StageProxy;
+import com.company.util.GraphicsUtil;
 
-    public class TOSPopup extends Sprite 
+import flash.display.CapsStyle;
+import flash.display.Graphics;
+import flash.display.GraphicsPath;
+import flash.display.GraphicsSolidFill;
+import flash.display.GraphicsStroke;
+import flash.display.IGraphicsData;
+import flash.display.JointStyle;
+import flash.display.LineScaleMode;
+import flash.display.Shape;
+import flash.display.Sprite;
+import flash.events.MouseEvent;
+import flash.filters.DropShadowFilter;
+import flash.text.TextFieldAutoSize;
+
+import kabam.rotmg.account.core.Account;
+import kabam.rotmg.appengine.api.AppEngineClient;
+import kabam.rotmg.application.api.ApplicationSetup;
+import kabam.rotmg.build.api.BuildData;
+import kabam.rotmg.build.api.BuildEnvironment;
+import kabam.rotmg.core.StaticInjectorContext;
+import kabam.rotmg.dialogs.control.CloseDialogsSignal;
+import kabam.rotmg.text.model.TextKey;
+import kabam.rotmg.text.view.TextFieldDisplayConcrete;
+import kabam.rotmg.text.view.stringBuilder.LineBuilder;
+import kabam.rotmg.text.view.stringBuilder.StaticStringBuilder;
+import kabam.rotmg.ui.view.SignalWaiter;
+
+public class TOSPopup extends Sprite 
     {
 
         public static const LEFT_BUTTON:String = "dialogLeftButton";
@@ -93,7 +93,7 @@ package com.company.assembleegameclient.ui.dialogs
                 this.addTextFieldDisplay(this.textText_);
                 this.initText2();
                 this.addTextFieldDisplay(this.textText2_);
-            };
+            }
         }
 
         protected function initText():void
@@ -183,7 +183,7 @@ package com.company.assembleegameclient.ui.dialogs
             if (this.box_.contains(this.rect_))
             {
                 this.box_.removeChild(this.rect_);
-            };
+            }
             this.removeButtonsIfAlreadyAdded();
             this.addButtonsAndLayout();
             this.drawBackground();
@@ -218,7 +218,7 @@ package com.company.assembleegameclient.ui.dialogs
             if (((this.buttonAccept) && (this.box_.contains(this.buttonAccept))))
             {
                 this.box_.removeChild(this.buttonAccept);
-            };
+            }
         }
 
         protected function onLeftButtonClick(_arg_1:MouseEvent):void

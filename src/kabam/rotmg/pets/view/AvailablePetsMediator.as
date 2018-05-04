@@ -5,11 +5,12 @@
 
 package kabam.rotmg.pets.view
 {
-    import robotlegs.bender.bundles.mvcs.Mediator;
-    import kabam.rotmg.pets.controller.NotifyActivePetUpdated;
-    import kabam.rotmg.pets.data.PetVO;
+import kabam.rotmg.pets.controller.NotifyActivePetUpdated;
+import kabam.rotmg.pets.data.PetVO;
 
-    public class AvailablePetsMediator extends Mediator 
+import robotlegs.bender.bundles.mvcs.Mediator;
+
+public class AvailablePetsMediator extends Mediator
     {
 
         [Inject]

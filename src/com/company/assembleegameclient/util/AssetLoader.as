@@ -5,23 +5,25 @@
 
 package com.company.assembleegameclient.util
 {
-    import com.company.assembleegameclient.sound.IMusic;
-    import com.company.assembleegameclient.parameters.Parameters;
-    import com.company.assembleegameclient.ui.options.Options;
-    import com.company.assembleegameclient.sound.SFX;
-    import com.company.util.AssetLibrary;
-    import kabam.rotmg.assets.EmbeddedAssets;
-    import com.company.assembleegameclient.sound.SoundEffectLibrary;
-    import flash.utils.ByteArray;
-    import com.company.assembleegameclient.engine3d.Model3D;
-    import com.company.assembleegameclient.objects.particles.ParticleLibrary;
-    import kabam.rotmg.assets.EmbeddedData;
-    import com.company.assembleegameclient.map.GroundLibrary;
-    import com.company.assembleegameclient.objects.ObjectLibrary;
-    import flash.utils.getQualifiedClassName;
-    import com.company.assembleegameclient.map.RegionLibrary;
+import com.company.assembleegameclient.engine3d.Model3D;
+import com.company.assembleegameclient.map.GroundLibrary;
+import com.company.assembleegameclient.map.RegionLibrary;
+import com.company.assembleegameclient.objects.ObjectLibrary;
+import com.company.assembleegameclient.objects.particles.ParticleLibrary;
+import com.company.assembleegameclient.parameters.Parameters;
+import com.company.assembleegameclient.sound.IMusic;
+import com.company.assembleegameclient.sound.SFX;
+import com.company.assembleegameclient.sound.SoundEffectLibrary;
+import com.company.assembleegameclient.ui.options.Options;
+import com.company.util.AssetLibrary;
 
-    public class AssetLoader 
+import flash.utils.ByteArray;
+import flash.utils.getQualifiedClassName;
+
+import kabam.rotmg.assets.EmbeddedAssets;
+import kabam.rotmg.assets.EmbeddedData;
+
+public class AssetLoader
     {
 
         public static var currentXmlIsTesting:Boolean = false;
@@ -198,7 +200,7 @@ package com.company.assembleegameclient.util
                 _local_3 = _local_2.readUTFBytes(_local_2.length);
                 Model3D.parse3DOBJ(_local_1, _local_2);
                 Model3D.parseFromOBJ(_local_1, _local_3);
-            };
+            }
         }
 
         private function parseParticleEffects():void
@@ -213,7 +215,7 @@ package com.company.assembleegameclient.util
             for each (_local_1 in EmbeddedData.groundFiles)
             {
                 GroundLibrary.parseFromXML(XML(_local_1));
-            };
+            }
         }
 
         private function parseObjectFiles():void
@@ -224,7 +226,7 @@ package com.company.assembleegameclient.util
                 currentXmlIsTesting = this.checkIsTestingXML(EmbeddedData.objectFiles[_local_1]);
                 ObjectLibrary.parseFromXML(XML(EmbeddedData.objectFiles[_local_1]));
                 _local_1++;
-            };
+            }
             var _local_2:int;
             while (_local_2 < EmbeddedData.objectFiles.length) {
                 ObjectLibrary.parseDungeonXML(getQualifiedClassName(EmbeddedData.objectFiles[_local_2]), XML(EmbeddedData.objectFiles[_local_2]));
@@ -239,7 +241,7 @@ package com.company.assembleegameclient.util
             for each (_local_1 in EmbeddedData.regionFiles)
             {
                 RegionLibrary.parseFromXML(XML(_local_1));
-            };
+            }
         }
 
         private function checkIsTestingXML(_arg_1:*):Boolean

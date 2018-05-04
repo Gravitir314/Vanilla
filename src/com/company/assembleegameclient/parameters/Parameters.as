@@ -5,21 +5,21 @@
 
 package com.company.assembleegameclient.parameters
 {
-    import flash.display.DisplayObject;
-    import flash.net.SharedObject;
-    import __AS3__.vec.Vector;
-    import flash.utils.Dictionary;
-    import com.company.util.KeyCodes;
-    import com.company.assembleegameclient.map.Map;
-    import flash.events.Event;
-    import com.company.util.MoreDateUtil;
-    import flash.system.Capabilities;
+import com.company.assembleegameclient.map.Map;
+import com.company.util.KeyCodes;
+import com.company.util.MoreDateUtil;
 
-    public class Parameters 
+import flash.display.DisplayObject;
+import flash.events.Event;
+import flash.net.SharedObject;
+import flash.system.Capabilities;
+import flash.utils.Dictionary;
+
+public class Parameters
     {
 
         public static const BUILD_VERSION:String = "X25.1";
-        public static const MINOR_VERSION:String = "0";
+        public static const MINOR_VERSION:String = "1";
         public static const ENABLE_ENCRYPTION:Boolean = true;
         public static const PORT:int = 2050;
         public static const ALLOW_SCREENSHOT_MODE:Boolean = false;
@@ -73,7 +73,7 @@ package com.company.assembleegameclient.parameters
             catch(error:Error)
             {
                 data_ = {};
-            };
+            }
             setDefaults();
             save();
         }
@@ -85,11 +85,11 @@ package com.company.assembleegameclient.parameters
                 if (savedOptions_ != null)
                 {
                     savedOptions_.flush();
-                };
+                }
             }
             catch(error:Error)
             {
-            };
+            }
         }
 
         private static function setDefaultKey(_arg_1:String, _arg_2:uint):void
@@ -97,7 +97,7 @@ package com.company.assembleegameclient.parameters
             if (!data_.hasOwnProperty(_arg_1))
             {
                 data_[_arg_1] = _arg_2;
-            };
+            }
             keyNames_[_arg_1] = true;
         }
 
@@ -109,8 +109,8 @@ package com.company.assembleegameclient.parameters
                 if (data_[_local_3] == _arg_2)
                 {
                     data_[_local_3] = KeyCodes.UNSET;
-                };
-            };
+                }
+            }
             data_[_arg_1] = _arg_2;
         }
 
@@ -119,7 +119,7 @@ package com.company.assembleegameclient.parameters
             if (!data_.hasOwnProperty(_arg_1))
             {
                 data_[_arg_1] = _arg_2;
-            };
+            }
         }
 
         public static function isGpuRender():Boolean
@@ -229,7 +229,7 @@ package com.company.assembleegameclient.parameters
             else
             {
                 setDefault("GPURender", false);
-            };
+            }
             setDefault("forceChatQuality", false);
             setDefault("hidePlayerChat", false);
             setDefault("chatStarRequirement", 2);
@@ -247,7 +247,7 @@ package com.company.assembleegameclient.parameters
             else
             {
                 setDefault("musicVolume", 0);
-            };
+            }
             if (((data_.hasOwnProperty("playSFX")) && (data_.playMusic == true)))
             {
                 setDefault("SFXVolume", 1);
@@ -255,7 +255,7 @@ package com.company.assembleegameclient.parameters
             else
             {
                 setDefault("SFXVolume", 0);
-            };
+            }
             setDefault("friendList", KeyCodes.UNSET);
             setDefault("tradeWithFriends", false);
             setDefault("chatFriend", false);
@@ -299,8 +299,8 @@ package com.company.assembleegameclient.parameters
                         data_.playTimeLeftTillSurvey = (2 * 60);
                         data_.surveyGroup = "2WeekRealtime";
                         return;
-                };
-            };
+                }
+            }
         }
 
 

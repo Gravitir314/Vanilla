@@ -5,12 +5,13 @@
 
 package kabam.rotmg.pets.view.dialogs
 {
-    import kabam.rotmg.pets.view.components.DialogCloseButton;
-    import kabam.rotmg.pets.util.PetsViewAssetFactory;
-    import kabam.lib.ui.api.Size;
-    import com.company.assembleegameclient.ui.LineBreakDesign;
+import com.company.assembleegameclient.ui.LineBreakDesign;
 
-    public class PetPickerDialog extends PetDialog 
+import kabam.lib.ui.api.Size;
+import kabam.rotmg.pets.util.PetsViewAssetFactory;
+import kabam.rotmg.pets.view.components.DialogCloseButton;
+
+public class PetPickerDialog extends PetDialog
     {
 
         private static const padding:int = 12;

@@ -5,11 +5,12 @@
 
 package kabam.rotmg.pets.view.dialogs
 {
-    import robotlegs.bender.bundles.mvcs.Mediator;
-    import kabam.rotmg.dialogs.control.OpenDialogNoModalSignal;
-    import kabam.rotmg.pets.data.PetSlotsState;
+import kabam.rotmg.dialogs.control.OpenDialogNoModalSignal;
+import kabam.rotmg.pets.data.PetSlotsState;
 
-    public class PetPickerDialogMediator extends Mediator 
+import robotlegs.bender.bundles.mvcs.Mediator;
+
+public class PetPickerDialogMediator extends Mediator
     {
 
         [Inject]

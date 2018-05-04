@@ -5,10 +5,11 @@
 
 package kabam.rotmg.pets.util
 {
-    import flash.utils.Dictionary;
-    import kabam.rotmg.pets.data.PetRarityEnum;
+import flash.utils.Dictionary;
 
-    public class FeedFuseCostModel 
+import kabam.rotmg.pets.data.PetRarityEnum;
+
+public class FeedFuseCostModel
     {
 
         private static const feedCosts:Dictionary = makeFeedDictionary();

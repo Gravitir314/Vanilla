@@ -5,24 +5,24 @@
 
 package kabam.rotmg.pets.view
 {
-    import flash.display.Sprite;
-    import org.osflash.signals.Signal;
-    import kabam.rotmg.text.view.TextFieldDisplayConcrete;
-    import kabam.rotmg.pets.util.PetsViewAssetFactory;
-    import kabam.rotmg.pets.data.PetSkinGroupVO;
-    import kabam.rotmg.pets.view.components.slot.FeedFuseSlot;
-    import __AS3__.vec.Vector;
-    import kabam.rotmg.pets.data.PetVO;
-    import kabam.rotmg.text.view.stringBuilder.LineBuilder;
-    import kabam.rotmg.pets.util.PetsConstants;
-    import kabam.rotmg.pets.view.components.PetIcon;
-    import kabam.rotmg.pets.view.dialogs.PetItem;
-    import org.osflash.signals.natives.NativeSignal;
-    import flash.events.MouseEvent;
-    import kabam.rotmg.pets.view.components.PetIconFactory;
-    import __AS3__.vec.*;
+import flash.display.Sprite;
+import flash.events.MouseEvent;
 
-    public class PetSkinGroup extends Sprite 
+import kabam.rotmg.pets.data.PetSkinGroupVO;
+import kabam.rotmg.pets.data.PetVO;
+import kabam.rotmg.pets.util.PetsConstants;
+import kabam.rotmg.pets.util.PetsViewAssetFactory;
+import kabam.rotmg.pets.view.components.PetIcon;
+import kabam.rotmg.pets.view.components.PetIconFactory;
+import kabam.rotmg.pets.view.components.slot.FeedFuseSlot;
+import kabam.rotmg.pets.view.dialogs.PetItem;
+import kabam.rotmg.text.view.TextFieldDisplayConcrete;
+import kabam.rotmg.text.view.stringBuilder.LineBuilder;
+
+import org.osflash.signals.Signal;
+import org.osflash.signals.natives.NativeSignal;
+
+public class PetSkinGroup extends Sprite
     {
 
         private const SPACING:uint = 55;
@@ -95,16 +95,16 @@ package kabam.rotmg.pets.view
                 else
                 {
                     this.addToLower(_local_5);
-                };
+                }
                 this.slots.push(_local_5);
                 if (this.disabled)
                 {
                     _local_4.disable();
                     _local_5.mouseChildren = false;
                     _local_5.mouseEnabled = false;
-                };
+                }
                 _local_1++;
-            };
+            }
         }
 
         private function createPetIcon(_arg_1:PetVO, _arg_2:int):PetIcon
@@ -145,7 +145,7 @@ package kabam.rotmg.pets.view
                 _local_3 = PetItem(_local_2.getIcon()).getPetVO().getSkinID();
                 _local_2.highlight((_local_3 == _arg_1));
                 _local_4++;
-            };
+            }
         }
 
 

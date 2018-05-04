@@ -5,19 +5,22 @@
 
 package kabam.rotmg.pets.view.components.slot
 {
-    import org.osflash.signals.Signal;
-    import kabam.rotmg.pets.view.components.PetIconFactory;
-    import flash.filters.ColorMatrixFilter;
-    import com.company.util.MoreColorUtil;
-    import flash.events.MouseEvent;
-    import kabam.rotmg.text.model.TextKey;
-    import kabam.rotmg.pets.view.components.PetIcon;
-    import kabam.rotmg.pets.data.PetVO;
-    import kabam.rotmg.text.view.stringBuilder.AppendingLineBuilder;
-    import kabam.rotmg.pets.data.PetFamilyKeys;
-    import flash.geom.ColorTransform;
+import com.company.util.MoreColorUtil;
 
-    public class PetFeedFuseSlot extends FeedFuseSlot 
+import flash.events.MouseEvent;
+import flash.filters.ColorMatrixFilter;
+import flash.geom.ColorTransform;
+
+import kabam.rotmg.pets.data.PetFamilyKeys;
+import kabam.rotmg.pets.data.PetVO;
+import kabam.rotmg.pets.view.components.PetIcon;
+import kabam.rotmg.pets.view.components.PetIconFactory;
+import kabam.rotmg.text.model.TextKey;
+import kabam.rotmg.text.view.stringBuilder.AppendingLineBuilder;
+
+import org.osflash.signals.Signal;
+
+public class PetFeedFuseSlot extends FeedFuseSlot 
     {
 
         public const openPetPicker:Signal = new Signal();
@@ -38,7 +41,7 @@ package kabam.rotmg.pets.view.components.slot
             if (((!(icon)) || (contains(icon))))
             {
                 setTitle(TextKey.PETORFOODSLOT_FUSE_PET_TITLE, {});
-            };
+            }
         }
 
         private function onOpenPetPicker(_arg_1:MouseEvent):void
@@ -46,7 +49,7 @@ package kabam.rotmg.pets.view.components.slot
             if (!this.processing)
             {
                 this.openPetPicker.dispatch();
-            };
+            }
         }
 
         public function setPetIcon(_arg_1:PetVO):void
@@ -66,7 +69,7 @@ package kabam.rotmg.pets.view.components.slot
                 _local_2.pushParams(_arg_1.getRarity());
                 ((this.showFamily) && (_local_2.pushParams(PetFamilyKeys.getTranslationKey(_arg_1.getFamily()))));
                 setSubtitle(TextKey.BLANK, {"data":_local_2});
-            };
+            }
         }
 
         public function setProcessing(_arg_1:Boolean):void
@@ -78,7 +81,7 @@ package kabam.rotmg.pets.view.components.slot
                 icon.filters = ((_arg_1) ? [this.grayscaleMatrix] : []);
                 _local_2 = ((_arg_1) ? MoreColorUtil.darkCT : new ColorTransform());
                 icon.transform.colorTransform = _local_2;
-            };
+            }
         }
 
 

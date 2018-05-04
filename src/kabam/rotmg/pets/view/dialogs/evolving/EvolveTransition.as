@@ -5,13 +5,15 @@
 
 package kabam.rotmg.pets.view.dialogs.evolving
 {
-    import flash.display.Sprite;
-    import org.osflash.signals.Signal;
-    import kabam.rotmg.pets.view.dialogs.evolving.configuration.EvolveTransitionConfiguration;
-    import kabam.rotmg.pets.view.dialogs.evolving.configuration.ToOpaqueTween;
-    import kabam.rotmg.pets.view.dialogs.evolving.configuration.AfterOpaqueTween;
+import flash.display.Sprite;
 
-    public class EvolveTransition extends Sprite 
+import kabam.rotmg.pets.view.dialogs.evolving.configuration.AfterOpaqueTween;
+import kabam.rotmg.pets.view.dialogs.evolving.configuration.EvolveTransitionConfiguration;
+import kabam.rotmg.pets.view.dialogs.evolving.configuration.ToOpaqueTween;
+
+import org.osflash.signals.Signal;
+
+public class EvolveTransition extends Sprite 
     {
 
         public const opaqueReached:Signal = new Signal();

@@ -5,10 +5,11 @@
 
 package kabam.rotmg.application.impl
 {
-    import kabam.rotmg.application.api.ApplicationSetup;
-    import com.company.assembleegameclient.parameters.Parameters;
+import com.company.assembleegameclient.parameters.Parameters;
 
-    public class LocalhostSetup implements ApplicationSetup 
+import kabam.rotmg.application.api.ApplicationSetup;
+
+public class LocalhostSetup implements ApplicationSetup 
     {
 
         private const SERVER:String = "http://localhost:8080";

@@ -5,13 +5,15 @@
 
 package kabam.rotmg.pets.view.dialogs.evolving
 {
-    import flash.display.Sprite;
-    import kabam.rotmg.pets.view.components.PetIconFactory;
-    import org.swiftsuspenders.Injector;
-    import flash.display.DisplayObject;
-    import kabam.rotmg.pets.data.PetVO;
+import flash.display.DisplayObject;
+import flash.display.Sprite;
 
-    public class EvolvedPet extends Sprite 
+import kabam.rotmg.pets.data.PetVO;
+import kabam.rotmg.pets.view.components.PetIconFactory;
+
+import org.swiftsuspenders.Injector;
+
+public class EvolvedPet extends Sprite 
     {
 
         [Inject]

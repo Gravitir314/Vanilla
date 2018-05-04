@@ -5,15 +5,17 @@
 
 package kabam.rotmg.pets.view.components
 {
-    import flash.display.Sprite;
-    import org.osflash.signals.Signal;
-    import kabam.rotmg.pets.data.PetVO;
-    import kabam.rotmg.pets.view.components.slot.PetFeedFuseSlot;
-    import kabam.rotmg.pets.util.PetsViewAssetFactory;
-    import kabam.rotmg.pets.view.components.slot.FoodFeedFuseSlot;
-    import kabam.rotmg.pets.data.PetSlotsState;
+import flash.display.Sprite;
 
-    public class PetFeeder extends Sprite 
+import kabam.rotmg.pets.data.PetSlotsState;
+import kabam.rotmg.pets.data.PetVO;
+import kabam.rotmg.pets.util.PetsViewAssetFactory;
+import kabam.rotmg.pets.view.components.slot.FoodFeedFuseSlot;
+import kabam.rotmg.pets.view.components.slot.PetFeedFuseSlot;
+
+import org.osflash.signals.Signal;
+
+public class PetFeeder extends Sprite
     {
 
         public const openPetPicker:Signal = new Signal();
@@ -48,7 +50,7 @@ package kabam.rotmg.pets.view.components
             if (_arg_1)
             {
                 this.petLoaded.dispatch(_arg_1);
-            };
+            }
         }
 
         public function clearFood():void
@@ -98,7 +100,7 @@ package kabam.rotmg.pets.view.components
                 this.rightSlot.highlight((this.state.rightSlotItemId == -1));
                 this.leftSlot.highlight((this.state.leftSlotPetVO == null));
                 this.arrow.highlight(false);
-            };
+            }
         }
 
         public function setProcessing(_arg_1:Boolean):void
@@ -114,7 +116,7 @@ package kabam.rotmg.pets.view.components
             else
             {
                 this.update();
-            };
+            }
         }
 
 

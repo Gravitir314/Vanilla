@@ -5,13 +5,15 @@
 
 package kabam.rotmg.pets.view.components
 {
-    import flash.display.BitmapData;
-    import flash.display.Bitmap;
-    import kabam.rotmg.pets.data.PetVO;
-    import com.company.assembleegameclient.util.TextureRedrawer;
-    import com.company.assembleegameclient.util.redrawers.GlowRedrawer;
+import com.company.assembleegameclient.util.TextureRedrawer;
+import com.company.assembleegameclient.util.redrawers.GlowRedrawer;
 
-    public class PetIconFactory 
+import flash.display.Bitmap;
+import flash.display.BitmapData;
+
+import kabam.rotmg.pets.data.PetVO;
+
+public class PetIconFactory
     {
 
         public var outlineSize:Number = 1.4;
@@ -37,7 +39,7 @@ package kabam.rotmg.pets.view.components
                 _local_5 = TextureRedrawer.resize(_local_3, _arg_1.getSkinMaskedImage().mask_, 100, true, 0, 0, _local_4);
                 _local_5 = GlowRedrawer.outlineGlow(_local_5, 0, this.outlineSize);
                 return (_local_5);
-            };
+            }
             return (new BitmapDataSpy(_arg_2, _arg_2));
         }
 

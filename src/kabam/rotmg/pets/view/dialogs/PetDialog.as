@@ -5,9 +5,9 @@
 
 package kabam.rotmg.pets.view.dialogs
 {
-    import com.company.assembleegameclient.ui.dialogs.Dialog;
+import com.company.assembleegameclient.ui.dialogs.Dialog;
 
-    public class PetDialog extends Dialog 
+public class PetDialog extends Dialog 
     {
 
         protected var petDialogStyler:PetDialogStyler;

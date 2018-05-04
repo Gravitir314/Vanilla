@@ -5,15 +5,14 @@
 
 package kabam.rotmg.pets.view.dialogs
 {
-    import flash.display.Sprite;
-    import flash.display.GraphicsSolidFill;
-    import flash.display.GraphicsPath;
-    import flash.display.IGraphicsData;
-    import com.company.util.GraphicsUtil;
-    import __AS3__.vec.Vector;
-    import __AS3__.vec.*;
+import com.company.util.GraphicsUtil;
 
-    public class PetItemBackground extends Sprite 
+import flash.display.GraphicsPath;
+import flash.display.GraphicsSolidFill;
+import flash.display.IGraphicsData;
+import flash.display.Sprite;
+
+public class PetItemBackground extends Sprite
     {
 
         private var backgroundFill_:GraphicsSolidFill = new GraphicsSolidFill(0x545454);

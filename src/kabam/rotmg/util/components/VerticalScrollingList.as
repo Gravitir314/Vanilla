@@ -5,16 +5,17 @@
 
 package kabam.rotmg.util.components
 {
-    import flash.display.Sprite;
-    import kabam.lib.ui.api.List;
-    import org.osflash.signals.Signal;
-    import kabam.lib.ui.impl.VerticalLayout;
-    import kabam.lib.ui.impl.LayoutList;
-    import kabam.lib.ui.api.Size;
-    import flash.display.DisplayObject;
-    import __AS3__.vec.Vector;
+import flash.display.DisplayObject;
+import flash.display.Sprite;
 
-    public class VerticalScrollingList extends Sprite implements List 
+import kabam.lib.ui.api.List;
+import kabam.lib.ui.api.Size;
+import kabam.lib.ui.impl.LayoutList;
+import kabam.lib.ui.impl.VerticalLayout;
+
+import org.osflash.signals.Signal;
+
+public class VerticalScrollingList extends Sprite implements List
     {
 
         public static const SCROLLBAR_PADDING:int = 2;
@@ -52,7 +53,7 @@ package kabam.rotmg.util.components
             if (this.isScrollbarVisible())
             {
                 _arg_1 = new Size((_arg_1.width - SCROLLBAR_GUTTER), _arg_1.height);
-            };
+            }
             this.list.setSize(_arg_1);
             this.refreshScrollbar();
         }

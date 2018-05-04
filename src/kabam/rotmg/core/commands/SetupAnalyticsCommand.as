@@ -5,12 +5,13 @@
 
 package kabam.rotmg.core.commands
 {
-    import kabam.rotmg.application.api.ApplicationSetup;
-    import kabam.rotmg.core.service.GoogleAnalytics;
-    import kabam.rotmg.account.core.Account;
-    import robotlegs.bender.framework.api.ILogger;
+import kabam.rotmg.account.core.Account;
+import kabam.rotmg.application.api.ApplicationSetup;
+import kabam.rotmg.core.service.GoogleAnalytics;
 
-    public class SetupAnalyticsCommand 
+import robotlegs.bender.framework.api.ILogger;
+
+public class SetupAnalyticsCommand
     {
         [Inject]
         public var setup:ApplicationSetup;

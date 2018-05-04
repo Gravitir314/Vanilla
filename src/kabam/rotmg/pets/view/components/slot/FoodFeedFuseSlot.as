@@ -5,21 +5,24 @@
 
 package kabam.rotmg.pets.view.components.slot
 {
-    import org.osflash.signals.Signal;
-    import flash.filters.ColorMatrixFilter;
-    import com.company.util.MoreColorUtil;
-    import flash.events.MouseEvent;
-    import flash.geom.ColorTransform;
-    import flash.events.Event;
-    import com.company.assembleegameclient.objects.ObjectLibrary;
-    import kabam.rotmg.text.model.TextKey;
-    import kabam.rotmg.constants.ItemConstants;
-    import com.company.assembleegameclient.util.DisplayHierarchy;
-    import kabam.rotmg.pets.view.FeedPetView;
-    import kabam.rotmg.pets.view.FusePetView;
-    import kabam.rotmg.questrewards.components.ModalItemSlot;
+import com.company.assembleegameclient.objects.ObjectLibrary;
+import com.company.assembleegameclient.util.DisplayHierarchy;
+import com.company.util.MoreColorUtil;
 
-    public class FoodFeedFuseSlot extends FeedFuseSlot 
+import flash.events.Event;
+import flash.events.MouseEvent;
+import flash.filters.ColorMatrixFilter;
+import flash.geom.ColorTransform;
+
+import kabam.rotmg.constants.ItemConstants;
+import kabam.rotmg.pets.view.FeedPetView;
+import kabam.rotmg.pets.view.FusePetView;
+import kabam.rotmg.questrewards.components.ModalItemSlot;
+import kabam.rotmg.text.model.TextKey;
+
+import org.osflash.signals.Signal;
+
+public class FoodFeedFuseSlot extends FeedFuseSlot 
     {
 
         public const foodLoaded:Signal = new Signal(int);
@@ -45,7 +48,7 @@ package kabam.rotmg.pets.view.components.slot
                 itemSprite.filters = ((_arg_1) ? [this.grayscaleMatrix] : []);
                 _local_2 = ((_arg_1) ? MoreColorUtil.darkCT : new ColorTransform());
                 itemSprite.transform.colorTransform = _local_2;
-            };
+            }
         }
 
         override protected function onRemovedFromStage(_arg_1:Event):void
@@ -66,7 +69,7 @@ package kabam.rotmg.pets.view.components.slot
                 alignBitmapInBox();
                 this.updateTitle();
                 this.cancelCallback = _arg_4;
-            };
+            }
         }
 
         public function setItemPart2(_arg_1:int):void
@@ -89,7 +92,7 @@ package kabam.rotmg.pets.view.components.slot
             {
                 setTitle(TextKey.PETORFOODSLOT_PLACE_ITEM, {});
                 setSubtitle(TextKey.BLANK, {"data":""});
-            };
+            }
         }
 
         public function setCancelCallback(_arg_1:Function):void
@@ -132,8 +135,8 @@ package kabam.rotmg.pets.view.components.slot
                 {
                     removeChild(itemSprite);
                     stage.addChild(itemSprite);
-                };
-            };
+                }
+            }
         }
 
         private function endDrag(_arg_1:MouseEvent):void
@@ -152,7 +155,7 @@ package kabam.rotmg.pets.view.components.slot
                 this.clearAndCallCancel();
                 this.foodUnloaded.dispatch();
                 this.updateTitle();
-            };
+            }
         }
 
 

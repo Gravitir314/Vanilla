@@ -5,11 +5,13 @@
 
 package kabam.rotmg.pets.view
 {
-    import flash.display.Sprite;
-    import kabam.rotmg.pets.view.dialogs.ClearsPetSlots;
-    import com.company.assembleegameclient.util.StageProxy;
+import com.company.assembleegameclient.util.StageProxy;
 
-    public class PetInteractionView extends Sprite implements ClearsPetSlots 
+import flash.display.Sprite;
+
+import kabam.rotmg.pets.view.dialogs.ClearsPetSlots;
+
+public class PetInteractionView extends Sprite implements ClearsPetSlots
     {
 
         public var stageProxy:StageProxy;

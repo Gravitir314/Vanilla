@@ -5,14 +5,13 @@
 
 package kabam.rotmg.pets.view.dialogs
 {
-    import flash.display.Sprite;
-    import kabam.rotmg.util.components.VerticalScrollingList;
-    import kabam.lib.ui.api.Size;
-    import __AS3__.vec.Vector;
-    import flash.display.DisplayObject;
-    import __AS3__.vec.*;
+import flash.display.DisplayObject;
+import flash.display.Sprite;
 
-    public class GridList extends Sprite 
+import kabam.lib.ui.api.Size;
+import kabam.rotmg.util.components.VerticalScrollingList;
+
+public class GridList extends Sprite
     {
 
         public var list:VerticalScrollingList = new VerticalScrollingList();
@@ -46,12 +45,12 @@ package kabam.rotmg.pets.view.dialogs
             for each (_local_2 in _arg_1)
             {
                 this.addItem(_local_2);
-            };
+            }
             this.list.setItems(this.rows);
             if (!_arg_1.length)
             {
                 return;
-            };
+            }
             var _local_3:DisplayObject = _arg_1[0];
             this.maxItemsPerRow = (this.maxRowWidth() / _local_3.width);
         }
@@ -98,7 +97,7 @@ package kabam.rotmg.pets.view.dialogs
             else
             {
                 this.positionRightOfPrevious(_arg_1);
-            };
+            }
             this.lastItemRight = (_arg_1.x + _arg_1.width);
             this.lastItemRight = (this.lastItemRight + this.padding);
         }
@@ -130,7 +129,7 @@ package kabam.rotmg.pets.view.dialogs
             if (this.items.length)
             {
                 return (this.items[0]);
-            };
+            }
             return (null);
         }
 
@@ -141,7 +140,7 @@ package kabam.rotmg.pets.view.dialogs
             {
                 _local_1 = this.grid[0];
                 return (_local_1[(this.maxItemsPerRow - 1)]);
-            };
+            }
             return (null);
         }
 
@@ -152,7 +151,7 @@ package kabam.rotmg.pets.view.dialogs
             {
                 _local_1 = this.grid[(this.grid.length - 1)];
                 return (_local_1[0]);
-            };
+            }
             return (null);
         }
 
@@ -163,7 +162,7 @@ package kabam.rotmg.pets.view.dialogs
             {
                 _local_1 = this.grid[(this.grid.length - 1)];
                 return (_local_1[(this.maxItemsPerRow - 1)]);
-            };
+            }
             return (null);
         }
 

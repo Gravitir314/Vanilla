@@ -5,28 +5,29 @@
 
 package kabam.rotmg.pets.view
 {
-    import kabam.rotmg.pets.view.components.PopupWindowBackground;
-    import kabam.rotmg.pets.util.PetsViewAssetFactory;
-    import kabam.rotmg.pets.util.PetsConstants;
-    import kabam.rotmg.text.view.TextFieldDisplayConcrete;
-    import kabam.rotmg.pets.view.components.FameOrGoldBuyButtons;
-    import kabam.rotmg.text.model.TextKey;
-    import kabam.rotmg.pets.view.components.PetFeeder;
-    import kabam.rotmg.pets.view.components.DialogCloseButton;
-    import __AS3__.vec.Vector;
-    import kabam.rotmg.pets.view.components.PetAbilityMeter;
-    import com.company.assembleegameclient.ui.LineBreakDesign;
-    import org.osflash.signals.Signal;
-    import kabam.rotmg.text.view.stringBuilder.LineBuilder;
-    import flash.events.Event;
-    import kabam.rotmg.pets.data.PetRarityEnum;
-    import kabam.rotmg.pets.util.FeedFuseCostModel;
-    import kabam.rotmg.pets.data.PetVO;
-    import kabam.rotmg.pets.data.AbilityVO;
-    import kabam.rotmg.ui.view.SignalWaiter;
-    import __AS3__.vec.*;
+import com.company.assembleegameclient.ui.LineBreakDesign;
 
-    public class FeedPetView extends PetInteractionView 
+import flash.events.Event;
+
+import kabam.rotmg.pets.data.AbilityVO;
+import kabam.rotmg.pets.data.PetRarityEnum;
+import kabam.rotmg.pets.data.PetVO;
+import kabam.rotmg.pets.util.FeedFuseCostModel;
+import kabam.rotmg.pets.util.PetsConstants;
+import kabam.rotmg.pets.util.PetsViewAssetFactory;
+import kabam.rotmg.pets.view.components.DialogCloseButton;
+import kabam.rotmg.pets.view.components.FameOrGoldBuyButtons;
+import kabam.rotmg.pets.view.components.PetAbilityMeter;
+import kabam.rotmg.pets.view.components.PetFeeder;
+import kabam.rotmg.pets.view.components.PopupWindowBackground;
+import kabam.rotmg.text.model.TextKey;
+import kabam.rotmg.text.view.TextFieldDisplayConcrete;
+import kabam.rotmg.text.view.stringBuilder.LineBuilder;
+import kabam.rotmg.ui.view.SignalWaiter;
+
+import org.osflash.signals.Signal;
+
+public class FeedPetView extends PetInteractionView
     {
 
         private const background:PopupWindowBackground = PetsViewAssetFactory.returnWindowBackground(PetsConstants.WINDOW_BACKGROUND_WIDTH, PetsConstants.WINDOW_BACKGROUND_HEIGHT);
@@ -87,12 +88,12 @@ package kabam.rotmg.pets.view
                 {
                     this.buttonBar.clearFameAndGold();
                     this.buttonBar.setPrefix(TextKey.PET_FULLY_MAXED);
-                };
+                }
             }
             else
             {
                 this.buttonBar.setPrefix(TextKey.PET_SELECT_PET);
-            };
+            }
         }
 
         private function onClosed():void
@@ -111,7 +112,7 @@ package kabam.rotmg.pets.view
             for each (_local_1 in this.abilityMeters)
             {
                 _local_1.animating.remove(this.onAnimating);
-            };
+            }
             this.buttonBar.positioned.remove(this.positionButtonBar);
         }
 
@@ -126,8 +127,8 @@ package kabam.rotmg.pets.view
                 for each (_local_5 in this.abilityMeters)
                 {
                     _local_5.visible = false;
-                };
-            };
+                }
+            }
             for each (_local_4 in _arg_1)
             {
                 if (_local_3 < this.abilityMeters.length)
@@ -139,8 +140,8 @@ package kabam.rotmg.pets.view
                     _local_6.initializeData(_local_4);
                     _local_6.animating.add(this.onAnimating);
                     _local_3++;
-                };
-            };
+                }
+            }
         }
 
         private function onAnimating(_arg_1:PetAbilityMeter, _arg_2:Boolean):void
@@ -162,8 +163,8 @@ package kabam.rotmg.pets.view
                 {
                     _local_1 = true;
                     break;
-                };
-            };
+                }
+            }
             return (_local_1);
         }
 
@@ -180,7 +181,7 @@ package kabam.rotmg.pets.view
             {
                 _local_1.visible = false;
                 addChild(_local_1);
-            };
+            }
         }
 
         private function positionAssets():void
@@ -203,7 +204,7 @@ package kabam.rotmg.pets.view
             for each (_local_2 in this.abilityMeters)
             {
                 _local_1.push(_local_2.positioned);
-            };
+            }
             _local_1.complete.addOnce(this.positionMeters);
             this.buttonBar.positioned.add(this.positionButtonBar);
         }
@@ -223,7 +224,7 @@ package kabam.rotmg.pets.view
                 _local_2.x = ((PetsConstants.WINDOW_BACKGROUND_WIDTH - 227) * 0.5);
                 _local_2.y = _local_1;
                 _local_1 = (_local_1 + (_local_2.height + 10));
-            };
+            }
         }
 
         private function positionLinebreak():void

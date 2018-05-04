@@ -5,20 +5,23 @@
 
 package kabam.rotmg.pets.view.dialogs
 {
-    import flash.display.Sprite;
-    import flash.display.Bitmap;
-    import kabam.rotmg.pets.view.components.PopupWindowBackground;
-    import kabam.rotmg.pets.util.PetsViewAssetFactory;
-    import kabam.rotmg.text.view.TextFieldDisplayConcrete;
-    import flash.display.DisplayObject;
-    import com.company.assembleegameclient.ui.DeprecatedTextButton;
-    import org.osflash.signals.Signal;
-    import flash.events.MouseEvent;
-    import kabam.rotmg.text.view.stringBuilder.LineBuilder;
-    import kabam.rotmg.text.model.TextKey;
-    import kabam.rotmg.ui.view.SignalWaiter;
+import com.company.assembleegameclient.ui.DeprecatedTextButton;
 
-    public class EggHatchedDialog extends Sprite 
+import flash.display.Bitmap;
+import flash.display.DisplayObject;
+import flash.display.Sprite;
+import flash.events.MouseEvent;
+
+import kabam.rotmg.pets.util.PetsViewAssetFactory;
+import kabam.rotmg.pets.view.components.PopupWindowBackground;
+import kabam.rotmg.text.model.TextKey;
+import kabam.rotmg.text.view.TextFieldDisplayConcrete;
+import kabam.rotmg.text.view.stringBuilder.LineBuilder;
+import kabam.rotmg.ui.view.SignalWaiter;
+
+import org.osflash.signals.Signal;
+
+public class EggHatchedDialog extends Sprite
     {
 
         internal var skinType:int;

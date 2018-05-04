@@ -5,9 +5,9 @@
 
 package kabam.rotmg.pets.data
 {
-    import kabam.rotmg.messaging.impl.data.SlotObjectData;
+import kabam.rotmg.messaging.impl.data.SlotObjectData;
 
-    public class FeedPetRequestVO implements IUpgradePetRequestVO 
+public class FeedPetRequestVO implements IUpgradePetRequestVO
     {
 
         public var petInstanceId:int;

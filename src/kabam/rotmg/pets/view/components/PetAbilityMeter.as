@@ -5,24 +5,26 @@
 
 package kabam.rotmg.pets.view.components
 {
-    import flash.display.Sprite;
-    import kabam.rotmg.tooltips.TooltipAble;
-    import org.osflash.signals.Signal;
-    import kabam.rotmg.text.view.TextFieldDisplayConcrete;
-    import kabam.rotmg.pets.util.PetsViewAssetFactory;
-    import kabam.rotmg.pets.util.PetsConstants;
-    import kabam.rotmg.tooltips.HoverTooltipDelegate;
-    import flash.events.Event;
-    import kabam.rotmg.pets.util.PetsAbilityLevelHelper;
-    import kabam.rotmg.pets.data.AbilityVO;
-    import kabam.rotmg.text.view.stringBuilder.LineBuilder;
-    import kabam.rotmg.text.model.TextKey;
-    import flash.filters.DropShadowFilter;
-    import kabam.rotmg.ui.view.SignalWaiter;
-    import kabam.rotmg.core.signals.ShowTooltipSignal;
-    import kabam.rotmg.core.signals.HideTooltipsSignal;
+import flash.display.Sprite;
+import flash.events.Event;
+import flash.filters.DropShadowFilter;
 
-    public class PetAbilityMeter extends Sprite implements TooltipAble 
+import kabam.rotmg.core.signals.HideTooltipsSignal;
+import kabam.rotmg.core.signals.ShowTooltipSignal;
+import kabam.rotmg.pets.data.AbilityVO;
+import kabam.rotmg.pets.util.PetsAbilityLevelHelper;
+import kabam.rotmg.pets.util.PetsConstants;
+import kabam.rotmg.pets.util.PetsViewAssetFactory;
+import kabam.rotmg.text.model.TextKey;
+import kabam.rotmg.text.view.TextFieldDisplayConcrete;
+import kabam.rotmg.text.view.stringBuilder.LineBuilder;
+import kabam.rotmg.tooltips.HoverTooltipDelegate;
+import kabam.rotmg.tooltips.TooltipAble;
+import kabam.rotmg.ui.view.SignalWaiter;
+
+import org.osflash.signals.Signal;
+
+public class PetAbilityMeter extends Sprite implements TooltipAble
     {
 
         public const animating:Signal = new Signal(PetAbilityMeter, Boolean);
@@ -71,7 +73,7 @@ package kabam.rotmg.pets.view.components
                 _local_3 = PetsAbilityLevelHelper.getAbilityPointsforLevel(_arg_1.level);
                 _local_2 = ((_arg_1.level >= this.max) ? _local_3 : _local_2);
                 this.setAbilityBar(_local_2, _local_3);
-            };
+            }
             _arg_1.updated.add(this.updateData);
         }
 
@@ -94,8 +96,8 @@ package kabam.rotmg.pets.view.components
                 else
                 {
                     this.setAbilityBar(this.pointsLeftToAdd, _local_2);
-                };
-            };
+                }
+            }
         }
 
         private function onChainedFill():void
@@ -122,8 +124,8 @@ package kabam.rotmg.pets.view.components
                 {
                     this.abilityBar.reset();
                     this.setAbilityBar(this.pointsLeftToAdd, _local_2);
-                };
-            };
+                }
+            }
         }
 
         public function setAbilityLabel(_arg_1:String):void
@@ -157,7 +159,7 @@ package kabam.rotmg.pets.view.components
                 this.levelTextfield.setColor(_local_2);
                 this.levelTextfield.filters = _local_3;
                 this.labelTextfield.visible = _arg_1;
-            };
+            }
         }
 
         private function addChildren():void
@@ -194,7 +196,7 @@ package kabam.rotmg.pets.view.components
             if (((!(_arg_1)) && (this.levelShown >= 100)))
             {
                 this.abilityBar.setBarColor(PetsConstants.COLOR_GREEN_TEXT_HIGHLIGHT);
-            };
+            }
             this.animating.dispatch(this, _arg_1);
         }
 

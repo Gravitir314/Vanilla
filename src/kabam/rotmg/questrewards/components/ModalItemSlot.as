@@ -5,26 +5,25 @@
 
 package kabam.rotmg.questrewards.components
 {
-    import kabam.rotmg.pets.view.components.slot.FoodFeedFuseSlot;
-    import flash.text.TextField;
-    import kabam.rotmg.util.components.LegacyBuyButton;
-    import __AS3__.vec.Vector;
-    import flash.display.Shape;
-    import flash.display.Bitmap;
-    import flash.display.Sprite;
-    import flash.events.MouseEvent;
-    import kabam.rotmg.pets.util.PetsViewAssetFactory;
-    import flash.events.Event;
-    import kabam.rotmg.fortune.components.TimerCallback;
-    import kabam.rotmg.text.model.FontModel;
-    import flash.text.TextFormat;
-    import flash.text.TextFieldAutoSize;
-    import kabam.rotmg.core.StaticInjectorContext;
-    import flash.geom.ColorTransform;
-    import flash.utils.getTimer;
-    import __AS3__.vec.*;
+import flash.display.Bitmap;
+import flash.display.Shape;
+import flash.display.Sprite;
+import flash.events.Event;
+import flash.events.MouseEvent;
+import flash.geom.ColorTransform;
+import flash.text.TextField;
+import flash.text.TextFieldAutoSize;
+import flash.text.TextFormat;
+import flash.utils.getTimer;
 
-    public class ModalItemSlot extends FoodFeedFuseSlot 
+import kabam.rotmg.core.StaticInjectorContext;
+import kabam.rotmg.fortune.components.TimerCallback;
+import kabam.rotmg.pets.util.PetsViewAssetFactory;
+import kabam.rotmg.pets.view.components.slot.FoodFeedFuseSlot;
+import kabam.rotmg.text.model.FontModel;
+import kabam.rotmg.util.components.LegacyBuyButton;
+
+public class ModalItemSlot extends FoodFeedFuseSlot 
     {
 
         public var interactable:Boolean = false;
@@ -50,7 +49,7 @@ package kabam.rotmg.questrewards.components
             {
                 this.interactable = _arg_1;
                 addEventListener(MouseEvent.ROLL_OVER, this.onMouseOverGoalSlot);
-            };
+            }
             highlight(true, 16689154, true);
             if (_arg_2)
             {
@@ -61,10 +60,10 @@ package kabam.rotmg.questrewards.components
                     addChild(_local_3);
                     this.animatedOutlines.push(_local_3);
                     _local_4++;
-                };
+                }
                 this.animationStartIndex = (this.animatedOutlines.length - 1);
                 addEventListener(Event.ENTER_FRAME, this.onEnterFrame);
-            };
+            }
         }
 
         override public function updateTitle():void
@@ -77,30 +76,30 @@ package kabam.rotmg.questrewards.components
                 {
                     this.actionButton.setOutLineColor(196098);
                     this.actionButton.draw();
-                };
+                }
                 if (((!(this.embeddedSprite_ == null)) && (!(this.embeddedSprite_.parent == null))))
                 {
                     this.embeddedSpriteCopy_.visible = false;
                     this.embeddedSpriteCopy_.alpha = 0;
                     this.embeddedSprite_.alpha = 1;
-                };
+                }
             }
             else
             {
                 if (this.animatedOutlines.length > 0)
                 {
                     addEventListener(Event.ENTER_FRAME, this.onEnterFrame);
-                };
+                }
                 if (((!(this.embeddedSprite_ == null)) && (!(this.embeddedSprite_.parent == null))))
                 {
                     this.embeddedSpriteCopy_.visible = true;
-                };
+                }
                 if (this.actionButton)
                 {
                     this.actionButton.setOutLineColor(0x545454);
                     this.actionButton.draw();
-                };
-            };
+                }
+            }
         }
 
         public function makeRedTemporarily():void
@@ -119,7 +118,7 @@ package kabam.rotmg.questrewards.components
                 this.marking.textColor = 0xFF00;
                 addChild(this.marking);
                 this.marking.y = Math.round((((height / 2) - (this.marking.textHeight / 2)) / 7));
-            };
+            }
         }
 
         public function setQuestionMark():void
@@ -131,7 +130,7 @@ package kabam.rotmg.questrewards.components
                 this.marking.textColor = 0xFF0000;
                 addChild(this.marking);
                 this.marking.y = Math.round((((height / 2) - (this.marking.textHeight / 2)) / 7));
-            };
+            }
         }
 
         public function removeMarking():void
@@ -139,7 +138,7 @@ package kabam.rotmg.questrewards.components
             if (((!(this.marking == null)) && (!(this.marking.parent == null))))
             {
                 removeChild(this.marking);
-            };
+            }
         }
 
         private function buildTextField():TextField
@@ -166,10 +165,10 @@ package kabam.rotmg.questrewards.components
                 if (((!(this.usageText == null)) && (this.usageText.parent == null)))
                 {
                     addChild(this.usageText);
-                };
+                }
                 removeEventListener(MouseEvent.ROLL_OVER, this.onMouseOverGoalSlot);
                 addEventListener(MouseEvent.ROLL_OUT, this.onMouseOutsideGoalSlot);
-            };
+            }
         }
 
         private function onMouseOutsideGoalSlot(_arg_1:Event):void
@@ -180,7 +179,7 @@ package kabam.rotmg.questrewards.components
                 new TimerCallback(0.5, this.removeIfStillOutside);
                 addEventListener(MouseEvent.ROLL_OVER, this.onMouseOverGoalSlot);
                 removeEventListener(MouseEvent.ROLL_OUT, this.onMouseOutsideGoalSlot);
-            };
+            }
         }
 
         private function removeIfStillOutside():void
@@ -188,7 +187,7 @@ package kabam.rotmg.questrewards.components
             if ((((this.hovering == false) && (!(this.usageText == null))) && (!(this.usageText.parent == null))))
             {
                 removeChild(this.usageText);
-            };
+            }
         }
 
         public function setUsageText(_arg_1:String, _arg_2:int, _arg_3:int):void
@@ -224,18 +223,18 @@ package kabam.rotmg.questrewards.components
                     _local_3.alphaMultiplier = (1 - (_local_4 * 0.3));
                     this.animatedOutlines[_local_4].transform.colorTransform = _local_3;
                     _local_4++;
-                };
+                }
                 _local_5 = (this.animationStartIndex - (this.curOutline * this.animationDir));
                 _local_3 = this.animatedOutlines[_local_5].transform.colorTransform;
                 _local_3.color = 196098;
                 this.animatedOutlines[_local_5].transform.colorTransform = _local_3;
-            };
+            }
             if (this.embeddedImage_)
             {
                 if (((this.embeddedSprite_.alpha == 1) || (this.embeddedSprite_.alpha == 0)))
                 {
                     this.dir = (this.dir * -1);
-                };
+                }
                 this.embeddedSprite_.alpha = (this.embeddedSprite_.alpha + this.dir);
                 this.embeddedSpriteCopy_.alpha = (this.embeddedSpriteCopy_.alpha - this.dir);
                 if (this.embeddedSprite_.alpha >= 1)
@@ -249,9 +248,9 @@ package kabam.rotmg.questrewards.components
                     {
                         this.embeddedSprite_.alpha = 0;
                         this.embeddedSpriteCopy_.alpha = 1;
-                    };
-                };
-            };
+                    }
+                }
+            }
         }
 
         public function highLightAll(_arg_1:int):void
@@ -265,7 +264,7 @@ package kabam.rotmg.questrewards.components
                 _local_3.alphaMultiplier = (1 - (_local_2 * 0.3));
                 this.animatedOutlines[_local_2].transform.colorTransform = _local_3;
                 _local_2--;
-            };
+            }
         }
 
         public function playOutLineAnimation(_arg_1:int):void
@@ -280,8 +279,8 @@ package kabam.rotmg.questrewards.components
                 if (_arg_1 == 1)
                 {
                     this.animationStartIndex = (this.animatedOutlines.length - 1);
-                };
-            };
+                }
+            }
             addEventListener(Event.ENTER_FRAME, this.onEnterFrame);
         }
 
@@ -308,7 +307,7 @@ package kabam.rotmg.questrewards.components
             {
                 removeChild(itemSprite);
                 addChild(itemSprite);
-            };
+            }
             this.embeddedSprite_.filters = [grayscaleMatrix];
             var _local_3:ColorTransform = new ColorTransform();
             _local_3.color = 0x292929;

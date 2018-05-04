@@ -5,14 +5,16 @@
 
 package kabam.rotmg.pets.view.components
 {
-    import flash.display.Sprite;
-    import org.osflash.signals.Signal;
-    import kabam.rotmg.pets.view.components.slot.PetFeedFuseSlot;
-    import kabam.rotmg.pets.util.PetsViewAssetFactory;
-    import kabam.rotmg.pets.data.PetSlotsState;
-    import kabam.rotmg.pets.data.PetVO;
+import flash.display.Sprite;
 
-    public class PetFuser extends Sprite 
+import kabam.rotmg.pets.data.PetSlotsState;
+import kabam.rotmg.pets.data.PetVO;
+import kabam.rotmg.pets.util.PetsViewAssetFactory;
+import kabam.rotmg.pets.view.components.slot.PetFeedFuseSlot;
+
+import org.osflash.signals.Signal;
+
+public class PetFuser extends Sprite 
     {
 
         public const openPetPicker:Signal = new Signal(String);
@@ -39,7 +41,7 @@ package kabam.rotmg.pets.view.components
             if (this.state.rightSlotPetVO)
             {
                 this.setPet(this.state.rightSlotPetVO, PetSlotsState.RIGHT);
-            };
+            }
             this.updateHighlights();
         }
 
@@ -50,7 +52,7 @@ package kabam.rotmg.pets.view.components
             {
                 _local_3 = ((_arg_2 == PetSlotsState.LEFT) ? this.leftSlot : this.rightSlot);
                 _local_3.setPet(_arg_1);
-            };
+            }
         }
 
         private function onOpenLeftPetPicker():void
@@ -76,7 +78,7 @@ package kabam.rotmg.pets.view.components
                 this.rightSlot.highlight((this.state.rightSlotPetVO == null));
                 this.leftSlot.highlight((this.state.leftSlotPetVO == null));
                 this.arrow.highlight(false);
-            };
+            }
         }
 
 

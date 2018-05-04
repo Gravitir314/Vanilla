@@ -5,16 +5,18 @@
 
 package com.company.assembleegameclient.ui.panels.itemgrids.itemtiles
 {
-    import flash.filters.ColorMatrixFilter;
-    import com.company.util.MoreColorUtil;
-    import flash.display.Bitmap;
-    import com.company.assembleegameclient.ui.panels.itemgrids.ItemGrid;
-    import com.company.assembleegameclient.objects.ObjectLibrary;
-    import kabam.rotmg.constants.ItemConstants;
-    import flash.display.BitmapData;
-    import com.company.assembleegameclient.objects.Player;
+import com.company.assembleegameclient.objects.ObjectLibrary;
+import com.company.assembleegameclient.objects.Player;
+import com.company.assembleegameclient.ui.panels.itemgrids.ItemGrid;
+import com.company.util.MoreColorUtil;
 
-    public class EquipmentTile extends InteractiveItemTile 
+import flash.display.Bitmap;
+import flash.display.BitmapData;
+import flash.filters.ColorMatrixFilter;
+
+import kabam.rotmg.constants.ItemConstants;
+
+public class EquipmentTile extends InteractiveItemTile 
     {
 
         private static const greyColorFilter:ColorMatrixFilter = new ColorMatrixFilter(MoreColorUtil.singleColorFilterMatrix(0x363636));
@@ -45,7 +47,7 @@ package com.company.assembleegameclient.ui.panels.itemgrids.itemtiles
                 this.backgroundDetail.scaleY = 4;
                 this.backgroundDetail.filters = [greyColorFilter];
                 addChildAt(this.backgroundDetail, 0);
-            };
+            }
             this.itemType = _arg_1;
         }
 
@@ -56,7 +58,7 @@ package com.company.assembleegameclient.ui.panels.itemgrids.itemtiles
             {
                 this.backgroundDetail.visible = (itemSprite.itemId <= 0);
                 this.updateMinMana();
-            };
+            }
             return (_local_2);
         }
 
@@ -76,9 +78,9 @@ package com.company.assembleegameclient.ui.panels.itemgrids.itemtiles
                     else
                     {
                         this.minManaUsage = _local_1.MpCost;
-                    };
-                };
-            };
+                    }
+                }
+            }
         }
 
         public function updateDim(_arg_1:Player):void

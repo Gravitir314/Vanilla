@@ -5,11 +5,13 @@
 
 package kabam.rotmg.pets.view.dialogs
 {
-    import com.company.assembleegameclient.ui.dialogs.Dialog;
-    import flash.text.TextFormatAlign;
-    import kabam.rotmg.text.view.TextFieldDisplayConcrete;
+import com.company.assembleegameclient.ui.dialogs.Dialog;
 
-    public class PetDialogStyler 
+import flash.text.TextFormatAlign;
+
+import kabam.rotmg.text.view.TextFieldDisplayConcrete;
+
+public class PetDialogStyler 
     {
 
         private static const lineToTextSpace:int = 14;

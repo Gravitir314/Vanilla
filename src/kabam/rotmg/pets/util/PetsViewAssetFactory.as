@@ -5,32 +5,32 @@
 
 package kabam.rotmg.pets.util
 {
-    import kabam.rotmg.pets.view.components.PopupWindowBackground;
-    import kabam.rotmg.pets.view.components.FameOrGoldBuyButtons;
-    import kabam.rotmg.pets.view.components.PetsButtonBar;
-    import kabam.rotmg.pets.view.components.PetAbilityMeter;
-    import __AS3__.vec.Vector;
-    import kabam.rotmg.text.view.TextFieldDisplayConcrete;
-    import kabam.rotmg.text.view.stringBuilder.LineBuilder;
-    import kabam.rotmg.text.model.TextKey;
-    import flash.text.TextFormatAlign;
-    import flash.filters.DropShadowFilter;
-    import kabam.rotmg.pets.view.components.PetFeeder;
-    import kabam.rotmg.pets.view.components.PetFuser;
-    import kabam.rotmg.pets.view.components.FeedFuseArrow;
-    import kabam.rotmg.pets.view.components.slot.FoodFeedFuseSlot;
-    import kabam.rotmg.pets.view.components.slot.PetFeedFuseSlot;
-    import flash.display.Shape;
-    import kabam.rotmg.pets.view.components.DialogCloseButton;
-    import com.company.assembleegameclient.ui.LineBreakDesign;
-    import flash.display.Bitmap;
-    import com.company.assembleegameclient.objects.ObjectLibrary;
-    import flash.display.BitmapData;
-    import com.company.util.BitmapUtil;
-    import kabam.rotmg.pets.view.components.FusionStrength;
-    import __AS3__.vec.*;
+import com.company.assembleegameclient.objects.ObjectLibrary;
+import com.company.assembleegameclient.ui.LineBreakDesign;
+import com.company.util.BitmapUtil;
 
-    public class PetsViewAssetFactory 
+import flash.display.Bitmap;
+import flash.display.BitmapData;
+import flash.display.Shape;
+import flash.filters.DropShadowFilter;
+import flash.text.TextFormatAlign;
+
+import kabam.rotmg.pets.view.components.DialogCloseButton;
+import kabam.rotmg.pets.view.components.FameOrGoldBuyButtons;
+import kabam.rotmg.pets.view.components.FeedFuseArrow;
+import kabam.rotmg.pets.view.components.FusionStrength;
+import kabam.rotmg.pets.view.components.PetAbilityMeter;
+import kabam.rotmg.pets.view.components.PetFeeder;
+import kabam.rotmg.pets.view.components.PetFuser;
+import kabam.rotmg.pets.view.components.PetsButtonBar;
+import kabam.rotmg.pets.view.components.PopupWindowBackground;
+import kabam.rotmg.pets.view.components.slot.FoodFeedFuseSlot;
+import kabam.rotmg.pets.view.components.slot.PetFeedFuseSlot;
+import kabam.rotmg.text.model.TextKey;
+import kabam.rotmg.text.view.TextFieldDisplayConcrete;
+import kabam.rotmg.text.view.stringBuilder.LineBuilder;
+
+public class PetsViewAssetFactory
     {
 
 
@@ -199,7 +199,7 @@ package kabam.rotmg.pets.util
             if (_local_3.hasOwnProperty("ScaleValue"))
             {
                 _local_4 = _local_3.ScaleValue;
-            };
+            }
             var _local_5:BitmapData = ObjectLibrary.getRedrawnTextureFromType(_arg_1, 80, true, true, _local_4);
             _local_5 = BitmapUtil.cropToBitmapData(_local_5, 4, 4, (_local_5.width - 8), (_local_5.height - 8));
             return (new Bitmap(_local_5));

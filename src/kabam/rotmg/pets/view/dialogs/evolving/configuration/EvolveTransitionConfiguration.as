@@ -5,10 +5,10 @@
 
 package kabam.rotmg.pets.view.dialogs.evolving.configuration
 {
-    import flash.display.Sprite;
-    import flash.display.DisplayObject;
+import flash.display.DisplayObject;
+import flash.display.Sprite;
 
-    public class EvolveTransitionConfiguration 
+public class EvolveTransitionConfiguration 
     {
 
 

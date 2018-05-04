@@ -5,16 +5,18 @@
 
 package kabam.rotmg.pets.view.components
 {
-    import robotlegs.bender.bundles.mvcs.Mediator;
-    import kabam.rotmg.dialogs.control.OpenDialogSignal;
-    import kabam.rotmg.pets.data.PetsModel;
-    import kabam.rotmg.account.core.Account;
-    import flash.events.MouseEvent;
-    import kabam.rotmg.pets.data.PetYardEnum;
-    import kabam.rotmg.pets.view.dialogs.CaretakerQueryDialog;
-    import kabam.rotmg.pets.view.YardUpgraderView;
+import flash.events.MouseEvent;
 
-    public class YardUpgraderPanelMediator extends Mediator 
+import kabam.rotmg.account.core.Account;
+import kabam.rotmg.dialogs.control.OpenDialogSignal;
+import kabam.rotmg.pets.data.PetYardEnum;
+import kabam.rotmg.pets.data.PetsModel;
+import kabam.rotmg.pets.view.YardUpgraderView;
+import kabam.rotmg.pets.view.dialogs.CaretakerQueryDialog;
+
+import robotlegs.bender.bundles.mvcs.Mediator;
+
+public class YardUpgraderPanelMediator extends Mediator
     {
 
         [Inject]
@@ -43,7 +45,7 @@ package kabam.rotmg.pets.view.components
             else
             {
                 this.view.infoButton.addEventListener(MouseEvent.CLICK, this.onButtonRightClick);
-            };
+            }
         }
 
         private function doShowUpgradeButton():Boolean
@@ -52,7 +54,7 @@ package kabam.rotmg.pets.view.components
             if (!this.account.isRegistered())
             {
                 return (false);
-            };
+            }
             _local_1 = this.petModel.getPetYardType();
             return (_local_1 < PetYardEnum.MAX_ORDINAL);
         }

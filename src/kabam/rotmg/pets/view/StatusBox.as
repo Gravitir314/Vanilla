@@ -5,13 +5,14 @@
 
 package kabam.rotmg.pets.view
 {
-    import flash.display.Sprite;
-    import kabam.rotmg.text.view.TextFieldDisplayConcrete;
-    import kabam.rotmg.pets.util.PetsViewAssetFactory;
-    import kabam.rotmg.text.view.stringBuilder.LineBuilder;
-    import kabam.rotmg.ui.view.SignalWaiter;
+import flash.display.Sprite;
 
-    public class StatusBox extends Sprite 
+import kabam.rotmg.pets.util.PetsViewAssetFactory;
+import kabam.rotmg.text.view.TextFieldDisplayConcrete;
+import kabam.rotmg.text.view.stringBuilder.LineBuilder;
+import kabam.rotmg.ui.view.SignalWaiter;
+
+public class StatusBox extends Sprite 
     {
 
         private const labelTextfield:TextFieldDisplayConcrete = PetsViewAssetFactory.returnTextfield(0xFFFFFF, 16, true);

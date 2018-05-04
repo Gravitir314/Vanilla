@@ -5,9 +5,9 @@
 
 package kabam.rotmg.pets.util
 {
-    import kabam.rotmg.util.GeometricSeries;
+import kabam.rotmg.util.GeometricSeries;
 
-    public class PetsAbilityLevelHelper 
+public class PetsAbilityLevelHelper 
     {
 
         private static const levelToPoints:GeometricSeries = new GeometricSeries(20, 1.08);

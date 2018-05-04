@@ -5,14 +5,15 @@
 
 package kabam.rotmg.tooltips
 {
-    import flash.display.Sprite;
-    import kabam.rotmg.core.signals.HideTooltipsSignal;
-    import kabam.rotmg.core.signals.ShowTooltipSignal;
-    import flash.display.DisplayObject;
-    import flash.events.MouseEvent;
-    import flash.events.Event;
+import flash.display.DisplayObject;
+import flash.display.Sprite;
+import flash.events.Event;
+import flash.events.MouseEvent;
 
-    public class HoverTooltipDelegate implements TooltipAble 
+import kabam.rotmg.core.signals.HideTooltipsSignal;
+import kabam.rotmg.core.signals.ShowTooltipSignal;
+
+public class HoverTooltipDelegate implements TooltipAble
     {
 
         public var tooltip:Sprite;
@@ -37,7 +38,7 @@ package kabam.rotmg.tooltips
                 this.displayObject.removeEventListener(MouseEvent.MOUSE_OVER, this.onMouseOver);
                 this.displayObject.removeEventListener(Event.REMOVED_FROM_STAGE, this.onRemovedFromStage);
                 this.displayObject = null;
-            };
+            }
         }
 
         public function getDisplayObject():DisplayObject
@@ -70,7 +71,7 @@ package kabam.rotmg.tooltips
             if (((!(this.tooltip == null)) && (!(this.tooltip.parent == null))))
             {
                 this.hideToolTips.dispatch();
-            };
+            }
             this.displayObject.removeEventListener(MouseEvent.MOUSE_OVER, this.onMouseOver);
             this.displayObject.removeEventListener(MouseEvent.MOUSE_OUT, this.onMouseOut);
             this.displayObject.removeEventListener(Event.REMOVED_FROM_STAGE, this.onRemovedFromStage);

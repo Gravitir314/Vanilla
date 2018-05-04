@@ -5,12 +5,13 @@
 
 package kabam.rotmg.account.securityQuestions.view
 {
-    import com.company.assembleegameclient.account.ui.Frame;
-    import kabam.rotmg.text.model.TextKey;
-    import com.company.assembleegameclient.account.ui.TextInputField;
-    import kabam.rotmg.text.view.stringBuilder.LineBuilder;
+import com.company.assembleegameclient.account.ui.Frame;
+import com.company.assembleegameclient.account.ui.TextInputField;
 
-    public class SecurityQuestionsDialog extends Frame 
+import kabam.rotmg.text.model.TextKey;
+import kabam.rotmg.text.view.stringBuilder.LineBuilder;
+
+public class SecurityQuestionsDialog extends Frame 
     {
 
         private const minQuestionLength:int = 3;
@@ -29,7 +30,7 @@ package kabam.rotmg.account.securityQuestions.view
             if (_arg_1.length == _arg_2.length)
             {
                 this.updateAnswers(_arg_2);
-            };
+            }
         }
 
         public function updateAnswers(_arg_1:Array):void
@@ -40,7 +41,7 @@ package kabam.rotmg.account.securityQuestions.view
             {
                 _local_3.inputText_.text = _arg_1[(_local_2 - 1)];
                 _local_2++;
-            };
+            }
         }
 
         private function createAssets():void
@@ -58,7 +59,7 @@ package kabam.rotmg.account.securityQuestions.view
                 _local_3.inputText_.maxChars = this.maxQuestionLength;
                 _local_1++;
                 this.fields.push(_local_3);
-            };
+            }
             rightButton_.tabIndex = (_local_1 + 1);
             rightButton_.tabEnabled = true;
         }
@@ -72,7 +73,7 @@ package kabam.rotmg.account.securityQuestions.view
             for each (_local_1 in this.fields)
             {
                 _local_1.setErrorHighlight(false);
-            };
+            }
         }
 
         public function areQuestionsValid():Boolean
@@ -85,14 +86,14 @@ package kabam.rotmg.account.securityQuestions.view
                     this.errors.push(TextKey.SECURITY_QUESTIONS_TOO_SHORT);
                     _local_1.setErrorHighlight(true);
                     return (false);
-                };
+                }
                 if (_local_1.inputText_.length > this.maxQuestionLength)
                 {
                     this.errors.push(TextKey.SECURITY_QUESTIONS_TOO_LONG);
                     _local_1.setErrorHighlight(true);
                     return (false);
-                };
-            };
+                }
+            }
             return (true);
         }
 
@@ -116,7 +117,7 @@ package kabam.rotmg.account.securityQuestions.view
             for each (_local_2 in this.fields)
             {
                 _local_1.push(_local_2.inputText_.text);
-            };
+            }
             return (_local_1);
         }
 

@@ -5,18 +5,19 @@
 
 package com.company.assembleegameclient.map.partyoverlay
 {
-    import com.company.assembleegameclient.map.Map;
-    import flash.utils.getTimer;
-    import flash.events.MouseEvent;
-    import com.company.assembleegameclient.ui.tooltip.QuestToolTip;
-    import com.company.assembleegameclient.parameters.Parameters;
-    import com.company.assembleegameclient.ui.tooltip.PortraitToolTip;
-    import com.company.assembleegameclient.objects.GameObject;
-    import com.company.assembleegameclient.ui.tooltip.ToolTip;
-    import com.company.assembleegameclient.map.Quest;
-    import com.company.assembleegameclient.map.Camera;
+import com.company.assembleegameclient.map.Camera;
+import com.company.assembleegameclient.map.Map;
+import com.company.assembleegameclient.map.Quest;
+import com.company.assembleegameclient.objects.GameObject;
+import com.company.assembleegameclient.parameters.Parameters;
+import com.company.assembleegameclient.ui.tooltip.PortraitToolTip;
+import com.company.assembleegameclient.ui.tooltip.QuestToolTip;
+import com.company.assembleegameclient.ui.tooltip.ToolTip;
 
-    public class QuestArrow extends GameObjectArrow 
+import flash.events.MouseEvent;
+import flash.utils.getTimer;
+
+public class QuestArrow extends GameObjectArrow
     {
 
         public var map_:Map;
@@ -49,15 +50,15 @@ package com.company.assembleegameclient.map.partyoverlay
             if (((_arg_1 == null) || (_arg_1.texture_ == null)))
             {
                 return (null);
-            };
+            }
             if (this.shouldShowFullQuest(_arg_2))
             {
                 return (new QuestToolTip(go_));
-            };
+            }
             if (Parameters.data_.showQuestPortraits)
             {
                 return (new PortraitToolTip(_arg_1));
-            };
+            }
             return (null);
         }
 
@@ -86,9 +87,9 @@ package com.company.assembleegameclient.map.partyoverlay
                     if (_local_4 != _local_5)
                     {
                         setToolTip(this.getToolTip(_local_3, _arg_1));
-                    };
-                };
-            };
+                    }
+                }
+            }
             super.draw(_arg_1, _arg_2);
         }
 

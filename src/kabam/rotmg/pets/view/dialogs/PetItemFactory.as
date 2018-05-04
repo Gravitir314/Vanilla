@@ -5,11 +5,11 @@
 
 package kabam.rotmg.pets.view.dialogs
 {
-    import kabam.rotmg.pets.view.components.PetIconFactory;
-    import kabam.rotmg.pets.view.components.PetIcon;
-    import kabam.rotmg.pets.data.PetVO;
+import kabam.rotmg.pets.data.PetVO;
+import kabam.rotmg.pets.view.components.PetIcon;
+import kabam.rotmg.pets.view.components.PetIconFactory;
 
-    public class PetItemFactory 
+public class PetItemFactory 
     {
 
         [Inject]

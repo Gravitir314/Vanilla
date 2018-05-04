@@ -5,11 +5,12 @@
 
 package kabam.rotmg.pets.view.components
 {
-    import flash.display.Sprite;
-    import kabam.rotmg.text.view.TextFieldDisplayConcrete;
-    import kabam.rotmg.text.view.stringBuilder.LineBuilder;
+import flash.display.Sprite;
 
-    public class FusionStrength extends Sprite 
+import kabam.rotmg.text.view.TextFieldDisplayConcrete;
+import kabam.rotmg.text.view.stringBuilder.LineBuilder;
+
+public class FusionStrength extends Sprite
     {
 
         public static const MAXED_COLOR:uint = 8768801;
@@ -38,23 +39,23 @@ package kabam.rotmg.pets.view.components
             if (isMaxed(_arg_1))
             {
                 return (MAXED);
-            };
+            }
             if (_arg_1 > 0.8)
             {
                 return (FANTASTIC);
-            };
+            }
             if (_arg_1 > 0.6)
             {
                 return (GREAT);
-            };
+            }
             if (_arg_1 > 0.4)
             {
                 return (GOOD);
-            };
+            }
             if (_arg_1 > 0.2)
             {
                 return (LOW);
-            };
+            }
             return (BAD);
         }
 
@@ -120,8 +121,8 @@ package kabam.rotmg.pets.view.components
                 else
                 {
                     this.fusionText.setColor(DEFAULT_COLOR);
-                };
-            };
+                }
+            }
         }
 
 

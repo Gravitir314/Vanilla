@@ -5,12 +5,13 @@
 
 package kabam.rotmg.arena.component
 {
-    import flash.display.Sprite;
-    import flash.display.Bitmap;
-    import kabam.rotmg.arena.view.HostQueryDialog;
-    import flash.display.BitmapData;
+import flash.display.Bitmap;
+import flash.display.BitmapData;
+import flash.display.Sprite;
 
-    public class ArenaQueryDialogHost extends Sprite 
+import kabam.rotmg.arena.view.HostQueryDialog;
+
+public class ArenaQueryDialogHost extends Sprite
     {
 
         private const speechBubble:HostQuerySpeechBubble = makeSpeechBubble();

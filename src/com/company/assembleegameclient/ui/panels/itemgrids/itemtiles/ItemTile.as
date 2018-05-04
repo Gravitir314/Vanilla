@@ -5,20 +5,20 @@
 
 package com.company.assembleegameclient.ui.panels.itemgrids.itemtiles
 {
-    import flash.display.Sprite;
-    import flash.display.GraphicsSolidFill;
-    import flash.display.GraphicsPath;
-    import __AS3__.vec.Vector;
-    import flash.display.IGraphicsData;
-    import flash.display.Shape;
-    import com.company.assembleegameclient.ui.panels.itemgrids.ItemGrid;
-    import com.company.util.GraphicsUtil;
-    import kabam.rotmg.constants.ItemConstants;
-    import com.company.assembleegameclient.objects.ObjectLibrary;
-    import com.company.assembleegameclient.objects.Player;
-    import __AS3__.vec.*;
+import com.company.assembleegameclient.objects.ObjectLibrary;
+import com.company.assembleegameclient.objects.Player;
+import com.company.assembleegameclient.ui.panels.itemgrids.ItemGrid;
+import com.company.util.GraphicsUtil;
 
-    public class ItemTile extends Sprite 
+import flash.display.GraphicsPath;
+import flash.display.GraphicsSolidFill;
+import flash.display.IGraphicsData;
+import flash.display.Shape;
+import flash.display.Sprite;
+
+import kabam.rotmg.constants.ItemConstants;
+
+public class ItemTile extends Sprite 
     {
 
         public static const TILE_DOUBLE_CLICK:String = "TILE_DOUBLE_CLICK";
@@ -69,11 +69,11 @@ package com.company.assembleegameclient.ui.panels.itemgrids.itemtiles
             if (_arg_1 == this.itemSprite.itemId)
             {
                 return (false);
-            };
+            }
             if (this.blockingItemUpdates)
             {
                 return (true);
-            };
+            }
             this.itemSprite.setType(_arg_1);
             this.updateUseability(this.ownerGrid.curPlayer);
             return (true);
@@ -93,7 +93,7 @@ package com.company.assembleegameclient.ui.panels.itemgrids.itemtiles
             if (((_local_2 >= 0x9000) && (_local_2 < 0xF000)))
             {
                 _local_2 = 36863;
-            };
+            }
             if (this.itemSprite.itemId != ItemConstants.NO_ITEM)
             {
                 this.restrictedUseIndicator.visible = (!(ObjectLibrary.isUsableByPlayer(_local_2, _arg_1)));
@@ -101,7 +101,7 @@ package com.company.assembleegameclient.ui.panels.itemgrids.itemtiles
             else
             {
                 this.restrictedUseIndicator.visible = false;
-            };
+            }
         }
 
         public function canHoldItem(_arg_1:int):Boolean
@@ -119,7 +119,7 @@ package com.company.assembleegameclient.ui.panels.itemgrids.itemtiles
             if (((this.itemSprite.itemId >= 0x9000) && (this.itemSprite.itemId < 0xF000)))
             {
                 return (36863);
-            };
+            }
             return (this.itemSprite.itemId);
         }
 

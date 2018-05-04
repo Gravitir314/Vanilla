@@ -5,10 +5,10 @@
 
 package kabam.rotmg.pets.controller
 {
-    import kabam.lib.console.signals.RegisterConsoleActionSignal;
-    import kabam.lib.console.vo.ConsoleAction;
+import kabam.lib.console.signals.RegisterConsoleActionSignal;
+import kabam.lib.console.vo.ConsoleAction;
 
-    public class AddPetsConsoleActionsCommand 
+public class AddPetsConsoleActionsCommand
     {
 
         [Inject]

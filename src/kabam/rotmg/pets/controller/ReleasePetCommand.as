@@ -5,14 +5,15 @@
 
 package kabam.rotmg.pets.controller
 {
-    import com.company.assembleegameclient.editor.Command;
-    import kabam.lib.net.api.MessageProvider;
-    import kabam.lib.net.impl.SocketServer;
-    import kabam.rotmg.messaging.impl.GameServerConnection;
-    import kabam.rotmg.messaging.impl.outgoing.ActivePetUpdateRequest;
-    import kabam.rotmg.pets.util.PetsConstants;
+import com.company.assembleegameclient.editor.Command;
 
-    public class ReleasePetCommand extends Command 
+import kabam.lib.net.api.MessageProvider;
+import kabam.lib.net.impl.SocketServer;
+import kabam.rotmg.messaging.impl.GameServerConnection;
+import kabam.rotmg.messaging.impl.outgoing.ActivePetUpdateRequest;
+import kabam.rotmg.pets.util.PetsConstants;
+
+public class ReleasePetCommand extends Command
     {
 
         [Inject]

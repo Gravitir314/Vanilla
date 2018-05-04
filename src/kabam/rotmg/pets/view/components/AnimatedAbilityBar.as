@@ -5,13 +5,15 @@
 
 package kabam.rotmg.pets.view.components
 {
-    import flash.display.Sprite;
-    import org.osflash.signals.Signal;
-    import flash.display.Shape;
-    import com.gskinner.motion.GTween;
-    import flash.geom.ColorTransform;
+import com.gskinner.motion.GTween;
 
-    public class AnimatedAbilityBar extends Sprite 
+import flash.display.Shape;
+import flash.display.Sprite;
+import flash.geom.ColorTransform;
+
+import org.osflash.signals.Signal;
+
+public class AnimatedAbilityBar extends Sprite
     {
 
         public const animating:Signal = new Signal(Boolean);
@@ -53,7 +55,7 @@ package kabam.rotmg.pets.view.components
                 this.reset();
                 this.filledUp.dispatch();
                 return;
-            };
+            }
             var _local_1:Number = this.maxWidth;
             this.setBarColor(this.FILLING_BAR_COLOR);
             var _local_2:GTween = new GTween(this.animatedBar, 1, {"width":_local_1});
@@ -87,7 +89,7 @@ package kabam.rotmg.pets.view.components
                 _local_2 = this.getBarWidth();
                 this.animatedBar.graphics.beginFill(this.NORMAL_BAR_COLOR, 1);
                 this.animatedBar.graphics.drawRect(0, 0, _local_2, this.barHeight);
-            };
+            }
             this.currentPoints = _arg_1;
             this.adjustFilledBar();
         }
@@ -102,7 +104,7 @@ package kabam.rotmg.pets.view.components
                 this.setBarColor(this.FILLING_BAR_COLOR);
                 _local_2 = new GTween(this.animatedBar, 2, {"width":_local_1});
                 _local_2.onComplete = this.handleTweenComplete;
-            };
+            }
         }
 
         private function getBarWidth():int

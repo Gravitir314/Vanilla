@@ -5,11 +5,12 @@
 
 package kabam.rotmg.pets.controller
 {
-    import robotlegs.bender.bundles.mvcs.Command;
-    import kabam.rotmg.pets.data.PetsModel;
-    import kabam.rotmg.pets.data.PetSlotsState;
+import kabam.rotmg.pets.data.PetSlotsState;
+import kabam.rotmg.pets.data.PetsModel;
 
-    public class UpdateActivePetCommand extends Command 
+import robotlegs.bender.bundles.mvcs.Command;
+
+public class UpdateActivePetCommand extends Command
     {
 
         [Inject]
@@ -31,7 +32,7 @@ package kabam.rotmg.pets.controller
             else
             {
                 this.petsModel.setActivePet(this.petsModel.getPet(this.instanceID));
-            };
+            }
             this.petSlotsState.leftSlotPetVO = ((this.instanceID < 0) ? null : this.petSlotsState.leftSlotPetVO = this.petsModel.getPet(this.instanceID));
         }
 

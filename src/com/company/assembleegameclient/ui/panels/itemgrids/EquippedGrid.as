@@ -5,16 +5,15 @@
 
 package com.company.assembleegameclient.ui.panels.itemgrids
 {
-    import __AS3__.vec.Vector;
-    import com.company.assembleegameclient.ui.panels.itemgrids.itemtiles.EquipmentTile;
-    import com.company.assembleegameclient.objects.GameObject;
-    import com.company.assembleegameclient.objects.Player;
-    import com.company.util.ArrayIterator;
-    import kabam.lib.util.VectorAS3Util;
-    import com.company.util.IIterator;
-    import __AS3__.vec.*;
+import com.company.assembleegameclient.objects.GameObject;
+import com.company.assembleegameclient.objects.Player;
+import com.company.assembleegameclient.ui.panels.itemgrids.itemtiles.EquipmentTile;
+import com.company.util.ArrayIterator;
+import com.company.util.IIterator;
 
-    public class EquippedGrid extends ItemGrid 
+import kabam.lib.util.VectorAS3Util;
+
+public class EquippedGrid extends ItemGrid 
     {
 
         public static const NUM_SLOTS:uint = 4;
@@ -34,7 +33,7 @@ package com.company.assembleegameclient.ui.panels.itemgrids
                 _local_6.setType(_arg_2[_local_5]);
                 this.tiles[_local_5] = _local_6;
                 _local_5++;
-            };
+            }
         }
 
         public function createInteractiveItemTileIterator():IIterator
@@ -59,11 +58,11 @@ package com.company.assembleegameclient.ui.panels.itemgrids
                     else
                     {
                         this.tiles[_local_4].setItem(-1);
-                    };
+                    }
                     this.tiles[_local_4].updateDim(curPlayer);
                     _local_4++;
-                };
-            };
+                }
+            }
         }
 
 

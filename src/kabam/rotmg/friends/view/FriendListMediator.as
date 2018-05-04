@@ -5,24 +5,27 @@
 
 package kabam.rotmg.friends.view
 {
-    import robotlegs.bender.bundles.mvcs.Mediator;
-    import io.decagames.rotmg.friends.model.FriendModel;
-    import kabam.rotmg.dialogs.control.OpenDialogSignal;
-    import kabam.rotmg.dialogs.control.CloseDialogsSignal;
-    import io.decagames.rotmg.friends.signals.FriendActionSignal;
-    import kabam.rotmg.chat.control.ShowChatInputSignal;
-    import kabam.rotmg.ui.signals.EnterGameSignal;
-    import kabam.rotmg.core.model.PlayerModel;
-    import kabam.rotmg.game.signals.PlayGameSignal;
-    import com.company.assembleegameclient.ui.dialogs.ErrorDialog;
-    import io.decagames.rotmg.friends.config.FriendsActions;
-    import io.decagames.rotmg.friends.model.FriendRequestVO;
-    import kabam.rotmg.text.model.TextKey;
-    import com.company.assembleegameclient.parameters.Parameters;
-    import com.company.assembleegameclient.appengine.SavedCharacter;
-    import kabam.rotmg.game.model.GameInitData;
+import com.company.assembleegameclient.appengine.SavedCharacter;
+import com.company.assembleegameclient.parameters.Parameters;
+import com.company.assembleegameclient.ui.dialogs.ErrorDialog;
 
-    public class FriendListMediator extends Mediator 
+import io.decagames.rotmg.friends.config.FriendsActions;
+import io.decagames.rotmg.friends.model.FriendModel;
+import io.decagames.rotmg.friends.model.FriendRequestVO;
+import io.decagames.rotmg.friends.signals.FriendActionSignal;
+
+import kabam.rotmg.chat.control.ShowChatInputSignal;
+import kabam.rotmg.core.model.PlayerModel;
+import kabam.rotmg.dialogs.control.CloseDialogsSignal;
+import kabam.rotmg.dialogs.control.OpenDialogSignal;
+import kabam.rotmg.game.model.GameInitData;
+import kabam.rotmg.game.signals.PlayGameSignal;
+import kabam.rotmg.text.model.TextKey;
+import kabam.rotmg.ui.signals.EnterGameSignal;
+
+import robotlegs.bender.bundles.mvcs.Mediator;
+
+public class FriendListMediator extends Mediator
     {
 
         [Inject]
@@ -68,7 +71,7 @@ package kabam.rotmg.friends.view
             else
             {
                 this.reportError(this.model.errorStr);
-            };
+            }
         }
 
         private function reportError(_arg_1:String):void
@@ -86,7 +89,7 @@ package kabam.rotmg.friends.view
                 case FriendsActions.INVITE_TAB:
                     this.view.updateInvitationTab(this.model.getAllInvitations());
                     return;
-            };
+            }
         }
 
         private function onFriendActed(_arg_1:String, _arg_2:String):void
@@ -106,15 +109,15 @@ package kabam.rotmg.friends.view
                         if (_arg_2 == "")
                         {
                             this.view.updateFriendTab(this.model.getAllFriends(), this.model.getCurrentServerName());
-                        };
-                    };
+                        }
+                    }
                     return;
                 case FriendsActions.INVITE:
                     if (this.model.ifReachMax())
                     {
                         this.view.updateInput(TextKey.FRIEND_REACH_CAPACITY);
                         return;
-                    };
+                    }
                     _local_3.callback = this.inviteFriendCallback;
                     break;
                 case FriendsActions.REMOVE:
@@ -141,7 +144,7 @@ package kabam.rotmg.friends.view
                 case FriendsActions.JUMP:
                     this.jumpCallback(_arg_2);
                     return;
-            };
+            }
             this.actionSignal.dispatch(_local_3);
         }
 
@@ -160,8 +163,8 @@ package kabam.rotmg.friends.view
                 else
                 {
                     this.view.updateInput(_arg_2);
-                };
-            };
+                }
+            }
         }
 
         private function removeFriendCallback(_arg_1:Boolean, _arg_2:String, _arg_3:String):void
@@ -173,7 +176,7 @@ package kabam.rotmg.friends.view
             else
             {
                 this.reportError(_arg_2);
-            };
+            }
         }
 
         private function acceptInvitationCallback(_arg_1:Boolean, _arg_2:String, _arg_3:String):void
@@ -184,12 +187,12 @@ package kabam.rotmg.friends.view
                 if (this.model.removeInvitation(_arg_3))
                 {
                     this.view.updateInvitationTab(this.model.getAllInvitations());
-                };
+                }
             }
             else
             {
                 this.reportError(_arg_2);
-            };
+            }
         }
 
         private function rejectInvitationCallback(_arg_1:Boolean, _arg_2:String, _arg_3:String):void
@@ -199,12 +202,12 @@ package kabam.rotmg.friends.view
                 if (this.model.removeInvitation(_arg_3))
                 {
                     this.view.updateInvitationTab(this.model.getAllInvitations());
-                };
+                }
             }
             else
             {
                 this.reportError(_arg_2);
-            };
+            }
         }
 
         private function blockInvitationCallback(_arg_1:String):void

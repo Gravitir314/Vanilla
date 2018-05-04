@@ -5,12 +5,14 @@
 
 package kabam.rotmg.pets.data
 {
-    import flash.utils.Dictionary;
-    import kabam.rotmg.messaging.impl.data.SlotObjectData;
-    import kabam.rotmg.text.model.TextKey;
-    import com.company.assembleegameclient.ui.panels.itemgrids.itemtiles.InteractiveItemTile;
+import com.company.assembleegameclient.ui.panels.itemgrids.itemtiles.InteractiveItemTile;
 
-    public class PetFormModel 
+import flash.utils.Dictionary;
+
+import kabam.rotmg.messaging.impl.data.SlotObjectData;
+import kabam.rotmg.text.model.TextKey;
+
+public class PetFormModel
     {
 
         private var Data:Class = PetFormModel_Data;
@@ -48,9 +50,9 @@ package kabam.rotmg.pets.data
                 if (this.petIsInFamilyTree(_local_3))
                 {
                     this.addPetToAppropriateRarityList(_local_3);
-                };
+                }
                 _local_1++;
-            };
+            }
         }
 
         private function addPetToAppropriateRarityList(_arg_1:XML):void
@@ -64,7 +66,7 @@ package kabam.rotmg.pets.data
             else
             {
                 this.branches[_local_2] = [_local_3];
-            };
+            }
         }
 
         public function setSelectedPet(_arg_1:PetVO):void
@@ -97,10 +99,10 @@ package kabam.rotmg.pets.data
                     if (_local_5 == _arg_1)
                     {
                         return (int(_local_4.@type));
-                    };
-                };
+                    }
+                }
                 _local_2++;
-            };
+            }
             return (-1);
         }
 
@@ -156,9 +158,9 @@ package kabam.rotmg.pets.data
                 if (_local_5 == _arg_1)
                 {
                     return (this.fetchPetTypeBySkinID(_local_4.@id));
-                };
+                }
                 _local_2++;
-            };
+            }
             return (-1);
         }
 
@@ -176,9 +178,9 @@ package kabam.rotmg.pets.data
                 if (_local_5 == _arg_1)
                 {
                     return (_local_4.@type);
-                };
+                }
                 _local_2++;
-            };
+            }
             return (-1);
         }
 

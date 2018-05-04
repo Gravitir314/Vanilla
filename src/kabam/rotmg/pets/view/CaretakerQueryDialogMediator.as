@@ -5,14 +5,16 @@
 
 package kabam.rotmg.pets.view
 {
-    import robotlegs.bender.bundles.mvcs.Mediator;
-    import kabam.rotmg.pets.view.dialogs.CaretakerQueryDialog;
-    import kabam.rotmg.pets.data.PetsModel;
-    import kabam.rotmg.dialogs.control.CloseDialogsSignal;
-    import kabam.rotmg.pets.util.PetsViewAssetFactory;
-    import flash.display.BitmapData;
+import flash.display.BitmapData;
 
-    public class CaretakerQueryDialogMediator extends Mediator 
+import kabam.rotmg.dialogs.control.CloseDialogsSignal;
+import kabam.rotmg.pets.data.PetsModel;
+import kabam.rotmg.pets.util.PetsViewAssetFactory;
+import kabam.rotmg.pets.view.dialogs.CaretakerQueryDialog;
+
+import robotlegs.bender.bundles.mvcs.Mediator;
+
+public class CaretakerQueryDialogMediator extends Mediator
     {
 
         [Inject]

@@ -5,27 +5,30 @@
 
 package kabam.rotmg.game.view
 {
-    import com.company.assembleegameclient.ui.panels.Panel;
-    import org.osflash.signals.Signal;
-    import kabam.rotmg.text.view.TextFieldDisplayConcrete;
-    import flash.display.Sprite;
-    import com.company.assembleegameclient.objects.Player;
-    import flash.events.Event;
-    import com.company.assembleegameclient.game.GameSprite;
-    import flash.events.KeyboardEvent;
-    import flash.text.TextFormatAlign;
-    import flash.filters.DropShadowFilter;
-    import kabam.rotmg.util.components.LegacyBuyButton;
-    import kabam.rotmg.text.model.TextKey;
-    import com.company.assembleegameclient.parameters.Parameters;
-    import com.company.assembleegameclient.util.Currency;
-    import kabam.rotmg.text.view.stringBuilder.LineBuilder;
-    import com.company.assembleegameclient.ui.DeprecatedTextButton;
-    import flash.events.MouseEvent;
-    import com.company.assembleegameclient.ui.RankText;
-    import kabam.rotmg.text.view.stringBuilder.StringBuilder;
+import com.company.assembleegameclient.game.GameSprite;
+import com.company.assembleegameclient.objects.Player;
+import com.company.assembleegameclient.parameters.Parameters;
+import com.company.assembleegameclient.ui.DeprecatedTextButton;
+import com.company.assembleegameclient.ui.RankText;
+import com.company.assembleegameclient.ui.panels.Panel;
+import com.company.assembleegameclient.util.Currency;
 
-    public class NameChangerPanel extends Panel 
+import flash.display.Sprite;
+import flash.events.Event;
+import flash.events.KeyboardEvent;
+import flash.events.MouseEvent;
+import flash.filters.DropShadowFilter;
+import flash.text.TextFormatAlign;
+
+import kabam.rotmg.text.model.TextKey;
+import kabam.rotmg.text.view.TextFieldDisplayConcrete;
+import kabam.rotmg.text.view.stringBuilder.LineBuilder;
+import kabam.rotmg.text.view.stringBuilder.StringBuilder;
+import kabam.rotmg.util.components.LegacyBuyButton;
+
+import org.osflash.signals.Signal;
+
+public class NameChangerPanel extends Panel
     {
 
         public var chooseName:Signal = new Signal();
@@ -56,9 +59,9 @@ package kabam.rotmg.game.view
                     else
                     {
                         this.handleNoName();
-                    };
-                };
-            };
+                    }
+                }
+            }
             addEventListener(Event.ADDED_TO_STAGE, this.onAddedToStage);
         }
 
@@ -67,7 +70,7 @@ package kabam.rotmg.game.view
             if (this.button_)
             {
                 stage.addEventListener(KeyboardEvent.KEY_DOWN, this.onKeyDown);
-            };
+            }
             addEventListener(Event.REMOVED_FROM_STAGE, this.onRemovedFromStage);
         }
 
@@ -163,7 +166,7 @@ package kabam.rotmg.game.view
             if (((_arg_1.keyCode == Parameters.data_.interact) && (stage.focus == null)))
             {
                 this.performAction();
-            };
+            }
         }
 
         private function onButtonClick(_arg_1:MouseEvent):void

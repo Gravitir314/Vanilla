@@ -5,17 +5,20 @@
 
 package kabam.rotmg.pets.view
 {
-    import robotlegs.bender.bundles.mvcs.Mediator;
-    import kabam.rotmg.dialogs.control.OpenDialogSignal;
-    import kabam.rotmg.pets.data.PetSlotsState;
-    import kabam.rotmg.pets.controller.UpgradePetSignal;
-    import org.swiftsuspenders.Injector;
-    import kabam.rotmg.pets.view.dialogs.PetPickerDialog;
-    import kabam.rotmg.pets.data.FusePetRequestVO;
-    import kabam.rotmg.messaging.impl.PetUpgradeRequest;
-    import com.company.assembleegameclient.ui.dialogs.ErrorDialog;
+import com.company.assembleegameclient.ui.dialogs.ErrorDialog;
 
-    public class FusePetMediator extends Mediator 
+import kabam.rotmg.dialogs.control.OpenDialogSignal;
+import kabam.rotmg.messaging.impl.PetUpgradeRequest;
+import kabam.rotmg.pets.controller.UpgradePetSignal;
+import kabam.rotmg.pets.data.FusePetRequestVO;
+import kabam.rotmg.pets.data.PetSlotsState;
+import kabam.rotmg.pets.view.dialogs.PetPickerDialog;
+
+import org.swiftsuspenders.Injector;
+
+import robotlegs.bender.bundles.mvcs.Mediator;
+
+public class FusePetMediator extends Mediator
     {
 
         private const ERROR_DIALOG_STRING:String = "Pets.fuseError";
@@ -67,7 +70,7 @@ package kabam.rotmg.pets.view
             else
             {
                 this.openDialog.dispatch(new ErrorDialog(this.ERROR_DIALOG_STRING));
-            };
+            }
         }
 
         private function onGoldPurchase(_arg_1:int):void
@@ -82,7 +85,7 @@ package kabam.rotmg.pets.view
             else
             {
                 this.openDialog.dispatch(new ErrorDialog(this.ERROR_DIALOG_STRING));
-            };
+            }
         }
 
         private function onClosed():void

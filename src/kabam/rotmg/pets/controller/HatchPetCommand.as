@@ -5,11 +5,12 @@
 
 package kabam.rotmg.pets.controller
 {
-    import com.company.assembleegameclient.editor.Command;
-    import kabam.rotmg.dialogs.control.OpenDialogSignal;
-    import kabam.rotmg.pets.view.dialogs.EggHatchedDialog;
+import com.company.assembleegameclient.editor.Command;
 
-    public class HatchPetCommand extends Command 
+import kabam.rotmg.dialogs.control.OpenDialogSignal;
+import kabam.rotmg.pets.view.dialogs.EggHatchedDialog;
+
+public class HatchPetCommand extends Command
     {
 
         [Inject]

@@ -5,17 +5,21 @@
 
 package kabam.rotmg.friends.view
 {
-    import com.company.assembleegameclient.ui.dialogs.Dialog;
-    import com.company.assembleegameclient.ui.dialogs.DialogCloser;
-    import com.company.assembleegameclient.ui.dialogs.CloseDialogComponent;
-    import io.decagames.rotmg.friends.model.FriendRequestVO;
-    import kabam.rotmg.core.StaticInjectorContext;
-    import org.swiftsuspenders.Injector;
-    import io.decagames.rotmg.friends.signals.FriendActionSignal;
-    import flash.events.Event;
-    import org.osflash.signals.Signal;
+import com.company.assembleegameclient.ui.dialogs.CloseDialogComponent;
+import com.company.assembleegameclient.ui.dialogs.Dialog;
+import com.company.assembleegameclient.ui.dialogs.DialogCloser;
 
-    public class FriendUpdateConfirmDialog extends Dialog implements DialogCloser 
+import flash.events.Event;
+
+import io.decagames.rotmg.friends.model.FriendRequestVO;
+import io.decagames.rotmg.friends.signals.FriendActionSignal;
+
+import kabam.rotmg.core.StaticInjectorContext;
+
+import org.osflash.signals.Signal;
+import org.swiftsuspenders.Injector;
+
+public class FriendUpdateConfirmDialog extends Dialog implements DialogCloser
     {
 
         private const closeDialogComponent:CloseDialogComponent = new CloseDialogComponent();

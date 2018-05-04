@@ -5,11 +5,13 @@
 
 package kabam.rotmg.pets.view.dialogs.evolving.configuration
 {
-    import kabam.rotmg.pets.view.dialogs.evolving.TweenProxy;
-    import flash.display.DisplayObject;
-    import com.gskinner.motion.GTween;
+import com.gskinner.motion.GTween;
 
-    public class AfterOpaqueTween extends TweenProxy 
+import flash.display.DisplayObject;
+
+import kabam.rotmg.pets.view.dialogs.evolving.TweenProxy;
+
+public class AfterOpaqueTween extends TweenProxy 
     {
 
         public function AfterOpaqueTween(_arg_1:DisplayObject)

@@ -5,13 +5,14 @@
 
 package kabam.rotmg.pets.view.dialogs.evolving
 {
-    import flash.display.Sprite;
-    import flash.display.DisplayObject;
-    import kabam.rotmg.assets.EmbeddedAssets;
-    import flash.events.Event;
-    import flash.utils.getTimer;
+import flash.display.DisplayObject;
+import flash.display.Sprite;
+import flash.events.Event;
+import flash.utils.getTimer;
 
-    public class Spinner extends Sprite 
+import kabam.rotmg.assets.EmbeddedAssets;
+
+public class Spinner extends Sprite 
     {
 
         public const graphic:DisplayObject = new EmbeddedAssets.StarburstSpinner();
@@ -59,7 +60,7 @@ package kabam.rotmg.pets.view.dialogs.evolving
             if (this.previousSeconds)
             {
                 this.secondsElapsed = (this.secondsElapsed + (_local_1 - this.previousSeconds));
-            };
+            }
             this.previousSeconds = _local_1;
         }
 

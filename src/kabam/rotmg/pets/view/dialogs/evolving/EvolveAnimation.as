@@ -5,16 +5,18 @@
 
 package kabam.rotmg.pets.view.dialogs.evolving
 {
-    import flash.display.Sprite;
-    import flash.display.DisplayObject;
-    import kabam.rotmg.assets.EmbeddedAssets;
-    import kabam.rotmg.pets.view.components.PetIconFactory;
-    import org.swiftsuspenders.Injector;
-    import kabam.rotmg.pets.view.components.PetIcon;
-    import kabam.rotmg.messaging.impl.EvolvePetInfo;
-    import kabam.rotmg.pets.data.PetVO;
+import flash.display.DisplayObject;
+import flash.display.Sprite;
 
-    public class EvolveAnimation extends Sprite 
+import kabam.rotmg.assets.EmbeddedAssets;
+import kabam.rotmg.messaging.impl.EvolvePetInfo;
+import kabam.rotmg.pets.data.PetVO;
+import kabam.rotmg.pets.view.components.PetIcon;
+import kabam.rotmg.pets.view.components.PetIconFactory;
+
+import org.swiftsuspenders.Injector;
+
+public class EvolveAnimation extends Sprite 
     {
 
         public const background:DisplayObject = new EmbeddedAssets.EvolveBackground();

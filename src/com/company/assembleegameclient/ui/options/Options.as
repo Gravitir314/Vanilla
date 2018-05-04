@@ -5,44 +5,44 @@
 
 package com.company.assembleegameclient.ui.options
 {
-    import flash.display.Sprite;
-    import __AS3__.vec.Vector;
-    import kabam.rotmg.text.model.TextKey;
-    import com.company.assembleegameclient.game.GameSprite;
-    import com.company.assembleegameclient.screens.TitleMenuOption;
-    import kabam.rotmg.text.view.TextFieldDisplayConcrete;
-    import kabam.rotmg.text.view.stringBuilder.LineBuilder;
-    import flash.text.TextFieldAutoSize;
-    import flash.filters.DropShadowFilter;
-    import com.company.rotmg.graphics.ScreenGraphic;
-    import flash.events.MouseEvent;
-    import kabam.rotmg.ui.UIUtils;
-    import flash.events.Event;
-    import kabam.rotmg.core.StaticInjectorContext;
-    import kabam.rotmg.dialogs.control.CloseDialogsSignal;
-    import kabam.rotmg.text.view.stringBuilder.StringBuilder;
-    import kabam.rotmg.text.view.stringBuilder.StaticStringBuilder;
-    import com.company.assembleegameclient.parameters.Parameters;
-    import com.company.assembleegameclient.ui.StatusBar;
-    import kabam.rotmg.game.view.components.StatView;
-    import flash.ui.MouseCursorData;
-    import flash.display.BitmapData;
-    import flash.ui.MouseCursor;
-    import flash.geom.Point;
-    import com.company.util.AssetLibrary;
-    import flash.ui.Mouse;
-    import flash.system.Capabilities;
-    import flash.events.KeyboardEvent;
-    import com.company.util.KeyCodes;
-    import flash.display.StageDisplayState;
-    import com.company.assembleegameclient.sound.Music;
-    import com.company.assembleegameclient.sound.SFX;
-    import flash.net.URLRequest;
-    import flash.net.URLRequestMethod;
-    import flash.net.navigateToURL;
-    import __AS3__.vec.*;
+import com.company.assembleegameclient.game.GameSprite;
+import com.company.assembleegameclient.parameters.Parameters;
+import com.company.assembleegameclient.screens.TitleMenuOption;
+import com.company.assembleegameclient.sound.Music;
+import com.company.assembleegameclient.sound.SFX;
+import com.company.assembleegameclient.ui.StatusBar;
+import com.company.rotmg.graphics.ScreenGraphic;
+import com.company.util.AssetLibrary;
+import com.company.util.KeyCodes;
 
-    public class Options extends Sprite 
+import flash.display.BitmapData;
+import flash.display.Sprite;
+import flash.display.StageDisplayState;
+import flash.events.Event;
+import flash.events.KeyboardEvent;
+import flash.events.MouseEvent;
+import flash.filters.DropShadowFilter;
+import flash.geom.Point;
+import flash.net.URLRequest;
+import flash.net.URLRequestMethod;
+import flash.net.navigateToURL;
+import flash.system.Capabilities;
+import flash.text.TextFieldAutoSize;
+import flash.ui.Mouse;
+import flash.ui.MouseCursor;
+import flash.ui.MouseCursorData;
+
+import kabam.rotmg.core.StaticInjectorContext;
+import kabam.rotmg.dialogs.control.CloseDialogsSignal;
+import kabam.rotmg.game.view.components.StatView;
+import kabam.rotmg.text.model.TextKey;
+import kabam.rotmg.text.view.TextFieldDisplayConcrete;
+import kabam.rotmg.text.view.stringBuilder.LineBuilder;
+import kabam.rotmg.text.view.stringBuilder.StaticStringBuilder;
+import kabam.rotmg.text.view.stringBuilder.StringBuilder;
+import kabam.rotmg.ui.UIUtils;
+
+public class Options extends Sprite
     {
 
         private static const TABS:Vector.<String> = new <String>[TextKey.OPTIONS_CONTROLS, TextKey.OPTIONS_HOTKEYS, TextKey.OPTIONS_CHAT, TextKey.OPTIONS_GRAPHICS, TextKey.OPTIONS_SOUND, TextKey.OPTIONS_FRIEND, TextKey.OPTIONS_MISC];
@@ -107,7 +107,7 @@ package com.company.assembleegameclient.ui.options
                 if (TABS.indexOf("Experimental") == -1)
                 {
                     TABS.push("Experimental");
-                };
+                }
             }
             else
             {
@@ -115,8 +115,8 @@ package com.company.assembleegameclient.ui.options
                 if (_local_6 != -1)
                 {
                     TABS.pop();
-                };
-            };
+                }
+            }
             var _local_3:int = 14;
             var _local_4:int;
             while (_local_4 < TABS.length)
@@ -129,7 +129,7 @@ package com.company.assembleegameclient.ui.options
                 this.tabs_.push(_local_7);
                 _local_3 = (_local_3 + ((UIUtils.SHOW_EXPERIMENTAL_MENU) ? 90 : 108));
                 _local_4++;
-            };
+            }
             addEventListener(Event.ADDED_TO_STAGE, this.onAddedToStage);
             addEventListener(Event.REMOVED_FROM_STAGE, this.onRemovedFromStage);
             var _local_5:CloseDialogsSignal = StaticInjectorContext.getInjector().getInstance(CloseDialogsSignal);
@@ -212,7 +212,7 @@ package com.company.assembleegameclient.ui.options
                 _local_1.data = _local_2;
                 Mouse.registerCursor(Parameters.data_.cursorSelect, _local_1);
                 registeredCursors.push(Parameters.data_.cursorSelect);
-            };
+            }
             Mouse.cursor = Parameters.data_.cursorSelect;
         }
 
@@ -243,9 +243,9 @@ package com.company.assembleegameclient.ui.options
                 if (_local_3 != null)
                 {
                     delete Parameters.data_[_local_3.paramName_];
-                };
+                }
                 _local_2++;
-            };
+            }
             Parameters.setDefaults();
             Parameters.save();
             this.refresh();
@@ -268,11 +268,11 @@ package com.company.assembleegameclient.ui.options
             if (_arg_1 == this.selected_)
             {
                 return;
-            };
+            }
             if (this.selected_ != null)
             {
                 this.selected_.setSelected(false);
-            };
+            }
             this.selected_ = _arg_1;
             this.selected_.setSelected(true);
             this.removeOptions();
@@ -302,7 +302,7 @@ package com.company.assembleegameclient.ui.options
                 case "Experimental":
                     this.addExperimentalOptions();
                     return;
-            };
+            }
         }
 
         private function onAddedToStage(_arg_1:Event):void
@@ -317,7 +317,7 @@ package com.company.assembleegameclient.ui.options
             {
                 Parameters.data_.fullscreenMode = (stage.displayState == "fullScreenInteractive");
                 Parameters.save();
-            };
+            }
             this.setSelected(this.tabs_[0]);
             stage.addEventListener(KeyboardEvent.KEY_DOWN, this.onKeyDown, false, 1);
             stage.addEventListener(KeyboardEvent.KEY_UP, this.onKeyUp, false, 1);
@@ -336,11 +336,11 @@ package com.company.assembleegameclient.ui.options
                 Parameters.data_.fullscreenMode = false;
                 Parameters.save();
                 this.refresh();
-            };
+            }
             if (_arg_1.keyCode == Parameters.data_.options)
             {
                 this.close();
-            };
+            }
             _arg_1.stopImmediatePropagation();
         }
 
@@ -361,7 +361,7 @@ package com.company.assembleegameclient.ui.options
             for each (_local_1 in this.options_)
             {
                 removeChild(_local_1);
-            };
+            }
             this.options_.length = 0;
         }
 
@@ -408,10 +408,10 @@ package com.company.assembleegameclient.ui.options
                     if (((_local_2.paramName_ == "rotateLeft") || (_local_2.paramName_ == "rotateRight")))
                     {
                         _local_2.setDisabled((!(Parameters.data_.allowRotation)));
-                    };
-                };
+                    }
+                }
                 _local_1++;
-            };
+            }
         }
 
         private function addHotKeysOptions():void
@@ -429,7 +429,7 @@ package com.company.assembleegameclient.ui.options
             if (this.isAirApplication())
             {
                 this.addOptionAndPosition(new KeyMapper("toggleFullscreen", TextKey.OPTIONS_TOGGLE_FULLSCREEN, TextKey.OPTIONS_TOGGLE_FULLSCREEN_DESC));
-            };
+            }
         }
 
         public function isAirApplication():Boolean
@@ -456,7 +456,7 @@ package com.company.assembleegameclient.ui.options
                 _local_2.setTooltipText(new LineBuilder().setParams(TextKey.OPTIONS_INVENTORY_SLOT_N_DESC, {"n":_local_1}));
                 this.addOptionAndPosition(_local_2);
                 _local_1++;
-            };
+            }
         }
 
         private function addChatOptions():void
@@ -492,10 +492,10 @@ package com.company.assembleegameclient.ui.options
                         case "chatAll":
                             _local_2.refreshNoCallback();
                             break;
-                    };
-                };
+                    }
+                }
                 _local_1++;
-            };
+            }
         }
 
         private function onAllChatEnabled():void
@@ -519,10 +519,10 @@ package com.company.assembleegameclient.ui.options
                         case "chatFriend":
                             _local_2.refreshNoCallback();
                             break;
-                    };
-                };
+                    }
+                }
                 _local_1++;
-            };
+            }
         }
 
         private function addExperimentalOptions():void
@@ -563,12 +563,12 @@ package com.company.assembleegameclient.ui.options
             {
                 _local_1 = TextKey.OPTIONS_HARDWARE_ACC_DESC_ERROR;
                 _local_2 = 16724787;
-            };
+            }
             this.addOptionAndPosition(new ChoiceOption("GPURender", makeOnOffLabels(), [true, false], TextKey.OPTIONS_HARDWARE_ACC_TITLE, _local_1, null, _local_2));
             if (Capabilities.playerType == "Desktop")
             {
                 this.addOptionAndPosition(new ChoiceOption("fullscreenMode", makeOnOffLabels(), [true, false], TextKey.OPTIONS_FULLSCREEN_MODE, TextKey.OPTIONS_FULLSCREEN_MODE_DESC, this.onFullscreenChange));
-            };
+            }
             this.addOptionAndPosition(new ChoiceOption("toggleBarText", makeBarTextLabels(), [0, 1, 2, 3], "Toggle Fame and HP/MP Text", "Always show text value for Fame, remaining HP/MP, or both", onBarTextToggle));
             this.addOptionAndPosition(new ChoiceOption("particleEffect", makeHighLowLabels(), [true, false], TextKey.OPTIONS_TOGGLE_PARTICLE_EFFECT, TextKey.OPTIONS_TOGGLE_PARTICLE_EFFECT_DESC, null));
             this.addOptionAndPosition(new ChoiceOption("uiQuality", makeHighLowLabels(), [true, false], TextKey.OPTIONS_TOGGLE_UI_QUALITY, TextKey.OPTIONS_TOGGLE_UI_QUALITY_DESC, onUIQualityToggle));
@@ -582,7 +582,7 @@ package com.company.assembleegameclient.ui.options
             if (((((!(this.gs_ == null)) && (!(this.gs_.map == null))) && (!(this.gs_.map.partyOverlay_ == null))) && (!(this.gs_.map.partyOverlay_.questArrow_ == null))))
             {
                 this.gs_.map.partyOverlay_.questArrow_.refreshToolTip();
-            };
+            }
         }
 
         private function onFullscreenChange():void
@@ -625,7 +625,7 @@ package com.company.assembleegameclient.ui.options
             else
             {
                 Music.setMusicVolume(0);
-            };
+            }
             this.refresh();
         }
 
@@ -639,7 +639,7 @@ package com.company.assembleegameclient.ui.options
             else
             {
                 SFX.setSFXVolume(0);
-            };
+            }
             this.refresh();
         }
 
@@ -703,9 +703,9 @@ package com.company.assembleegameclient.ui.options
                 if (_local_2 != null)
                 {
                     _local_2.refresh();
-                };
+                }
                 _local_1++;
-            };
+            }
         }
 
 

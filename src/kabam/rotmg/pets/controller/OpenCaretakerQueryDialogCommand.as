@@ -5,10 +5,10 @@
 
 package kabam.rotmg.pets.controller
 {
-    import kabam.rotmg.dialogs.control.OpenDialogSignal;
-    import kabam.rotmg.pets.view.dialogs.CaretakerQueryDialog;
+import kabam.rotmg.dialogs.control.OpenDialogSignal;
+import kabam.rotmg.pets.view.dialogs.CaretakerQueryDialog;
 
-    public class OpenCaretakerQueryDialogCommand 
+public class OpenCaretakerQueryDialogCommand
     {
 
         [Inject]

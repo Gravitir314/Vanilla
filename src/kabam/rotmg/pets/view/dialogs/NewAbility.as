@@ -5,17 +5,20 @@
 
 package kabam.rotmg.pets.view.dialogs
 {
-    import com.company.assembleegameclient.ui.dialogs.DialogCloser;
-    import com.company.assembleegameclient.ui.dialogs.CloseDialogComponent;
-    import flash.display.DisplayObjectContainer;
-    import kabam.rotmg.pets.view.components.FusionStrengthFactory;
-    import kabam.rotmg.text.view.TextFieldDisplayConcrete;
-    import com.company.assembleegameclient.ui.dialogs.Dialog;
-    import flash.text.TextFieldAutoSize;
-    import kabam.rotmg.text.view.stringBuilder.LineBuilder;
-    import org.osflash.signals.Signal;
+import com.company.assembleegameclient.ui.dialogs.CloseDialogComponent;
+import com.company.assembleegameclient.ui.dialogs.Dialog;
+import com.company.assembleegameclient.ui.dialogs.DialogCloser;
 
-    public class NewAbility extends PetDialog implements DialogCloser 
+import flash.display.DisplayObjectContainer;
+import flash.text.TextFieldAutoSize;
+
+import kabam.rotmg.pets.view.components.FusionStrengthFactory;
+import kabam.rotmg.text.view.TextFieldDisplayConcrete;
+import kabam.rotmg.text.view.stringBuilder.LineBuilder;
+
+import org.osflash.signals.Signal;
+
+public class NewAbility extends PetDialog implements DialogCloser 
     {
 
         private const closeDialogComponent:CloseDialogComponent = new CloseDialogComponent();

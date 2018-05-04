@@ -5,16 +5,16 @@
 
 package kabam.rotmg.pets.view.components
 {
-    import kabam.lib.ui.impl.LayoutList;
-    import kabam.rotmg.ui.view.SignalWaiter;
-    import org.osflash.signals.Signal;
-    import kabam.lib.ui.impl.VerticalLayout;
-    import flash.display.DisplayObject;
-    import __AS3__.vec.Vector;
-    import flash.events.MouseEvent;
-    import __AS3__.vec.*;
+import flash.display.DisplayObject;
+import flash.events.MouseEvent;
 
-    public class CaretakerQueryDialogCategoryList extends LayoutList 
+import kabam.lib.ui.impl.LayoutList;
+import kabam.lib.ui.impl.VerticalLayout;
+import kabam.rotmg.ui.view.SignalWaiter;
+
+import org.osflash.signals.Signal;
+
+public class CaretakerQueryDialogCategoryList extends LayoutList
     {
 
         private const waiter:SignalWaiter = new SignalWaiter();
@@ -43,7 +43,7 @@ package kabam.rotmg.pets.view.components
             {
                 _local_2.push(this.makeItem(_arg_1[_local_3]));
                 _local_3++;
-            };
+            }
             return (_local_2);
         }
 

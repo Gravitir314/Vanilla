@@ -5,28 +5,30 @@
 
 package com.company.assembleegameclient.ui.tooltip
 {
-    import flash.display.Bitmap;
-    import kabam.rotmg.text.view.TextFieldDisplayConcrete;
-    import com.company.assembleegameclient.ui.LineBreakDesign;
-    import kabam.rotmg.text.view.stringBuilder.AppendingLineBuilder;
-    import flash.display.BitmapData;
-    import com.company.assembleegameclient.util.AnimatedChars;
-    import com.company.assembleegameclient.util.AnimatedChar;
-    import com.company.assembleegameclient.util.MaskedImage;
-    import com.company.assembleegameclient.util.TextureRedrawer;
-    import com.company.util.CachingColorTransformer;
-    import flash.geom.ColorTransform;
-    import kabam.rotmg.text.view.stringBuilder.LineBuilder;
-    import flash.filters.DropShadowFilter;
-    import kabam.rotmg.text.model.TextKey;
-    import com.company.assembleegameclient.objects.ObjectLibrary;
-    import kabam.rotmg.assets.services.IconFactory;
-    import com.company.assembleegameclient.util.FameUtil;
-    import kabam.rotmg.core.model.PlayerModel;
-    import com.company.assembleegameclient.appengine.CharacterStats;
-    import com.company.assembleegameclient.appengine.SavedCharactersList;
+import com.company.assembleegameclient.appengine.CharacterStats;
+import com.company.assembleegameclient.appengine.SavedCharactersList;
+import com.company.assembleegameclient.objects.ObjectLibrary;
+import com.company.assembleegameclient.ui.LineBreakDesign;
+import com.company.assembleegameclient.util.AnimatedChar;
+import com.company.assembleegameclient.util.AnimatedChars;
+import com.company.assembleegameclient.util.FameUtil;
+import com.company.assembleegameclient.util.MaskedImage;
+import com.company.assembleegameclient.util.TextureRedrawer;
+import com.company.util.CachingColorTransformer;
 
-    public class ClassToolTip extends ToolTip 
+import flash.display.Bitmap;
+import flash.display.BitmapData;
+import flash.filters.DropShadowFilter;
+import flash.geom.ColorTransform;
+
+import kabam.rotmg.assets.services.IconFactory;
+import kabam.rotmg.core.model.PlayerModel;
+import kabam.rotmg.text.model.TextKey;
+import kabam.rotmg.text.view.TextFieldDisplayConcrete;
+import kabam.rotmg.text.view.stringBuilder.AppendingLineBuilder;
+import kabam.rotmg.text.view.stringBuilder.LineBuilder;
+
+public class ClassToolTip extends ToolTip
     {
 
         private var portrait_:Bitmap;
@@ -59,7 +61,7 @@ package com.company.assembleegameclient.ui.tooltip
             if (this.showUnlockRequirements)
             {
                 _local_7 = CachingColorTransformer.transformBitmapData(_local_7, new ColorTransform(0, 0, 0, 0.5, 0, 0, 0, 0));
-            };
+            }
             this.portrait_ = new Bitmap();
             this.portrait_.bitmapData = _local_7;
             this.portrait_.x = -4;
@@ -97,8 +99,8 @@ package com.company.assembleegameclient.ui.tooltip
                             "unlockLevel":_local_12,
                             "typeToDisplay":ObjectLibrary.typeToDisplayId_[_local_11]
                         });
-                    };
-                };
+                    }
+                }
                 this.unlockText_.setStringBuilder(_local_8);
                 this.unlockText_.filters = [new DropShadowFilter(0, 0, 0)];
                 waiter.push(this.unlockText_.textChanged);
@@ -135,8 +137,8 @@ package com.company.assembleegameclient.ui.tooltip
                     this.nextClassQuest_.filters = [new DropShadowFilter(0, 0, 0)];
                     waiter.push(this.nextClassQuest_.textChanged);
                     addChild(this.nextClassQuest_);
-                };
-            };
+                }
+            }
         }
 
         public static function getDisplayId(_arg_1:XML):String
@@ -172,8 +174,8 @@ package com.company.assembleegameclient.ui.tooltip
                 {
                     this.nextClassQuest_.x = 8;
                     this.nextClassQuest_.y = (height - 2);
-                };
-            };
+                }
+            }
             this.draw();
             position();
         }

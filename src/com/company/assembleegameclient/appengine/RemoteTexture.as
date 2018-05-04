@@ -5,17 +5,21 @@
 
 package com.company.assembleegameclient.appengine
 {
-    import robotlegs.bender.framework.api.ILogger;
-    import kabam.rotmg.core.StaticInjectorContext;
-    import org.swiftsuspenders.Injector;
-    import kabam.rotmg.appengine.impl.AppEngineRetryLoader;
-    import kabam.rotmg.appengine.api.RetryLoader;
-    import flash.net.URLLoaderDataFormat;
-    import ion.utils.png.PNGDecoder;
-    import flash.display.BitmapData;
-    import flash.utils.ByteArray;
+import flash.display.BitmapData;
+import flash.net.URLLoaderDataFormat;
+import flash.utils.ByteArray;
 
-    public class RemoteTexture 
+import ion.utils.png.PNGDecoder;
+
+import kabam.rotmg.appengine.api.RetryLoader;
+import kabam.rotmg.appengine.impl.AppEngineRetryLoader;
+import kabam.rotmg.core.StaticInjectorContext;
+
+import org.swiftsuspenders.Injector;
+
+import robotlegs.bender.framework.api.ILogger;
+
+public class RemoteTexture
     {
 
         private static const URL_PATTERN:String = "http://{DOMAIN}/picture/get";
@@ -58,7 +62,7 @@ package com.company.assembleegameclient.appengine
             else
             {
                 this.reportError(_arg_2);
-            };
+            }
         }
 
         public function makeTexture(_arg_1:ByteArray):void

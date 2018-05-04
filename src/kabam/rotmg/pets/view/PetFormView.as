@@ -5,27 +5,29 @@
 
 package kabam.rotmg.pets.view
 {
-    import com.company.assembleegameclient.ui.dialogs.DialogCloser;
-    import org.osflash.signals.Signal;
-    import kabam.rotmg.pets.view.components.PopupWindowBackground;
-    import kabam.rotmg.pets.util.PetsViewAssetFactory;
-    import kabam.rotmg.text.view.TextFieldDisplayConcrete;
-    import kabam.rotmg.pets.view.components.DialogCloseButton;
-    import kabam.rotmg.pets.util.PetsConstants;
-    import flash.display.Sprite;
-    import __AS3__.vec.Vector;
-    import com.company.assembleegameclient.ui.DeprecatedTextButton;
-    import kabam.rotmg.text.model.TextKey;
-    import org.osflash.signals.natives.NativeSignal;
-    import flash.events.MouseEvent;
-    import kabam.rotmg.text.view.stringBuilder.LineBuilder;
-    import kabam.lib.ui.api.Size;
-    import kabam.rotmg.pets.view.dialogs.PetPicker;
-    import kabam.rotmg.pets.data.PetVO;
-    import kabam.rotmg.ui.view.SignalWaiter;
-    import kabam.rotmg.pets.data.ReskinViewState;
+import com.company.assembleegameclient.ui.DeprecatedTextButton;
+import com.company.assembleegameclient.ui.dialogs.DialogCloser;
 
-    public class PetFormView extends PetInteractionView implements DialogCloser 
+import flash.display.Sprite;
+import flash.events.MouseEvent;
+
+import kabam.lib.ui.api.Size;
+import kabam.rotmg.pets.data.PetVO;
+import kabam.rotmg.pets.data.ReskinViewState;
+import kabam.rotmg.pets.util.PetsConstants;
+import kabam.rotmg.pets.util.PetsViewAssetFactory;
+import kabam.rotmg.pets.view.components.DialogCloseButton;
+import kabam.rotmg.pets.view.components.PopupWindowBackground;
+import kabam.rotmg.pets.view.dialogs.PetPicker;
+import kabam.rotmg.text.model.TextKey;
+import kabam.rotmg.text.view.TextFieldDisplayConcrete;
+import kabam.rotmg.text.view.stringBuilder.LineBuilder;
+import kabam.rotmg.ui.view.SignalWaiter;
+
+import org.osflash.signals.Signal;
+import org.osflash.signals.natives.NativeSignal;
+
+public class PetFormView extends PetInteractionView implements DialogCloser
     {
 
         private static const closeDialogSignal:Signal = new Signal();
@@ -74,7 +76,7 @@ package kabam.rotmg.pets.view
                 _arg_1[_local_3].initComplete.add(this.onSkinGroupInit);
                 this.reskinContainer.addChild(_arg_1[_local_3]);
                 _local_3++;
-            };
+            }
         }
 
         public function onSkinGroupInit():void
@@ -84,7 +86,7 @@ package kabam.rotmg.pets.view
             {
                 this.positionSkinGroups();
                 this.skinGroupsInitialized.dispatch();
-            };
+            }
         }
 
         private function positionSkinGroups():void
@@ -97,7 +99,7 @@ package kabam.rotmg.pets.view
                 this.skinGroups[_local_1].y = this.posY;
                 this.posY = (this.posY + this.skinGroups[_local_1].height);
                 _local_1++;
-            };
+            }
             this.reskinButton.y = (this.posY + 10);
             this.background.height = (this.posY + 50);
         }
@@ -168,7 +170,7 @@ package kabam.rotmg.pets.view
                 if (contains(this.reskinContainer))
                 {
                     removeChild(this.reskinContainer);
-                };
+                }
             }
             else
             {
@@ -178,9 +180,9 @@ package kabam.rotmg.pets.view
                     if (contains(this.petPickerContainer))
                     {
                         removeChild(this.petPickerContainer);
-                    };
-                };
-            };
+                    }
+                }
+            }
         }
 
 

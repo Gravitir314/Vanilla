@@ -5,18 +5,20 @@
 
 package kabam.rotmg.messaging.impl
 {
-    import org.osflash.signals.Signal;
-    import com.company.assembleegameclient.game.AGameSprite;
-    import kabam.rotmg.servers.api.Server;
-    import flash.utils.ByteArray;
-    import kabam.lib.net.impl.SocketServer;
-    import com.company.assembleegameclient.objects.GameObject;
-    import __AS3__.vec.Vector;
-    import com.company.assembleegameclient.objects.Projectile;
-    import com.company.assembleegameclient.objects.Player;
-    import kabam.rotmg.messaging.impl.data.SlotObjectData;
+import com.company.assembleegameclient.game.AGameSprite;
+import com.company.assembleegameclient.objects.GameObject;
+import com.company.assembleegameclient.objects.Player;
+import com.company.assembleegameclient.objects.Projectile;
 
-    public class GameServerConnection 
+import flash.utils.ByteArray;
+
+import kabam.lib.net.impl.SocketServer;
+import kabam.rotmg.messaging.impl.data.SlotObjectData;
+import kabam.rotmg.servers.api.Server;
+
+import org.osflash.signals.Signal;
+
+public class GameServerConnection
     {
 
         public static const FAILURE:int = 0;

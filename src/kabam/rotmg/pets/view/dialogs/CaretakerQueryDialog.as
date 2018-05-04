@@ -5,24 +5,27 @@
 
 package kabam.rotmg.pets.view.dialogs
 {
-    import flash.display.Sprite;
-    import kabam.rotmg.ui.view.SignalWaiter;
-    import flash.display.DisplayObjectContainer;
-    import kabam.rotmg.pets.view.components.PopupWindowBackground;
-    import kabam.rotmg.pets.view.components.CaretakerQueryDialogCaretaker;
-    import kabam.rotmg.text.view.TextFieldDisplayConcrete;
-    import kabam.rotmg.pets.view.components.CaretakerQueryDialogCategoryList;
-    import com.company.assembleegameclient.ui.DeprecatedTextButton;
-    import org.osflash.signals.Signal;
-    import org.osflash.signals.natives.NativeMappedSignal;
-    import flash.events.MouseEvent;
-    import kabam.rotmg.util.graphics.ButtonLayoutHelper;
-    import kabam.rotmg.pets.util.PetsViewAssetFactory;
-    import kabam.rotmg.text.view.stringBuilder.LineBuilder;
-    import flash.text.TextFieldAutoSize;
-    import flash.display.BitmapData;
+import com.company.assembleegameclient.ui.DeprecatedTextButton;
 
-    public class CaretakerQueryDialog extends Sprite 
+import flash.display.BitmapData;
+import flash.display.DisplayObjectContainer;
+import flash.display.Sprite;
+import flash.events.MouseEvent;
+import flash.text.TextFieldAutoSize;
+
+import kabam.rotmg.pets.util.PetsViewAssetFactory;
+import kabam.rotmg.pets.view.components.CaretakerQueryDialogCaretaker;
+import kabam.rotmg.pets.view.components.CaretakerQueryDialogCategoryList;
+import kabam.rotmg.pets.view.components.PopupWindowBackground;
+import kabam.rotmg.text.view.TextFieldDisplayConcrete;
+import kabam.rotmg.text.view.stringBuilder.LineBuilder;
+import kabam.rotmg.ui.view.SignalWaiter;
+import kabam.rotmg.util.graphics.ButtonLayoutHelper;
+
+import org.osflash.signals.Signal;
+import org.osflash.signals.natives.NativeMappedSignal;
+
+public class CaretakerQueryDialog extends Sprite
     {
 
         public static const WIDTH:int = 274;

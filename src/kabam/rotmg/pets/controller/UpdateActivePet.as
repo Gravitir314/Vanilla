@@ -5,9 +5,9 @@
 
 package kabam.rotmg.pets.controller
 {
-    import org.osflash.signals.Signal;
+import org.osflash.signals.Signal;
 
-    public class UpdateActivePet extends Signal 
+public class UpdateActivePet extends Signal
     {
 
         public function UpdateActivePet()

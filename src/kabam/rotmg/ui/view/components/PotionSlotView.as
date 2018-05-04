@@ -5,34 +5,35 @@
 
 package kabam.rotmg.ui.view.components
 {
-    import flash.display.Sprite;
-    import flash.filters.DropShadowFilter;
-    import org.osflash.signals.natives.NativeSignal;
-    import org.osflash.signals.Signal;
-    import flash.display.GraphicsSolidFill;
-    import flash.display.GraphicsPath;
-    import __AS3__.vec.Vector;
-    import flash.display.IGraphicsData;
-    import com.company.util.GraphicsUtil;
-    import kabam.rotmg.text.view.TextFieldDisplayConcrete;
-    import flash.display.Bitmap;
-    import flash.filters.ColorMatrixFilter;
-    import flash.utils.Timer;
-    import flash.geom.Point;
-    import flash.display.BitmapData;
-    import com.company.util.MoreColorUtil;
-    import com.company.util.AssetLibrary;
-    import com.company.assembleegameclient.util.TextureRedrawer;
-    import flash.events.TimerEvent;
-    import flash.events.MouseEvent;
-    import flash.events.Event;
-    import flash.display.DisplayObject;
-    import com.company.assembleegameclient.objects.ObjectLibrary;
-    import com.company.assembleegameclient.parameters.Parameters;
-    import kabam.rotmg.text.view.stringBuilder.StaticStringBuilder;
-    import __AS3__.vec.*;
+import com.company.assembleegameclient.objects.ObjectLibrary;
+import com.company.assembleegameclient.parameters.Parameters;
+import com.company.assembleegameclient.util.TextureRedrawer;
+import com.company.util.AssetLibrary;
+import com.company.util.GraphicsUtil;
+import com.company.util.MoreColorUtil;
 
-    public class PotionSlotView extends Sprite 
+import flash.display.Bitmap;
+import flash.display.BitmapData;
+import flash.display.DisplayObject;
+import flash.display.GraphicsPath;
+import flash.display.GraphicsSolidFill;
+import flash.display.IGraphicsData;
+import flash.display.Sprite;
+import flash.events.Event;
+import flash.events.MouseEvent;
+import flash.events.TimerEvent;
+import flash.filters.ColorMatrixFilter;
+import flash.filters.DropShadowFilter;
+import flash.geom.Point;
+import flash.utils.Timer;
+
+import kabam.rotmg.text.view.TextFieldDisplayConcrete;
+import kabam.rotmg.text.view.stringBuilder.StaticStringBuilder;
+
+import org.osflash.signals.Signal;
+import org.osflash.signals.natives.NativeSignal;
+
+public class PotionSlotView extends Sprite 
     {
 
         public static var BUTTON_WIDTH:int = 84;
@@ -117,7 +118,7 @@ package kabam.rotmg.ui.view.components
                 if (this.potionIcon != null)
                 {
                     removeChild(this.potionIcon);
-                };
+                }
                 _local_7 = ObjectLibrary.getRedrawnTextureFromType(_arg_4, 55, false);
                 this.potionIcon = new Bitmap(_local_7);
                 this.potionIcon.y = -11;
@@ -127,7 +128,7 @@ package kabam.rotmg.ui.view.components
                 _local_8.x = (_local_8.x - 30);
                 _local_8.y = (_local_8.y - 30);
                 this.potionIconDraggableSprite.addChild(_local_8);
-            };
+            }
             var _local_5:* = (_arg_1 > 0);
             if (_local_5)
             {
@@ -145,11 +146,11 @@ package kabam.rotmg.ui.view.components
                 this.bg.graphics.drawGraphicsData(this.buyOuterGraphicsData);
                 this.bg.graphics.drawGraphicsData(this.buyInnerGraphicsData);
                 this.text.x = ((this.costIcon.x - this.text.width) + 6);
-            };
+            }
             if (this.potionIcon)
             {
                 this.potionIcon.x = _local_6;
-            };
+            }
             if (!_local_5)
             {
                 if (Parameters.data_.contextualPotionBuy)
@@ -163,14 +164,14 @@ package kabam.rotmg.ui.view.components
                     this.text.setColor(0xAAAAAA);
                     this.costIcon.filters = [this.grayscaleMatrix];
                     this.costIcon.visible = true;
-                };
+                }
             }
             else
             {
                 this.text.setColor(0xFFFFFF);
                 this.costIcon.filters = [];
                 this.costIcon.visible = false;
-            };
+            }
         }
 
         public function setTextString(_arg_1:String):void
@@ -188,7 +189,7 @@ package kabam.rotmg.ui.view.components
             if (this.isDragging)
             {
                 return;
-            };
+            }
             if (_arg_1.shiftKey)
             {
                 this.setPendingDoubleClick(false);
@@ -204,8 +205,8 @@ package kabam.rotmg.ui.view.components
                 {
                     this.setPendingDoubleClick(false);
                     this.buyUse.dispatch();
-                };
-            };
+                }
+            }
         }
 
         private function onMouseDown(_arg_1:MouseEvent):void
@@ -213,7 +214,7 @@ package kabam.rotmg.ui.view.components
             if (!this.costIcon.visible)
             {
                 this.beginDragCheck(_arg_1);
-            };
+            }
         }
 
         private function setPendingDoubleClick(_arg_1:Boolean):void
@@ -227,7 +228,7 @@ package kabam.rotmg.ui.view.components
             else
             {
                 this.doubleClickTimer.stop();
-            };
+            }
         }
 
         private function beginDragCheck(_arg_1:MouseEvent):void
@@ -255,7 +256,7 @@ package kabam.rotmg.ui.view.components
                 this.cancelDragCheck(null);
                 this.setPendingDoubleClick(false);
                 this.beginDrag();
-            };
+            }
         }
 
         private function onDoubleClickTimerComplete(_arg_1:TimerEvent):void
@@ -289,7 +290,7 @@ package kabam.rotmg.ui.view.components
             if (this.isDragging)
             {
                 this.potionIconDraggableSprite.stopDrag();
-            };
+            }
         }
 
 

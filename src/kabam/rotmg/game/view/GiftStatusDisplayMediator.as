@@ -5,10 +5,11 @@
 
 package kabam.rotmg.game.view
 {
-    import kabam.rotmg.game.signals.UpdateGiftStatusDisplaySignal;
-    import com.company.assembleegameclient.game.GiftStatusModel;
+import com.company.assembleegameclient.game.GiftStatusModel;
 
-    public class GiftStatusDisplayMediator 
+import kabam.rotmg.game.signals.UpdateGiftStatusDisplaySignal;
+
+public class GiftStatusDisplayMediator
     {
 
         [Inject]
@@ -29,7 +30,7 @@ package kabam.rotmg.game.view
             else
             {
                 this.view.drawAsClosed();
-            };
+            }
         }
 
         private function onGiftChestUpdate():void
@@ -41,7 +42,7 @@ package kabam.rotmg.game.view
             else
             {
                 this.view.drawAsClosed();
-            };
+            }
         }
 
 

@@ -5,21 +5,24 @@
 
 package kabam.rotmg.pets.view.components
 {
-    import flash.display.Sprite;
-    import org.osflash.signals.Signal;
-    import com.company.assembleegameclient.ui.tooltip.ToolTip;
-    import kabam.rotmg.text.view.TextFieldDisplayConcrete;
-    import org.osflash.signals.ISlot;
-    import kabam.rotmg.pets.data.AbilityVO;
-    import org.osflash.signals.natives.NativeSignal;
-    import flash.events.MouseEvent;
-    import kabam.rotmg.pets.util.PetsViewAssetFactory;
-    import kabam.rotmg.pets.util.PetsConstants;
-    import kabam.rotmg.text.view.stringBuilder.LineBuilder;
-    import kabam.rotmg.text.model.TextKey;
-    import kabam.rotmg.ui.view.SignalWaiter;
+import com.company.assembleegameclient.ui.tooltip.ToolTip;
 
-    public class PetAbilityDisplay extends Sprite 
+import flash.display.Sprite;
+import flash.events.MouseEvent;
+
+import kabam.rotmg.pets.data.AbilityVO;
+import kabam.rotmg.pets.util.PetsConstants;
+import kabam.rotmg.pets.util.PetsViewAssetFactory;
+import kabam.rotmg.text.model.TextKey;
+import kabam.rotmg.text.view.TextFieldDisplayConcrete;
+import kabam.rotmg.text.view.stringBuilder.LineBuilder;
+import kabam.rotmg.ui.view.SignalWaiter;
+
+import org.osflash.signals.ISlot;
+import org.osflash.signals.Signal;
+import org.osflash.signals.natives.NativeSignal;
+
+public class PetAbilityDisplay extends Sprite
     {
 
         public const addToolTip:Signal = new Signal(ToolTip);
@@ -72,7 +75,7 @@ package kabam.rotmg.pets.view.components
             if (this.vo.getUnlocked())
             {
                 this.makeValueTextField();
-            };
+            }
         }
 
         private function makeValueTextField():void
@@ -89,7 +92,7 @@ package kabam.rotmg.pets.view.components
             if (this.valueTextField)
             {
                 this.valueTextField.setStringBuilder(new LineBuilder().setParams(this.getLevelKey(this.vo), {"level":this.vo.level}));
-            };
+            }
         }
 
         private function makeLabelTextfield():void

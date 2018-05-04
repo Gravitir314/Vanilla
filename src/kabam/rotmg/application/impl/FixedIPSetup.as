@@ -5,10 +5,11 @@
 
 package kabam.rotmg.application.impl
 {
-    import kabam.rotmg.application.api.ApplicationSetup;
-    import com.company.assembleegameclient.parameters.Parameters;
+import com.company.assembleegameclient.parameters.Parameters;
 
-    public class FixedIPSetup implements ApplicationSetup 
+import kabam.rotmg.application.api.ApplicationSetup;
+
+public class FixedIPSetup implements ApplicationSetup 
     {
 
         private const SERVER:String = "rotmgtesting.appspot.com";

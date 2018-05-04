@@ -5,24 +5,26 @@
 
 package kabam.rotmg.pets.view
 {
-    import com.company.assembleegameclient.ui.dialogs.DialogCloser;
-    import org.osflash.signals.Signal;
-    import kabam.rotmg.pets.view.components.FameOrGoldBuyButtons;
-    import kabam.rotmg.pets.util.PetsViewAssetFactory;
-    import kabam.rotmg.text.model.TextKey;
-    import kabam.rotmg.pets.util.PetsConstants;
-    import kabam.rotmg.pets.view.components.PopupWindowBackground;
-    import kabam.rotmg.text.view.TextFieldDisplayConcrete;
-    import kabam.rotmg.pets.view.components.PetFuser;
-    import kabam.rotmg.pets.view.components.DialogCloseButton;
-    import kabam.rotmg.pets.view.components.FusionStrength;
-    import kabam.rotmg.text.view.stringBuilder.LineBuilder;
-    import kabam.rotmg.pets.util.FeedFuseCostModel;
-    import kabam.rotmg.pets.data.PetRarityEnum;
-    import kabam.rotmg.pets.data.PetSlotsState;
-    import kabam.rotmg.ui.view.SignalWaiter;
+import com.company.assembleegameclient.ui.dialogs.DialogCloser;
 
-    public class FusePetView extends PetInteractionView implements DialogCloser 
+import kabam.rotmg.pets.data.PetRarityEnum;
+import kabam.rotmg.pets.data.PetSlotsState;
+import kabam.rotmg.pets.util.FeedFuseCostModel;
+import kabam.rotmg.pets.util.PetsConstants;
+import kabam.rotmg.pets.util.PetsViewAssetFactory;
+import kabam.rotmg.pets.view.components.DialogCloseButton;
+import kabam.rotmg.pets.view.components.FameOrGoldBuyButtons;
+import kabam.rotmg.pets.view.components.FusionStrength;
+import kabam.rotmg.pets.view.components.PetFuser;
+import kabam.rotmg.pets.view.components.PopupWindowBackground;
+import kabam.rotmg.text.model.TextKey;
+import kabam.rotmg.text.view.TextFieldDisplayConcrete;
+import kabam.rotmg.text.view.stringBuilder.LineBuilder;
+import kabam.rotmg.ui.view.SignalWaiter;
+
+import org.osflash.signals.Signal;
+
+public class FusePetView extends PetInteractionView implements DialogCloser
     {
 
         private static const closeDialogSignal:Signal = new Signal();
@@ -57,7 +59,7 @@ package kabam.rotmg.pets.view
             {
                 this.buttonBar.setGoldPrice(FeedFuseCostModel.getFuseGoldCost(PetRarityEnum.selectByValue(_arg_1.leftSlotPetVO.getRarity())));
                 this.buttonBar.setFamePrice(FeedFuseCostModel.getFuseFameCost(PetRarityEnum.selectByValue(_arg_1.leftSlotPetVO.getRarity())));
-            };
+            }
             this.closeButton.clicked.add(this.onClose);
             this.waitForTextChanged();
             this.addChildren();

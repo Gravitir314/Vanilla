@@ -5,9 +5,9 @@
 
 package kabam.rotmg.pets.view.dialogs.evolving
 {
-    import flash.display.DisplayObject;
+import flash.display.DisplayObject;
 
-    public class TweenProxy 
+public class TweenProxy 
     {
 
         protected var onComplete:Function;

@@ -5,17 +5,19 @@
 
 package kabam.rotmg.pets.data
 {
-    import com.company.assembleegameclient.util.AnimatedChar;
-    import org.osflash.signals.Signal;
-    import com.company.assembleegameclient.objects.ObjectLibrary;
-    import com.company.assembleegameclient.util.MaskedImage;
-    import com.company.assembleegameclient.util.TextureRedrawer;
-    import flash.display.BitmapData;
-    import com.company.assembleegameclient.util.redrawers.GlowRedrawer;
-    import flash.display.Bitmap;
-    import com.company.assembleegameclient.util.AnimatedChars;
+import com.company.assembleegameclient.objects.ObjectLibrary;
+import com.company.assembleegameclient.util.AnimatedChar;
+import com.company.assembleegameclient.util.AnimatedChars;
+import com.company.assembleegameclient.util.MaskedImage;
+import com.company.assembleegameclient.util.TextureRedrawer;
+import com.company.assembleegameclient.util.redrawers.GlowRedrawer;
 
-    public class PetVO 
+import flash.display.Bitmap;
+import flash.display.BitmapData;
+
+import org.osflash.signals.Signal;
+
+public class PetVO
     {
 
         private var staticData:XML;
@@ -60,7 +62,7 @@ package kabam.rotmg.pets.data
             for each (_local_1 in this.abilityList)
             {
                 _local_1.updated.add(this.onAbilityUpdate);
-            };
+            }
         }
 
         public function maxedAllAbilities():Boolean
@@ -72,8 +74,8 @@ package kabam.rotmg.pets.data
                 if (_local_2.level == 100)
                 {
                     _local_1++;
-                };
-            };
+                }
+            }
             return (_local_1 == this.abilityList.length);
         }
 
@@ -113,7 +115,7 @@ package kabam.rotmg.pets.data
                 _local_4.level = _arg_1.Abilities.Ability[_local_2].@power;
                 _local_4.points = _arg_1.Abilities.Ability[_local_2].@points;
                 _local_2++;
-            };
+            }
         }
 
         public function getFamily():String
@@ -167,7 +169,7 @@ package kabam.rotmg.pets.data
             if (((this.name == null) || (this.name == "")))
             {
                 this.name = ObjectLibrary.typeToDisplayId_[this.getType()];
-            };
+            }
             this.updated.dispatch();
         }
 
@@ -204,7 +206,7 @@ package kabam.rotmg.pets.data
             if (this.skin == null)
             {
                 return (null);
-            };
+            }
             var _local_1:MaskedImage = this.skin.imageFromAngle(0, AnimatedChar.STAND, 0);
             var _local_2:int = ((this.skin.getHeight() == 16) ? 40 : 80);
             var _local_3:BitmapData = TextureRedrawer.resize(_local_1.image_, _local_1.mask_, _local_2, true, 0, 0);
@@ -224,7 +226,7 @@ package kabam.rotmg.pets.data
             if (_local_1 == null)
             {
                 return;
-            };
+            }
             var _local_2:String = _local_1.AnimatedTexture.File;
             var _local_3:int = _local_1.AnimatedTexture.Index;
             this.skin = AnimatedChars.getAnimatedChar(_local_2, _local_3);

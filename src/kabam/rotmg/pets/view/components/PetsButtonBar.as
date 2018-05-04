@@ -5,14 +5,17 @@
 
 package kabam.rotmg.pets.view.components
 {
-    import flash.display.Sprite;
-    import com.company.assembleegameclient.ui.DeprecatedTextButton;
-    import org.osflash.signals.natives.NativeSignal;
-    import flash.events.MouseEvent;
-    import kabam.rotmg.ui.view.SignalWaiter;
-    import kabam.rotmg.pets.util.PetsConstants;
+import com.company.assembleegameclient.ui.DeprecatedTextButton;
 
-    public class PetsButtonBar extends Sprite 
+import flash.display.Sprite;
+import flash.events.MouseEvent;
+
+import kabam.rotmg.pets.util.PetsConstants;
+import kabam.rotmg.ui.view.SignalWaiter;
+
+import org.osflash.signals.natives.NativeSignal;
+
+public class PetsButtonBar extends Sprite
     {
 
         public var buttonOne:DeprecatedTextButton = new DeprecatedTextButton(14, "buttonOne", 70);
@@ -40,7 +43,7 @@ package kabam.rotmg.pets.view.components
             for each (_local_3 in _local_1)
             {
                 _local_2.push(_local_3.textChanged);
-            };
+            }
             _local_2.complete.addOnce(this.positionButtons);
         }
 

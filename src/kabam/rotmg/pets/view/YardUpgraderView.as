@@ -5,21 +5,23 @@
 
 package kabam.rotmg.pets.view
 {
-    import flash.display.Sprite;
-    import org.osflash.signals.Signal;
-    import kabam.rotmg.pets.data.YardUpgraderVO;
-    import kabam.rotmg.pets.view.components.PopupWindowBackground;
-    import kabam.rotmg.pets.util.PetsViewAssetFactory;
-    import kabam.rotmg.pets.util.PetsConstants;
-    import kabam.rotmg.text.view.TextFieldDisplayConcrete;
-    import kabam.rotmg.pets.view.components.FameOrGoldBuyButtons;
-    import kabam.rotmg.pets.view.components.DialogCloseButton;
-    import flash.display.DisplayObject;
-    import kabam.rotmg.text.view.stringBuilder.LineBuilder;
-    import flash.text.TextFormatAlign;
-    import kabam.rotmg.ui.view.SignalWaiter;
+import flash.display.DisplayObject;
+import flash.display.Sprite;
+import flash.text.TextFormatAlign;
 
-    public class YardUpgraderView extends Sprite 
+import kabam.rotmg.pets.data.YardUpgraderVO;
+import kabam.rotmg.pets.util.PetsConstants;
+import kabam.rotmg.pets.util.PetsViewAssetFactory;
+import kabam.rotmg.pets.view.components.DialogCloseButton;
+import kabam.rotmg.pets.view.components.FameOrGoldBuyButtons;
+import kabam.rotmg.pets.view.components.PopupWindowBackground;
+import kabam.rotmg.text.view.TextFieldDisplayConcrete;
+import kabam.rotmg.text.view.stringBuilder.LineBuilder;
+import kabam.rotmg.ui.view.SignalWaiter;
+
+import org.osflash.signals.Signal;
+
+public class YardUpgraderView extends Sprite
     {
 
         public var famePurchase:Signal;
@@ -31,7 +33,7 @@ package kabam.rotmg.pets.view
         private const titleTextfield:TextFieldDisplayConcrete = PetsViewAssetFactory.returnTextfield(0xFFFFFF, 18, true);
         private const upgradeTextfield:TextFieldDisplayConcrete = PetsViewAssetFactory.returnTextfield(0xB3B3B3, 13, false);
         private const rarityTextfield:TextFieldDisplayConcrete = PetsViewAssetFactory.returnTextfield(16777103, 16, true);
-        private const buttonBar:FameOrGoldBuyButtons = kabam.rotmg.pets.util.PetsViewAssetFactory.returnFameOrGoldButtonBar("YardUpgraderView.upgrade", 357);
+        private const buttonBar:FameOrGoldBuyButtons = PetsViewAssetFactory.returnFameOrGoldButtonBar("YardUpgraderView.upgrade", 357);
         private const closeButton:DialogCloseButton = PetsViewAssetFactory.returnCloseButton(PetsConstants.WINDOW_BACKGROUND_WIDTH);
         private const petYardImage:DisplayObject = new PetYardImage();
         private const currentMaxBox:StatusBox = new StatusBox();

@@ -5,19 +5,18 @@
 
 package kabam.rotmg.pets.view
 {
-    import robotlegs.bender.bundles.mvcs.Mediator;
-    import kabam.rotmg.pets.data.PetFormModel;
-    import kabam.rotmg.pets.controller.reskin.ReskinPetRequestSignal;
-    import kabam.rotmg.pets.controller.reskin.UpdateSelectedPetForm;
-    import kabam.rotmg.pets.data.PetsModel;
-    import kabam.rotmg.pets.view.dialogs.PetPicker;
-    import __AS3__.vec.Vector;
-    import kabam.rotmg.pets.data.PetVO;
-    import kabam.rotmg.pets.data.ReskinViewState;
-    import kabam.rotmg.pets.data.ReskinPetVO;
-    import __AS3__.vec.*;
+import kabam.rotmg.pets.controller.reskin.ReskinPetRequestSignal;
+import kabam.rotmg.pets.controller.reskin.UpdateSelectedPetForm;
+import kabam.rotmg.pets.data.PetFormModel;
+import kabam.rotmg.pets.data.PetVO;
+import kabam.rotmg.pets.data.PetsModel;
+import kabam.rotmg.pets.data.ReskinPetVO;
+import kabam.rotmg.pets.data.ReskinViewState;
+import kabam.rotmg.pets.view.dialogs.PetPicker;
 
-    public class PetFormMediator extends Mediator 
+import robotlegs.bender.bundles.mvcs.Mediator;
+
+public class PetFormMediator extends Mediator
     {
 
         [Inject]
@@ -60,7 +59,7 @@ package kabam.rotmg.pets.view
             {
                 this.createPetSkinGroup(_local_1);
                 _local_1++;
-            };
+            }
         }
 
         private function createPetSkinGroup(_arg_1:uint):void

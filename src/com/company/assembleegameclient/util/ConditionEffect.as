@@ -5,18 +5,18 @@
 
 package com.company.assembleegameclient.util
 {
-    import __AS3__.vec.Vector;
-    import kabam.rotmg.text.model.TextKey;
-    import flash.filters.GlowFilter;
-    import flash.filters.BitmapFilterQuality;
-    import flash.display.BitmapData;
-    import flash.geom.Matrix;
-    import com.company.util.AssetLibrary;
-    import com.company.assembleegameclient.util.redrawers.GlowRedrawer;
-    import com.company.util.PointUtil;
-    import __AS3__.vec.*;
+import com.company.assembleegameclient.util.redrawers.GlowRedrawer;
+import com.company.util.AssetLibrary;
+import com.company.util.PointUtil;
 
-    public class ConditionEffect 
+import flash.display.BitmapData;
+import flash.filters.BitmapFilterQuality;
+import flash.filters.GlowFilter;
+import flash.geom.Matrix;
+
+import kabam.rotmg.text.model.TextKey;
+
+public class ConditionEffect
     {
 
         public static const NOTHING:uint = 0;
@@ -149,14 +149,14 @@ package com.company.assembleegameclient.util
             var _local_2:uint;
             if (conditionEffectFromName_ == null)
             {
-                conditionEffectFromName_ = new Object();
+                conditionEffectFromName_ = {};
                 _local_2 = 0;
                 while (_local_2 < effects_.length)
                 {
                     conditionEffectFromName_[effects_[_local_2].name_] = _local_2;
                     _local_2++;
-                };
-            };
+                }
+            }
             return (conditionEffectFromName_[_arg_1]);
         }
 
@@ -168,8 +168,8 @@ package com.company.assembleegameclient.util
                 if (_local_2.name_ == _arg_1)
                 {
                     return (_local_2);
-                };
-            };
+                }
+            }
             return (null);
         }
 
@@ -186,9 +186,9 @@ package com.company.assembleegameclient.util
                 if (_local_6 != null)
                 {
                     _arg_2.push(_local_6[(_arg_3 % _local_6.length)]);
-                };
+                }
                 _arg_1 = _local_4;
-            };
+            }
         }
 
         public static function getConditionEffectIcons2(_arg_1:uint, _arg_2:Vector.<BitmapData>, _arg_3:int):void
@@ -204,9 +204,9 @@ package com.company.assembleegameclient.util
                 if (_local_6 != null)
                 {
                     _arg_2.push(_local_6[(_arg_3 % _local_6.length)]);
-                };
+                }
                 _arg_1 = _local_4;
-            };
+            }
         }
 
         public static function addConditionEffectIcon(_arg_1:Vector.<BitmapData>, _arg_2:int, _arg_3:Boolean):void
@@ -217,7 +217,7 @@ package com.company.assembleegameclient.util
             if (effectIconCache == null)
             {
                 effectIconCache = {};
-            };
+            }
             if (effectIconCache[_arg_2])
             {
                 _local_4 = effectIconCache[_arg_2];
@@ -237,11 +237,11 @@ package com.company.assembleegameclient.util
                 {
                     _local_4 = new BitmapDataSpy(16, 16, true, 0);
                     _local_4.draw(AssetLibrary.getImageFromSet("lofiInterface2", _arg_2), _local_5);
-                };
+                }
                 _local_4 = GlowRedrawer.outlineGlow(_local_4, 0xFFFFFFFF);
                 _local_4.applyFilter(_local_4, _local_4.rect, PointUtil.ORIGIN, GLOW_FILTER);
                 effectIconCache[_arg_2] = _local_4;
-            };
+            }
             _arg_1.push(_local_4);
         }
 
@@ -254,7 +254,7 @@ package com.company.assembleegameclient.util
             var _local_6:BitmapData;
             if (bitToIcon_ == null)
             {
-                bitToIcon_ = new Object();
+                bitToIcon_ = {};
                 _local_2 = new Matrix();
                 _local_2.translate(4, 4);
                 _local_3 = 0;
@@ -273,12 +273,12 @@ package com.company.assembleegameclient.util
                             _local_6.applyFilter(_local_6, _local_6.rect, PointUtil.ORIGIN, GLOW_FILTER);
                             _local_4.push(_local_6);
                             _local_5++;
-                        };
-                    };
+                        }
+                    }
                     bitToIcon_[effects_[_local_3].bit_] = _local_4;
                     _local_3++;
-                };
-            };
+                }
+            }
             return (bitToIcon_[_arg_1]);
         }
 
@@ -317,21 +317,21 @@ package com.company.assembleegameclient.util
                             {
                                 _local_3 = new BitmapDataSpy(16, 16, true, 0);
                                 _local_3.draw(AssetLibrary.getImageFromSet("lofiInterface2", effects_[_local_6].iconOffsets_[_local_7]), _local_4);
-                            };
+                            }
                             _local_3 = GlowRedrawer.outlineGlow(_local_3, 0xFFFFFFFF);
                             _local_3.applyFilter(_local_3, _local_3.rect, PointUtil.ORIGIN, GLOW_FILTER);
                             _local_2.push(_local_3);
                             _local_7++;
-                        };
-                    };
+                        }
+                    }
                     bitToIcon2_[effects_[_local_6].bit_] = _local_2;
                     _local_6++;
-                };
-            };
+                }
+            }
             if (((!(bitToIcon2_ == null)) && (!(bitToIcon2_[_arg_1] == null))))
             {
                 return (bitToIcon2_[_arg_1]);
-            };
+            }
             return (null);
         }
 

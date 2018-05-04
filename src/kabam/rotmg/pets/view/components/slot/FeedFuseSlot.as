@@ -5,17 +5,18 @@
 
 package kabam.rotmg.pets.view.components.slot
 {
-    import flash.display.Sprite;
-    import flash.display.Shape;
-    import kabam.rotmg.pets.util.PetsViewAssetFactory;
-    import kabam.rotmg.text.view.TextFieldDisplayConcrete;
-    import kabam.rotmg.text.view.stringBuilder.LineBuilder;
-    import kabam.rotmg.text.view.stringBuilder.AppendingLineBuilder;
-    import flash.display.Bitmap;
-    import flash.events.Event;
-    import flash.geom.ColorTransform;
+import flash.display.Bitmap;
+import flash.display.Shape;
+import flash.display.Sprite;
+import flash.events.Event;
+import flash.geom.ColorTransform;
 
-    public class FeedFuseSlot extends Sprite 
+import kabam.rotmg.pets.util.PetsViewAssetFactory;
+import kabam.rotmg.text.view.TextFieldDisplayConcrete;
+import kabam.rotmg.text.view.stringBuilder.AppendingLineBuilder;
+import kabam.rotmg.text.view.stringBuilder.LineBuilder;
+
+public class FeedFuseSlot extends Sprite 
     {
 
         protected var outerSlot:Shape = PetsViewAssetFactory.returnPetSlotShape(46, 0x545454, 0, false, true);
@@ -75,7 +76,7 @@ package kabam.rotmg.pets.view.components.slot
                 _local_5 = this.outerSlot.transform.colorTransform;
                 _local_5.color = ((_arg_3) ? _arg_2 : 0x545454);
                 this.outerSlot.transform.colorTransform = _local_5;
-            };
+            }
         }
 
         protected function alignBitmapInBox():void

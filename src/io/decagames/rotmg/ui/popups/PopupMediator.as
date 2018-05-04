@@ -5,17 +5,17 @@
 
 package io.decagames.rotmg.ui.popups
 {
+import io.decagames.rotmg.ui.popups.signals.CloseAllPopupsSignal;
+import io.decagames.rotmg.ui.popups.signals.CloseCurrentPopupSignal;
 import io.decagames.rotmg.ui.popups.signals.ClosePopupByClassSignal;
+import io.decagames.rotmg.ui.popups.signals.ClosePopupSignal;
+import io.decagames.rotmg.ui.popups.signals.RemoveLockFade;
+import io.decagames.rotmg.ui.popups.signals.ShowLockFade;
+import io.decagames.rotmg.ui.popups.signals.ShowPopupSignal;
 
 import robotlegs.bender.bundles.mvcs.Mediator;
-    import io.decagames.rotmg.ui.popups.signals.ShowPopupSignal;
-    import io.decagames.rotmg.ui.popups.signals.ClosePopupSignal;
-    import io.decagames.rotmg.ui.popups.signals.CloseCurrentPopupSignal;
-    import io.decagames.rotmg.ui.popups.signals.CloseAllPopupsSignal;
-    import io.decagames.rotmg.ui.popups.signals.RemoveLockFade;
-    import io.decagames.rotmg.ui.popups.signals.ShowLockFade;
 
-    public class PopupMediator extends Mediator 
+public class PopupMediator extends Mediator 
     {
 
         [Inject]
@@ -72,7 +72,7 @@ import robotlegs.bender.bundles.mvcs.Mediator;
             for each (_local_1 in this.popups)
             {
                 this.view.removeChild(_local_1);
-            };
+            }
             this.popups = new Vector.<BasePopup>();
         }
 
@@ -91,8 +91,8 @@ import robotlegs.bender.bundles.mvcs.Mediator;
                 {
                     _arg_1.x = Math.round(((800 - _arg_1.width) / 2));
                     _arg_1.y = Math.round(((600 - _arg_1.height) / 2));
-                };
-            };
+                }
+            }
             this.drawPopupBackground(_arg_1);
         }
 
@@ -103,7 +103,7 @@ import robotlegs.bender.bundles.mvcs.Mediator;
             {
                 this.view.removeChild(this.popups[_local_2]);
                 this.popups.splice(_local_2, 1);
-            };
+            }
         }
 
         private function closeByClassHandler(_arg_1:Class):void{
@@ -112,9 +112,9 @@ import robotlegs.bender.bundles.mvcs.Mediator;
                 if ((this.popups[_local_2] is _arg_1)){
                     this.view.removeChild(this.popups[_local_2]);
                     this.popups.splice(_local_2, 1);
-                };
+                }
                 _local_2--;
-            };
+            }
         }
 
         private function drawPopupBackground(_arg_1:BasePopup):void

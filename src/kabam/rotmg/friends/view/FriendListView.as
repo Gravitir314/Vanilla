@@ -5,36 +5,38 @@
 
 package kabam.rotmg.friends.view
 {
-    import flash.display.Sprite;
-    import com.company.assembleegameclient.ui.dialogs.DialogCloser;
-    import kabam.rotmg.text.view.TextFieldDisplayConcrete;
-    import com.company.assembleegameclient.ui.DeprecatedTextButton;
-    import com.company.assembleegameclient.account.ui.TextInputField;
-    import org.osflash.signals.Signal;
-    import kabam.rotmg.pets.view.components.DialogCloseButton;
-    import kabam.rotmg.pets.util.PetsViewAssetFactory;
-    import flash.display.GraphicsSolidFill;
-    import flash.display.GraphicsStroke;
-    import flash.display.LineScaleMode;
-    import flash.display.CapsStyle;
-    import flash.display.JointStyle;
-    import flash.display.GraphicsPath;
-    import __AS3__.vec.Vector;
-    import flash.display.IGraphicsData;
-    import com.company.util.GraphicsUtil;
-    import flash.events.Event;
-    import io.decagames.rotmg.friends.model.FriendVO;
-    import flash.events.MouseEvent;
-    import flash.events.FocusEvent;
-    import io.decagames.rotmg.friends.config.FriendsActions;
-    import kabam.rotmg.text.model.TextKey;
-    import flash.text.TextFieldAutoSize;
-    import kabam.rotmg.text.view.stringBuilder.LineBuilder;
-    import com.company.ui.BaseSimpleText;
-    import flash.text.TextFormatAlign;
-    import __AS3__.vec.*;
+import com.company.assembleegameclient.account.ui.TextInputField;
+import com.company.assembleegameclient.ui.DeprecatedTextButton;
+import com.company.assembleegameclient.ui.dialogs.DialogCloser;
+import com.company.ui.BaseSimpleText;
+import com.company.util.GraphicsUtil;
 
-    public class FriendListView extends Sprite implements DialogCloser 
+import flash.display.CapsStyle;
+import flash.display.GraphicsPath;
+import flash.display.GraphicsSolidFill;
+import flash.display.GraphicsStroke;
+import flash.display.IGraphicsData;
+import flash.display.JointStyle;
+import flash.display.LineScaleMode;
+import flash.display.Sprite;
+import flash.events.Event;
+import flash.events.FocusEvent;
+import flash.events.MouseEvent;
+import flash.text.TextFieldAutoSize;
+import flash.text.TextFormatAlign;
+
+import io.decagames.rotmg.friends.config.FriendsActions;
+import io.decagames.rotmg.friends.model.FriendVO;
+
+import kabam.rotmg.pets.util.PetsViewAssetFactory;
+import kabam.rotmg.pets.view.components.DialogCloseButton;
+import kabam.rotmg.text.model.TextKey;
+import kabam.rotmg.text.view.TextFieldDisplayConcrete;
+import kabam.rotmg.text.view.stringBuilder.LineBuilder;
+
+import org.osflash.signals.Signal;
+
+public class FriendListView extends Sprite implements DialogCloser
     {
 
         public static const TEXT_WIDTH:int = 500;
@@ -87,7 +89,7 @@ package kabam.rotmg.friends.view
             while (numChildren > 0)
             {
                 this.removeChildAt((numChildren - 1));
-            };
+            }
             this._addButton.removeEventListener(MouseEvent.CLICK, this.onAddFriendClicked);
             this._addButton = null;
             this._tabView.destroy();
@@ -109,7 +111,7 @@ package kabam.rotmg.friends.view
             {
                 this._friendsContainer.removeChildAt((this._friendsContainer.getTotal() - 1));
                 _local_5--;
-            };
+            }
             _local_5 = 0;
             while (_local_5 < this._friendsContainer.getTotal())
             {
@@ -118,16 +120,16 @@ package kabam.rotmg.friends.view
                 {
                     _local_4 = (this._friendsContainer.getChildAt(_local_5) as FListItem);
                     _local_4.update(_local_3, _arg_2);
-                };
+                }
                 _local_5++;
-            };
+            }
             for each (_local_3 in _arg_1)
             {
                 _local_4 = new FriendListItem(_local_3, LIST_ITEM_WIDTH, LIST_ITEM_HEIGHT, _arg_2);
                 _local_4.actionSignal.add(this.onListItemAction);
                 _local_4.x = 2;
                 this._friendsContainer.addListItem(_local_4);
-            };
+            }
             _arg_1.length = 0;
             _arg_1 = null;
         }
@@ -144,7 +146,7 @@ package kabam.rotmg.friends.view
             {
                 this._invitationsContainer.removeChildAt((this._invitationsContainer.getTotal() - 1));
                 _local_4--;
-            };
+            }
             _local_4 = 0;
             while (_local_4 < this._invitationsContainer.getTotal())
             {
@@ -153,15 +155,15 @@ package kabam.rotmg.friends.view
                 {
                     _local_3 = (this._invitationsContainer.getChildAt(_local_4) as FListItem);
                     _local_3.update(_local_2, "");
-                };
+                }
                 _local_4++;
-            };
+            }
             for each (_local_2 in _arg_1)
             {
                 _local_3 = new InvitationListItem(_local_2, LIST_ITEM_WIDTH, LIST_ITEM_HEIGHT);
                 _local_3.actionSignal.add(this.onListItemAction);
                 this._invitationsContainer.addListItem(_local_3);
-            };
+            }
             _arg_1.length = 0;
             _arg_1 = null;
         }

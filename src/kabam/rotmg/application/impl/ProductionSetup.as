@@ -5,10 +5,11 @@
 
 package kabam.rotmg.application.impl
 {
-    import kabam.rotmg.application.api.ApplicationSetup;
-    import com.company.assembleegameclient.parameters.Parameters;
+import com.company.assembleegameclient.parameters.Parameters;
 
-    public class ProductionSetup implements ApplicationSetup 
+import kabam.rotmg.application.api.ApplicationSetup;
+
+public class ProductionSetup implements ApplicationSetup 
     {
 
         private const SERVER:String = "realmofthemadgodhrd.appspot.com";

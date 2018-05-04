@@ -5,24 +5,27 @@
 
 package kabam.rotmg.pets.view.petPanel
 {
-    import com.company.assembleegameclient.ui.panels.Panel;
-    import org.osflash.signals.natives.NativeSignal;
-    import kabam.rotmg.editor.view.StaticTextButton;
-    import kabam.rotmg.pets.data.PetVO;
-    import flash.display.Bitmap;
-    import flash.display.Sprite;
-    import org.osflash.signals.Signal;
-    import com.company.assembleegameclient.ui.tooltip.ToolTip;
-    import kabam.rotmg.text.view.TextFieldDisplayConcrete;
-    import kabam.rotmg.pets.util.PetsViewAssetFactory;
-    import flash.events.MouseEvent;
-    import com.company.assembleegameclient.game.AGameSprite;
-    import kabam.rotmg.text.model.TextKey;
-    import kabam.rotmg.pets.util.PetsConstants;
-    import kabam.rotmg.text.view.stringBuilder.LineBuilder;
-    import kabam.rotmg.pets.view.components.PetTooltip;
+import com.company.assembleegameclient.game.AGameSprite;
+import com.company.assembleegameclient.ui.panels.Panel;
+import com.company.assembleegameclient.ui.tooltip.ToolTip;
 
-    public class PetPanel extends Panel 
+import flash.display.Bitmap;
+import flash.display.Sprite;
+import flash.events.MouseEvent;
+
+import kabam.rotmg.editor.view.StaticTextButton;
+import kabam.rotmg.pets.data.PetVO;
+import kabam.rotmg.pets.util.PetsConstants;
+import kabam.rotmg.pets.util.PetsViewAssetFactory;
+import kabam.rotmg.pets.view.components.PetTooltip;
+import kabam.rotmg.text.model.TextKey;
+import kabam.rotmg.text.view.TextFieldDisplayConcrete;
+import kabam.rotmg.text.view.stringBuilder.LineBuilder;
+
+import org.osflash.signals.Signal;
+import org.osflash.signals.natives.NativeSignal;
+
+public class PetPanel extends Panel 
     {
 
         private static const FONT_SIZE:int = 16;

@@ -5,14 +5,15 @@
 
 package kabam.rotmg.pets.view.dialogs
 {
-    import robotlegs.bender.bundles.mvcs.Mediator;
-    import kabam.rotmg.pets.data.PetsModel;
-    import kabam.rotmg.pets.view.components.PetIconFactory;
-    import kabam.rotmg.pets.data.PetSlotsState;
-    import kabam.rotmg.dialogs.control.OpenDialogNoModalSignal;
-    import kabam.rotmg.pets.data.PetVO;
+import kabam.rotmg.dialogs.control.OpenDialogNoModalSignal;
+import kabam.rotmg.pets.data.PetSlotsState;
+import kabam.rotmg.pets.data.PetVO;
+import kabam.rotmg.pets.data.PetsModel;
+import kabam.rotmg.pets.view.components.PetIconFactory;
 
-    public class PetPickerMediator extends Mediator 
+import robotlegs.bender.bundles.mvcs.Mediator;
+
+public class PetPickerMediator extends Mediator
     {
 
         [Inject]
@@ -34,15 +35,15 @@ package kabam.rotmg.pets.view.dialogs
             if (_local_1)
             {
                 this.view.filterFusible(_local_1);
-            };
+            }
             if (((this.petSlotsState.rightSlotPetVO) && (this.view.doDisableUsed)))
             {
                 this.view.filterUsedPetVO(this.petSlotsState.rightSlotPetVO);
-            };
+            }
             if (((this.petSlotsState.leftSlotPetVO) && (this.view.doDisableUsed)))
             {
                 this.view.filterUsedPetVO(this.petSlotsState.leftSlotPetVO);
-            };
+            }
             this.view.petPicked.addOnce(this.onPetPicked);
         }
 
@@ -55,11 +56,11 @@ package kabam.rotmg.pets.view.dialogs
             else
             {
                 this.petSlotsState.rightSlotPetVO = _arg_1;
-            };
+            }
             if (this.petSlotsState.caller)
             {
                 this.openDialog.dispatch(new this.petSlotsState.caller());
-            };
+            }
         }
 
 

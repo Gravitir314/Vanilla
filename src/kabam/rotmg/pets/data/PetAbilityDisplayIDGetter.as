@@ -5,9 +5,9 @@
 
 package kabam.rotmg.pets.data
 {
-    import com.company.assembleegameclient.objects.ObjectLibrary;
+import com.company.assembleegameclient.objects.ObjectLibrary;
 
-    public class PetAbilityDisplayIDGetter 
+public class PetAbilityDisplayIDGetter
     {
 
 

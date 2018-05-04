@@ -5,11 +5,12 @@
 
 package kabam.rotmg.messaging.impl
 {
-    import kabam.rotmg.core.StaticInjectorContext;
-    import kabam.rotmg.core.service.GoogleAnalytics;
-    import com.company.assembleegameclient.util.Currency;
+import com.company.assembleegameclient.util.Currency;
 
-    internal class OutstandingBuy 
+import kabam.rotmg.core.StaticInjectorContext;
+import kabam.rotmg.core.service.GoogleAnalytics;
+
+internal class OutstandingBuy
     {
 
         private var id_:String;

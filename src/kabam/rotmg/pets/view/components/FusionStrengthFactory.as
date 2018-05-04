@@ -5,13 +5,14 @@
 
 package kabam.rotmg.pets.view.components
 {
-    import flash.display.Sprite;
-    import flash.display.DisplayObjectContainer;
-    import kabam.rotmg.text.view.TextFieldDisplayConcrete;
-    import kabam.rotmg.text.view.stringBuilder.LineBuilder;
-    import flash.text.TextFieldAutoSize;
+import flash.display.DisplayObjectContainer;
+import flash.display.Sprite;
+import flash.text.TextFieldAutoSize;
 
-    public class FusionStrengthFactory 
+import kabam.rotmg.text.view.TextFieldDisplayConcrete;
+import kabam.rotmg.text.view.stringBuilder.LineBuilder;
+
+public class FusionStrengthFactory
     {
 
         private static const FONT_SIZE:int = 14;
