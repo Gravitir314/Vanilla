@@ -119,9 +119,9 @@ public class DailyLoginModal extends Sprite
         private function createModalBox():void
         {
             var _local_1:DisplayObject = new MysteryBoxSelectModal.backgroundImageEmbed();
-            _local_1.width = this.modalRectangle.width + 1;
-            _local_1.height = (this.modalRectangle.height - 25);
-            _local_1.y = 25;
+            this.modalRectangle.width--;
+            _local_1.height = (this.modalRectangle.height - 27);
+            _local_1.y = 27;
             _local_1.alpha = 0.95;
             this.content.addChild(_local_1);
             this.content.addChild(this.makeModalBackground(this.modalRectangle.width, this.modalRectangle.height));

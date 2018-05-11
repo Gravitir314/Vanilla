@@ -25,9 +25,9 @@ public class PopupMediator extends Mediator
         [Inject]
         public var closePopupSignal:ClosePopupSignal;
         [Inject]
-        public var closeCurrentPopupSignal:CloseCurrentPopupSignal;
-        [Inject]
         public var closePopupByClassSignal:ClosePopupByClassSignal;
+        [Inject]
+        public var closeCurrentPopupSignal:CloseCurrentPopupSignal;
         [Inject]
         public var closeAllPopupsSignal:CloseAllPopupsSignal;
         [Inject]

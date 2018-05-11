@@ -40,13 +40,13 @@ public class TestingSetup implements ApplicationSetup
             return (true);
         }
 
+        public function isServerLocal():Boolean{
+            return (false);
+        }
+
         public function isToolingEnabled():Boolean
         {
             return (true);
-        }
-
-        public function isServerLocal():Boolean{
-            return (false);
         }
 
         public function isGameLoopMonitored():Boolean

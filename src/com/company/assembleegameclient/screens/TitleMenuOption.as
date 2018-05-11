@@ -90,8 +90,7 @@ public class TitleMenuOption extends Sprite
 
         private function makeTextFieldDisplayConcrete():TextFieldDisplayConcrete
         {
-            var _local_1:TextFieldDisplayConcrete;
-            _local_1 = new TextFieldDisplayConcrete();
+            var _local_1:TextFieldDisplayConcrete = new TextFieldDisplayConcrete();
             _local_1.filters = [DROP_SHADOW_FILTER];
             addChild(_local_1);
             return (_local_1);

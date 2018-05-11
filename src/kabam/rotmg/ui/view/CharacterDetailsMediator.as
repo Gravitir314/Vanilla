@@ -64,6 +64,7 @@ public class CharacterDetailsMediator extends Mediator
             this.updateHUD.add(this.onDraw);
             this.nameChanged.add(this.onNameChange);
             this.view.gotoNexus.add(this.onGotoNexus);
+            this.view.gotoOptions.add(this.onGotoOptions);
             if (Parameters.USE_NEW_FRIENDS_UI){
                 this.friendsModel.noInvitationSignal.add(this.clearFriendsIndicator);
                 this.friendsModel.dataSignal.add(this.onFriendsData);

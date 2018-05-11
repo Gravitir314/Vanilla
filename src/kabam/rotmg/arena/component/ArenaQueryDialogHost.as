@@ -38,8 +38,7 @@ public class ArenaQueryDialogHost extends Sprite
 
         private function makeHostIcon():Bitmap
         {
-            var _local_1:Bitmap;
-            _local_1 = new Bitmap(this.makeDebugBitmapData());
+            var _local_1:Bitmap = new Bitmap(this.makeDebugBitmapData());
             _local_1.x = 0;
             _local_1.y = 0;
             addChild(_local_1);

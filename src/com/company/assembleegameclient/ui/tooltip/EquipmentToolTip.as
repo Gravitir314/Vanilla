@@ -81,18 +81,18 @@ public class EquipmentToolTip extends ToolTip
             this.invType = _arg_3;
             this.inventoryOwnerType = _arg_4;
             this.isInventoryFull = ((_arg_2) ? _arg_2.isInventoryFull() : false);
+            this.playerCanUse = ((_arg_2) ? ObjectLibrary.isUsableByPlayer(this.objectType, _arg_2) : false);
+            var _local_5:uint = (((this.playerCanUse) || (this.player == null)) ? 0x363636 : 6036765);
+            var _local_6:uint = (((this.playerCanUse) || (_arg_2 == null)) ? 0x9B9B9B : 10965039);
+            super(_local_5, 1, _local_6, 1, true);
             if (((this.objectType >= 0x9000) && (this.objectType <= 0xF000)))
             {
                 this.objectType = 36863;
             }
-            this.playerCanUse = ((_arg_2) ? ObjectLibrary.isUsableByPlayer(this.objectType, _arg_2) : false);
-            var _local_5:int = ((_arg_2) ? ObjectLibrary.getMatchingSlotIndex(this.objectType, _arg_2) : -1);
-            var _local_6:uint = (((this.playerCanUse) || (this.player == null)) ? 0x363636 : 6036765);
-            var _local_7:uint = (((this.playerCanUse) || (_arg_2 == null)) ? 0x9B9B9B : 10965039);
-            super(_local_6, 1, _local_7, 1, true);
+            var _local_7:int = ((_arg_2) ? ObjectLibrary.getMatchingSlotIndex(this.objectType, _arg_2) : -1);
             this.slotTypeToTextBuilder = new SlotComparisonFactory();
             this.objectXML = ObjectLibrary.xmlLibrary_[this.objectType];
-            this.isEquippable = (!(_local_5 == -1));
+            this.isEquippable = (!(_local_7 == -1));
             this.setInfo = new Vector.<Effect>();
             this.effects = new Vector.<Effect>();
             this.itemSlotTypeId = int(this.objectXML.SlotType);
@@ -104,9 +104,9 @@ public class EquipmentToolTip extends ToolTip
             {
                 if (this.isEquippable)
                 {
-                    if (this.player.equipment_[_local_5] != -1)
+                    if (this.player.equipment_[_local_7] != -1)
                     {
-                        this.curItemXML = ObjectLibrary.xmlLibrary_[this.player.equipment_[_local_5]];
+                        this.curItemXML = ObjectLibrary.xmlLibrary_[this.player.equipment_[_local_7]];
                     }
                 }
             }
@@ -370,6 +370,7 @@ public class EquipmentToolTip extends ToolTip
                 {
                     addChild(this.line1);
                     addChild(this.effectsText);
+                    waiter.push(this.effectsText.textChanged);
                 }
             }
         }
