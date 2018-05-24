@@ -18,8 +18,8 @@ import flash.utils.Dictionary;
 public class Parameters
     {
 
-        public static const BUILD_VERSION:String = "X25.1";
-        public static const MINOR_VERSION:String = "1";
+        public static const BUILD_VERSION:String = "X26.0";
+        public static const MINOR_VERSION:String = "0";
         public static const ENABLE_ENCRYPTION:Boolean = true;
         public static const PORT:int = 2050;
         public static const ALLOW_SCREENSHOT_MODE:Boolean = false;
@@ -221,7 +221,6 @@ public class Parameters
             setDefault("disableAllyParticles", false);
             setDefault("disablePlayersHitParticles", false);
             setDefault("cursorSelect", "4");
-            setDefault("friendListDisplayFlag", false);
             if (Capabilities.playerType == "Desktop")
             {
                 setDefault("GPURender", false);
@@ -269,6 +268,7 @@ public class Parameters
             setDefault("forceEXP", 0);
             setDefault("showFameGain", false);
             setDefault("curseIndication", false);
+            setDefault("showTierTag", true);
             if (!data_.hasOwnProperty("needsSurvey"))
             {
                 data_.needsSurvey = data_.needsTutorial;

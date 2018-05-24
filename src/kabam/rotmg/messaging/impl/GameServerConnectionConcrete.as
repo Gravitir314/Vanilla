@@ -76,7 +76,7 @@ import io.decagames.rotmg.characterMetrics.tracker.CharactersMetricsTracker;
 import io.decagames.rotmg.dailyQuests.messages.incoming.QuestFetchResponse;
 import io.decagames.rotmg.dailyQuests.signal.QuestFetchCompleteSignal;
 import io.decagames.rotmg.dailyQuests.signal.QuestRedeemCompleteSignal;
-import io.decagames.rotmg.friends.model.FriendModel;
+import io.decagames.rotmg.social.model.SocialModel;
 
 import kabam.lib.net.api.MessageMap;
 import kabam.lib.net.api.MessageProvider;
@@ -269,7 +269,7 @@ public class GameServerConnectionConcrete extends GameServerConnection
         private var model:GameModel;
         private var updateActivePet:UpdateActivePet;
         private var petsModel:PetsModel;
-        private var friendModel:FriendModel;
+        private var socialModel:SocialModel;
         private var statsTracker:CharactersMetricsTracker;
 
         public function GameServerConnectionConcrete(_arg_1:AGameSprite, _arg_2:Server, _arg_3:int, _arg_4:Boolean, _arg_5:int, _arg_6:int, _arg_7:ByteArray, _arg_8:String, _arg_9:Boolean)
@@ -284,7 +284,7 @@ public class GameServerConnectionConcrete extends GameServerConnection
             this.updateBackpackTab = StaticInjectorContext.getInjector().getInstance(UpdateBackpackTabSignal);
             this.updateActivePet = this.injector.getInstance(UpdateActivePet);
             this.petsModel = this.injector.getInstance(PetsModel);
-            this.friendModel = this.injector.getInstance(FriendModel);
+            this.socialModel = this.injector.getInstance(SocialModel);
             this.closeDialogs = this.injector.getInstance(CloseDialogsSignal);
             changeMapSignal = this.injector.getInstance(ChangeMapSignal);
             this.openDialog = this.injector.getInstance(OpenDialogSignal);
@@ -313,8 +313,8 @@ public class GameServerConnectionConcrete extends GameServerConnection
             key_ = _arg_7;
             mapJSON_ = _arg_8;
             isFromArena_ = _arg_9;
-            this.friendModel.loadData();
-            this.friendModel.setCurrentServer(server_);
+            this.socialModel.loadInvitations();
+            this.socialModel.setCurrentServer(server_);
             this.getPetUpdater();
             instance = this;
         }
@@ -1197,7 +1197,12 @@ public class GameServerConnectionConcrete extends GameServerConnection
         private function onAllyShoot(_arg_1:AllyShoot):void
         {
             var _local_2:GameObject = gs_.map.goDict_[_arg_1.ownerId_];
-            if ((((_local_2 == null) || (_local_2.dead_)) || (Parameters.data_.disableAllyParticles)))
+            if (((_local_2 == null) || (_local_2.dead_)))
+            {
+                return;
+            }
+            _local_2.setAttack(_arg_1.containerType_, _arg_1.angle_);
+            if (Parameters.data_.disableAllyParticles)
             {
                 return;
             }
@@ -1212,7 +1217,6 @@ public class GameServerConnectionConcrete extends GameServerConnection
                 _local_3.reset(_arg_1.containerType_, 0, _arg_1.ownerId_, _arg_1.bulletId_, _arg_1.angle_, gs_.lastUpdate_);
             }
             gs_.map.addObj(_local_3, _local_2.x_, _local_2.y_);
-            _local_2.setAttack(_arg_1.containerType_, _arg_1.angle_);
         }
 
         private function onReskinUnlock(_arg_1:ReskinUnlock):void
@@ -1260,7 +1264,7 @@ public class GameServerConnectionConcrete extends GameServerConnection
             {
                 return;
             }
-            if (((Parameters.data_.tradeWithFriends) && (!(this.friendModel.isMyFriend(_arg_1.name_)))))
+            if (((Parameters.data_.tradeWithFriends) && (!(this.socialModel.isMyFriend(_arg_1.name_)))))
             {
                 return;
             }
@@ -1972,7 +1976,7 @@ public class GameServerConnectionConcrete extends GameServerConnection
                         _local_7.updateFame((_local_7.currFame_ - _local_11));
                     }
                 }
-                this.friendModel.updateFriendVO(_local_7.getName(), _local_7);
+                this.socialModel.updateFriendVO(_local_7.getName(), _local_7);
             }
         }
 

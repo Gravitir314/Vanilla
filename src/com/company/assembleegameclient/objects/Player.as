@@ -1166,11 +1166,12 @@ public class Player extends Character
             var _local_10:Boolean;
             for each (_local_11 in _local_5.Activate) {
                 _local_14 = _local_11.toString();
-                if (_local_14 == ActivationType.TELEPORT){
+                if (((_local_14 == ActivationType.TELEPORT) || (_local_14 == ActivationType.OBJECT_TOSS)))
+                {
                     _local_8 = true;
                     _local_10 = true;
                 }
-                if (((((((_local_14 == ActivationType.BULLET_NOVA) || (_local_14 == ActivationType.POISON_GRENADE)) || (_local_14 == ActivationType.VAMPIRE_BLAST)) || (_local_14 == ActivationType.TRAP)) || (_local_14 == ActivationType.STASIS_BLAST)) || (_local_14 == ActivationType.OBJECT_TOSS))){
+                if ((((((_local_14 == ActivationType.BULLET_NOVA) || (_local_14 == ActivationType.POISON_GRENADE)) || (_local_14 == ActivationType.VAMPIRE_BLAST)) || (_local_14 == ActivationType.TRAP)) || (_local_14 == ActivationType.STASIS_BLAST))){
                     _local_8 = true;
                 }
                 if (_local_14 == ActivationType.SHOOT){

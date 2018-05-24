@@ -17,6 +17,7 @@ import kabam.rotmg.core.service.TrackingData;
 import kabam.rotmg.core.signals.TaskErrorSignal;
 import kabam.rotmg.core.signals.TrackEventSignal;
 import kabam.rotmg.dialogs.control.OpenDialogSignal;
+import kabam.rotmg.ui.signals.EnterGameSignal;
 
 public class WebRegisterAccountCommand 
     {
@@ -33,6 +34,8 @@ public class WebRegisterAccountCommand
         public var openDialog:OpenDialogSignal;
         [Inject]
         public var track:TrackEventSignal;
+        [Inject]
+        public var enterGame:EnterGameSignal;
 
 
         public function execute():void
@@ -48,6 +51,7 @@ public class WebRegisterAccountCommand
             _local_1.add(new DispatchSignalTask(this.track, this.getTrackingData()));
             _local_1.add(new DispatchSignalTask(this.updateAccount));
             _local_1.add(new DispatchSignalTask(this.openDialog, new WebAccountDetailDialog()));
+            _local_1.add(new DispatchSignalTask(this.enterGame));
             return (_local_1);
         }
 

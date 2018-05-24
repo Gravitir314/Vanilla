@@ -9,7 +9,7 @@ import com.company.assembleegameclient.objects.GameObject;
 import com.company.assembleegameclient.objects.TextureDataConcrete;
 import com.company.assembleegameclient.parameters.Parameters;
 
-import io.decagames.rotmg.friends.model.FriendModel;
+import io.decagames.rotmg.social.model.SocialModel;
 
 import kabam.rotmg.account.core.Account;
 import kabam.rotmg.account.core.view.ConfirmEmailModal;
@@ -58,7 +58,7 @@ public class TextHandler
         [Inject]
         public var hudModel:HUDModel;
         [Inject]
-        public var friendModel:FriendModel;
+        public var socialModel:SocialModel;
         [Inject]
         public var setup:ApplicationSetup;
 
@@ -73,7 +73,7 @@ public class TextHandler
             {
                 return;
             }
-            if ((((!(_arg_1.recipient_ == "")) && (Parameters.data_.chatFriend)) && (!(this.friendModel.isMyFriend(_arg_1.recipient_)))))
+            if ((((!(_arg_1.recipient_ == "")) && (Parameters.data_.chatFriend)) && (!(this.socialModel.isMyFriend(_arg_1.recipient_)))))
             {
                 return;
             }

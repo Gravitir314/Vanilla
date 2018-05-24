@@ -79,7 +79,6 @@ public class WebAccountInfoView extends Sprite implements AccountInfoView
         private function makeAccountText():void
         {
             this.accountText = this.makeTextFieldConcrete();
-            this.accountText.setStringBuilder(new LineBuilder().setParams(TextKey.GUEST_ACCOUNT));
         }
 
         private function makeTextFieldConcrete():TextFieldDisplayConcrete
@@ -164,9 +163,8 @@ public class WebAccountInfoView extends Sprite implements AccountInfoView
 
         private function showUIForGuestAccount():void
         {
-            this.accountText.setStringBuilder(new LineBuilder().setParams(TextKey.GUEST_ACCOUNT, {"userName":this.userName}));
             this.loginButton.setTextKey(TextKey.LOG_IN);
-            this.addAndAlignHorizontally(this.accountText, this.makeDividerText(), this.registerButton, this.makeDividerText(), this.loginButton);
+            this.addAndAlignHorizontally(this.registerButton, this.makeDividerText(), this.loginButton);
         }
 
         private function addAndAlignHorizontally(... _args):void

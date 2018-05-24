@@ -131,6 +131,7 @@ import kabam.rotmg.ui.signals.ShowHideKeyUISignal;
 import kabam.rotmg.ui.signals.ShowKeySignal;
 import kabam.rotmg.ui.signals.ShowLoadingUISignal;
 import kabam.rotmg.ui.signals.ShowTitleUISignal;
+import kabam.rotmg.ui.signals.ToggleShowTierTagSignal;
 import kabam.rotmg.ui.signals.UpdateBackpackTabSignal;
 import kabam.rotmg.ui.signals.UpdateHUDSignal;
 import kabam.rotmg.ui.signals.UpdatePotionInventorySignal;
@@ -209,6 +210,7 @@ public class UIConfig implements IConfig
             this.injector.map(CloseAllPopupsSignal).asSingleton();
             this.injector.map(ShowLockFade).asSingleton();
             this.injector.map(RemoveLockFade).asSingleton();
+            this.injector.map(ToggleShowTierTagSignal).asSingleton();
             this.injector.map(CharactersMetricsTracker).asSingleton();
             this.injector.map(FameTracker).asSingleton();
             this.injector.map(CharactersMetricsTracker).asSingleton();

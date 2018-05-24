@@ -8,12 +8,13 @@ package com.company.assembleegameclient.ui.panels.itemgrids
 import com.company.assembleegameclient.objects.GameObject;
 import com.company.assembleegameclient.objects.Player;
 import com.company.assembleegameclient.ui.panels.itemgrids.itemtiles.EquipmentTile;
+import com.company.assembleegameclient.ui.panels.itemgrids.itemtiles.ItemTile;
 import com.company.util.ArrayIterator;
 import com.company.util.IIterator;
 
 import kabam.lib.util.VectorAS3Util;
 
-public class EquippedGrid extends ItemGrid 
+public class EquippedGrid extends ItemGrid
     {
 
         public static const NUM_SLOTS:uint = 4;
@@ -62,6 +63,13 @@ public class EquippedGrid extends ItemGrid
                     this.tiles[_local_4].updateDim(curPlayer);
                     _local_4++;
                 }
+            }
+        }
+
+        public function toggleTierTags(_arg_1:Boolean):void{
+            var _local_2:ItemTile;
+            for each (_local_2 in this.tiles) {
+                _local_2.toggleTierTag(_arg_1);
             }
         }
 

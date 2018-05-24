@@ -23,8 +23,7 @@ import flash.events.KeyboardEvent;
 import flash.events.MouseEvent;
 import flash.system.Capabilities;
 
-import io.decagames.rotmg.friends.FriendsPopupView;
-import io.decagames.rotmg.friends.model.FriendModel;
+import io.decagames.rotmg.social.SocialPopupView;
 import io.decagames.rotmg.ui.popups.signals.CloseAllPopupsSignal;
 import io.decagames.rotmg.ui.popups.signals.ClosePopupByClassSignal;
 import io.decagames.rotmg.ui.popups.signals.ShowPopupSignal;
@@ -90,6 +89,7 @@ public class MapUserInput
         private var exitGame:ExitGameSignal;
         private var areFKeysAvailable:Boolean;
         private var reskinPetFlowStart:ReskinPetFlowStartSignal;
+        private var isFriendsListOpen:Boolean;
 
         public function MapUserInput(_arg_1:GameSprite)
         {
@@ -347,9 +347,8 @@ public class MapUserInput
             var _local_9:Number;
             var _local_10:Boolean;
             var _local_11:ShowPopupSignal;
-            var _local_12:FriendModel;
-            var _local_13:OpenDialogSignal;
-            var _local_14:Square;
+            var _local_12:OpenDialogSignal;
+            var _local_13:Square;
             var _local_2:Stage = this.gs_.stage;
             this.currentString = (this.currentString + String.fromCharCode(_arg_1.keyCode).toLowerCase());
             if (this.currentString == UIUtils.EXPERIMENTAL_MENU_PASSWORD.slice(0, this.currentString.length))
@@ -517,22 +516,18 @@ public class MapUserInput
                     Parameters.save();
                     break;
                 case Parameters.data_.friendList:
-                    Parameters.data_.friendListDisplayFlag = (!(Parameters.data_.friendListDisplayFlag));
-                    if (Parameters.data_.friendListDisplayFlag)
-                    {
+                    this.isFriendsListOpen = (!(this.isFriendsListOpen));
+                    if (this.isFriendsListOpen){
                         if (Parameters.USE_NEW_FRIENDS_UI){
                             _local_11 = StaticInjectorContext.getInjector().getInstance(ShowPopupSignal);
-                            _local_12 = StaticInjectorContext.getInjector().getInstance(FriendModel);
-                            _local_11.dispatch(new FriendsPopupView(_local_12.hasInvitations));
+                            _local_11.dispatch(new SocialPopupView());
                         } else {
-                            _local_13 = StaticInjectorContext.getInjector().getInstance(OpenDialogSignal);
-                            _local_13.dispatch(new FriendListView());
+                            _local_12 = StaticInjectorContext.getInjector().getInstance(OpenDialogSignal);
+                            _local_12.dispatch(new FriendListView());
                         }
-                    }
-                    else
-                    {
+                    } else {
                         this.closeDialogSignal.dispatch();
-                        this.closePopupByClassSignal.dispatch(FriendsPopupView);
+                        this.closePopupByClassSignal.dispatch(SocialPopupView);
                     }
                     break;
                 case Parameters.data_.options:
@@ -591,10 +586,9 @@ public class MapUserInput
                         this.addTextLine.dispatch(ChatMessage.make(Parameters.ERROR_CHAT_NAME, ("Projectile Color Type: " + Parameters.projColorType_)));
                         break;
                     case KeyCodes.F7:
-                        for each (_local_14 in this.gs_.map.squares_)
-                        {
-                            if (_local_14 != null){
-                                _local_14.faces_.length = 0;
+                        for each (_local_13 in this.gs_.map.squares_) {
+                            if (_local_13 != null){
+                                _local_13.faces_.length = 0;
                             }
                         }
                         Parameters.blendType_ = ((Parameters.blendType_ + 1) % 2);

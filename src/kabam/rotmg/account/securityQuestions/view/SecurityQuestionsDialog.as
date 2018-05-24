@@ -16,11 +16,11 @@ public class SecurityQuestionsDialog extends Frame
 
         private const minQuestionLength:int = 3;
         private const maxQuestionLength:int = 50;
-        private var fields:Array;
-        private var questionsList:Array;
+        private const inputPattern:RegExp = /^[a-zA-Z0-9 ]+$/;
 
         private var errors:Array = [];
-        private const inputPattern:RegExp = /^[a-zA-Z0-9 ]+$/;
+        private var fields:Array;
+        private var questionsList:Array;
 
         public function SecurityQuestionsDialog(_arg_1:Array, _arg_2:Array)
         {
@@ -53,6 +53,10 @@ public class SecurityQuestionsDialog extends Frame
             for each (_local_2 in this.questionsList)
             {
                 _local_3 = new TextInputField(_local_2, false, 240);
+                _local_3.nameText_.setTextWidth(240);
+                _local_3.nameText_.setSize(12);
+                _local_3.nameText_.setWordWrap(true);
+                _local_3.nameText_.setMultiLine(true);
                 addTextInputField(_local_3);
                 _local_3.inputText_.tabEnabled = true;
                 _local_3.inputText_.tabIndex = _local_1;
