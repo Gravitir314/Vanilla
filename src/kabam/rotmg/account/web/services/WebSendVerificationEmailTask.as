@@ -52,7 +52,6 @@ public class WebSendVerificationEmailTask extends BaseTask implements SendConfir
             var _local_1:TrackingData = new TrackingData();
             _local_1.category = "account";
             _local_1.action = "verifyEmailSent";
-            this.track.dispatch(_local_1);
         }
 
         private function onError(_arg_1:String):void

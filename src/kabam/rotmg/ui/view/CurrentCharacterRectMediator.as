@@ -87,7 +87,6 @@ public class CurrentCharacterRectMediator extends Mediator
             _local_2.action = "select";
             _local_2.label = _arg_1.displayId();
             _local_2.value = _arg_1.level();
-            this.track.dispatch(_local_2);
         }
 
         private function launchGame(_arg_1:SavedCharacter):void

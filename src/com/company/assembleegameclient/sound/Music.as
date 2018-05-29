@@ -40,7 +40,6 @@ public class Music
         {
             var _local_2:GoogleAnalytics = StaticInjectorContext.getInjector().getInstance(GoogleAnalytics);
             if (_local_2){
-                _local_2.trackEvent("sound", ((_arg_1) ? "musicOn" : "musicOff"));
             }
             Parameters.data_.playMusic = _arg_1;
             Parameters.save();

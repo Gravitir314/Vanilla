@@ -18,7 +18,7 @@ import flash.utils.Dictionary;
 public class Parameters
     {
 
-        public static const BUILD_VERSION:String = "X26.0";
+        public static const BUILD_VERSION:String = "X26.1";
         public static const MINOR_VERSION:String = "0";
         public static const ENABLE_ENCRYPTION:Boolean = true;
         public static const PORT:int = 2050;
@@ -218,7 +218,7 @@ public class Parameters
             setDefault("particleEffect", false);
             setDefault("uiQuality", true);
             setDefault("disableEnemyParticles", false);
-            setDefault("disableAllyParticles", false);
+            setDefault("disableAllyShoot", 0);
             setDefault("disablePlayersHitParticles", false);
             setDefault("cursorSelect", "4");
             if (Capabilities.playerType == "Desktop")

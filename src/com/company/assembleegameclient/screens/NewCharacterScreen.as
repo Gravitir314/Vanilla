@@ -124,7 +124,6 @@ public class NewCharacterScreen extends Sprite
             var _local_4:String = ObjectLibrary.typeToDisplayId_[_local_3];
             var _local_5:GoogleAnalytics = StaticInjectorContext.getInjector().getInstance(GoogleAnalytics);
             if (_local_5){
-                _local_5.trackEvent("character", "create", _local_4);
             }
             this.selected.dispatch(_local_3);
         }

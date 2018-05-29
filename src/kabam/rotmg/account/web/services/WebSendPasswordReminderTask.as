@@ -51,7 +51,6 @@ public class WebSendPasswordReminderTask extends BaseTask implements SendPasswor
             var _local_1:TrackingData = new TrackingData();
             _local_1.category = "account";
             _local_1.action = "passwordSent";
-            this.track.dispatch(_local_1);
         }
 
         private function onForgotError(_arg_1:String):void

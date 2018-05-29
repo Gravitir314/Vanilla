@@ -567,7 +567,6 @@ public class GameSprite extends AGameSprite
             if (this.frameTimeSum_ > 300000)
             {
                 _local_7 = int(Math.round(((1000 * this.frameTimeCount_) / this.frameTimeSum_)));
-                this.googleAnalytics.trackEvent("performance", "frameRate", map.name_, _local_7);
                 this.frameTimeCount_ = 0;
                 this.frameTimeSum_ = 0;
             }

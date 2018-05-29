@@ -54,7 +54,6 @@ public class HandleNormalDeathCommand
             _local_3.category = "killedBy";
             _local_3.action = this.death.killedBy_;
             _local_3.value = _local_2;
-            this.track.dispatch(_local_3);
         }
 
         private function updateParameters():void

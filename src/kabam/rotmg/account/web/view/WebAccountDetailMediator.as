@@ -71,7 +71,6 @@ public class WebAccountDetailMediator extends Mediator
             var _local_1:TrackingData = new TrackingData();
             _local_1.category = "account";
             _local_1.action = "loggedOut";
-            this.track.dispatch(_local_1);
         }
 
         private function onDone():void
@@ -100,7 +99,6 @@ public class WebAccountDetailMediator extends Mediator
 
         private function onSent():void
         {
-            this.trackEmailSent();
         }
 
         private function trackEmailSent():void
@@ -108,7 +106,6 @@ public class WebAccountDetailMediator extends Mediator
             var _local_1:TrackingData = new TrackingData();
             _local_1.category = "account";
             _local_1.action = "verifyEmailSent";
-            this.track.dispatch(_local_1);
         }
 
         private function onError(_arg_1:String):void

@@ -93,7 +93,6 @@ public class TitleMediator extends Mediator
                 this.openDialog.dispatch(new SecurityQuestionsInfoDialog());
             }
             if (!Parameters.sessionStarted){
-                this.tracking.trackEvent("clientStarted", Capabilities.playerType, this.account.gameNetwork());
                 Parameters.sessionStarted = true;
             }
         }

@@ -45,7 +45,6 @@ public class WebChangePasswordCommand
         private function makeSuccess():Task
         {
             var _local_1:TaskSequence = new TaskSequence();
-            _local_1.add(new DispatchSignalTask(this.track, this.makeTrackingData()));
             _local_1.add(new DispatchSignalTask(this.openDialog, new WebAccountDetailDialog()));
             return (_local_1);
         }

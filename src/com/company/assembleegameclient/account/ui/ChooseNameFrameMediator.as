@@ -85,7 +85,6 @@ public class ChooseNameFrameMediator extends Mediator
             _local_1.action = ((this.gameSprite.model.getConverted()) ? "buyConverted" : "buy");
             _local_1.label = "Name Change";
             _local_1.value = Parameters.NAME_CHANGE_PRICE;
-            this.trackEvent.dispatch(_local_1);
         }
 
         private function handleFailedNameChange(_arg_1:String):void

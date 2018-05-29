@@ -27,7 +27,6 @@ public class SFX
         {
             var _local_2:GoogleAnalytics = StaticInjectorContext.getInjector().getInstance(GoogleAnalytics);
             if (_local_2){
-                _local_2.trackEvent("sound", ((_arg_1) ? "soundOn" : "soundOff"));
             }
             Parameters.data_.playSFX = _arg_1;
             Parameters.save();

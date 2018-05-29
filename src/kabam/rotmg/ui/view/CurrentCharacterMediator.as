@@ -121,7 +121,6 @@ public class CurrentCharacterMediator extends Mediator
                 _local_2 = new TrackingData();
                 _local_2.category = "joinDate";
                 _local_2.action = Parameters.data_.joinDate;
-                this.track.dispatch(_local_2);
                 Parameters.data_.lastDailyAnalytics = _local_1;
                 Parameters.save();
             }
@@ -154,7 +153,6 @@ public class CurrentCharacterMediator extends Mediator
             _local_3.action = "select";
             _local_3.label = _local_1.displayId();
             _local_3.value = _local_1.level();
-            this.track.dispatch(_local_3);
             var _local_4:GameInitData = new GameInitData();
             _local_4.createCharacter = false;
             _local_4.charId = _local_1.charId();

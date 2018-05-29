@@ -70,7 +70,6 @@ public class WebLoginCommand
             var _local_1:TaskSequence;
             _local_1 = new TaskSequence();
             _local_1.add(new DispatchSignalTask(this.closeDialogs));
-            _local_1.add(new DispatchSignalTask(this.track, this.getTrackingData()));
             _local_1.add(new DispatchSignalTask(this.updateLogin));
             _local_1.add(new DispatchSignalTask(this.invalidate));
             _local_1.add(this.getPackageTask);

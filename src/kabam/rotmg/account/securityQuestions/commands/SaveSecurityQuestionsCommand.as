@@ -44,7 +44,6 @@ public class SaveSecurityQuestionsCommand
         private function makeSuccess():Task
         {
             var _local_1:TaskSequence = new TaskSequence();
-            _local_1.add(new DispatchSignalTask(this.track, this.getTrackingData()));
             _local_1.add(new DispatchSignalTask(this.closeDialogs));
             this.securityQuestionsModel.showSecurityQuestionsOnStartup = false;
             return (_local_1);

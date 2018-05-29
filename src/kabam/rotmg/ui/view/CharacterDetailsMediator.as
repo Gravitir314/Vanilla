@@ -122,7 +122,6 @@ public class CharacterDetailsMediator extends Mediator
             this.hudModel.gameSprite.gsc_.escape();
             var _local_1:GoogleAnalytics = StaticInjectorContext.getInjector().getInstance(GoogleAnalytics);
             if (_local_1){
-                _local_1.trackEvent("enterPortal", "Nexus Button");
             }
             Parameters.data_.needsRandomRealm = false;
             Parameters.save();
@@ -133,7 +132,6 @@ public class CharacterDetailsMediator extends Mediator
             this.hudModel.gameSprite.mui_.clearInput();
             var _local_1:GoogleAnalytics = StaticInjectorContext.getInjector().getInstance(GoogleAnalytics);
             if (_local_1){
-                _local_1.trackEvent("options", "Options Button");
             }
             this.hudModel.gameSprite.addChild(new Options(this.hudModel.gameSprite));
         }

@@ -88,7 +88,6 @@ public class BuyCharacterSlotCommand
         {
             var _local_1:TaskSequence = new TaskSequence();
             _local_1.add(new DispatchSignalTask(this.setScreen, new CharacterSelectionAndNewsScreen()));
-            _local_1.add(new DispatchSignalTask(this.track, this.makeTrackingData()));
             return (_local_1);
         }
 

@@ -101,7 +101,7 @@ public class PortalPanel extends Panel
         private function enterPortal():void
         {
             var _local_1:String = ObjectLibrary.typeToDisplayId_[this.owner_.objectType_];
-            if (((this.googleAnalytics) && (!(_local_1 == "Nexus Portal")))){
+            if (((this.googleAnalytics) && ((((_local_1 == "Kitchen Portal") || (_local_1 == "Vault Explanation")) || (_local_1 == "Guild Explanation")) || (_local_1 == "Nexus Explanation")))){
                 this.googleAnalytics.trackEvent("enterPortal", _local_1);
             }
             doneAction(gs_, Tutorial.ENTER_PORTAL_ACTION);

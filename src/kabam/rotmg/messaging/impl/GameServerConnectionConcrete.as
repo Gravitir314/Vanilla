@@ -1201,8 +1201,11 @@ public class GameServerConnectionConcrete extends GameServerConnection
             {
                 return;
             }
+            if (Parameters.data_.disableAllyShoot == 1){
+                return;
+            }
             _local_2.setAttack(_arg_1.containerType_, _arg_1.angle_);
-            if (Parameters.data_.disableAllyParticles)
+            if (Parameters.data_.disableAllyShoot == 2)
             {
                 return;
             }

@@ -41,7 +41,6 @@ public class LeavePetYard extends PetDialog
             this.gameSprite.gsc_.escape();
             var _local_2:GoogleAnalytics = StaticInjectorContext.getInjector().getInstance(GoogleAnalytics);
             if (_local_2){
-                _local_2.trackEvent("enterPortal", "Nexus Button");
             }
             Parameters.data_.needsRandomRealm = false;
             Parameters.save();
